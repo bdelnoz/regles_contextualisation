@@ -270,40 +270,72 @@
 
 #### 75. GESTION AUTOMATIQUE DU .GITIGNORE
 75.1 Si .gitignore n'existe pas, le créer automatiquement
+
 75.2 Vérifier existence des entrées : /logs, /outputs, /results, /resume
+
 75.3 Chaque ligne ajoutée précédée d'un commentaire d'identification
+
 75.4 Format commentaire : `# Section ajoutée automatiquement par <nom_du_script>`
+
 75.5 Si rien à ajouter, indiquer : `Aucune modification. Tout était déjà présent dans .gitignore`
+
 75.6 Si entrées existent déjà, aucune duplication
+
 75.7 Ne modifier ni supprimer aucune ligne existante
+
 75.8 Vérifier entrées obligatoires correctes ; corriger si partielle ou erronée
+
 75.9 Écrire toutes actions .gitignore dans console et fichier log
+
 75.10 Console et log contiennent mêmes informations détaillées
+
 75.11 Journaliser : création fichier, lignes ajoutées, lignes existantes, anomalies corrigées
+
 75.12 Gestion intégrée automatiquement dans chaque script
+
 75.13 Logique d'ajout centralisée pour cohérence inter-scripts
+
 75.14 Aucun répertoire/fichier non standard sans validation explicite
 
 #### 76. FICHIERS DE DOCUMENTATION AUTOMATIQUES (.MD)
 76.1 Chaque script possède documentation structurée, claire et traçable
+
 76.2 Fichiers .md transformables en .docx ou PDF préservant structure
+
 76.3 Fichiers à générer : README.<nom_du_script>.md, CHANGELOG.<nom_du_script>.md, USAGE.<nom_du_script>.md
+
 76.4 Si répertoire dédié : README.md, CHANGELOG.md, USAGE.md, INSTALL.md
+
 76.5 Si fichier n'existe pas, créé automatiquement avec structure par défaut
+
 76.6 Fichiers existants jamais supprimés ni compressés
+
 76.7 Sections absentes complétées automatiquement
+
 76.8 Chaque .md contient : en-tête structuré, date/heure précises, section « Dernière version », auteurs/contacts, encadré « Modifications récentes »
+
 76.9 CHANGELOG.md contient : numéro version, date et heure exacte, nom auteur, liste complète modifications
+
 76.10 CHANGELOG.md garde historique intégral de toutes versions précédentes
+
 76.11 Aucune version antérieure supprimée
+
 76.12 Mises à jour .md consignées dans log et visibles console
+
 76.13 Message création/modification : `[DocSync] Fichier 'README.nomduscript.md' mis à jour automatiquement`
+
 76.14 Si rien modifié : `[DocSync] Aucun changement détecté dans les fichiers .md`
+
 76.15 Conversion possible en .docx ou .pdf via pandoc
+
 76.16 Commande DOCX : `pandoc fichier.md -o fichier.docx --standalone --metadata title="Documentation Script" --toc --number-sections`
+
 76.17 Commande PDF : `pandoc fichier.md -o fichier.pdf --standalone --metadata title="Documentation Script" --toc --number-sections`
+
 76.18 Conversions préservent : liens hypertextes, hiérarchie titres, formats, pagination propre PDF
+
 76.19 Gestion complète fichiers .md intégrée automatiquement dans tous scripts
+
 76.20 Fichiers synchronisés pour consultation/publication GitHub
 
 ---
