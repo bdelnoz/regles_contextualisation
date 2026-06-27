@@ -28,3 +28,7 @@ certs/
 secrets/
 .secrets
 .zip/
+_RULES_PRIVATE_*
+.old/
+.docs/
+.private/
