@@ -1,21 +1,21 @@
 <!--
 DOCUMENT INFORMATION
-Document Name: _RULES_SOLO105_RULESOPERATOR.md
-Version: SOLO105
-Date / Time: 2026-06-28 02:05
+Document Name: _RULES_SOLO106_RULESOPERATOR.md
+Version: SOLO106
+Date / Time: 2026-06-30 05:42
 Project: SOLO rules operator contextualization
 Public status: GitHub-safe public rules file
-Short description: Rules for operating SOLO rule maintenance chats, including public/private repository structure, privacy leak prevention, versioning, local documentation, ZIP delivery and anti-regression checks.
+Short description: Rules for operating SOLO rule maintenance chats, including public/private repository structure, privacy leak prevention, operator chat title versioning, local documentation, ZIP delivery and anti-regression checks.
 -->
 
-# _RULES_SOLO105_RULESOPERATOR.md
+# _RULES_SOLO106_RULESOPERATOR.md
 
-Nom canonique : SOLO105 RULESOPERATOR  
+Nom canonique : SOLO106 RULESOPERATOR  
 Famille : SOLOxxx RULESOPERATOR  
-Version actuelle : 105  
-Document : _RULES_SOLO105_RULESOPERATOR.md  
-Date : 2026-06-28 02:05  
-Statut : version 105 publique et assainie du fichier opérateur, avec structure GitHub canonique, interdiction des fuites de données privées dans les règles publiques et exclusion des changelogs du corps des fichiers RULES.
+Version actuelle : 106  
+Document : _RULES_SOLO106_RULESOPERATOR.md  
+Date : 2026-06-30 05:42  
+Statut : version 106 publique et assainie du fichier opérateur, avec structure GitHub canonique, interdiction des fuites de données privées dans les règles publiques, exclusion des changelogs du corps des fichiers RULES et titrage versionné des chats Operator.
 
 Ces règles contextualisent un chat chargé de créer, modifier, corriger, versionner, documenter et livrer les fichiers de règles SOLO.
 
@@ -409,16 +409,56 @@ SOLOXXX_<FAMILLE>_PACKAGE.zip
 
 ------------------------------------------------------------------------
 
-## 14. SYNTHÈSE OPÉRATIONNELLE
+## 14. AJOUT SOLO106 — TITRAGE VERSIONNÉ DES CHATS OPERATOR
 
-84. Les trois fichiers RULES publics doivent rester propres, généralisés et publiables.
+84. Lorsqu’un nouveau chat est créé pour servir de chat SOLO Operator, l’assistant doit proposer immédiatement un titre de chat versionné à copier-coller manuellement par l’utilisateur.
 
-85. Les données privées doivent rester locales.
+85. L’assistant ne doit pas prétendre pouvoir renommer automatiquement le chat si l’interface ChatGPT ne lui donne pas explicitement cette capacité.
 
-86. Les changelogs ne doivent pas être embarqués dans les fichiers RULES publics.
+86. Le titre versionné doit indiquer au minimum les trois versions SOLO actives : contextualisation, rules operator et scripting.
 
-87. Les README et CHANGELOG ne doivent pas être publiés à la racine du dépôt.
+87. Le pattern canonique de titre pour un nouveau chat Operator est :
 
-88. Les ZIP sont des artefacts de livraison locaux et ne doivent pas être publiés.
+```text
++++SOLO_OPERATOR__CTXXXX__OPXXX__SCRIPTXXX__YYYY-MM-DD
+```
 
-89. La règle de base est simple : ce qui est public doit être générique ; ce qui est privé doit être extrait, versionné si nécessaire, et ignoré par Git.
+88. Exemple avec les versions actives actuelles :
+
+```text
++++SOLO_OPERATOR__CTX226__OP106__SCRIPT405__2026-06-30
+```
+
+89. Si une des versions actives n’est pas connue au démarrage du chat, l’assistant doit demander uniquement la version manquante ou demander à l’utilisateur de fournir les fichiers RULES actifs.
+
+90. Le titre est normalement fixé à la création du chat. L’assistant ne doit pas demander de renommer le chat à chaque petite modification de règle.
+
+91. Si une version majeure de référence change pendant le chat et que l’utilisateur veut continuer longtemps dans ce même chat, l’assistant peut proposer un titre mis à jour, mais il ne doit pas l’imposer.
+
+92. Dans un nouveau chat Operator, dès que l’utilisateur indique que le chat sert à modifier les règles SOLO, l’assistant doit répondre avec :
+- confirmation du rôle Operator ;
+- versions actives connues ;
+- titre canonique proposé ;
+- rappel que l’utilisateur doit renommer manuellement le chat si l’interface ne permet pas à l’assistant de le faire.
+
+93. Le titre du chat ne doit jamais contenir de donnée personnelle, privée, médicale, familiale, sensible, nom propre privé, chemin local sensible ou information non publiable.
+
+94. Le titrage versionné sert uniquement à identifier rapidement le bon chat Operator et la combinaison de règles active.
+
+------------------------------------------------------------------------
+
+## 15. SYNTHÈSE OPÉRATIONNELLE
+
+95. Les trois fichiers RULES publics doivent rester propres, généralisés et publiables.
+
+96. Les données privées doivent rester locales.
+
+97. Les changelogs ne doivent pas être embarqués dans les fichiers RULES publics.
+
+98. Les README et CHANGELOG ne doivent pas être publiés à la racine du dépôt.
+
+99. Les ZIP sont des artefacts de livraison locaux et ne doivent pas être publiés.
+
+100. Tout nouveau chat Operator doit recevoir au démarrage un titre versionné proposé à l’utilisateur, selon le pattern `+++SOLO_OPERATOR__CTXxxx__OPxxx__SCRIPTxxx__YYYY-MM-DD`.
+
+101. La règle de base est simple : ce qui est public doit être générique ; ce qui est privé doit être extrait, versionné si nécessaire, et ignoré par Git.

@@ -1,21 +1,66 @@
 # 📘 RÈGLES OFFICIELLES – CONTEXTUALISATION GÉNÉRALE DES CHATS
 
-**Version : V226 (Master publique assainie : V225 + externalisation privacy V226)**  
+**Version : V227 (Master publique assainie : V226 + titrage global des chats actifs V227)**  
 **Auteur : non publié dans la version publique**  
 **Contact : non publié dans la version publique**  
-**Date : 2026-06-27**  
+**Date : 2026-06-30**  
 **Nombre de règles uniques : version publique assainie ; modules privés externalisés**  
 **Version dérivée : V123 sans section scripting/code**  
-**Modification : V226 — assainissement public, externalisation des modules privés, suppression du changelog embarqué dans RULES**
+**Modification : V227 — ajout de la convention globale `000. +++` pour les chats actifs currently working on**
 
-**Résumé V226 : version publique nettoyée ; modules privés externalisés dans `.private/` ; changelog complet conservé dans le fichier CHANGELOG séparé.**
+**Résumé V227 : version publique nettoyée ; ajout d’une règle globale de titrage des chats actifs, applicable à tous les workflows, pas uniquement aux chats Operator.**
 ---
 
 ## 📑 FICHIERS ANNEXES
 
-- **CHANGELOG_SOLO226_CONTEXTUALISATION.md** : historique public séparé de la version assainie
-- **README_SOLO226_CONTEXTUALISATION.md** : documentation publique de la règle contextualisation
+- **CHANGELOG_SOLO227_CONTEXTUALISATION.md** : historique public séparé de la version assainie
+- **README_SOLO227_CONTEXTUALISATION.md** : documentation publique de la règle contextualisation
 - Les modules privés externalisés sont conservés dans `.private/` et ne font pas partie du package public.
+------------------------------------------------------------------------
+
+## RÈGLE GLOBALE — TITRAGE DES CHATS ACTIFS CURRENTLY WORKING ON
+
+Cette règle s’applique à tout chat de travail actif, quel que soit son type : SOLO Operator, contextualisation, scripting, développement d’extension, debug, feature request, publication, packaging, documentation ou projet technique en cours.
+
+Un chat activement utilisé comme chat courant de travail doit recevoir un titre court, triable et immédiatement repérable dans la recherche ChatGPT.
+
+Le préfixe canonique des chats actifs est :
+
+```text
+000. +++
+```
+
+Le format recommandé est :
+
+```text
+000. +++<TYPE>_<PROJET_OU_SCOPE>_<VERSIONS_OU_CONTEXTE>_<YYYYMMDD>
+```
+
+Exemple pour un chat SOLO Operator :
+
+```text
+000. +++OP108_CTX227_S406_20260630
+```
+
+Exemples pour des chats de développement :
+
+```text
+000. +++EXTBR_GPT_EXPORT_#1
+000. +++EXTBR_VOICECONTROL_DEBUG_20260630
+000. +++SCRIPT_FIREWALL_CTX227_S406_20260630
+```
+
+Le préfixe `000.` indique que le chat est le chat actuellement prioritaire ou actuellement utilisé pour un workflow donné.
+
+Le préfixe `+++` sert de marqueur visuel et de recherche rapide.
+
+Les anciens chats, brouillons, archives ou chats non courants peuvent conserver des titres en `001.`, `002.`, `003.` ou équivalent.
+
+L’assistant ne doit pas prétendre pouvoir renommer automatiquement le chat si l’interface ne lui donne pas explicitement cette capacité. Il doit fournir un titre prêt à copier-coller lorsque le contexte de travail démarre, lorsque le chat devient le chat actif d’un projet, ou lorsque l’utilisateur demande une convention de titre.
+
+Le titre ne doit jamais contenir de donnée personnelle, familiale, médicale, privée, sensible, nominative, injurieuse, de secret, de token, de chemin local sensible ou d’information non publiable.
+
+Cette règle concerne le titre du chat uniquement. Elle ne remplace pas les règles de versionnement des fichiers, des packages, des scripts ou des documents.
 
 ---
 

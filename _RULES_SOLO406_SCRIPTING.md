@@ -1,25 +1,25 @@
-Nom canonique : SOLO405  
+Nom canonique : SOLO406  
 Famille : SOLOxxx (xxx = numéro de version)  
-Version actuelle : 405
-Document : _RULES_SOLO405_SCRIPTING.md  
-Auteur : Bruno DELNOZ  
-Email : bruno.delnoz@protonmail.com  
-Date : 2026-06-05 17:45
-Statut : Version scripting LLM avec règle obligatoire d’affichage visible de version dans les widgets, extensions browser et interfaces UI générées.
+Version actuelle : 406
+Document : _RULES_SOLO406_SCRIPTING.md  
+Auteur : non publié dans la version publique
+Email : non publié dans la version publique
+Date : 2026-06-30
+Statut : Version scripting publique assainie avec règle de titrage `000. +++` des chats actifs de développement et suppression du changelog embarqué.
 
 CES RÈGLES DE SCRIPTING S’APPELLENT SOLOxxx, où xxx représente le numéro de version.
 
-Lorsque je dis SOLO405, je fais référence à la version 404 des règles.
+Lorsque je dis SOLO406, je fais référence à la version 406 des règles.
 
 Lorsque je dis SOLO suivi d’un numéro, par exemple SOLO405, je fais référence à la version correspondante.
 
 Lorsque je dis simplement SOLO, cela fait référence à la dernière version publiée.
 
-SOLO405 remplace SOLO404, SOLO403, SOLO402, SOLO401, SOLO400, SOLO311, SOLO310, SOLO309, SOLO308, SOLO307, SOLO306, SOLO305, SOLO304, SOLO303, SOLO302, SOLO301, SOLO300 et toutes les versions SOLO scripting précédentes pour les demandes de scripting, génération de code, correction de code, génération de fichiers techniques et génération de documentation liée à des scripts.
+SOLO406 remplace SOLO405, SOLO404, SOLO403, SOLO402, SOLO401, SOLO400, SOLO311, SOLO310, SOLO309, SOLO308, SOLO307, SOLO306, SOLO305, SOLO304, SOLO303, SOLO302, SOLO301, SOLO300 et toutes les versions SOLO scripting précédentes pour les demandes de scripting, génération de code, correction de code, génération de fichiers techniques et génération de documentation liée à des scripts.
 
-SOLO405 est conçu pour les LLM de chat, notamment ChatGPT, LeChat ou équivalents.
+SOLO406 est conçu pour les LLM de chat, notamment ChatGPT, LeChat ou équivalents.
 
-SOLO405 reprend la logique de travail de AGENTS.md sous une forme adaptée à un LLM de chat : mêmes attentes de rigueur, documentation, non-suppression, versionnement, spécifications et livrables complets, mais sans prétendre remplacer les règles système de la plateforme utilisée.
+SOLO406 reprend la logique de travail de AGENTS.md sous une forme adaptée à un LLM de chat : mêmes attentes de rigueur, documentation, non-suppression, versionnement, spécifications et livrables complets, mais sans prétendre remplacer les règles système de la plateforme utilisée.
 
 # Scripting Contextualisation Rules
 
@@ -713,8 +713,8 @@ Ils peuvent être ignorés si leur structure diverge du modèle SOLO405.
 Utiliser les valeurs suivantes sauf demande explicite contraire :
 
 ```text
-Auteur : Bruno DELNOZ
-Email  : bruno.delnoz@protonmail.com
+Auteur : <AUTHOR_NAME>
+Email  : <AUTHOR_EMAIL>
 ```
 
 ### 9.4 Versionnement
@@ -1274,8 +1274,8 @@ Format recommandé :
 ```md
 <!--
 Document : <Full document name>
-Author : Bruno DELNOZ
-Email : bruno.delnoz@protonmail.com
+Author : <AUTHOR_NAME>
+Email : <AUTHOR_EMAIL>
 Version : vX.X.X
 Date : YYYY-MM-DD HH:MM
 -->
@@ -1398,8 +1398,8 @@ Format recommandé :
 ```txt
 ----- SOLO DOCUMENT METADATA BEGIN -----
 Document : <Full document name>
-Author : Bruno DELNOZ
-Email : bruno.delnoz@protonmail.com
+Author : <AUTHOR_NAME>
+Email : <AUTHOR_EMAIL>
 Version : vX.X.X
 Date : YYYY-MM-DD HH:MM
 ----- SOLO DOCUMENT METADATA END -----
@@ -1716,245 +1716,6 @@ Cette règle complète la section `19.15` sur l’explication factuelle des erre
 
 ------------------------------------------------------------------------
 
-## 20. CHANGELOG SOLO405
-
-### v404 — 2026-06-04 22:30 — Bruno DELNOZ
-
-- Incrément de SOLO403 vers SOLO405.
-- Ajout de la règle `13.1.1 Convention stricte de nommage des documents Markdown projet`.
-- Obligation d’annoncer et de livrer les vrais noms exacts des fichiers documentaires projet.
-- Convention : stem en majuscules et extension `.md` en minuscules pour les documents Markdown de documentation projet.
-- Exemples : `README.md`, `CHANGELOG.md`, `INSTALL.md`, `WHY.md`, `SPECIFICATIONS.md`, `REMIX.md`.
-- Clarification : cette règle ne concerne pas les exports ponctuels, notes brutes ou fichiers explicitement nommés autrement par l’utilisateur.
-
-### v403 — 2026-05-12 22:35 — Bruno DELNOZ
-
-- Incrément de SOLO402 vers SOLO405.
-- Ajout de la règle `8.7 Interdiction des one-liners de substitution en mode développement repo`.
-- Interdiction de remplacer une demande de script durable, fonctionnalité versionnée, outil réutilisable ou projet repo par une commande one-liner, un heredoc temporaire, un bloc Python inline, une commande shell compacte ou une procédure jetable.
-- Clarification que les one-liners restent autorisés uniquement sur demande explicite de commande rapide, test temporaire, diagnostic ponctuel ou mode rapide.
-- Ajout des exigences minimales d’une solution conforme en mode repo ou développement : fichier script complet, header versionné, changelog interne append-only, help structuré, comportement sans argument affichant le help, options CLI applicables, validation minimale annoncée et absence d’effet destructif non demandé.
-- Ajout de l’obligation de reconnaître la violation, fournir le script complet corrigé et identifier la règle SOLO concernée si un one-liner est fourni par erreur à la place d’un fichier durable en mode repo.
-- Correction du périmètre actif des fichiers d’instruction protégés : conservation de la protection AGENTS.md, CLAUDE.md et des symlinks d’instruction explicitement liés à AGENTS.md ou CLAUDE.md ; retrait de la protection active erronée `JOIN.md` / `join.md` selon correction utilisateur.
-- Mise à jour de la définition de done pour inclure l’interdiction des one-liners de substitution en mode repo ou développement.
-- Correction du nom de document courant dans les métadonnées : `SOLO-chat-regles-scripting-v403.md`.
-- Conservation intégrale de SOLO402 avec extension append-only des règles actives et sans retrait fonctionnel hors correction explicitement demandée du périmètre `JOIN.md` / `join.md`.
-
-### v402 — 2026-05-12 22:05 — Bruno DELNOZ
-
-- Incrément de SOLO401 vers SOLO402.
-- Ajout de la règle d’identification obligatoire de la règle SOLO violée lorsqu’une erreur de conformité est signalée et reconnue.
-- Obligation d’indiquer le nom de la règle, le numéro exact de section SOLO, le comportement attendu et le comportement livré par erreur.
-- Ajout de la validation obligatoire du comportement sans argument pour tout script CLI durable lorsque l’exécution réelle est possible.
-- Obligation de tester les formes applicables telles que `python3 ./script.py`, `./script.py` ou l’équivalent adapté au langage, au shebang et au nom réel du script.
-- Confirmation que l’exécution sans argument doit afficher le help structuré, sans lancer l’action principale, sans générer de fichiers métier et sans modifier de fichiers utilisateur.
-- Clarification que `--simulate`, les sources par défaut, dossiers courants par défaut, destinations par défaut ou valeurs par défaut ne doivent pas transformer le lancement sans argument en action implicite.
-- Ajout de la mention obligatoire `No-argument help behavior: OK` uniquement si le test a réellement été exécuté et validé.
-- Clarification qu’une livraison dont le comportement sans argument n’affiche pas le help structuré est invalide tant que le script n’est pas corrigé.
-
-### v401 — 2026-05-09 23:04 — Bruno DELNOZ
-
-- Incrément de SOLO400 vers SOLO401.
-- Ajout de la règle `MVP.md` et cadrage MVP au démarrage d’un nouveau projet de scripting, d’outil, d’application, de suite logicielle ou de dépôt technique.
-- Ajout de la création ou proposition de `MVP.md` lorsque l’utilisateur évoque un MVP, une première version minimale, une version de départ, une version testable, une phase 1 ou le fait de ne pas tout faire en une seule fois.
-- Ajout de la règle imposant que `MVP.md` reste limité à la première version minimale utile, sans gonfler artificiellement le périmètre avec des idées long terme.
-- Ajout du contenu minimal attendu dans `MVP.md` : objectif, problème couvert, fonctionnalités incluses, fonctionnalités exclues, entrées, sorties, contraintes, critères d’acceptation, limites et liens avec `WHY.md`, `ARCHITECTURE.md`, `ROADMAP.md` et `SPECIFICATIONS.md`.
-- Clarification que les idées futures doivent rester dans `ROADMAP.md`, `IDEAS.md`, `ARCHITECTURE.md` ou les spécifications globales.
-- Mise à jour de la définition de done pour inclure `MVP.md` lorsque le démarrage de projet se fait en mode MVP, phase 1 ou version testable.
-- Conservation intégrale de SOLO400, avec extension append-only et sans retrait fonctionnel.
-
-
-
-
-
-### v400 — 2026-05-08 21:58 — Bruno DELNOZ
-
-- Incrément de stabilisation de SOLO311 vers SOLO400.
-- Gel de version stable après la série d’itérations SOLO300 à SOLO311.
-- Aucun retrait fonctionnel par rapport à SOLO311.
-- Conservation intégrale des règles SOLO311, y compris la règle primaire anti-régression de contenu.
-- Mise à jour du nom canonique, de la version actuelle, du nom de document et de la date.
-
-
-
-### v311 — 2026-05-08 21:47 — Bruno DELNOZ
-
-- Incrément de SOLO310 vers SOLO311.
-- Ajout de la règle primaire anti-régression de contenu.
-- Interdiction de remplacer un fichier existant détaillé par une version plus courte, résumée, condensée ou simplifiée, sauf demande explicite.
-- Application de la règle anti-régression aux scripts, Markdown, spécifications, README, CHANGELOG, INSTALL, WHY, fichiers de configuration et autres artefacts de dépôt.
-- Ajout du gate obligatoire de taille avant livraison : comparaison octets, lignes, changelog, sections, exemples, validations, fonctions, options CLI, commentaires utiles et comportements validés.
-- Déclaration qu’une livraison est invalide si un fichier devient plus court sans demande explicite de réduction.
-- Ajout de la règle de croissance normale : une version incrémentée doit être égale ou supérieure en contenu utile.
-- Ajout de la règle spéciale ZIP : contrôle anti-régression de tous les fichiers modifiés avant livraison d’un ZIP complet.
-- Ajout de la règle spéciale spécifications : `SPECIFICATIONS.md`, `SPECIFICATIONS_FR.md`, `SPECIFICATIONS_GLOBAL.md` et `SPECIFICATIONS_GLOBAL_FR.md` sont append-only sauf demande explicite contraire.
-- Ajout de la règle spéciale scripts : préserver fonctions, options CLI, logs, validations, traps, commentaires utiles, changelog complet, aide, exemples, garde-fous et comportement validé par l’utilisateur.
-- Ajout du comportement en cas d’impossibilité de comparer : signaler l’absence de référence et éviter toute réécriture globale condensée.
-
-
-
-### v310 — 2026-05-08 19:30 — Bruno DELNOZ
-
-- Incrément de SOLO309 vers SOLO310.
-- Ajout du modèle officiel de header pour documents Markdown documentaires.
-- Ajout du modèle officiel de header pour scripts shell avec `PATH`, `SCRIPT NAME`, `AUTHOR`, `EMAIL`, `TARGET USAGE`, `VERSION`, `DATE` avec heure et changelog interne.
-- Obligation que les dates de headers Markdown et shell incluent toujours l’heure.
-- Renforcement du changelog interne des scripts avec format recommandé `ADDED`, `CHANGED`, `FIXED`, `REMOVED`.
-- Ajout du template officiel de help terminal structuré avec séparateurs, description, usage, actions, options, exemples et fichiers générés.
-- Ajout de la règle de lisibilité : ne pas multiplier les retours à la ligne inutiles dans le help.
-- Clarification que les anciens scripts exemples `create_repo.sh` et `syncgit.sh` ne sont plus les références formelles si leur structure diverge du modèle SOLO310.
-
-### v309 — 2026-05-08 — Bruno DELNOZ
-
-- Incrément de SOLO308 vers SOLO309.
-- Renforcement de l’obligation de header structuré et lisible pour tous les scripts livrés.
-- Confirmation que le header doit contenir chemin ou nom, auteur, email, usage cible, version, date et changelog interne append-only.
-- Ajout d’une règle de lisibilité obligatoire du header : identification rapide du script, rôle, auteur, version, date et historique complet.
-- Renforcement du help obligatoire : `--help` et l’exécution sans argument doivent afficher une aide structurée et complète.
-- Ajout du contenu minimal du help : titre, version, date, auteur, description, usage, actions principales, options, exemples, fichiers générés, comportements importants et notes de sécurité si applicable.
-- Ajout de sections minimales recommandées pour un help terminal lisible, inspiré des scripts de référence validés par l’utilisateur.
-- Confirmation que chaque modification de script doit incrémenter la version, mettre à jour la date et ajouter une entrée append-only au changelog interne.
-- Confirmation que l’option `--changelog` doit afficher le changelog complet.
-
-
-
-
-### v308 — 2026-05-08 — Bruno DELNOZ
-
-- Incrément de SOLO307 vers SOLO308.
-- Renforcement de la règle de livraison immédiate du fichier complet corrigé après chaque correction réelle de script.
-- Confirmation que chaque script modifié doit être livré avec version interne incrémentée, date mise à jour et entrée append-only dans le changelog interne.
-- Clarification que l’option `--changelog` doit afficher le changelog complet du script, avec toutes les versions précédentes conservées.
-- Interdiction pour `--changelog` d’afficher seulement un extrait, un header partiel ou uniquement la dernière version.
-- Confirmation que la suspension temporaire des Markdown pendant une phase d’itération ne suspend jamais le maintien du changelog interne du script.
-
-
-### v307 — 2026-05-08 — Bruno DELNOZ
-
-- Incrément de SOLO306 vers SOLO307.
-- Ajout de l’obligation de fournir immédiatement le fichier complet corrigé en téléchargement à chaque correction réelle d’un script.
-- Confirmation que chaque correction réelle doit incrémenter version, date et changelog interne sans attendre une nouvelle demande utilisateur.
-- Ajout des règles pour outils CLI asynchrones après login, sync, reprise ou opération serveur.
-- Interdiction de vérifier l’état une seule fois immédiatement lorsqu’un état final peut être différé.
-- Ajout d’une boucle de vérification bornée avec timeout global, état observé, nombre d’essais ou limite temporelle.
-- Ajout de la gestion explicite des états transitoires tels que `login in`, `logging in`, `resuming`, `busy`, `syncing`, `pending` ou équivalents documentés.
-- Obligation d’afficher le dernier état observé, l’étape concernée, le code retour et la commande exacte de diagnostic ou relance lorsque disponible.
-- Ajout des traps `INT`, `TERM` et `HUP` pour les scripts interactifs sensibles lorsque le langage et l’environnement le permettent.
-- Obligation de restaurer le terminal, nettoyer les temporaires, terminer proprement les processus enfants applicables et sortir avec un code retour cohérent.
-
-
-
-### v306 — 2026-05-08 — Bruno DELNOZ
-
-- Incrément de SOLO305 vers SOLO306.
-- Ajout d’une règle courte obligatoire consolidant le comportement attendu lorsqu’un script pilote un outil CLI via stdin, pipe ou here-doc.
-- Confirmation que le script doit envoyer explicitement la commande de sortie attendue par l’outil, par exemple `quit` ou `exit`.
-- Confirmation que l’appel doit être encadré par `timeout` si l’outil peut rester bloqué.
-- Confirmation que les secrets ne doivent jamais être affichés.
-- Confirmation que l’étape bloquée et le code retour doivent rester visibles pour le diagnostic.
-
-
-### v305 — 2026-05-08 — Bruno DELNOZ
-
-- Incrément de SOLO304 vers SOLO305.
-- Ajout des règles pour automatiser un outil CLI via pipe, here-doc, redirection standard input ou stdin.
-- Interdiction de supposer qu’un outil CLI quitte seul après la commande principale.
-- Obligation d’envoyer explicitement la commande de sortie attendue par l’outil lorsqu’elle existe, par exemple `quit`, `exit`, `bye` ou équivalent documenté.
-- Obligation d’encadrer par `timeout` ou mécanisme équivalent les appels CLI pouvant rester bloqués ou maintenir une session ouverte.
-- Obligation d’afficher clairement l’étape bloquée, la commande ou action logique concernée, le code retour et le déclenchement du timeout.
-- Interdiction de masquer un blocage derrière une redirection silencieuse ou un `/dev/null` qui supprime les diagnostics utiles.
-- Confirmation que les secrets ne doivent jamais être affichés en console ou dans les logs, y compris lors d’un timeout ou d’un échec.
-- Ajout de l’exigence de conserver assez d’informations de diagnostic pour identifier l’étape bloquée sans exposer de valeurs sensibles.
-
-
-
-### v304 — 2026-05-08 — Bruno DELNOZ
-
-- Incrément de SOLO303 vers SOLO304.
-- Clarification que les livrables de scripting ne doivent pas systématiquement être fournis en ZIP.
-- Ajout de la règle : un seul fichier modifié doit être fourni seul en téléchargement.
-- Ajout de la règle : deux petits fichiers simples doivent être fournis séparément, sauf demande explicite de ZIP.
-- ZIP réservé aux livrables multi-fichiers, aux vraies arborescences ou aux demandes explicites de ZIP.
-- Clarification de la gestion documentaire pendant les phases de mise au point : si l’utilisateur reporte les Markdown, ne livrer que les fichiers strictement modifiés.
-- Clarification que README.md, CHANGELOG.md, INSTALL.md, WHY.md et SPECIFICATIONS*.md sont mis à jour lors d’une première livraison complète, d’une version stabilisée, d’une livraison complète demandée ou d’une passe documentaire finale.
-- Ajout de la règle `.gitignore` : demander le `.gitignore` existant ou le template avant toute modification.
-- Clarification que toute modification `.gitignore` doit être fournie comme fichier `.gitignore` complet fusionné avec l’existant, seulement si l’utilisateur le demande.
-- Renforcement des règles `./.secrets` : un champ principal ou sensible vide déclenche une saisie runtime.
-- Renforcement de la saisie masquée : astérisques si techniquement possible, sinon fallback sans écho terminal.
-- Confirmation de l’interdiction d’afficher des secrets en clair dans la console ou les logs.
-- Confirmation que `--simulate` doit fonctionner seul sans nécessiter `--exec`.
-- Confirmation que les messages d’erreur doivent afficher les commandes exactes à exécuter.
-- Confirmation qu’un outil CLI ne doit pas être supposé interactif sans vérification de sa syntaxe réelle.
-
-
-### v303 — 2026-05-08 — Bruno DELNOZ
-
-- Incrément de SOLO302 vers SOLO303.
-- Ajout des règles renforcées pour les scripts utilisant `./.secrets`.
-- Ajout des noms de champs génériques réutilisables : `EMAIL`, `PASSWORD`, `AUTH_CODE`, `OTP`, `TOKEN`, `API_KEY`.
-- Interdiction de préfixer inutilement les variables de secrets par le nom du service sauf nécessité technique réelle.
-- Obligation de livrer un modèle `./.secrets` avec les bons champs et des valeurs bidon non sensibles ou vides.
-- Clarification qu’un champ sensible vide dans `./.secrets` est autorisé pour forcer une saisie runtime.
-- Obligation de demander à l’utilisateur les valeurs sensibles vides à l’exécution.
-- Obligation de saisir `PASSWORD`, `TOKEN`, `AUTH_CODE`, `OTP`, `API_KEY` et équivalents sans affichage terminal quand possible.
-- Interdiction d’afficher les valeurs sensibles en console ou dans les logs.
-- Interdiction d’inventer un mode interactif CLI non vérifié lorsqu’un outil exige un secret en argument.
-- Obligation de respecter la syntaxe réelle de l’outil CLI et d’utiliser un wrapper `./.secrets` avec prompt runtime si nécessaire.
-- Clarification que `--simulate` doit fonctionner seul, sans nécessiter `--exec`.
-- Obligation de fournir dans les messages d’erreur la commande exacte à exécuter lorsqu’une correction ou relance est attendue.
-- Ajout de la règle selon laquelle un ZIP de livrables scripting ne doit pas contenir de Markdown documentaire additionnel, rapport annexe, note de validation ou fichier d’explication sauf demande explicite.
-
-
-### v302 — 2026-05-08 — Bruno DELNOZ
-
-- Incrément de SOLO301 vers SOLO302.
-- Ajout de l’interdiction d’inclure AGENTS.md, CLAUDE.md, JOIN.md, join.md ou symlink d’instruction dans les ZIP, livrables ou bundles sauf demande explicite.
-- Ajout de l’interdiction de proposer spontanément des procédures de vérification ou de gestion AGENTS.md / CLAUDE.md / JOIN.md / join.md.
-- Clarification que la présence, l’absence ou l’état des symlinks d’instruction n’est pas à gérer par l’assistant.
-- Ajout du workflow ZIP utilisateur : l’utilisateur crée `./zip`, télécharge le ZIP dedans, extrait via Thunar, puis déplace lui-même les fichiers extraits.
-- Interdiction de fournir spontanément des procédures `unzip`, `cp`, `mv`, `find`, `readlink` ou équivalentes pour appliquer un ZIP.
-- Interdiction de créer des fichiers `gitignore_additions_*`.
-- Clarification que toute modification `.gitignore` doit être fournie comme fichier `.gitignore` complet remplaçable, sauf demande explicite contraire.
-- Interdiction d’inclure un rapport de validation statique dans le ZIP sauf demande explicite.
-- Clarification que les validations faites par l’assistant doivent être indiquées dans la réponse de chat, pas livrées comme fichier projet.
-
-### v301 — 2026-05-08 — Bruno DELNOZ
-
-- Incrément de SOLO300 vers SOLO301.
-- Renforcement strict de la protection AGENTS.md.
-- Renforcement strict de la protection CLAUDE.md.
-- Interdiction explicite de modifier, réécrire, reformater, renommer, supprimer, déplacer, régénérer, convertir, copier, écraser, versionner ou version-bumper AGENTS.md sans demande explicite.
-- Interdiction explicite de modifier, réécrire, reformater, renommer, supprimer, déplacer, régénérer, convertir, copier, écraser, versionner ou version-bumper CLAUDE.md sans demande explicite.
-- Clarification que CLAUDE.md doit être traité comme un lien symbolique vers AGENTS.md et jamais comme une copie Markdown indépendante.
-- Clarification que l’assistant ne corrige pas automatiquement CLAUDE.md s’il est absent ou incorrect, sauf demande explicite de l’utilisateur.
-- Ajout de la protection stricte de JOIN.md, join.md et des symlinks d’instruction équivalents.
-- Interdiction de remplacer un symlink d’instruction par une copie Markdown normale.
-- Interdiction de déréférencer puis écraser un symlink d’instruction.
-- Ajout de la règle de livraison ZIP en mode LLM scripting.
-- Clarification du workflow utilisateur : l’utilisateur crée généralement lui-même un répertoire `zip/`, télécharge l’archive ZIP dedans, extrait l’archive et déplace les fichiers dans le dépôt.
-- Clarification que l’assistant ne doit pas créer automatiquement le répertoire `zip/` dans le dépôt sauf demande explicite.
-- Maintien de l’exclusion du workflow Git : l’utilisateur gère lui-même les opérations Git.
-
-### v300 — 2026-05-08 — Bruno DELNOZ
-
-- Création de SOLO300 comme adaptation LLM des règles de scripting alignées sur AGENTS.md.
-- Ajout du mode repo par défaut.
-- Ajout du mode script simple hors repo comme exception rare.
-- Ajout du gate de spécifications adapté aux LLM de chat.
-- Ajout des fichiers `SPECIFICATIONS_GLOBAL.md`, `SPECIFICATIONS_GLOBAL_FR.md`, `SPECIFICATIONS.md`, `SPECIFICATIONS_FR.md`.
-- Ajout de la protection AGENTS.md.
-- Ajout de la règle CLAUDE.md comme symlink vers AGENTS.md lorsque pertinent.
-- Exclusion explicite du workflow Git, géré par l’utilisateur.
-- Suppression de la logique obsolète `./infos/*`.
-- Conservation des règles de script complet, version, date, changelog, logs, sudo interne, help, simulate et secrets.
-- Modification de la règle `./results` : création uniquement si le script produit réellement des fichiers de résultat runtime.
-- Remplacement des règles de mémoire pérenne absolue par une règle de version active dans le contexte fourni.
-- Remplacement de la priorité absolue SOLO par une priorité compatible avec les règles système de la plateforme et AGENTS.md.
-
-
-
-------------------------------------------------------------------------
-
 ## AJOUT SOLO405 — VERSION VISIBLE DANS WIDGETS, EXTENSIONS ET INTERFACES
 
 ### Règle 405.1 — Affichage visible de version dans les widgets et extensions browser
@@ -2000,8 +1761,37 @@ La version peut aussi être disponible dans une zone About, mais cela ne remplac
 
 Lorsqu’une correction de widget ou d’extension est livrée, l’assistant doit vérifier que la version visible a été mise à jour si la version du code a été incrémentée.
 
-### Changelog SOLO405
+------------------------------------------------------------------------
 
-- Ajout de la règle 405.1 : affichage visible obligatoire de la version dans les widgets, extensions browser et interfaces UI générées.
-- Clarification : la version doit être visible dans l’interface, pas seulement dans le code, le manifest ou la documentation.
-- Clarification : la version affichée doit rester synchronisée avec les versions projet.
+## AJOUT SOLO406 — TITRAGE DES CHATS ACTIFS DE SCRIPTING, DEV ET DEBUG
+
+Quand un chat sert activement à du scripting, du développement, du debug, une extension browser, une interface UI, un workflow repo, une correction technique ou un projet de code en cours, l’assistant doit proposer un titre de chat actif selon la convention globale :
+
+```text
+000. +++<TYPE>_<PROJET_OU_SCOPE>_<VERSIONS_OU_CONTEXTE>_<YYYYMMDD>
+```
+
+Le préfixe obligatoire pour un chat actuellement utilisé est :
+
+```text
+000. +++
+```
+
+Exemples adaptés au scripting et au développement :
+
+```text
+000. +++SCRIPT_FIREWALL_CTX227_S406_20260630
+000. +++EXTBR_VOICECONTROL_DEBUG_20260630
+000. +++EXTBR_GPT_EXPORT_#1
+000. +++REPO_CREATE_GITIGNORE_S406_20260630
+```
+
+Le titre doit être court, visible dans la recherche ChatGPT, triable et directement compréhensible.
+
+Les anciens chats, essais, brouillons, archives ou workflows non courants peuvent conserver `001.`, `002.`, `003.` ou équivalent.
+
+L’assistant ne doit pas prétendre pouvoir renommer automatiquement le chat si l’interface ne lui donne pas explicitement cette capacité. Il doit fournir un titre prêt à copier-coller.
+
+Le titre ne doit jamais contenir de donnée personnelle, médicale, familiale, privée, sensible, nominative, secret, token, URL privée ou chemin local sensible.
+
+Cette règle complète les règles de versionnement des scripts et ne les remplace pas.
