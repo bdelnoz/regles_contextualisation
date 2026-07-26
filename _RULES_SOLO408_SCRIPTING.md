@@ -1,25 +1,25 @@
-Nom canonique : SOLO406  
+Nom canonique : SOLO408  
 Famille : SOLOxxx (xxx = numéro de version)  
-Version actuelle : 406
-Document : _RULES_SOLO406_SCRIPTING.md  
+Version actuelle : 408
+Document : _RULES_SOLO408_SCRIPTING.md  
 Auteur : non publié dans la version publique
 Email : non publié dans la version publique
-Date : 2026-06-30
-Statut : Version scripting publique assainie avec règle de titrage `000. +++` des chats actifs de développement et suppression du changelog embarqué.
+Date : 2026-07-26
+Statut : Version scripting publique assainie avec règle de titrage lisible `000. <type lisible> +++...`, structure repo canonique, `.gitignore` de livraison, fichiers génériques SOLOLAST et compatibilité chargement GitHub avec bypass de démarrage.
 
 CES RÈGLES DE SCRIPTING S’APPELLENT SOLOxxx, où xxx représente le numéro de version.
 
-Lorsque je dis SOLO406, je fais référence à la version 406 des règles.
+Lorsque je dis SOLO408, je fais référence à la version 408 des règles.
 
 Lorsque je dis SOLO suivi d’un numéro, par exemple SOLO405, je fais référence à la version correspondante.
 
 Lorsque je dis simplement SOLO, cela fait référence à la dernière version publiée.
 
-SOLO406 remplace SOLO405, SOLO404, SOLO403, SOLO402, SOLO401, SOLO400, SOLO311, SOLO310, SOLO309, SOLO308, SOLO307, SOLO306, SOLO305, SOLO304, SOLO303, SOLO302, SOLO301, SOLO300 et toutes les versions SOLO scripting précédentes pour les demandes de scripting, génération de code, correction de code, génération de fichiers techniques et génération de documentation liée à des scripts.
+SOLO408 remplace SOLO407, SOLO406, SOLO405, SOLO404, SOLO403, SOLO402, SOLO401, SOLO400, SOLO311, SOLO310, SOLO309, SOLO308, SOLO307, SOLO306, SOLO305, SOLO304, SOLO303, SOLO302, SOLO301, SOLO300 et toutes les versions SOLO scripting précédentes pour les demandes de scripting, génération de code, correction de code, génération de fichiers techniques et génération de documentation liée à des scripts.
 
-SOLO406 est conçu pour les LLM de chat, notamment ChatGPT, LeChat ou équivalents.
+SOLO407 est conçu pour les LLM de chat, notamment ChatGPT, LeChat ou équivalents.
 
-SOLO406 reprend la logique de travail de AGENTS.md sous une forme adaptée à un LLM de chat : mêmes attentes de rigueur, documentation, non-suppression, versionnement, spécifications et livrables complets, mais sans prétendre remplacer les règles système de la plateforme utilisée.
+SOLO407 reprend la logique de travail de AGENTS.md sous une forme adaptée à un LLM de chat : mêmes attentes de rigueur, documentation, non-suppression, versionnement, spécifications et livrables complets, mais sans prétendre remplacer les règles système de la plateforme utilisée.
 
 # Scripting Contextualisation Rules
 
@@ -1795,3 +1795,124 @@ L’assistant ne doit pas prétendre pouvoir renommer automatiquement le chat si
 Le titre ne doit jamais contenir de donnée personnelle, médicale, familiale, privée, sensible, nominative, secret, token, URL privée ou chemin local sensible.
 
 Cette règle complète les règles de versionnement des scripts et ne les remplace pas.
+
+------------------------------------------------------------------------
+
+## AJOUT SOLO407 — STRUCTURE REPO, ZIP SOUS `.zip/` ET `.gitignore` OBLIGATOIRE
+
+Pour les scripts, workflows ou générations de fichiers liés au dépôt `regles_contextualisation`, l’assistant doit respecter la structure canonique suivante.
+
+Les fichiers `_RULES_SOLO...md` publics vont à la racine du dépôt.
+
+Les fichiers README et CHANGELOG de livraison vont sous :
+
+```text
+.docs/
+```
+
+Tous les ZIP générés vont sous :
+
+```text
+.zip/
+```
+
+Le fichier `.gitignore` doit être livré avec chaque nouvelle version ou livraison, même s’il est inchangé.
+
+Cette règle sert de sécurité contre les scripts, extractions ZIP ou copies manuelles qui modifieraient ou écraseraient les exclusions.
+
+Les fichiers privés nommés avec le préfixe suivant peuvent rester localement à la racine :
+
+```text
+_RULES_PRIVATE_*
+```
+
+Ils doivent rester exclus par `.gitignore` et ne doivent jamais être inclus dans un package public.
+
+Quand un script de packaging crée un full export pour le dépôt, l’archive doit être extract-here ready :
+
+- RULES publics à la racine ;
+- `README.md` et `.gitignore` à la racine si fournis ;
+- README/CHANGELOG de livraison sous `.docs/` ;
+- ZIP règle-seule et packages sous `.zip/` ;
+- aucun contenu privé dans les packages publics.
+
+Avant d’annoncer un ZIP comme livré, le script ou l’assistant doit vérifier :
+- existence réelle du ZIP ;
+- contenu interne ;
+- absence de `.private/`, `.old/`, `_RULES_PRIVATE_*` dans les packages publics ;
+- présence de `.gitignore` dans la livraison.
+
+------------------------------------------------------------------------
+
+## 22. AJOUT SOLO408 — TITRAGE LISIBLE DES CHATS ACTIFS DE SCRIPTING ET DÉVELOPPEMENT
+
+Le format canonique de titrage des chats actifs de scripting et développement remplace l’ancien format `000. +++...`.
+
+Un chat actif de scripting, développement, extension, debug, documentation technique ou travail de dépôt doit utiliser un titre lisible, court et triable.
+
+Le format recommandé est :
+
+```text
+000. <type_lisible> +++<TYPE_TECH>_<PROJET_OU_SCOPE>_<VERSIONS_OU_CONTEXTE>_<YYYYMMDD>
+```
+
+Le `<type_lisible>` doit apparaître immédiatement après `000.`.
+
+Exemples recommandés :
+
+```text
+000. scripting +++SCRIPT_FIREWALL_CTX229_S408_20260726
+000. extension +++EXTBR_VOICECONTROL_DEBUG_20260726
+000. debug +++SCRIPT_ARCHIVE_SEARCH_CTX229_S408_20260726
+000. repo +++PROJECT_REPO_CLEANUP_CTX229_S408_20260726
+```
+
+`000.` indique que le chat est actif ou prioritaire.
+
+`+++` reste le marqueur de recherche rapide, mais il vient après le type lisible.
+
+L’assistant ne doit pas prétendre pouvoir renommer automatiquement le chat si l’interface ne lui donne pas explicitement cette capacité.
+
+Le titre ne doit jamais contenir de secret, token, chemin local sensible, donnée privée, donnée médicale, donnée familiale ou information non publiable.
+
+Cette règle ne remplace pas le versionnement des fichiers, scripts, packages, documents ou livrables.
+
+------------------------------------------------------------------------
+
+------------------------------------------------------------------------
+
+## 23. AJOUT SOLO408 — CHARGEMENT SOLOLAST, BYPASS ET ACTIVATION SCRIPTING CIBLÉE
+
+Pour les demandes de scripting, les Custom Instructions ou consignes de démarrage peuvent charger automatiquement des fichiers SOLO génériques depuis GitHub.
+
+Le fichier générique public de cette famille est :
+
+```text
+_RULES_SOLOLAST_SCRIPTING.md
+```
+
+Ce fichier doit être une copie de la dernière version active de la famille scripting.
+
+Lorsqu’une livraison SOLO scripting est produite, l’assistant doit fournir à la fois :
+
+```text
+_RULES_SOLO408_SCRIPTING.md
+_RULES_SOLOLAST_SCRIPTING.md
+```
+
+Le fichier versionné sert à l’historique.
+
+Le fichier `SOLOLAST` sert au chargement stable par URL GitHub, notamment depuis les Custom Instructions.
+
+Si le premier message d’un nouveau chat contient un bypass clair, par exemple `ne va pas chercher les rules`, `pas de SOLO au démarrage`, `pas de rules GitHub`, `chat normal`, ou équivalent, l’assistant ne doit pas charger automatiquement SOLO scripting depuis GitHub.
+
+Ce bypass ne désactive pas définitivement SOLO scripting. L’utilisateur peut ensuite demander explicitement `applique les rules SOLO scripting`, `mode scripting repo`, `mode scripting simple`, `charge SOLO scripting`, ou équivalent.
+
+Quand SOLO scripting est activé après bypass, l’assistant doit d’abord charger la contextualisation générale si elle n’a pas encore été chargée, puis charger `_RULES_SOLOLAST_SCRIPTING.md`.
+
+L’assistant ne doit jamais prétendre avoir lu un fichier GitHub si la lecture réelle n’a pas été effectuée ou si l’accès a échoué.
+
+Si l’utilisateur fournit dans le chat une version plus récente ou prioritaire du fichier SOLO scripting, cette version fournie dans le chat devient la référence du chat courant.
+
+Cette règle complète la contextualisation générale et les règles Operator, sans remplacer les règles système ni les limites techniques de la plateforme.
+

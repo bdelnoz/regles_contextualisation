@@ -1,20 +1,20 @@
 # 📘 RÈGLES OFFICIELLES – CONTEXTUALISATION GÉNÉRALE DES CHATS
 
-**Version : V227 (Master publique assainie : V226 + titrage global des chats actifs V227)**  
+**Version : V229 (Master publique assainie : V228 + titrage lisible des chats actifs et chargement SOLOLAST contrôlé)**  
 **Auteur : non publié dans la version publique**  
 **Contact : non publié dans la version publique**  
 **Date : 2026-06-30**  
 **Nombre de règles uniques : version publique assainie ; modules privés externalisés**  
 **Version dérivée : V123 sans section scripting/code**  
-**Modification : V227 — ajout de la convention globale `000. +++` pour les chats actifs currently working on**
+**Modification : V229 — merge intelligent CTX227 uploadé + CTX228 généré ; correction du titrage `000. <type lisible> +++...` ; ajout de la règle de chargement SOLOLAST avec bypass de démarrage**
 
-**Résumé V227 : version publique nettoyée ; ajout d’une règle globale de titrage des chats actifs, applicable à tous les workflows, pas uniquement aux chats Operator.**
+**Résumé V229 : conserve CTX228 comme base, vérifie CTX227 comme contrôle, corrige la convention de titre des chats actifs et formalise le chargement GitHub `SOLOLAST` avec bypass au premier message.**
 ---
 
 ## 📑 FICHIERS ANNEXES
 
-- **CHANGELOG_SOLO227_CONTEXTUALISATION.md** : historique public séparé de la version assainie
-- **README_SOLO227_CONTEXTUALISATION.md** : documentation publique de la règle contextualisation
+- **CHANGELOG_SOLO229_CONTEXTUALISATION.md** : historique public séparé de la version assainie
+- **README_SOLO229_CONTEXTUALISATION.md** : documentation publique de la règle contextualisation
 - Les modules privés externalisés sont conservés dans `.private/` et ne font pas partie du package public.
 ------------------------------------------------------------------------
 
@@ -24,35 +24,48 @@ Cette règle s’applique à tout chat de travail actif, quel que soit son type 
 
 Un chat activement utilisé comme chat courant de travail doit recevoir un titre court, triable et immédiatement repérable dans la recherche ChatGPT.
 
-Le préfixe canonique des chats actifs est :
+Le format canonique remplace l’ancien format `000. +++...`.
+
+Le préfixe canonique des chats actifs est désormais :
 
 ```text
-000. +++
+000. <type lisible> +++
 ```
 
 Le format recommandé est :
 
 ```text
-000. +++<TYPE>_<PROJET_OU_SCOPE>_<VERSIONS_OU_CONTEXTE>_<YYYYMMDD>
+000. <type_lisible> +++<TYPE_TECH>_<PROJET_OU_SCOPE>_<VERSIONS_OU_CONTEXTE>_<YYYYMMDD>
 ```
 
-Exemple pour un chat SOLO Operator :
+Le `<type_lisible>` doit apparaître immédiatement après `000.` pour rendre la liste des chats plus lisible humainement.
+
+Exemples de types lisibles :
 
 ```text
-000. +++OP108_CTX227_S406_20260630
+operator
+extension
+scripting
+debug
+feature-request
+publication
+docs
+packaging
+repo
 ```
 
-Exemples pour des chats de développement :
+Exemples recommandés :
 
 ```text
-000. +++EXTBR_GPT_EXPORT_#1
-000. +++EXTBR_VOICECONTROL_DEBUG_20260630
-000. +++SCRIPT_FIREWALL_CTX227_S406_20260630
+000. operator +++OP110_CTX229_S407_20260726
+000. extension +++EXTBR_VOICECONTROL_DEBUG_20260726
+000. scripting +++SCRIPT_FIREWALL_CTX229_S407_20260726
+000. docs +++SOLO_CONTEXT_MERGE_CTX229_20260726
 ```
 
 Le préfixe `000.` indique que le chat est le chat actuellement prioritaire ou actuellement utilisé pour un workflow donné.
 
-Le préfixe `+++` sert de marqueur visuel et de recherche rapide.
+Le préfixe `+++` reste le marqueur visuel et de recherche rapide, mais il vient après le type lisible.
 
 Les anciens chats, brouillons, archives ou chats non courants peuvent conserver des titres en `001.`, `002.`, `003.` ou équivalent.
 
@@ -61,6 +74,140 @@ L’assistant ne doit pas prétendre pouvoir renommer automatiquement le chat si
 Le titre ne doit jamais contenir de donnée personnelle, familiale, médicale, privée, sensible, nominative, injurieuse, de secret, de token, de chemin local sensible ou d’information non publiable.
 
 Cette règle concerne le titre du chat uniquement. Elle ne remplace pas les règles de versionnement des fichiers, des packages, des scripts ou des documents.
+
+------------------------------------------------------------------------
+
+## RÈGLE GLOBALE — STRUCTURE CANONIQUE DU REPO `regles_contextualisation`
+
+Cette règle fixe la structure canonique actuelle du dépôt local/public `regles_contextualisation`.
+
+Les fichiers publics de règles publiables à la racine doivent être limités aux familles SOLO publiques actives :
+
+```text
+_RULES_SOLOxxx_RULESOPERATOR.md
+_RULES_SOLOxxx_CONTEXTUALISATION.md
+_RULES_SOLOxxx_SCRIPTING.md
+```
+
+Les fichiers privés peuvent rester localement à la racine avec le préfixe :
+
+```text
+_RULES_PRIVATE_*
+```
+
+Ils ne doivent jamais être publiés et doivent rester couverts par `.gitignore`.
+
+La structure publique attendue du dépôt est :
+
+```text
+.
+├── 350_QUESTIONS_TO_GET_AI_WORKING_INFOS/
+├── AGENTS.md
+├── CLAUDE.md -> AGENTS.md
+├── Feature_requests_standardization/
+├── README.md
+├── _RULES_SOLOxxx_RULESOPERATOR.md
+├── _RULES_SOLOxxx_CONTEXTUALISATION.md
+├── _RULES_SOLOxxx_SCRIPTING.md
+└── VISUALS/
+```
+
+Les répertoires et fichiers locaux suivants doivent rester non publiés :
+
+```text
+.docs/
+.old/
+.private/
+.zip/
+_RULES_PRIVATE_*
+*.zip
+```
+
+À chaque nouvelle version ou livraison SOLO, l’assistant doit fournir le fichier `.gitignore`, même s’il est inchangé.
+
+Cette exigence est une sécurité anti-régression : elle permet de rétablir immédiatement les exclusions si un script, une extraction ZIP, une copie manuelle ou une mauvaise manipulation modifie le fichier.
+
+Le contenu canonique minimal attendu de `.gitignore` doit couvrir au minimum :
+
+```text
+*.zip
+.tmp/
+.old/
+.private/
+.docs/
+_RULES_PRIVATE_*
+logs/
+output/
+infos/
+result/
+results/
+*.tar.gz
+*.rar
+certs/
+secrets/
+.secrets
+.zip/
+```
+
+Tous les ZIP générés pour les règles SOLO doivent être placés dans `.zip/` dans la structure de livraison.
+
+Le ZIP full export peut être téléchargé à la racine du repo puis extrait avec “extract here”. Son contenu doit alors déposer directement les fichiers dans les bons emplacements :
+
+- les fichiers `_RULES_SOLO...md` publics à la racine ;
+- `README.md` et `.gitignore` à la racine ;
+- les README et CHANGELOG de livraison dans `.docs/` ;
+- tous les ZIP dans `.zip/` ;
+- aucun contenu privé dans les fichiers publics.
+
+Le répertoire `.private/` peut exister, mais il n’est pas obligatoire pour les règles privées si celles-ci utilisent le préfixe `_RULES_PRIVATE_*` et sont bien exclues par `.gitignore`.
+
+Cette règle prévaut sur toute ancienne convention qui plaçait les ZIP à la racine, les README/CHANGELOG publics à la racine, ou les fichiers privés uniquement dans `.private/`.
+
+------------------------------------------------------------------------
+
+## RÈGLE GLOBALE — CHARGEMENT SOLOLAST, GITHUB ET BYPASS DE DÉMARRAGE
+
+Cette règle formalise le comportement attendu lorsque des Custom Instructions ou une consigne utilisateur demandent le chargement automatique des règles SOLO depuis GitHub.
+
+Les noms génériques publics destinés au chargement stable sont :
+
+```text
+_RULES_SOLOLAST_CONTEXTUALISATION.md
+_RULES_SOLOLAST_SCRIPTING.md
+_RULES_SOLOLAST_RULESOPERATOR.md
+```
+
+`_RULES_SOLOLAST_CONTEXTUALISATION.md` est la contextualisation générale à lire par défaut au démarrage d’un chat, sauf bypass explicite.
+
+`_RULES_SOLOLAST_SCRIPTING.md` doit être lu en complément lorsqu’une demande concerne scripting, code, script durable, commande destinée à devenir un script, dépôt Git, extension, application, développement, debug ou documentation technique liée au code.
+
+`_RULES_SOLOLAST_RULESOPERATOR.md` doit être lu en complément lorsqu’une demande concerne le mode SOLO Operator, la maintenance, la correction, la création, le versionnement, le merge, le packaging ou la livraison des règles SOLO.
+
+Si le premier message utilisateur d’un nouveau chat demande clairement de ne pas charger SOLO au démarrage, l’assistant ne doit pas ouvrir, télécharger, lire ni appliquer automatiquement les fichiers SOLO depuis GitHub.
+
+Formulations de bypass à reconnaître notamment :
+
+```text
+ne va pas chercher les rules
+ne lis pas les règles
+n’applique pas SOLO
+pas de SOLO au démarrage
+pas de rules GitHub
+chat normal
+démarre sans SOLO
+ignore SOLO au démarrage
+```
+
+Le bypass de démarrage ne désactive pas définitivement SOLO pour le chat courant. L’utilisateur peut demander plus tard de charger la contextualisation générale, SOLO scripting, SOLO Operator ou plusieurs familles à la fois.
+
+Si un fichier SOLO complet est fourni directement dans le chat et présenté comme plus récent, corrigé ou prioritaire, ce fichier fourni dans le chat devient la référence du chat courant.
+
+L’assistant ne doit jamais prétendre avoir lu un fichier GitHub si la lecture réelle n’a pas été effectuée ou si l’accès a échoué.
+
+Après lecture réelle d’un fichier SOLO, l’assistant doit confirmer brièvement le fichier et la version chargés, sans recopier inutilement son contenu.
+
+Cette règle complète les Custom Instructions, mais ne remplace jamais les règles système, les règles de sécurité ni les limites techniques de la plateforme.
+
 
 ---
 
