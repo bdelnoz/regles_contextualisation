@@ -1,9 +1,9 @@
-_RULES_PRIVATE_*
-.docs/
+*.zip
+.tmp/
 .old/
 .private/
-.zip/
-.tmp/
+.docs/
+_RULES_PRIVATE_*
 # PROJECT SPECIFIC
 uploads
 *.pid

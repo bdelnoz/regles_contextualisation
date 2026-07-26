@@ -1,165 +1,141 @@
+<!--
+Document : README.md
+Author : Bruno DELNOZ
+Version : V4.0
+Date : 2026-07-26
+Repository : regles_contextualisation
+-->
+
 # Regles Contextualisation
 
-Public repository for a set of structured SOLO rules used to guide AI-assisted work, especially with ChatGPT-style assistants.
+Public Markdown repository for reusable SOLO operating rules used to guide AI-assisted work, especially with ChatGPT-style assistants.
 
-The goal of this repository is simple: keep reusable operating rules in plain Markdown files so they can be reviewed, versioned, shared, and reused across different AI sessions.
+The repository keeps reusable rules, custom-instruction helpers, AI working notes, and feature-request material in plain Markdown so they can be reviewed, versioned, shared, and reused across AI sessions.
 
-## What this repository contains
+## Active public SOLO rule files
 
-This repository currently exposes three public SOLO rule files:
+| File | Version | Purpose |
+|---|---:|---|
+| `_RULES_SOLO230_CONTEXTUALISATION.md` | V230 | Global contextualization rules: response behavior, modes, Read Aloud compatibility, reporting behavior, public-safe handling, repository structure, continuation handling, and interaction conventions. |
+| `_RULES_SOLO409_SCRIPTING.md` | SOLO409 | Scripting and technical-work rules: scripts, repositories, commands, file generation, validation, packaging, documentation, README synchronization, and non-regression workflow. |
+| `_RULES_SOLO112_RULESOPERATOR.md` | SOLO112 | Rules-operator workflow: how SOLO rules are created, corrected, versioned, packaged, verified, synchronized, closed, and kept public-safe. |
 
-| File | Purpose |
+## Stable SOLOLAST aliases
+
+| Stable file | Points to |
 |---|---|
-| `_RULES_SOLO226_CONTEXTUALISATION.md` | Global contextualization rules. Defines general behavior, response structure, reporting behavior, Read Aloud compatibility, public-safe handling, and interaction conventions. |
-| `_RULES_SOLO405_SCRIPTING.md` | Scripting and technical-work rules. Defines how the assistant should handle scripts, repositories, command blocks, file modifications, validation, safety, and reproducible technical workflows. |
-| `_RULES_SOLO105_RULESOPERATOR.md` | Rules operator rules. Defines how SOLO rules themselves must be created, modified, versioned, packaged, reviewed, and kept safe for public publication. |
+| `_RULES_SOLOLAST_CONTEXTUALISATION.md` | latest contextualisation rule |
+| `_RULES_SOLOLAST_SCRIPTING.md` | latest scripting rule |
+| `_RULES_SOLOLAST_RULESOPERATOR.md` | latest rules-operator rule |
 
-These files are meant to be read as instruction layers. They are not application code.
+The `SOLOLAST` files are public copies of the latest active version for each family. They do not create separate rule families.
 
-## Why these rules exist
+## Custom Instructions
 
-General-purpose AI assistants can behave inconsistently across long projects, technical tasks, and multi-step workflows.
+`_CUSTOM_INSTRUCTIONS.md` contains the compact ChatGPT Custom Instructions profile used to load the public SOLO rules from GitHub.
 
-These SOLO rules are designed to improve:
+It defines:
 
-- continuity between sessions;
-- safer technical execution;
-- clearer reporting;
-- cleaner Markdown output;
-- better handling of long-running projects;
-- stricter separation between public and local-only material;
-- repeatable packaging and versioning of rule files.
+- first-message bypass behavior;
+- default contextualization loading;
+- later activation of contextualisation, scripting, or operator rules;
+- protection against claiming that a remote file was read when it was not actually read.
 
-## Public-safe repository policy
-
-Only public-safe rule files are intended to be published here.
-
-The public rule files must not contain:
-
-- personal data;
-- private case details;
-- medical information;
-- family information;
-- secrets, tokens, credentials, or private paths;
-- embedded changelog history that should live outside the public rules;
-- private modules or local-only working files.
-
-The public repository is intentionally limited to reusable, generic rules and documentation.
-
-## Repository structure
-
-Public files and folders may include:
+## Public repository structure
 
 ```text
 .
 ├── AGENTS.md
 ├── CLAUDE.md -> AGENTS.md
-├── Feature_requests_standardization/
-├── 350_QUESTIONS_TO_GET_AI_WORKING_INFOS/
-├── VISUALS/
-├── _RULES_SOLO104_RULESOPERATOR.md
-├── _RULES_SOLO226_CONTEXTUALISATION.md
-└── _RULES_SOLO405_SCRIPTING.md
+├── README.md
+├── _CUSTOM_INSTRUCTIONS.md
+├── _RULES_SOLO230_CONTEXTUALISATION.md
+├── _RULES_SOLO409_SCRIPTING.md
+├── _RULES_SOLO112_RULESOPERATOR.md
+├── _RULES_SOLOLAST_CONTEXTUALISATION.md
+├── _RULES_SOLOLAST_SCRIPTING.md
+├── _RULES_SOLOLAST_RULESOPERATOR.md
+└── AI_STUDYING_FILES/
 ```
 
-The active operator rule may later be incremented, for example from `SOLO104` to `SOLO105`, while keeping the same role and naming logic.
+`AI_STUDYING_FILES/` is intentionally public. It may contain reusable AI study material, feature-request templates, question/answer documents, and related Markdown or PDF resources.
+
+## Local-only material
+
+Typical local-only paths and patterns include:
+
+```text
+.docs/
+.old/
+.private/
+.zip/
+.tmp/
+*.zip
+_RULES_PRIVATE_*
+```
+
+The generic `_RULES_PRIVATE_*` pattern is allowed in public documentation because it describes a generic exclusion rule.
+
+Public documentation must not expose the real full names of private rule modules.
+
+## Public-safe policy
+
+Public rule files must not contain:
+
+- personal case details;
+- private health or family details;
+- secrets, tokens, credentials, or private paths;
+- exact private module names;
+- private archive content;
+- local-only ZIP payloads;
+- historical changelogs that belong in local documentation.
+
+When private context exists locally, it must remain ignored by Git and outside public packages.
 
 ## How to use the rules
 
-A typical use is to provide one or more rule files to an AI assistant at the beginning of a session.
+1. Start with `_RULES_SOLOLAST_CONTEXTUALISATION.md`.
+2. Add `_RULES_SOLOLAST_SCRIPTING.md` for scripts, code, shell commands, repositories, packaging, file generation, or technical documentation.
+3. Add `_RULES_SOLOLAST_RULESOPERATOR.md` only when creating, modifying, merging, versioning, packaging, or auditing SOLO rule files.
 
-Recommended usage:
-
-1. Start with the contextualization rules.
-2. Add the scripting rules when the task involves code, shell commands, repositories, packaging, or file operations.
-3. Add the rules operator file only when modifying the SOLO rule system itself.
-
-Example session setup:
+Example:
 
 ```text
-Use `_RULES_SOLO226_CONTEXTUALISATION.md` as the global behavior layer.
-Use `_RULES_SOLO405_SCRIPTING.md` for all scripting, repository, packaging, and command-line work.
-Use `_RULES_SOLO105_RULESOPERATOR.md` only when creating or modifying SOLO rule files.
+Load _RULES_SOLOLAST_CONTEXTUALISATION.md.
+For scripting work, also load _RULES_SOLOLAST_SCRIPTING.md.
+For SOLO rule maintenance, also load _RULES_SOLOLAST_RULESOPERATOR.md.
 ```
 
-## Rule families
+## Chat title convention
 
-### Contextualisation
-
-The contextualization rule file defines the general operating behavior expected from the assistant.
-
-It covers areas such as:
-
-- response style;
-- session context handling;
-- reporting mode;
-- Read Aloud compatibility;
-- Markdown formatting expectations;
-- public-safe handling;
-- interaction rules for long technical workflows.
-
-### Scripting
-
-The scripting rule file defines stricter behavior for technical work.
-
-It covers areas such as:
-
-- shell scripts;
-- repository changes;
-- ZIP packaging;
-- file validation;
-- command blocks;
-- avoiding unnecessary refactors;
-- preserving working baselines;
-- producing copy-paste-ready commands when needed.
-
-### Rules Operator
-
-The rules operator file defines how the rule system must be maintained.
-
-It covers areas such as:
-
-- version increments;
-- naming conventions;
-- README and changelog handling;
-- package creation;
-- rule-only ZIP creation;
-- anti-regression checks;
-- privacy cleanup before publication;
-- keeping public rules free from private or sensitive content.
-
-## Versioning
-
-SOLO files use explicit version numbers in their filenames.
+```text
+000. <type lisible> +++<TYPE_TECH>_<PROJECT_OR_SCOPE>_<VERSIONS_OR_CONTEXT>_<YYYYMMDD>
+```
 
 Examples:
 
 ```text
-_RULES_SOLO226_CONTEXTUALISATION.md
-_RULES_SOLO405_SCRIPTING.md
-_RULES_SOLO105_RULESOPERATOR.md
+000. operator +++OP112_CTX230_S409_20260726
+000. scripting +++SCRIPT_FIREWALL_CTX230_S409_20260726
+000. docs +++README_REPO_CONTEXT_RULES_20260726
 ```
 
-The version number is part of the file identity. New rule changes should create a new version rather than silently replacing the previous rule content.
+## Versioning
+
+New rule changes create a new numbered version.
+
+The stable `SOLOLAST` copies must be updated whenever the active version changes.
 
 ## Markdown-first design
 
-The repository intentionally uses Markdown because it is:
-
-- easy to inspect;
-- easy to diff;
-- easy to reuse in AI sessions;
-- readable without a dedicated application;
-- suitable for public review.
+Markdown is used because it is easy to inspect, diff, reuse, archive, and review publicly.
 
 ## Important note
 
-These rules are workflow and behavior instructions for AI-assisted work.
-
-They are not a security product, legal framework, medical guideline, or official AI benchmark. They are a practical rule system designed to make AI collaboration more consistent, safer, and easier to audit.
+These files are workflow and behavior instructions for AI-assisted work. They are not a security product, legal framework, medical guideline, or official AI benchmark.
 
 ## License
 
-No license has been selected in this README.
+No license has been selected.
 
-If this repository is meant to be reused publicly by others, add an explicit license file such as `LICENSE`.
+Add a `LICENSE` file if public reuse terms need to be defined explicitly.

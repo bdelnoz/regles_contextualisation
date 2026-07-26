@@ -1,21 +1,21 @@
 # 📘 RÈGLES OFFICIELLES – CONTEXTUALISATION GÉNÉRALE DES CHATS
 
-**Version : V229 (Master publique assainie : V228 + titrage lisible des chats actifs et chargement SOLOLAST contrôlé)**  
+**Version : V230 (Master publique assainie : V229 + structure publique finale et confidentialité nominative)**  
 **Auteur : non publié dans la version publique**  
 **Contact : non publié dans la version publique**  
-**Date : 2026-06-30**  
+**Date : 2026-07-26**  
 **Nombre de règles uniques : version publique assainie ; modules privés externalisés**  
 **Version dérivée : V123 sans section scripting/code**  
-**Modification : V229 — merge intelligent CTX227 uploadé + CTX228 généré ; correction du titrage `000. <type lisible> +++...` ; ajout de la règle de chargement SOLOLAST avec bypass de démarrage**
+**Modification : V230 — structure publique finale avec `AI_STUDYING_FILES/`, confidentialité nominative, README synchronisé, clôture de chat long et alignement CTX230 / OP112 / SCRIPT409**
 
-**Résumé V229 : conserve CTX228 comme base, vérifie CTX227 comme contrôle, corrige la convention de titre des chats actifs et formalise le chargement GitHub `SOLOLAST` avec bypass au premier message.**
+**Résumé V230 : conserve CTX229 comme base, formalise la structure publique finale, autorise le pattern générique `_RULES_PRIVATE_*` sans révéler les noms complets privés, et aligne les trois familles actives.**
 ---
 
 ## 📑 FICHIERS ANNEXES
 
-- **CHANGELOG_SOLO229_CONTEXTUALISATION.md** : historique public séparé de la version assainie
-- **README_SOLO229_CONTEXTUALISATION.md** : documentation publique de la règle contextualisation
-- Les modules privés externalisés sont conservés dans `.private/` et ne font pas partie du package public.
+- **CHANGELOG_SOLO230_CONTEXTUALISATION.md** : historique public séparé de la version assainie
+- **README_SOLO230_CONTEXTUALISATION.md** : documentation publique de la règle contextualisation
+- Les fichiers privés locaux restent exclus par Git et ne font pas partie du package public.
 ------------------------------------------------------------------------
 
 ## RÈGLE GLOBALE — TITRAGE DES CHATS ACTIFS CURRENTLY WORKING ON
@@ -57,10 +57,10 @@ repo
 Exemples recommandés :
 
 ```text
-000. operator +++OP110_CTX229_S407_20260726
+000. operator +++OP112_CTX230_S409_20260726
 000. extension +++EXTBR_VOICECONTROL_DEBUG_20260726
-000. scripting +++SCRIPT_FIREWALL_CTX229_S407_20260726
-000. docs +++SOLO_CONTEXT_MERGE_CTX229_20260726
+000. scripting +++SCRIPT_FIREWALL_CTX230_S409_20260726
+000. docs +++SOLO_CONTEXT_MERGE_CTX230_20260726
 ```
 
 Le préfixe `000.` indique que le chat est le chat actuellement prioritaire ou actuellement utilisé pour un workflow donné.
@@ -81,53 +81,55 @@ Cette règle concerne le titre du chat uniquement. Elle ne remplace pas les règ
 
 Cette règle fixe la structure canonique actuelle du dépôt local/public `regles_contextualisation`.
 
-Les fichiers publics de règles publiables à la racine doivent être limités aux familles SOLO publiques actives :
+La racine publique attendue contient :
 
 ```text
-_RULES_SOLOxxx_RULESOPERATOR.md
+AGENTS.md
+CLAUDE.md -> AGENTS.md
+README.md
+_CUSTOM_INSTRUCTIONS.md
 _RULES_SOLOxxx_CONTEXTUALISATION.md
 _RULES_SOLOxxx_SCRIPTING.md
+_RULES_SOLOxxx_RULESOPERATOR.md
+_RULES_SOLOLAST_CONTEXTUALISATION.md
+_RULES_SOLOLAST_SCRIPTING.md
+_RULES_SOLOLAST_RULESOPERATOR.md
+AI_STUDYING_FILES/
 ```
 
-Les fichiers privés peuvent rester localement à la racine avec le préfixe :
+`AI_STUDYING_FILES/` est volontairement public. Il peut contenir des documents d’étude, notes, templates, questions/réponses IA, ressources de feature requests et autres contenus publiables.
+
+Les familles SOLO publiques actives versionnées et leurs copies génériques `SOLOLAST` peuvent être publiées à la racine.
+
+Le pattern générique suivant peut être cité publiquement pour documenter l’exclusion Git :
 
 ```text
 _RULES_PRIVATE_*
 ```
 
-Ils ne doivent jamais être publiés et doivent rester couverts par `.gitignore`.
+Le pattern `_RULES_PRIVATE_*` est autorisé dans `.gitignore`, dans les règles publiques et dans le README lorsqu’il décrit uniquement une exclusion générique.
 
-La structure publique attendue du dépôt est :
+Les noms complets réels des fichiers privés ne doivent pas apparaître dans les fichiers publics, le README public, les exemples publics, les packages publics ou le remote GitHub.
 
-```text
-.
-├── 350_QUESTIONS_TO_GET_AI_WORKING_INFOS/
-├── AGENTS.md
-├── CLAUDE.md -> AGENTS.md
-├── Feature_requests_standardization/
-├── README.md
-├── _RULES_SOLOxxx_RULESOPERATOR.md
-├── _RULES_SOLOxxx_CONTEXTUALISATION.md
-├── _RULES_SOLOxxx_SCRIPTING.md
-└── VISUALS/
-```
+Les fichiers privés locaux peuvent rester à la racine locale si le pattern `_RULES_PRIVATE_*` les couvre dans `.gitignore`.
 
-Les répertoires et fichiers locaux suivants doivent rester non publiés :
+Le dossier `.private/` peut exister même s’il est vide.
+
+Les dossiers et patterns locaux suivants doivent rester non publiés :
 
 ```text
 .docs/
 .old/
 .private/
 .zip/
-_RULES_PRIVATE_*
+.tmp/
 *.zip
+_RULES_PRIVATE_*
 ```
 
 À chaque nouvelle version ou livraison SOLO, l’assistant doit fournir le fichier `.gitignore`, même s’il est inchangé.
 
-Cette exigence est une sécurité anti-régression : elle permet de rétablir immédiatement les exclusions si un script, une extraction ZIP, une copie manuelle ou une mauvaise manipulation modifie le fichier.
-
-Le contenu canonique minimal attendu de `.gitignore` doit couvrir au minimum :
+Le contenu minimal attendu de `.gitignore` doit couvrir au minimum :
 
 ```text
 *.zip
@@ -151,17 +153,20 @@ secrets/
 
 Tous les ZIP générés pour les règles SOLO doivent être placés dans `.zip/` dans la structure de livraison.
 
-Le ZIP full export peut être téléchargé à la racine du repo puis extrait avec “extract here”. Son contenu doit alors déposer directement les fichiers dans les bons emplacements :
+Le ZIP full export peut être extrait à la racine du dépôt. Il doit déposer directement :
 
 - les fichiers `_RULES_SOLO...md` publics à la racine ;
-- `README.md` et `.gitignore` à la racine ;
+- les fichiers `_RULES_SOLOLAST_...md` publics à la racine ;
+- `README.md`, `_CUSTOM_INSTRUCTIONS.md` et `.gitignore` à la racine lorsqu’ils sont livrés ;
 - les README et CHANGELOG de livraison dans `.docs/` ;
 - tous les ZIP dans `.zip/` ;
-- aucun contenu privé dans les fichiers publics.
+- aucun nom complet réel de fichier privé dans les fichiers publics.
 
-Le répertoire `.private/` peut exister, mais il n’est pas obligatoire pour les règles privées si celles-ci utilisent le préfixe `_RULES_PRIVATE_*` et sont bien exclues par `.gitignore`.
+`chmod 444 .gitignore` est une protection locale acceptable après validation. Git ne transporte cependant pas ce bit read-only de manière fiable entre machines.
 
-Cette règle prévaut sur toute ancienne convention qui plaçait les ZIP à la racine, les README/CHANGELOG publics à la racine, ou les fichiers privés uniquement dans `.private/`.
+`chattr +i .gitignore` est un verrou local plus fort que l’utilisateur peut appliquer après le push final. L’assistant ne doit pas l’appliquer automatiquement.
+
+Cette règle prévaut sur toute ancienne structure incompatible.
 
 ------------------------------------------------------------------------
 
@@ -207,6 +212,29 @@ L’assistant ne doit jamais prétendre avoir lu un fichier GitHub si la lecture
 Après lecture réelle d’un fichier SOLO, l’assistant doit confirmer brièvement le fichier et la version chargés, sans recopier inutilement son contenu.
 
 Cette règle complète les Custom Instructions, mais ne remplace jamais les règles système, les règles de sécurité ni les limites techniques de la plateforme.
+
+
+## RÈGLE GLOBALE — CLÔTURE DE CHAT LONG ET CONTINUITÉ OPERATOR
+
+Lorsqu’un chat Operator ou un chat de maintenance SOLO devient trop long, l’assistant doit préparer une clôture exploitable plutôt que continuer à accumuler du contexte.
+
+La clôture doit rappeler :
+
+- les versions actives finales ;
+- les fichiers publics actifs ;
+- les fichiers `SOLOLAST` alignés ;
+- les changements réellement effectués ;
+- les contrôles réalisés ;
+- les éventuels points restant à vérifier ;
+- un court contexte de reprise pour le nouveau chat.
+
+Le contexte de reprise ne doit pas contenir de noms complets réels de fichiers privés.
+
+Il doit rappeler que `_RULES_PRIVATE_*` générique est acceptable, mais que les noms complets privés ne doivent pas être publiés.
+
+Dans le nouveau chat Operator, les derniers fichiers complets fournis ou réellement chargés deviennent la source de vérité. L’assistant ne doit pas reconstruire les règles depuis mémoire.
+
+------------------------------------------------------------------------
 
 
 ---

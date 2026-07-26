@@ -1,25 +1,25 @@
-Nom canonique : SOLO408  
+Nom canonique : SOLO409  
 Famille : SOLOxxx (xxx = numéro de version)  
-Version actuelle : 408
-Document : _RULES_SOLO408_SCRIPTING.md  
+Version actuelle : 409
+Document : _RULES_SOLO409_SCRIPTING.md  
 Auteur : non publié dans la version publique
 Email : non publié dans la version publique
 Date : 2026-07-26
-Statut : Version scripting publique assainie avec règle de titrage lisible `000. <type lisible> +++...`, structure repo canonique, `.gitignore` de livraison, fichiers génériques SOLOLAST et compatibilité chargement GitHub avec bypass de démarrage.
+Statut : version scripting publique assainie avec structure publique finale, confidentialité nominative, README synchronisé, fichiers génériques SOLOLAST et compatibilité GitHub avec bypass de démarrage.
 
 CES RÈGLES DE SCRIPTING S’APPELLENT SOLOxxx, où xxx représente le numéro de version.
 
-Lorsque je dis SOLO408, je fais référence à la version 408 des règles.
+Lorsque je dis SOLO409, je fais référence à la version 409 des règles.
 
 Lorsque je dis SOLO suivi d’un numéro, par exemple SOLO405, je fais référence à la version correspondante.
 
 Lorsque je dis simplement SOLO, cela fait référence à la dernière version publiée.
 
-SOLO408 remplace SOLO407, SOLO406, SOLO405, SOLO404, SOLO403, SOLO402, SOLO401, SOLO400, SOLO311, SOLO310, SOLO309, SOLO308, SOLO307, SOLO306, SOLO305, SOLO304, SOLO303, SOLO302, SOLO301, SOLO300 et toutes les versions SOLO scripting précédentes pour les demandes de scripting, génération de code, correction de code, génération de fichiers techniques et génération de documentation liée à des scripts.
+SOLO409 remplace SOLO408, SOLO407, SOLO406, SOLO405, SOLO404, SOLO403, SOLO402, SOLO401, SOLO400, SOLO311, SOLO310, SOLO309, SOLO308, SOLO307, SOLO306, SOLO305, SOLO304, SOLO303, SOLO302, SOLO301, SOLO300 et toutes les versions SOLO scripting précédentes pour les demandes de scripting, génération de code, correction de code, génération de fichiers techniques et génération de documentation liée à des scripts.
 
-SOLO407 est conçu pour les LLM de chat, notamment ChatGPT, LeChat ou équivalents.
+SOLO409 est conçu pour les LLM de chat, notamment ChatGPT, LeChat ou équivalents.
 
-SOLO407 reprend la logique de travail de AGENTS.md sous une forme adaptée à un LLM de chat : mêmes attentes de rigueur, documentation, non-suppression, versionnement, spécifications et livrables complets, mais sans prétendre remplacer les règles système de la plateforme utilisée.
+SOLO409 reprend la logique de travail de AGENTS.md sous une forme adaptée à un LLM de chat : mêmes attentes de rigueur, documentation, non-suppression, versionnement, spécifications et livrables complets, mais sans prétendre remplacer les règles système de la plateforme utilisée.
 
 # Scripting Contextualisation Rules
 
@@ -1861,10 +1861,10 @@ Le `<type_lisible>` doit apparaître immédiatement après `000.`.
 Exemples recommandés :
 
 ```text
-000. scripting +++SCRIPT_FIREWALL_CTX229_S408_20260726
+000. scripting +++SCRIPT_FIREWALL_CTX230_S409_20260726
 000. extension +++EXTBR_VOICECONTROL_DEBUG_20260726
-000. debug +++SCRIPT_ARCHIVE_SEARCH_CTX229_S408_20260726
-000. repo +++PROJECT_REPO_CLEANUP_CTX229_S408_20260726
+000. debug +++SCRIPT_ARCHIVE_SEARCH_CTX230_S409_20260726
+000. repo +++PROJECT_REPO_CLEANUP_CTX230_S409_20260726
 ```
 
 `000.` indique que le chat est actif ou prioritaire.
@@ -1915,4 +1915,60 @@ L’assistant ne doit jamais prétendre avoir lu un fichier GitHub si la lecture
 Si l’utilisateur fournit dans le chat une version plus récente ou prioritaire du fichier SOLO scripting, cette version fournie dans le chat devient la référence du chat courant.
 
 Cette règle complète la contextualisation générale et les règles Operator, sans remplacer les règles système ni les limites techniques de la plateforme.
+
+------------------------------------------------------------------------
+
+## 24. AJOUT SOLO409 — STRUCTURE PUBLIQUE FINALE, CONFIDENTIALITÉ NOMINATIVE ET README
+
+Pour les travaux de scripting liés au dépôt `regles_contextualisation`, la structure publique finale reconnaît :
+
+```text
+AGENTS.md
+CLAUDE.md -> AGENTS.md
+README.md
+_CUSTOM_INSTRUCTIONS.md
+_RULES_SOLOxxx_CONTEXTUALISATION.md
+_RULES_SOLOxxx_SCRIPTING.md
+_RULES_SOLOxxx_RULESOPERATOR.md
+_RULES_SOLOLAST_CONTEXTUALISATION.md
+_RULES_SOLOLAST_SCRIPTING.md
+_RULES_SOLOLAST_RULESOPERATOR.md
+AI_STUDYING_FILES/
+```
+
+`AI_STUDYING_FILES/` est public lorsque l’utilisateur confirme que sa publication est volontaire.
+
+Les dossiers locaux suivants restent hors publication normale :
+
+```text
+.docs/
+.old/
+.private/
+.zip/
+.tmp/
+```
+
+Le pattern générique suivant est autorisé publiquement pour documenter une exclusion :
+
+```text
+_RULES_PRIVATE_*
+```
+
+Les noms complets réels des fichiers privés ne doivent pas apparaître dans les règles publiques, README, exemples publics, packages publics ou remote GitHub.
+
+Les fichiers privés locaux peuvent rester à la racine si `_RULES_PRIVATE_*` est bien présent dans `.gitignore`.
+
+`.private/` peut rester vide.
+
+Quand les versions actives, les noms de fichiers publics ou la structure publique changent, `README.md` doit être synchronisé dans la même livraison.
+
+`chmod 444 .gitignore` peut être proposé comme protection locale après validation, mais ne doit pas être présenté comme une protection Git portable.
+
+Avant livraison finale, l’assistant doit vérifier :
+
+- absence de noms complets réels de fichiers privés dans les fichiers publics ;
+- présence de `_RULES_PRIVATE_*` dans `.gitignore` ;
+- alignement exact des fichiers versionnés et `SOLOLAST` ;
+- README synchronisé avec les versions actives ;
+- ZIP réellement créés et contenu réellement listé.
 
