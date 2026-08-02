@@ -1,8 +1,8 @@
 <!--
 Document : README.md
 Author : Bruno DELNOZ
-Version : V4.0
-Date : 2026-07-26
+Version : V4.1
+Date : 2026-08-02
 Repository : regles_contextualisation
 -->
 
@@ -16,9 +16,9 @@ The repository keeps reusable rules, custom-instruction helpers, AI working note
 
 | File | Version | Purpose |
 |---|---:|---|
-| `_RULES_SOLO230_CONTEXTUALISATION.md` | V230 | Global contextualization rules: response behavior, modes, Read Aloud compatibility, reporting behavior, public-safe handling, repository structure, continuation handling, and interaction conventions. |
+| `_RULES_SOLO231_CONTEXTUALISATION.md` | V231 | Global contextualization rules: response behavior, modes, permanent `/tmp` reports and Kate opening for terminal investigations, Read Aloud compatibility, public-safe handling, repository structure, continuation handling, and interaction conventions. |
 | `_RULES_SOLO409_SCRIPTING.md` | SOLO409 | Scripting and technical-work rules: scripts, repositories, commands, file generation, validation, packaging, documentation, README synchronization, and non-regression workflow. |
-| `_RULES_SOLO112_RULESOPERATOR.md` | SOLO112 | Rules-operator workflow: how SOLO rules are created, corrected, versioned, packaged, verified, synchronized, closed, and kept public-safe. |
+| `_RULES_SOLO113_RULESOPERATOR.md` | SOLO113 | Rules-operator workflow: maximum available model and reasoning capability, rule creation, correction, versioning, packaging, verification, synchronization, closure, and public-safe handling. |
 
 ## Stable SOLOLAST aliases
 
@@ -49,9 +49,9 @@ It defines:
 ├── CLAUDE.md -> AGENTS.md
 ├── README.md
 ├── _CUSTOM_INSTRUCTIONS.md
-├── _RULES_SOLO230_CONTEXTUALISATION.md
+├── _RULES_SOLO231_CONTEXTUALISATION.md
 ├── _RULES_SOLO409_SCRIPTING.md
-├── _RULES_SOLO112_RULESOPERATOR.md
+├── _RULES_SOLO113_RULESOPERATOR.md
 ├── _RULES_SOLOLAST_CONTEXTUALISATION.md
 ├── _RULES_SOLOLAST_SCRIPTING.md
 ├── _RULES_SOLOLAST_RULESOPERATOR.md
@@ -115,9 +115,9 @@ For SOLO rule maintenance, also load _RULES_SOLOLAST_RULESOPERATOR.md.
 Examples:
 
 ```text
-000. operator +++OP112_CTX230_S409_20260726
-000. scripting +++SCRIPT_FIREWALL_CTX230_S409_20260726
-000. docs +++README_REPO_CONTEXT_RULES_20260726
+000. operator +++OP113_CTX231_S409_20260802
+000. scripting +++SCRIPT_FIREWALL_CTX231_S409_20260802
+000. docs +++README_REPO_CONTEXT_RULES_20260802
 ```
 
 ## Versioning
