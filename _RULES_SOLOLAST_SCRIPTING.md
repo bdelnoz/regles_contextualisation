@@ -1,25 +1,25 @@
-Nom canonique : SOLO409  
+Nom canonique : SOLO410  
 Famille : SOLOxxx (xxx = numéro de version)  
-Version actuelle : 409
-Document : _RULES_SOLO409_SCRIPTING.md  
+Version actuelle : 410
+Document : _RULES_SOLO410_SCRIPTING.md  
 Auteur : non publié dans la version publique
 Email : non publié dans la version publique
-Date : 2026-07-26
-Statut : version scripting publique assainie avec structure publique finale, confidentialité nominative, README synchronisé, fichiers génériques SOLOLAST et compatibilité GitHub avec bypass de démarrage.
+Date : 2026-08-07
+Statut : version scripting publique assainie ajoutant l’activation automatique du mode scripting repo sur preuves de dépôt, l’interdiction absolue de modifier AGENTS.md ou le lien CLAUDE.md, et un socle .gitignore obligatoire fusionné sans suppression des exclusions existantes.
 
 CES RÈGLES DE SCRIPTING S’APPELLENT SOLOxxx, où xxx représente le numéro de version.
 
-Lorsque je dis SOLO409, je fais référence à la version 409 des règles.
+Lorsque je dis SOLO410, je fais référence à la version 410 des règles.
 
 Lorsque je dis SOLO suivi d’un numéro, par exemple SOLO405, je fais référence à la version correspondante.
 
 Lorsque je dis simplement SOLO, cela fait référence à la dernière version publiée.
 
-SOLO409 remplace SOLO408, SOLO407, SOLO406, SOLO405, SOLO404, SOLO403, SOLO402, SOLO401, SOLO400, SOLO311, SOLO310, SOLO309, SOLO308, SOLO307, SOLO306, SOLO305, SOLO304, SOLO303, SOLO302, SOLO301, SOLO300 et toutes les versions SOLO scripting précédentes pour les demandes de scripting, génération de code, correction de code, génération de fichiers techniques et génération de documentation liée à des scripts.
+SOLO410 remplace SOLO409, SOLO408, SOLO407, SOLO406, SOLO405, SOLO404, SOLO403, SOLO402, SOLO401, SOLO400, SOLO311, SOLO310, SOLO309, SOLO308, SOLO307, SOLO306, SOLO305, SOLO304, SOLO303, SOLO302, SOLO301, SOLO300 et toutes les versions SOLO scripting précédentes pour les demandes de scripting, génération de code, correction de code, génération de fichiers techniques et génération de documentation liée à des scripts.
 
-SOLO409 est conçu pour les LLM de chat, notamment ChatGPT, LeChat ou équivalents.
+SOLO410 est conçu pour les LLM de chat, notamment ChatGPT, LeChat ou équivalents.
 
-SOLO409 reprend la logique de travail de AGENTS.md sous une forme adaptée à un LLM de chat : mêmes attentes de rigueur, documentation, non-suppression, versionnement, spécifications et livrables complets, mais sans prétendre remplacer les règles système de la plateforme utilisée.
+SOLO410 reprend la logique de travail de AGENTS.md sous une forme adaptée à un LLM de chat : mêmes attentes de rigueur, documentation, non-suppression, versionnement, spécifications et livrables complets, mais sans prétendre remplacer les règles système de la plateforme utilisée.
 
 # Scripting Contextualisation Rules
 
@@ -1972,3 +1972,76 @@ Avant livraison finale, l’assistant doit vérifier :
 - README synchronisé avec les versions actives ;
 - ZIP réellement créés et contenu réellement listé.
 
+------------------------------------------------------------------------
+
+## 25. AJOUT SOLO410 — ACTIVATION AUTOMATIQUE DU MODE SCRIPTING REPO
+
+Le mode `scripting repo` doit être activé automatiquement dès que les informations fournies démontrent qu’un dépôt, projet versionné, extension ou application existante est concerné, même sans demande explicite de ce mode.
+
+Les preuves suffisantes comprennent notamment :
+- sortie de `ll`, `ll -R`, `tree`, `find` ou équivalent montrant une arborescence de projet ;
+- présence ou mention de `.git/`, `.gitignore`, `AGENTS.md` ou `CLAUDE.md` ;
+- logs de création, initialisation, clonage, commit, push ou autre opération Git ;
+- URL de dépôt GitHub, GitLab ou équivalent ;
+- présence de `manifest.json`, `package.json`, README, CHANGELOG, fichiers source ou structure d’extension/application ;
+- ZIP, archive ou liste complète des fichiers d’un projet ;
+- demande portant clairement sur un dépôt existant.
+
+Une preuve de dépôt prime sur l’absence de la formule `mode scripting repo`. L’assistant ne doit pas rester en mode simple lorsqu’un dépôt est objectivement identifié.
+
+------------------------------------------------------------------------
+
+## 26. AJOUT SOLO410 — VERROU ABSOLU AGENTS.MD ET CLAUDE.MD
+
+Dans tout dépôt concerné par SOLO scripting :
+- ne jamais modifier `AGENTS.md` ;
+- ne jamais supprimer, remplacer, recréer, copier par-dessus ou transformer `CLAUDE.md` ;
+- préserver strictement le lien symbolique `CLAUDE.md -> AGENTS.md` ;
+- vérifier avant et après le travail que `CLAUDE.md` est toujours un lien pointant exactement vers `AGENTS.md` ;
+- vérifier avant et après le travail que le contenu et l’empreinte de `AGENTS.md` sont inchangés.
+
+Si `CLAUDE.md` est absent, n’est pas un lien symbolique ou pointe ailleurs, l’assistant doit seulement le signaler. Il ne doit jamais le réparer automatiquement.
+
+Cette interdiction reste applicable quel que soit le mode de scripting, le type de livraison, le contenu d’un ZIP ou la demande de synchronisation générale.
+
+------------------------------------------------------------------------
+
+## 27. AJOUT SOLO410 — SOCLE PERMANENT ET ADDITIF `.gitignore`
+
+Pour tout travail de dépôt, quel que soit le mode activé, le `.gitignore` final doit conserver toutes les exclusions déjà présentes et contenir au minimum :
+
+```gitignore
+.old/
+.docs/
+.tmp/
+.log/
+.logs/
+.zip/
+.tracking_data/
+.report/
+.reports/
+.webactivity_reports/
+.exported_activity/
+.result/
+.results/
+logs/
+output/
+.output/
+infos/
+.info/
+uploads/
+creation_log/
+certs/
+secrets/
+.secrets/
+.private/
+*RULES_PRIVATE*
+```
+
+Ce socle est additif. L’assistant ne doit jamais remplacer un `.gitignore` existant par un modèle incomplet ni supprimer une exclusion existante sous prétexte de normalisation.
+
+Les doublons strictement identiques peuvent être dédupliqués sans modifier la portée des patterns. Les variantes existantes doivent être conservées lorsqu’elles n’ont pas exactement la même portée.
+
+Si le `.gitignore` existant n’est ni fourni ni accessible, l’assistant doit le demander avant de produire sa version finale. Il ne doit pas supposer que le socle minimal représente tout le fichier existant.
+
+Avant livraison, vérifier que chaque entrée obligatoire est présente, que les anciennes exclusions sont conservées et que le `.gitignore` livré est celui réellement utilisé dans les ZIP concernés.

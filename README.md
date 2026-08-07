@@ -1,8 +1,8 @@
 <!--
 Document : README.md
 Author : Bruno DELNOZ
-Version : V4.1
-Date : 2026-08-02
+Version : V4.4
+Date : 2026-08-07
 Repository : regles_contextualisation
 -->
 
@@ -17,8 +17,8 @@ The repository keeps reusable rules, custom-instruction helpers, AI working note
 | File | Version | Purpose |
 |---|---:|---|
 | `_RULES_SOLO231_CONTEXTUALISATION.md` | V231 | Global contextualization rules: response behavior, modes, permanent `/tmp` reports and Kate opening for terminal investigations, Read Aloud compatibility, public-safe handling, repository structure, continuation handling, and interaction conventions. |
-| `_RULES_SOLO409_SCRIPTING.md` | SOLO409 | Scripting and technical-work rules: scripts, repositories, commands, file generation, validation, packaging, documentation, README synchronization, and non-regression workflow. |
-| `_RULES_SOLO113_RULESOPERATOR.md` | SOLO113 | Rules-operator workflow: maximum available model and reasoning capability, rule creation, correction, versioning, packaging, verification, synchronization, closure, and public-safe handling. |
+| `_RULES_SOLO410_SCRIPTING.md` | SOLO410 | Scripting workflow with automatic repository-mode activation, immutable AGENTS/CLAUDE protection, mandatory additive `.gitignore` baseline, artifacts, versioning, packaging, validation, documentation and non-regression controls. |
+| `_RULES_SOLO116_RULESOPERATOR.md` | SOLO116 | Rules-operator workflow aligned with SCRIPT410 repository detection and protection, plus the verified 5000-character Custom Instructions limit, GitHub version reporting, resilient loading, packaging and public-safe controls. |
 
 ## Stable SOLOLAST aliases
 
@@ -38,7 +38,9 @@ It defines:
 
 - first-message bypass behavior;
 - default contextualization loading;
+- complete three-family loading for unqualified requests to read or apply the SOLO rules;
 - later activation of contextualisation, scripting, or operator rules;
+- authorized fallback methods when an initial public GitHub read fails;
 - protection against claiming that a remote file was read when it was not actually read.
 
 ## Public repository structure
@@ -50,8 +52,8 @@ It defines:
 ├── README.md
 ├── _CUSTOM_INSTRUCTIONS.md
 ├── _RULES_SOLO231_CONTEXTUALISATION.md
-├── _RULES_SOLO409_SCRIPTING.md
-├── _RULES_SOLO113_RULESOPERATOR.md
+├── _RULES_SOLO410_SCRIPTING.md
+├── _RULES_SOLO116_RULESOPERATOR.md
 ├── _RULES_SOLOLAST_CONTEXTUALISATION.md
 ├── _RULES_SOLOLAST_SCRIPTING.md
 ├── _RULES_SOLOLAST_RULESOPERATOR.md
@@ -115,8 +117,8 @@ For SOLO rule maintenance, also load _RULES_SOLOLAST_RULESOPERATOR.md.
 Examples:
 
 ```text
-000. operator +++OP113_CTX231_S409_20260802
-000. scripting +++SCRIPT_FIREWALL_CTX231_S409_20260802
+000. operator +++OP116_CTX231_S410_20260807
+000. scripting +++SCRIPT_FIREWALL_CTX231_S410_20260807
 000. docs +++README_REPO_CONTEXT_RULES_20260802
 ```
 

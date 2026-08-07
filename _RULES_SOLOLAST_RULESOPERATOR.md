@@ -1,21 +1,21 @@
 <!--
 DOCUMENT INFORMATION
-Document Name: _RULES_SOLO113_RULESOPERATOR.md
-Version: SOLO113
-Date / Time: 2026-08-02
+Document Name: _RULES_SOLO116_RULESOPERATOR.md
+Version: SOLO116
+Date / Time: 2026-08-07
 Project: SOLO rules operator contextualization
 Public status: GitHub-safe public rules file
-Short description: Rules for operating SOLO rule maintenance chats, including maximum available model and reasoning capability, updated public repository structure, AI_STUDYING_FILES, `.zip/` delivery, mandatory `.gitignore` delivery, verified ZIPs, privacy leak prevention, active-chat naming, README synchronization, generic SOLOLAST public copies, and anti-regression checks.
+Short description: Rules for operating SOLO rule maintenance chats, including automatic scripting-repo activation on repository evidence, immutable AGENTS.md and CLAUDE.md symlink protection, a mandatory additive gitignore baseline, a verified 5000-character Custom Instructions maximum, resilient GitHub loading, verified delivery, privacy protection and anti-regression checks.
 -->
 
-# _RULES_SOLO113_RULESOPERATOR.md
+# _RULES_SOLO116_RULESOPERATOR.md
 
-Nom canonique : SOLO113 RULESOPERATOR  
+Nom canonique : SOLO116 RULESOPERATOR  
 Famille : SOLOxxx RULESOPERATOR  
-Version actuelle : 113  
-Document : _RULES_SOLO113_RULESOPERATOR.md  
-Date : 2026-08-02
-Statut : version 113 publique et assainie du fichier opérateur, imposant le modèle et le niveau de raisonnement maximaux disponibles pour les chats SOLO Operator, avec structure GitHub canonique, dossier public `AI_STUDYING_FILES/`, ZIP sous `.zip/`, `.gitignore` obligatoire à chaque livraison, copies génériques SOLOLAST, interdiction des fuites privées nominatives, documentation locale `.docs/`, README synchronisé, verrou anti-régression et contrôle strict de création ZIP.
+Version actuelle : 116  
+Document : _RULES_SOLO116_RULESOPERATOR.md  
+Date : 2026-08-07
+Statut : version 116 publique et assainie du fichier opérateur, alignée sur SCRIPT410 avec activation automatique du mode repo, verrou absolu AGENTS/CLAUDE et socle `.gitignore` additif obligatoire, tout en conservant les limites Custom Instructions et toutes les exigences Operator antérieures.
 
 Ces règles contextualisent un chat chargé de créer, modifier, corriger, versionner, documenter et livrer les fichiers de règles SOLO.
 
@@ -776,3 +776,145 @@ _RULES_SOLOLAST_RULESOPERATOR.md
 180. L’utilisateur peut toujours imposer explicitement un autre modèle ou un niveau inférieur pour une opération précise. Cette dérogation explicite ne modifie pas la règle par défaut des futurs chats SOLO Operator.
 
 181. Règle centrale : sauf choix contraire explicite de l’utilisateur, tout chat SOLO Operator doit fonctionner avec la capacité de modèle et le niveau de raisonnement les plus élevés réellement disponibles.
+
+------------------------------------------------------------------------
+
+## 22. AJOUT SOLO114 — DERNIÈRES VERSIONS CONNUES DANS LE CHAT ET VÉRIFIÉES SUR GITHUB
+
+182. Lorsque l’utilisateur demande les dernières versions SOLO, l’assistant doit fournir séparément :
+- les dernières versions mentionnées, chargées ou validées dans le chat courant ;
+- les dernières versions réellement vérifiées sur le remote GitHub du dépôt `regles_contextualisation`, branche `main` ;
+- une conclusion indiquant clairement si les deux ensembles sont identiques ou différents.
+
+183. Les versions connues dans le chat courant doivent provenir de l’historique réellement disponible du chat. Elles ne doivent pas être présentées comme des versions GitHub vérifiées.
+
+184. Les versions distantes doivent être lues depuis les en-têtes des trois fichiers publics actifs `SOLOLAST` ou des fichiers versionnés actifs réellement présents sur GitHub `main` :
+
+```text
+_RULES_SOLOLAST_CONTEXTUALISATION.md
+_RULES_SOLOLAST_SCRIPTING.md
+_RULES_SOLOLAST_RULESOPERATOR.md
+```
+
+185. La comparaison porte sur les numéros de version déclarés dans les en-têtes. Une comparaison binaire, octet par octet ou du contenu complet n’est pas nécessaire pour répondre à une simple demande de dernières versions.
+
+186. Si les versions GitHub sont supérieures à celles connues dans le chat, l’assistant doit signaler la mise à jour disponible. Il ne doit appliquer ou recharger intégralement les nouvelles règles que si la demande de l’utilisateur inclut leur chargement ou leur application.
+
+187. Si les versions du chat et de GitHub sont identiques, l’assistant doit le dire directement, sans lancer de comparaison de contenu inutile.
+
+188. Si GitHub ne peut pas être vérifié, l’assistant doit fournir les versions connues dans le chat et indiquer explicitement que les versions distantes n’ont pas été vérifiées. Il ne doit jamais inventer ni présenter comme distante une version seulement connue par le chat.
+
+189. L’échec d’un premier moyen d’accès ne permet pas de conclure immédiatement que GitHub est inaccessible. L’assistant doit essayer, selon les capacités réellement disponibles :
+- la page GitHub publique ;
+- l’URL publique `raw.githubusercontent.com` ;
+- l’accès GitHub connecté ou le connecteur GitHub ;
+- une lecture Git distante ou une autre méthode publique autorisée.
+
+190. L’assistant doit identifier précisément la méthode qui a échoué et poursuivre avec les autres méthodes disponibles, sans contourner une restriction de sécurité ou d’autorisation.
+
+191. Lorsqu’il affirme avoir lu toutes les règles SOLO, l’assistant doit avoir réellement ouvert et lu intégralement, pendant le chat courant, les trois fichiers `SOLOLAST` des familles contextualisation, scripting et rules operator.
+
+192. Un fichier seulement connu par mémoire, résumé, ancien contexte ou numéro de version ne compte pas comme lu intégralement dans le chat courant.
+
+193. Après une demande générique de lecture de toutes les règles SOLO, l’assistant doit confirmer séparément les trois fichiers et leurs versions réellement chargées.
+
+194. Les demandes explicitement limitées à une seule famille continuent de charger uniquement la contextualisation générale puis la famille spécialisée demandée.
+
+195. Pour la livraison SOLO114, les versions publiques actives attendues sont :
+
+```text
+CTX231 / OP114 / SCRIPT409
+```
+
+------------------------------------------------------------------------
+
+## 23. AJOUT SOLO115 — LIMITE DE 5000 CARACTÈRES DES CUSTOM INSTRUCTIONS
+
+196. Le fichier public `_CUSTOM_INSTRUCTIONS.md` destiné au champ Custom Instructions doit contenir au maximum 5000 caractères.
+
+197. La limite inclut tous les caractères réellement présents dans le fichier, notamment les lettres, chiffres, signes, espaces, tabulations et retours à la ligne.
+
+198. Avant toute livraison contenant `_CUSTOM_INSTRUCTIONS.md`, l’assistant doit mesurer sa longueur réelle avec une méthode fiable et annoncer le résultat du contrôle.
+
+199. Une livraison dont `_CUSTOM_INSTRUCTIONS.md` dépasse 5000 caractères est invalide et ne doit jamais être présentée comme terminée ou conforme.
+
+200. Si la limite est dépassée, l’assistant doit compacter le fichier en priorité par suppression des répétitions, exemples redondants, espaces inutiles, formulations longues et sections décoratives.
+
+201. La compaction ne doit supprimer, affaiblir ou modifier aucun comportement fonctionnel validé, notamment :
+- bypass SOLO au démarrage ;
+- chargement CTX par défaut ;
+- chargement des trois familles sur demande SOLO générale ;
+- routage spécialisé par famille ;
+- chaîne de repli GitHub autorisée ;
+- interdiction des fausses affirmations de lecture ;
+- confirmation séparée des fichiers et versions réellement chargés.
+
+202. La lisibilité Markdown peut être réduite raisonnablement pour respecter la limite, mais les déclencheurs, priorités, URLs, conditions et résultats attendus doivent rester non ambigus.
+
+203. Le nombre de caractères doit être contrôlé sur le fichier final exact après toutes les modifications et avant la création des ZIP.
+
+204. Le fichier contenu dans chaque ZIP doit être strictement identique au fichier final mesuré.
+
+205. Le README, le changelog Operator et la documentation de livraison doivent mentionner cette limite lorsqu’une version Operator l’introduit ou la modifie.
+
+206. Pour la livraison SOLO115, les versions publiques actives attendues sont :
+
+```text
+CTX231 / OP115 / SCRIPT409
+```
+
+------------------------------------------------------------------------
+
+## 24. AJOUT SOLO116 — GARANTIES REPO ALIGNÉES SUR SCRIPT410
+
+207. Lorsqu’une demande Operator fournit des preuves de dépôt telles qu’une arborescence `ll -R` ou `tree`, des logs de création ou Git, `.git/`, `.gitignore`, une URL de dépôt, une archive ou des fichiers de projet, le mode `scripting repo` doit être activé automatiquement même sans formulation explicite.
+
+208. Pendant toute maintenance ou livraison SOLO, `AGENTS.md` ne doit jamais être modifié.
+
+209. Le lien `CLAUDE.md -> AGENTS.md` ne doit jamais être supprimé, remplacé, recréé, transformé ni réparé automatiquement.
+
+210. Avant et après chaque livraison, l’assistant doit vérifier que `CLAUDE.md` est toujours un lien symbolique pointant exactement vers `AGENTS.md` et que l’empreinte de `AGENTS.md` est inchangée.
+
+211. Toute livraison contenant un `.gitignore` doit conserver toutes ses entrées existantes et y fusionner sans suppression le socle obligatoire défini par SCRIPT410.
+
+212. Si le `.gitignore` existant n’est ni fourni ni accessible, l’assistant doit le demander avant la livraison finale. Il ne doit jamais le remplacer par le seul socle minimal.
+
+213. Le socle obligatoire est :
+
+```gitignore
+.old/
+.docs/
+.tmp/
+.log/
+.logs/
+.zip/
+.tracking_data/
+.report/
+.reports/
+.webactivity_reports/
+.exported_activity/
+.result/
+.results/
+logs/
+output/
+.output/
+infos/
+.info/
+uploads/
+creation_log/
+certs/
+secrets/
+.secrets/
+.private/
+*RULES_PRIVATE*
+```
+
+214. Les doublons strictement identiques peuvent être retirés, mais aucune variante de portée différente ni aucune exclusion existante ne doit être supprimée.
+
+215. Avant création des ZIP, vérifier automatiquement la présence de chaque entrée obligatoire dans le `.gitignore` final.
+
+216. Pour la livraison SOLO116, les versions publiques actives attendues sont :
+
+```text
+CTX231 / OP116 / SCRIPT410
+```
