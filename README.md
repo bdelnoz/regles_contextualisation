@@ -1,7 +1,7 @@
 <!--
 Document : README.md
 Author : Bruno DELNOZ
-Version : V4.4
+Version : V4.5
 Date : 2026-08-07
 Repository : regles_contextualisation
 -->
@@ -16,9 +16,9 @@ The repository keeps reusable rules, custom-instruction helpers, AI working note
 
 | File | Version | Purpose |
 |---|---:|---|
-| `_RULES_SOLO231_CONTEXTUALISATION.md` | V231 | Global contextualization rules: response behavior, modes, permanent `/tmp` reports and Kate opening for terminal investigations, Read Aloud compatibility, public-safe handling, repository structure, continuation handling, and interaction conventions. |
+| `_RULES_SOLO232_CONTEXTUALISATION.md` | V232 | Global contextualization rules including automatic repository detection, immutable AGENTS/CLAUDE safeguards, additive `.gitignore` protection, permanent investigation reports, modes and public-safe interaction conventions. |
 | `_RULES_SOLO410_SCRIPTING.md` | SOLO410 | Scripting workflow with automatic repository-mode activation, immutable AGENTS/CLAUDE protection, mandatory additive `.gitignore` baseline, artifacts, versioning, packaging, validation, documentation and non-regression controls. |
-| `_RULES_SOLO116_RULESOPERATOR.md` | SOLO116 | Rules-operator workflow aligned with SCRIPT410 repository detection and protection, plus the verified 5000-character Custom Instructions limit, GitHub version reporting, resilient loading, packaging and public-safe controls. |
+| `_RULES_SOLO117_RULESOPERATOR.md` | SOLO117 | Rules-operator workflow synchronizing CTX232 and SCRIPT410 global repository protections, the verified Custom Instructions limit, GitHub version reporting, resilient loading, packaging and public-safe controls. |
 
 ## Stable SOLOLAST aliases
 
@@ -51,9 +51,9 @@ It defines:
 ├── CLAUDE.md -> AGENTS.md
 ├── README.md
 ├── _CUSTOM_INSTRUCTIONS.md
-├── _RULES_SOLO231_CONTEXTUALISATION.md
+├── _RULES_SOLO232_CONTEXTUALISATION.md
 ├── _RULES_SOLO410_SCRIPTING.md
-├── _RULES_SOLO116_RULESOPERATOR.md
+├── _RULES_SOLO117_RULESOPERATOR.md
 ├── _RULES_SOLOLAST_CONTEXTUALISATION.md
 ├── _RULES_SOLOLAST_SCRIPTING.md
 ├── _RULES_SOLOLAST_RULESOPERATOR.md
@@ -117,8 +117,8 @@ For SOLO rule maintenance, also load _RULES_SOLOLAST_RULESOPERATOR.md.
 Examples:
 
 ```text
-000. operator +++OP116_CTX231_S410_20260807
-000. scripting +++SCRIPT_FIREWALL_CTX231_S410_20260807
+000. operator +++OP117_CTX232_S410_20260807
+000. scripting +++SCRIPT_FIREWALL_CTX232_S410_20260807
 000. docs +++README_REPO_CONTEXT_RULES_20260802
 ```
 

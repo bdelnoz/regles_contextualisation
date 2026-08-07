@@ -44,6 +44,8 @@ https://github.com/bdelnoz/regles_contextualisation/blob/main/_RULES_SOLOLAST_SC
 
 L’appliquer avec la contextualisation. Si CTX n’est pas chargée, la lire d’abord. Déclencheurs explicites : `règles SOLO scripting`, `mode scripting repo/simple`, `charge SOLO scripting`, nom du fichier, ou équivalent.
 
+Activer aussi automatiquement `scripting repo` et charger ce fichier si le chat fournit une arborescence (`ll -R`, `tree`), des logs Git/création, `.git`, `.gitignore`, une URL ou archive de dépôt, ou des fichiers structurants de projet, même sans activation explicite.
+
 ### 2.4 SOLO Operator
 
 Pour `mode SOLO Operator`, `mode Operator`, `Rules Operator`, ou toute maintenance, correction, création, versionnement, merge, packaging ou livraison de règles SOLO, lire intégralement :
