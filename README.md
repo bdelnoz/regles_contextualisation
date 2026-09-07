@@ -1,8 +1,8 @@
 <!--
 Document : README.md
 Author : Bruno DELNOZ
-Version : V4.5
-Date : 2026-08-07
+Version : V4.6
+Date : 2026-09-03
 Repository : regles_contextualisation
 -->
 
@@ -16,9 +16,9 @@ The repository keeps reusable rules, custom-instruction helpers, AI working note
 
 | File | Version | Purpose |
 |---|---:|---|
-| `_RULES_SOLO232_CONTEXTUALISATION.md` | V232 | Global contextualization rules including automatic repository detection, immutable AGENTS/CLAUDE safeguards, additive `.gitignore` protection, permanent investigation reports, modes and public-safe interaction conventions. |
+| `_RULES_SOLO233_CONTEXTUALISATION.md` | V233 | Global contextualization rules including non-reductive Read Aloud mode, automatic re-emission of the last useful answer on activation, acquired-context/delta control, the Emploi/JOBS mode, automatic repository detection and immutable AGENTS/CLAUDE safeguards. |
 | `_RULES_SOLO410_SCRIPTING.md` | SOLO410 | Scripting workflow with automatic repository-mode activation, immutable AGENTS/CLAUDE protection, mandatory additive `.gitignore` baseline, artifacts, versioning, packaging, validation, documentation and non-regression controls. |
-| `_RULES_SOLO117_RULESOPERATOR.md` | SOLO117 | Rules-operator workflow synchronizing CTX232 and SCRIPT410 global repository protections, the verified Custom Instructions limit, GitHub version reporting, resilient loading, packaging and public-safe controls. |
+| `_RULES_SOLO118_RULESOPERATOR.md` | SOLO118 | Rules-operator workflow synchronized with CTX233 and SCRIPT410, including anti-overlap checks for new rules, non-reductive Read Aloud behavior and delivery controls. |
 
 ## Stable SOLOLAST aliases
 
@@ -51,9 +51,9 @@ It defines:
 ├── CLAUDE.md -> AGENTS.md
 ├── README.md
 ├── _CUSTOM_INSTRUCTIONS.md
-├── _RULES_SOLO232_CONTEXTUALISATION.md
+├── _RULES_SOLO233_CONTEXTUALISATION.md
 ├── _RULES_SOLO410_SCRIPTING.md
-├── _RULES_SOLO117_RULESOPERATOR.md
+├── _RULES_SOLO118_RULESOPERATOR.md
 ├── _RULES_SOLOLAST_CONTEXTUALISATION.md
 ├── _RULES_SOLOLAST_SCRIPTING.md
 ├── _RULES_SOLOLAST_RULESOPERATOR.md
