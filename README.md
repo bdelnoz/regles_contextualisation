@@ -1,7 +1,7 @@
 <!--
 Document : README.md
 Author : Bruno DELNOZ
-Version : V5.0
+Version : V5.1
 Date : 2026-09-12
 Repository : regles_contextualisation
 -->
@@ -34,9 +34,9 @@ Each `SOLOLAST` file is an exact active copy of its current numbered rule file.
 
 `_CUSTOM_INSTRUCTIONS.md` is intentionally small. It does not duplicate the SOLO rule bodies.
 
-Its job is only to bootstrap/rout the public SOLO families:
+Its job is only to bootstrap/route the public SOLO families:
 
-- normal new chat: load CTX;
+- on the first message of a normal new chat, before answering, read CTX from its direct RAW GitHub URL;
 - explicit Scripting request: CTX + Scripting;
 - clear repository evidence: activate Scripting repo at that moment;
 - explicit Operator request: CTX + Operator;
@@ -81,6 +81,27 @@ _RULES_PRIVATE_*
 ```
 
 Older numbered RULES are moved to `.old/` when superseded. Private modules stay local and ignored by Git.
+
+
+## Archive naming convention
+
+Before replacing a root Custom Instructions file, archive the current file in `.old/` **under a unique versioned filename**.
+
+Required pattern:
+
+```text
+.old/_CUSTOM_INSTRUCTIONS_YYYY-MM-DD_VNN_<size>chars.md
+.old/_CUSTOM_INSTRUCTION_1500_YYYY-MM-DD_VNN_<size>chars.md
+```
+
+Rules:
+
+- archive first, replace second;
+- never store an archived Custom Instructions file under its active root filename;
+- never reuse an existing archive filename;
+- never overwrite a previous archive;
+- increment `VNN` for every archived revision on the same history line;
+- keep all previous revisions for rollback.
 
 ## Public-safe policy
 
