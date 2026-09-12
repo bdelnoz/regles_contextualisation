@@ -1,8 +1,8 @@
 <!--
 Document : README.md
 Author : Bruno DELNOZ
-Version : V4.6
-Date : 2026-09-03
+Version : V5.0
+Date : 2026-09-12
 Repository : regles_contextualisation
 -->
 
@@ -10,15 +10,15 @@ Repository : regles_contextualisation
 
 Public Markdown repository for reusable SOLO operating rules used to guide AI-assisted work, especially with ChatGPT-style assistants.
 
-The repository keeps reusable rules, custom-instruction helpers, AI working notes, and feature-request material in plain Markdown so they can be reviewed, versioned, shared, and reused across AI sessions.
+The repository keeps reusable rules, lightweight bootstrap Custom Instructions, AI working notes, and feature-request material in plain Markdown so they can be reviewed, versioned, shared, and reused across AI sessions.
 
 ## Active public SOLO rule files
 
 | File | Version | Purpose |
 |---|---:|---|
-| `_RULES_SOLO233_CONTEXTUALISATION.md` | V233 | Global contextualization rules including non-reductive Read Aloud mode, automatic re-emission of the last useful answer on activation, acquired-context/delta control, the Emploi/JOBS mode, automatic repository detection and immutable AGENTS/CLAUDE safeguards. |
-| `_RULES_SOLO410_SCRIPTING.md` | SOLO410 | Scripting workflow with automatic repository-mode activation, immutable AGENTS/CLAUDE protection, mandatory additive `.gitignore` baseline, artifacts, versioning, packaging, validation, documentation and non-regression controls. |
-| `_RULES_SOLO118_RULESOPERATOR.md` | SOLO118 | Rules-operator workflow synchronized with CTX233 and SCRIPT410, including anti-overlap checks for new rules, non-reductive Read Aloud behavior and delivery controls. |
+| `_RULES_SOLO234_CONTEXTUALISATION.md` | V234 | Global contextualization rules: general SOLO behavior, Read Aloud, acquired-context/delta control, Emploi/JOBS mode, repository detection and immutable AGENTS/CLAUDE safeguards. |
+| `_RULES_SOLO412_SCRIPTING.md` | SOLO412 | Scripting workflow with mandatory pre-flight compliance and blocking multi-file ZIP delivery: one file direct; two or more files in one final ZIP. |
+| `_RULES_SOLO119_RULESOPERATOR.md` | SOLO119 | Rules-operator workflow for creating, correcting, merging, versioning, auditing and delivering SOLO rule files, with anti-overlap and non-regression controls. |
 
 ## Stable SOLOLAST aliases
 
@@ -28,20 +28,25 @@ The repository keeps reusable rules, custom-instruction helpers, AI working note
 | `_RULES_SOLOLAST_SCRIPTING.md` | latest scripting rule |
 | `_RULES_SOLOLAST_RULESOPERATOR.md` | latest rules-operator rule |
 
-The `SOLOLAST` files are public copies of the latest active version for each family. They do not create separate rule families.
+Each `SOLOLAST` file is an exact active copy of its current numbered rule file.
 
-## Custom Instructions
+## Custom Instructions = bootstrap only
 
-`_CUSTOM_INSTRUCTIONS.md` contains the compact ChatGPT Custom Instructions profile used to load the public SOLO rules from GitHub.
+`_CUSTOM_INSTRUCTIONS.md` is intentionally small. It does not duplicate the SOLO rule bodies.
 
-It defines:
+Its job is only to bootstrap/rout the public SOLO families:
 
-- first-message bypass behavior;
-- default contextualization loading;
-- complete three-family loading for unqualified requests to read or apply the SOLO rules;
-- later activation of contextualisation, scripting, or operator rules;
-- authorized fallback methods when an initial public GitHub read fails;
-- protection against claiming that a remote file was read when it was not actually read.
+- normal new chat: load CTX;
+- explicit Scripting request: CTX + Scripting;
+- clear repository evidence: activate Scripting repo at that moment;
+- explicit Operator request: CTX + Operator;
+- explicit request for all SOLO rules: CTX + Scripting + Operator;
+- reload in an already specialized chat: CTX + the family/families already active;
+- never claim a rule file was loaded without a real read.
+
+`_CUSTOM_INSTRUCTION_1500.md` is the reduced bootstrap variant for environments with a 1500-character Custom Instructions limit. It follows the same routing logic with less wording.
+
+Private/business-specific modes are not routed by these public Custom Instructions. Their dependencies and activation logic belong in their own private rule modules.
 
 ## Public repository structure
 
@@ -51,16 +56,15 @@ It defines:
 ├── CLAUDE.md -> AGENTS.md
 ├── README.md
 ├── _CUSTOM_INSTRUCTIONS.md
-├── _RULES_SOLO233_CONTEXTUALISATION.md
-├── _RULES_SOLO410_SCRIPTING.md
-├── _RULES_SOLO118_RULESOPERATOR.md
+├── _CUSTOM_INSTRUCTION_1500.md
+├── _RULES_SOLO234_CONTEXTUALISATION.md
+├── _RULES_SOLO412_SCRIPTING.md
+├── _RULES_SOLO119_RULESOPERATOR.md
 ├── _RULES_SOLOLAST_CONTEXTUALISATION.md
 ├── _RULES_SOLOLAST_SCRIPTING.md
 ├── _RULES_SOLOLAST_RULESOPERATOR.md
 └── AI_STUDYING_FILES/
 ```
-
-`AI_STUDYING_FILES/` is intentionally public. It may contain reusable AI study material, feature-request templates, question/answer documents, and related Markdown or PDF resources.
 
 ## Local-only material
 
@@ -76,37 +80,26 @@ Typical local-only paths and patterns include:
 _RULES_PRIVATE_*
 ```
 
-The generic `_RULES_PRIVATE_*` pattern is allowed in public documentation because it describes a generic exclusion rule.
-
-Public documentation must not expose the real full names of private rule modules.
+Older numbered RULES are moved to `.old/` when superseded. Private modules stay local and ignored by Git.
 
 ## Public-safe policy
 
-Public rule files must not contain:
+Public files must not contain personal case details, health/family details, secrets, credentials, sensitive local paths, exact private-module names, private archives or local ZIP payloads.
 
-- personal case details;
-- private health or family details;
-- secrets, tokens, credentials, or private paths;
-- exact private module names;
-- private archive content;
-- local-only ZIP payloads;
-- historical changelogs that belong in local documentation.
-
-When private context exists locally, it must remain ignored by Git and outside public packages.
+`AGENTS.md` is preserved. `CLAUDE.md` must remain the symlink `CLAUDE.md -> AGENTS.md`.
 
 ## How to use the rules
 
 1. Start with `_RULES_SOLOLAST_CONTEXTUALISATION.md`.
-2. Add `_RULES_SOLOLAST_SCRIPTING.md` for scripts, code, shell commands, repositories, packaging, file generation, or technical documentation.
-3. Add `_RULES_SOLOLAST_RULESOPERATOR.md` only when creating, modifying, merging, versioning, packaging, or auditing SOLO rule files.
+2. Add `_RULES_SOLOLAST_SCRIPTING.md` when Scripting is explicitly activated or repository evidence activates Scripting repo.
+3. Add `_RULES_SOLOLAST_RULESOPERATOR.md` when Operator is explicitly activated.
+4. Use `lis toutes les règles SOLO` only when all three public families are deliberately required.
 
-Example:
+## Versioning and delivery
 
-```text
-Load _RULES_SOLOLAST_CONTEXTUALISATION.md.
-For scripting work, also load _RULES_SOLOLAST_SCRIPTING.md.
-For SOLO rule maintenance, also load _RULES_SOLOLAST_RULESOPERATOR.md.
-```
+New rule changes create a new numbered version and update the matching `SOLOLAST` alias.
+
+SCRIPT412 requires a final pre-flight compliance check before delivery. A delivery containing two or more files must be packaged into one ZIP containing the final versions only; if any included file changes, the ZIP must be rebuilt.
 
 ## Chat title convention
 
@@ -117,24 +110,18 @@ For SOLO rule maintenance, also load _RULES_SOLOLAST_RULESOPERATOR.md.
 Examples:
 
 ```text
-000. operator +++OP117_CTX232_S410_20260807
-000. scripting +++SCRIPT_FIREWALL_CTX232_S410_20260807
-000. docs +++README_REPO_CONTEXT_RULES_20260802
+000. operator +++OP119_CTX234_S412_20260912
+000. scripting +++SCRIPT_REPO_CTX234_S412_20260912
+000. docs +++README_REPO_CONTEXT_RULES_20260912
 ```
-
-## Versioning
-
-New rule changes create a new numbered version.
-
-The stable `SOLOLAST` copies must be updated whenever the active version changes.
 
 ## Markdown-first design
 
-Markdown is used because it is easy to inspect, diff, reuse, archive, and review publicly.
+Markdown is used because it is easy to inspect, diff, reuse, archive and review.
 
 ## Important note
 
-These files are workflow and behavior instructions for AI-assisted work. They are not a security product, legal framework, medical guideline, or official AI benchmark.
+These files are workflow and behavior instructions for AI-assisted work. They are not a security product, legal framework, medical guideline or official AI benchmark.
 
 ## License
 

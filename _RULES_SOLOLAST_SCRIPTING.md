@@ -1,25 +1,25 @@
-Nom canonique : SOLO410  
+Nom canonique : SOLO412  
 Famille : SOLOxxx (xxx = numéro de version)  
-Version actuelle : 410
-Document : _RULES_SOLO410_SCRIPTING.md  
+Version actuelle : 412
+Document : _RULES_SOLO412_SCRIPTING.md  
 Auteur : non publié dans la version publique
 Email : non publié dans la version publique
-Date : 2026-08-07
-Statut : version scripting publique assainie ajoutant l’activation automatique du mode scripting repo sur preuves de dépôt, l’interdiction absolue de modifier AGENTS.md ou le lien CLAUDE.md, et un socle .gitignore obligatoire fusionné sans suppression des exclusions existantes.
+Date : 2026-09-12
+Statut : version scripting publique assainie ajoutant à SOLO411 un gate final obligatoire de livraison multi-fichiers : un seul fichier est livré directement ; dès deux fichiers, un ZIP unique contenant toutes les versions finales est obligatoire.
 
 CES RÈGLES DE SCRIPTING S’APPELLENT SOLOxxx, où xxx représente le numéro de version.
 
-Lorsque je dis SOLO410, je fais référence à la version 410 des règles.
+Lorsque je dis SOLO412, je fais référence à la version 412 des règles.
 
 Lorsque je dis SOLO suivi d’un numéro, par exemple SOLO405, je fais référence à la version correspondante.
 
 Lorsque je dis simplement SOLO, cela fait référence à la dernière version publiée.
 
-SOLO410 remplace SOLO409, SOLO408, SOLO407, SOLO406, SOLO405, SOLO404, SOLO403, SOLO402, SOLO401, SOLO400, SOLO311, SOLO310, SOLO309, SOLO308, SOLO307, SOLO306, SOLO305, SOLO304, SOLO303, SOLO302, SOLO301, SOLO300 et toutes les versions SOLO scripting précédentes pour les demandes de scripting, génération de code, correction de code, génération de fichiers techniques et génération de documentation liée à des scripts.
+SOLO412 remplace SOLO411, SOLO410, SOLO409, SOLO408, SOLO407, SOLO406, SOLO405, SOLO404, SOLO403, SOLO402, SOLO401, SOLO400, SOLO311, SOLO310, SOLO309, SOLO308, SOLO307, SOLO306, SOLO305, SOLO304, SOLO303, SOLO302, SOLO301, SOLO300 et toutes les versions SOLO scripting précédentes pour les demandes de scripting, génération de code, correction de code, génération de fichiers techniques et génération de documentation liée à des scripts.
 
-SOLO410 est conçu pour les LLM de chat, notamment ChatGPT, LeChat ou équivalents.
+SOLO412 est conçu pour les LLM de chat, notamment ChatGPT, LeChat ou équivalents.
 
-SOLO410 reprend la logique de travail de AGENTS.md sous une forme adaptée à un LLM de chat : mêmes attentes de rigueur, documentation, non-suppression, versionnement, spécifications et livrables complets, mais sans prétendre remplacer les règles système de la plateforme utilisée.
+SOLO412 reprend la logique de travail de AGENTS.md sous une forme adaptée à un LLM de chat : mêmes attentes de rigueur, documentation, non-suppression, versionnement, spécifications et livrables complets, avec contrôle pré-flight avant écriture/livraison et gate final ZIP obligatoire dès deux fichiers, sans prétendre remplacer les règles système de la plateforme utilisée.
 
 # Scripting Contextualisation Rules
 
@@ -385,17 +385,29 @@ Après avoir fourni le lien de téléchargement, l’assistant peut demander si 
 
 Si l’utilisateur demande explicitement le contenu inline, l’assistant peut l’afficher directement.
 
-### 6.2 Livraison ZIP non systématique en mode LLM scripting
+### 6.2 Livraison ZIP obligatoire dès deux fichiers
 
-En mode LLM scripting, l’assistant ne doit pas produire systématiquement une archive ZIP.
+Avant toute livraison, l’assistant doit compter le nombre total de fichiers qui constituent la livraison finale.
 
-Le type de livrable doit suivre la quantité réelle de fichiers à fournir :
+Le type de livrable est déterminé uniquement par ce nombre :
 
-- si un seul fichier est ajouté ou modifié, fournir uniquement ce fichier en téléchargement ;
-- si deux petits fichiers simples sont ajoutés ou modifiés, fournir les deux fichiers séparément en téléchargement ;
-- utiliser une archive ZIP seulement lorsqu’il y a plusieurs fichiers, une vraie arborescence, ou une demande explicite de ZIP par l’utilisateur.
+- si un seul fichier doit être livré, fournir directement ce fichier en téléchargement ;
+- si deux fichiers ou plus doivent être livrés, créer obligatoirement un ZIP contenant tous les fichiers de la livraison et fournir ce ZIP comme artefact principal ;
+- ne jamais obliger l’utilisateur à télécharger séparément plusieurs fichiers lorsqu’un ZIP est requis.
 
-Une archive ZIP doit contenir uniquement les fichiers projet strictement générés ou modifiés par l’assistant.
+Le comptage doit être effectué après toutes les générations, corrections et validations, immédiatement avant la réponse finale.
+
+Le fait d’avoir déjà créé, affiché ou fourni individuellement certains fichiers ne dispense jamais de créer le ZIP final lorsqu’au moins deux fichiers font partie de la livraison.
+
+Le ZIP final doit :
+
+- contenir la totalité des fichiers attendus ;
+- ne contenir aucun fichier manquant ;
+- ne contenir aucun fichier obsolète, intermédiaire ou appartenant à une version précédente ;
+- préserver les noms définitifs des fichiers ;
+- être créé après toutes les corrections et validations ;
+- être recréé si un seul fichier inclus est modifié après la génération du ZIP ;
+- contenir uniquement les fichiers réellement attendus pour la livraison courante.
 
 Une archive ZIP ne doit jamais contenir AGENTS.md, CLAUDE.md, ni aucun symlink d’instruction explicitement lié à AGENTS.md ou CLAUDE.md, sauf demande explicite de l’utilisateur.
 
@@ -1507,9 +1519,9 @@ Une tâche de scripting en mode repo est complète seulement si :
 - la suspension temporaire des Markdown ne suspend jamais le maintien du changelog interne du script ;
 - les secrets ne sont pas intégrés au code ;
 - les artefacts sont fournis en téléchargement lorsque possible ;
-- un ZIP n’est fourni que s’il y a plusieurs fichiers, une vraie arborescence, ou une demande explicite de ZIP ;
 - pour un seul fichier modifié, seul ce fichier est fourni en téléchargement ;
-- pour deux petits fichiers simples, les deux fichiers sont fournis séparément sauf demande explicite de ZIP ;
+- dès que deux fichiers ou plus composent la livraison finale, un ZIP unique contenant tous les fichiers finaux est obligatoire ;
+- aucune réponse finale ne doit présenter plusieurs liens de téléchargement séparés lorsqu’un ZIP est requis ;
 - les archives ZIP ne contiennent pas AGENTS.md, CLAUDE.md ou symlink d’instruction explicitement lié à AGENTS.md ou CLAUDE.md, sauf demande explicite ;
 - aucun fichier `gitignore_additions_*` n’est créé ;
 - aucune modification `.gitignore` n’est proposée sans demander le `.gitignore` existant ou son template ;
@@ -2045,3 +2057,66 @@ Les doublons strictement identiques peuvent être dédupliqués sans modifier la
 Si le `.gitignore` existant n’est ni fourni ni accessible, l’assistant doit le demander avant de produire sa version finale. Il ne doit pas supposer que le socle minimal représente tout le fichier existant.
 
 Avant livraison, vérifier que chaque entrée obligatoire est présente, que les anciennes exclusions sont conservées et que le `.gitignore` livré est celui réellement utilisé dans les ZIP concernés.
+
+------------------------------------------------------------------------
+
+## 28. AJOUT SOLO411 — MANDATORY PRE-FLIGHT COMPLIANCE GATE
+
+Avant toute création, modification, remplacement, renommage, déplacement, packaging ou livraison d’un fichier dans un contexte soumis à SOLO Scripting, l’assistant doit effectuer un contrôle de conformité pré-flight explicite avec toutes les règles SOLO actuellement chargées et applicables.
+
+Ce contrôle est obligatoire avant toute écriture ou livraison. Il complète les gates et protections déjà définis dans SOLO, notamment les règles de conservation et non-régression, de versionnement, de taille, de header/changelog, de packaging, de `.gitignore`, de protection `AGENTS.md` / `CLAUDE.md` et de livraison. Il ne crée pas de règle parallèle lorsque ces contrôles existent déjà : il les transforme en checklist d’exécution obligatoire avant action.
+
+L’assistant ne doit jamais se fier à sa mémoire, à une convention habituelle, à une bonne pratique ou à ce qui lui semble plus propre lorsqu’une règle SOLO chargée définit déjà le comportement attendu.
+
+Le contrôle doit confirmer, lorsque pertinent :
+
+- conservation intégrale des fonctionnalités, comportements, commentaires, validations, logs, aide, exemples, options CLI, historiques, changelogs et contenus existants ;
+- absence de suppression, condensation, simplification ou réduction non demandée ;
+- incrémentation correcte de version et mise à jour de la date/heure lorsque les règles de versionnement l’exigent ;
+- respect du gate de taille et de comparaison avec la version précédente lorsque ce contrôle est applicable ;
+- respect des headers, changelogs et historiques append-only applicables ;
+- respect strict des protections de dépôt, notamment `AGENTS.md`, `CLAUDE.md` et les symlinks d’instruction ;
+- modification du `.gitignore` uniquement de manière additive : conservation de toutes les exclusions existantes, suppression autorisée des seuls doublons strictement identiques et ajout des exclusions obligatoires manquantes ;
+- respect du mode de livraison et de packaging, notamment la fourniture d’un ZIP lorsque les règles applicables l’imposent ;
+- absence de régression fonctionnelle, documentaire, de validation ou de packaging.
+
+Si une seule règle applicable ne peut pas être vérifiée avec certitude, l’assistant doit, avant toute écriture ou livraison :
+
+1. stopper l’action concernée ;
+2. relire la règle ou la source de référence concernée ;
+3. comparer l’ancien et le nouveau fichier lorsque cette comparaison est applicable ;
+4. corriger l’écart ;
+5. répéter le contrôle jusqu’à conformité.
+
+La formulation « les règles étaient chargées mais je ne les ai pas appliquées » ne constitue jamais une justification acceptable. Une règle SOLO chargée et applicable est une contrainte d’exécution, pas une recommandation.
+
+Le pre-flight doit être répété à chaque nouvelle version livrée, même si une version précédente du même fichier a déjà été contrôlée. Un contrôle antérieur ne vaut jamais validation automatique d’une nouvelle version.
+
+Règle centrale : **aucun fichier soumis à SOLO Scripting ne doit être écrit ou livré avant validation explicite des règles SOLO applicables au changement courant.**
+
+------------------------------------------------------------------------
+
+## 29. AJOUT SOLO412 — MANDATORY MULTI-FILE ZIP DELIVERY GATE
+
+Cette règle formalise le contrôle final obligatoire de livraison défini par la section `6.2`.
+
+Avant toute réponse finale contenant des artefacts téléchargeables, l’assistant doit effectuer le gate suivant après toutes les modifications, corrections et validations :
+
+1. compter les fichiers qui composent réellement la livraison finale ;
+2. si le total est égal à `1`, livrer directement ce fichier ;
+3. si le total est supérieur ou égal à `2`, vérifier qu’un ZIP final existe ;
+4. ouvrir ou inspecter le ZIP pour confirmer qu’il contient exactement les versions finales attendues ;
+5. recréer le ZIP si un fichier a été modifié après sa génération ;
+6. fournir le ZIP comme artefact principal de livraison ;
+7. seulement après validation de ces points, envoyer la réponse finale.
+
+Une livraison de deux fichiers ou plus sans ZIP est une non-conformité bloquante.
+
+L’assistant ne doit jamais considérer comme conforme une réponse qui impose plusieurs téléchargements séparés alors que deux fichiers ou plus appartiennent à la même livraison.
+
+La présence antérieure de liens individuels, de fichiers déjà créés dans le chat ou de fichiers déjà affichés ne change pas cette obligation.
+
+Cette règle fait partie du pre-flight de SOLO411 et doit être vérifiée à chaque nouvelle livraison. Elle prévaut sur toute ancienne exception autorisant la livraison séparée de deux petits fichiers.
+
+Règle centrale : **1 fichier = livraison directe ; 2 fichiers ou plus = ZIP obligatoire contenant toutes les versions finales.**
+

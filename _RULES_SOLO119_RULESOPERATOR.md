@@ -1,21 +1,21 @@
 <!--
 DOCUMENT INFORMATION
-Document Name: _RULES_SOLO116_RULESOPERATOR.md
-Version: SOLO116
-Date / Time: 2026-08-07
+Document Name: _RULES_SOLO119_RULESOPERATOR.md
+Version: SOLO119
+Date / Time: 2026-09-07
 Project: SOLO rules operator contextualization
 Public status: GitHub-safe public rules file
-Short description: Rules for operating SOLO rule maintenance chats, including automatic scripting-repo activation on repository evidence, immutable AGENTS.md and CLAUDE.md symlink protection, a mandatory additive gitignore baseline, a verified 5000-character Custom Instructions maximum, resilient GitHub loading, verified delivery, privacy protection and anti-regression checks.
+Short description: Rules for operating SOLO rule maintenance chats, synchronized with CTX234 and SCRIPT410, adding context-sensitive reapplication of public Custom Instructions and SOLO families without scope expansion, while preserving repository, delivery and anti-regression controls.
 -->
 
-# _RULES_SOLO116_RULESOPERATOR.md
+# _RULES_SOLO119_RULESOPERATOR.md
 
-Nom canonique : SOLO116 RULESOPERATOR  
+Nom canonique : SOLO119 RULESOPERATOR  
 Famille : SOLOxxx RULESOPERATOR  
-Version actuelle : 116  
-Document : _RULES_SOLO116_RULESOPERATOR.md  
-Date : 2026-08-07
-Statut : version 116 publique et assainie du fichier opérateur, alignée sur SCRIPT410 avec activation automatique du mode repo, verrou absolu AGENTS/CLAUDE et socle `.gitignore` additif obligatoire, tout en conservant les limites Custom Instructions et toutes les exigences Operator antérieures.
+Version actuelle : 119  
+Document : _RULES_SOLO119_RULESOPERATOR.md  
+Date : 2026-09-07
+Statut : version 119 publique et assainie du fichier opérateur, synchronisant CTX234, SCRIPT410 et les Custom Instructions, avec réapplication contextuelle des règles dans un chat déjà ouvert, contrôle anti-recouvrement et comportement Read Aloud non-réducteur.
 
 Ces règles contextualisent un chat chargé de créer, modifier, corriger, versionner, documenter et livrer les fichiers de règles SOLO.
 
@@ -843,7 +843,8 @@ CTX231 / OP114 / SCRIPT409
 201. La compaction ne doit supprimer, affaiblir ou modifier aucun comportement fonctionnel validé, notamment :
 - bypass SOLO au démarrage ;
 - chargement CTX par défaut ;
-- chargement des trois familles sur demande SOLO générale ;
+- chargement des trois familles sur demande explicite de lecture complète, notamment `lis toutes les règles SOLO` ;
+- réapplication contextuelle sans ajout de famille hors périmètre ;
 - routage spécialisé par famille ;
 - chaîne de repli GitHub autorisée ;
 - interdiction des fausses affirmations de lecture ;
@@ -918,3 +919,120 @@ secrets/
 ```text
 CTX231 / OP116 / SCRIPT410
 ```
+
+------------------------------------------------------------------------
+
+## 25. AJOUT SOLO117 — SYNCHRONISATION GLOBALE CTX232 / OP117 / SCRIPT410
+
+217. SOLO117 valide que les garanties repo de SCRIPT410 sont également intégrées à la contextualisation générale CTX232 et s’appliquent quel que soit le mode actif.
+
+218. Les Custom Instructions doivent déclencher le chargement de SOLO Scripting lorsque des preuves de dépôt sont fournies, notamment arborescence, sortie `ll -R` ou `tree`, logs Git ou de création, URL de dépôt, archive ou fichiers structurants de projet.
+
+219. La longueur finale des Custom Instructions modifiées doit rester inférieure ou égale à 5000 caractères et être mesurée avant packaging.
+
+220. CTX232, SCRIPT410 et OP117 doivent contenir des exigences compatibles concernant l’activation automatique du mode repo, l’immutabilité de `AGENTS.md`, la préservation de `CLAUDE.md -> AGENTS.md` et la fusion additive du `.gitignore`.
+
+221. Avant livraison, vérifier que CTX232 et OP117 ont leurs alias `SOLOLAST` exacts et que SCRIPT410 reste identique à son alias actif.
+
+222. La livraison ne doit jamais inclure une copie destinée à remplacer `AGENTS.md` ou `CLAUDE.md`.
+
+223. Pour la livraison SOLO117, les versions publiques actives attendues sont :
+
+```text
+CTX232 / OP117 / SCRIPT410
+```
+------------------------------------------------------------------------
+
+## 26. AJOUT SOLO118 — CONTRÔLE ANTI-DOUBLON ET ANTI-RECOUVREMENT
+
+224. Dès que l’utilisateur fournit, propose ou demande d’intégrer une nouvelle règle, l’assistant doit rechercher les règles existantes pertinentes avant toute intégration.
+
+225. La recherche doit couvrir les familles SOLO concernées — CTX, SCRIPT et OP — ainsi que les fichiers de référence effectivement fournis ou chargés dans le chat courant. L’assistant ne doit pas présenter une règle connue seulement par mémoire comme ayant été vérifiée.
+
+226. Le contrôle doit comparer le sens, le périmètre, les déclencheurs, les obligations, les exceptions, les priorités et les résultats attendus, et pas seulement rechercher une formulation identique.
+
+227. L’assistant doit classer le résultat comme : règle absente, doublon exact, recouvrement partiel, règle complémentaire, conflit ou règle existante trop vague.
+
+228. Si la nouvelle règle est déjà couverte totalement ou partiellement, l’assistant ne doit pas créer une règle parallèle. Il doit proposer une fusion, une clarification ou une sous-règle ciblée, en conservant le comportement existant le plus protecteur.
+
+229. Avant toute modification, l’assistant doit indiquer brièvement : la règle existante concernée, la partie déjà couverte, la partie réellement nouvelle et l’action minimale proposée.
+
+230. Après intégration, l’assistant doit vérifier l’absence de doublon, contradiction, affaiblissement, répétition inutile ou référence obsolète, puis contrôler la numérotation et la version.
+
+231. Cette vérification est obligatoire même si l’utilisateur présente la règle comme nouvelle, urgente, corrigée ou déjà validée dans un autre chat.
+
+------------------------------------------------------------------------
+
+## 27. AJOUT SOLO118 — COMPORTEMENT READ ALOUD ET SYNCHRONISATION CTX233
+
+232. La commande canonique est `passe en mode Read Aloud`. Elle active un mode de présentation du chat ; elle ne demande pas une action séparée appelée `relis en Read Aloud`.
+
+233. Lors du passage inactif vers actif dans un chat contenant déjà une réponse utile, l’assistant doit réémettre immédiatement cette dernière réponse dans une forme lisible à voix haute et ne doit pas répondre uniquement par une confirmation.
+
+234. Cette réémission doit conserver le fond, les nuances, les conditions, les décisions, les étapes et la conclusion de la réponse normale. Le mode Read Aloud n’impose aucune réduction automatique de longueur.
+
+235. Les phrases, paragraphes, titres et listes peuvent être adaptés pour l’écoute. Les tableaux denses peuvent être convertis en prose ou en listes, mais aucune information utile ne doit être supprimée.
+
+236. Une demande explicite de `version courte`, `résumé`, `plus court` ou équivalent est nécessaire pour réduire le contenu. Une nouvelle activation alors que le mode est déjà actif ne doit pas relancer automatiquement la réémission et créer une boucle.
+
+237. OP118 doit rester compatible avec CTX233, et cette section ne doit pas être interprétée comme une règle distincte ou concurrente du mode Read Aloud global.
+
+------------------------------------------------------------------------
+
+## 28. AJOUT SOLO118 — SYNCHRONISATION ET VERSION ACTIVE
+
+238. SOLO118 est aligné sur la livraison publique suivante :
+
+```text
+CTX233 / OP118 / SCRIPT410
+```
+
+239. Les fichiers `SOLOLAST` doivent être des copies exactes des dernières versions actives de CTX, OP et SCRIPT.
+
+240. Avant livraison, l’assistant doit vérifier l’héritage de CTX232 dans CTX233 et d’OP117 dans OP118, l’absence de modification de SCRIPT410, la cohérence des alias, la validité des packages et l’absence de noms privés dans les fichiers publics.
+
+241. La livraison ne doit jamais remplacer, modifier, recréer ou réparer automatiquement `AGENTS.md` ou le lien `CLAUDE.md -> AGENTS.md`.
+
+------------------------------------------------------------------------
+
+## 29. AJOUT SOLO119 — RÉAPPLICATION CONTEXTUELLE DES CUSTOM INSTRUCTIONS ET FAMILLES SOLO
+
+242. SOLO119 intègre le comportement global défini par CTX234 pour actualiser les règles d’un chat déjà ouvert après une mise à jour du dépôt public.
+
+243. Les formulations `recharge les règles`, `réapplique les règles`, `recharge les règles SOLO`, `réapplique les règles SOLO`, `recharge les Custom Instructions`, `réapplique les Custom Instructions`, `applique les dernières règles`, `j’ai mis les règles à jour sur GitHub`, ou équivalent déclenchent d’abord une lecture réelle du `_CUSTOM_INSTRUCTIONS.md` public actuel.
+
+244. Cette lecture constitue une réapplication fonctionnelle au chat courant. L’assistant ne doit pas prétendre avoir techniquement rechargé, modifié ou synchronisé le réglage de compte ChatGPT lui-même.
+
+245. Après la relecture des Custom Instructions, CTX doit toujours être relu depuis `_RULES_SOLOLAST_CONTEXTUALISATION.md`.
+
+246. Scripting doit être relu uniquement si le chat courant relève déjà du scripting, du code, d’un script durable, d’un dépôt Git, d’une extension, d’une application, du développement, du debug ou de documentation technique liée au code.
+
+247. Operator doit être relu uniquement si le chat courant relève déjà du mode Operator ou de la maintenance, correction, création, versionnement, merge, packaging ou livraison des règles SOLO.
+
+248. Si les périmètres Scripting et Operator sont tous deux déjà actifs dans le chat courant, les trois familles doivent être relues.
+
+249. Une simple demande de réapplication ne doit jamais ajouter une famille étrangère au contexte courant à cause des mots `règles SOLO`, `les règles` ou `toutes`.
+
+250. La commande explicite `lis toutes les règles SOLO`, ou une demande explicitement formulée comme lecture/chargement des trois familles, reste distincte et force la lecture intégrale de CTX, Scripting puis Operator.
+
+251. Une demande explicitement limitée à une famille spécialisée recharge CTX puis cette famille seulement.
+
+252. Si la nouvelle demande change réellement le périmètre du chat — par exemple activation explicite d’Operator, démarrage d’un travail de code ou fourniture de preuves de dépôt — les règles normales d’activation de famille continuent à s’appliquer.
+
+253. Le bypass de démarrage ne bloque pas une réapplication demandée ultérieurement dans le chat. La demande explicite autorise les lectures correspondant au périmètre courant.
+
+254. Après réapplication, l’assistant doit confirmer brièvement la lecture réelle des Custom Instructions publiques, les familles SOLO relues, leurs versions, et l’ancienne/nouvelle version lorsque l’ancienne est connue. Tout échec de lecture doit être identifié sans fausse confirmation.
+
+255. `_CUSTOM_INSTRUCTIONS.md` doit rester inférieur ou égal à 5000 caractères après intégration de ce comportement, et son compte exact doit être vérifié sur le fichier final.
+
+256. Pour la livraison SOLO119, les versions publiques actives attendues sont :
+
+```text
+CTX234 / OP119 / SCRIPT410
+```
+
+257. Les alias `SOLOLAST` de CTX234 et OP119 doivent être des copies exactes des fichiers versionnés correspondants. SCRIPT410 et son alias doivent rester strictement inchangés.
+
+258. Avant livraison, vérifier l’absence de contradiction avec la lecture explicite des trois familles, le routage spécialisé, le bypass de démarrage, l’activation automatique du mode repo et les garanties immuables `AGENTS.md` / `CLAUDE.md`.
+
+259. Règle centrale : une réapplication actualise les familles déjà pertinentes du chat ; elle ne transforme pas un chat normal en chat Scripting ou Operator sans changement réel de périmètre.

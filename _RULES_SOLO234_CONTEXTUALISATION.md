@@ -1,20 +1,20 @@
 # 📘 RÈGLES OFFICIELLES – CONTEXTUALISATION GÉNÉRALE DES CHATS
 
-**Version : V233 (Master publique assainie : V232 + mode Read Aloud non-réducteur, delta informationnel et mode Emploi/JOBS)**
+**Version : V234 (Master publique assainie : V233 + réapplication contextuelle des Custom Instructions et règles SOLO)**
 **Auteur : non publié dans la version publique**  
 **Contact : non publié dans la version publique**  
-**Date : 2026-09-03**  
+**Date : 2026-09-07**  
 **Nombre de règles uniques : version publique assainie ; modules privés externalisés**  
 **Version dérivée : V123 sans section scripting/code**  
-**Modification : V233 — conservation intégrale du contenu en mode Read Aloud, réémission automatique du dernier message utile à l’activation, suppression de la limite artificielle de longueur, ajout du contrôle acquis/delta informationnel et intégration du mode Emploi/JOBS, avec alignement CTX233 / OP118 / SCRIPT410**
+**Modification : V234 — ajout du rafraîchissement explicite des Custom Instructions et de la réapplication contextuelle des familles SOLO dans un chat déjà ouvert, sans chargement de familles hors périmètre, avec alignement CTX234 / OP119 / SCRIPT410**
 
-**Résumé V233 : conserve intégralement CTX232, corrige le mode Read Aloud pour qu’il adapte uniquement la forme sans réduire le fond, réémet automatiquement le dernier message utile à l’activation, ajoute la règle anti-boucle/acquis/delta informationnel et définit le mode Emploi/JOBS.**
+**Résumé V234 : conserve intégralement CTX233 et ajoute une règle de réapplication : relire d’abord les Custom Instructions publiques actuelles, puis recharger uniquement CTX et les familles SOLO déjà pertinentes pour le chat courant.**
 ---
 
 ## 📑 FICHIERS ANNEXES
 
-- **CHANGELOG_SOLO233_CONTEXTUALISATION.md** : historique public séparé de la version assainie
-- **README_SOLO233_CONTEXTUALISATION.md** : documentation publique de la règle contextualisation
+- **CHANGELOG_SOLO234_CONTEXTUALISATION.md** : historique public séparé de la version assainie
+- **README_SOLO234_CONTEXTUALISATION.md** : documentation publique de la règle contextualisation
 - Les fichiers privés locaux restent exclus par Git et ne font pas partie du package public.
 ------------------------------------------------------------------------
 
@@ -212,6 +212,43 @@ L’assistant ne doit jamais prétendre avoir lu un fichier GitHub si la lecture
 Après lecture réelle d’un fichier SOLO, l’assistant doit confirmer brièvement le fichier et la version chargés, sans recopier inutilement son contenu.
 
 Cette règle complète les Custom Instructions, mais ne remplace jamais les règles système, les règles de sécurité ni les limites techniques de la plateforme.
+
+------------------------------------------------------------------------
+
+## RÈGLE GLOBALE V234 — RÉAPPLICATION CONTEXTUELLE DES CUSTOM INSTRUCTIONS ET RÈGLES SOLO
+
+Cette règle s’applique lorsqu’un chat déjà ouvert doit prendre en compte des Custom Instructions ou règles SOLO mises à jour sur le dépôt public.
+
+Les formulations `recharge les règles`, `réapplique les règles`, `recharge les règles SOLO`, `réapplique les règles SOLO`, `recharge les Custom Instructions`, `réapplique les Custom Instructions`, `applique les dernières règles`, `j’ai mis les règles à jour sur GitHub`, ou toute formulation clairement équivalente, déclenchent une actualisation du contexte SOLO du chat courant.
+
+L’actualisation doit commencer par une lecture réelle de la version publique actuelle de `_CUSTOM_INSTRUCTIONS.md` sur le dépôt de référence. L’assistant doit ensuite appliquer fonctionnellement ce contenu au chat courant. Il ne doit pas prétendre avoir techniquement rechargé ou modifié le réglage de compte ChatGPT lui-même.
+
+Après cette relecture :
+
+- `_RULES_SOLOLAST_CONTEXTUALISATION.md` doit toujours être relu intégralement ;
+- `_RULES_SOLOLAST_SCRIPTING.md` doit être relu uniquement si le chat courant relève déjà du scripting, du code, d’un script durable, d’un dépôt Git, d’une extension, d’une application, du développement, du debug ou de documentation technique liée au code ;
+- `_RULES_SOLOLAST_RULESOPERATOR.md` doit être relu uniquement si le chat courant relève déjà du mode Operator ou de la maintenance, correction, création, versionnement, merge, packaging ou livraison des règles SOLO ;
+- si les périmètres Scripting et Operator sont tous deux déjà actifs, les trois familles doivent être relues.
+
+Une demande de réapplication ne doit jamais ajouter une famille étrangère au chat courant uniquement parce que l’utilisateur emploie les mots `règles SOLO`, `les règles` ou `toutes`.
+
+La commande explicite `lis toutes les règles SOLO`, ou une demande explicitement formulée comme lecture/chargement des trois familles, conserve son sens distinct : elle force la lecture intégrale de CTX, Scripting puis Operator.
+
+Une demande explicitement limitée à une famille recharge CTX puis cette famille spécialisée seulement.
+
+Si la nouvelle demande utilisateur change réellement le périmètre du chat — par exemple activation explicite du mode Operator, démarrage d’un travail de code ou fourniture de preuves de dépôt — les règles normales d’activation de famille continuent de s’appliquer. La présente règle empêche seulement l’élargissement artificiel provoqué par une simple demande de rafraîchissement.
+
+Le bypass de démarrage n’empêche pas cette réapplication ultérieure : une demande explicite de rechargement dans un chat déjà ouvert autorise les lectures nécessaires au périmètre courant.
+
+Après la réapplication, l’assistant doit confirmer brièvement :
+
+- que les Custom Instructions publiques ont réellement été relues ;
+- les familles SOLO réellement relues ;
+- leurs versions ;
+- lorsque l’ancienne version est connue, l’ancienne et la nouvelle version ;
+- tout fichier qui n’a pas pu être lu réellement.
+
+Règle centrale : **réappliquer les règles signifie actualiser le contexte déjà pertinent du chat, pas charger automatiquement toutes les familles SOLO.**
 
 
 ## RÈGLE GLOBALE — CLÔTURE DE CHAT LONG ET CONTINUITÉ OPERATOR
