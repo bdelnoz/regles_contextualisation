@@ -1,7 +1,7 @@
 <!--
 Document : README.md
 Author : Bruno DELNOZ
-Version : V5.1
+Version : V5.3
 Date : 2026-09-12
 Repository : regles_contextualisation
 -->
@@ -18,7 +18,7 @@ The repository keeps reusable rules, lightweight bootstrap Custom Instructions, 
 |---|---:|---|
 | `_RULES_SOLO234_CONTEXTUALISATION.md` | V234 | Global contextualization rules: general SOLO behavior, Read Aloud, acquired-context/delta control, Emploi/JOBS mode, repository detection and immutable AGENTS/CLAUDE safeguards. |
 | `_RULES_SOLO412_SCRIPTING.md` | SOLO412 | Scripting workflow with mandatory pre-flight compliance and blocking multi-file ZIP delivery: one file direct; two or more files in one final ZIP. |
-| `_RULES_SOLO119_RULESOPERATOR.md` | SOLO119 | Rules-operator workflow for creating, correcting, merging, versioning, auditing and delivering SOLO rule files, with anti-overlap and non-regression controls. |
+| `_RULES_SOLO121_RULESOPERATOR.md` | SOLO121 | Rules-operator workflow with anti-overlap/non-regression controls and mandatory post-push new-chat validation prompt delivered with every GitHub RULES package. |
 
 ## Stable SOLOLAST aliases
 
@@ -59,7 +59,7 @@ Private/business-specific modes are not routed by these public Custom Instructio
 ├── _CUSTOM_INSTRUCTION_1500.md
 ├── _RULES_SOLO234_CONTEXTUALISATION.md
 ├── _RULES_SOLO412_SCRIPTING.md
-├── _RULES_SOLO119_RULESOPERATOR.md
+├── _RULES_SOLO121_RULESOPERATOR.md
 ├── _RULES_SOLOLAST_CONTEXTUALISATION.md
 ├── _RULES_SOLOLAST_SCRIPTING.md
 ├── _RULES_SOLOLAST_RULESOPERATOR.md
@@ -122,6 +122,22 @@ New rule changes create a new numbered version and update the matching `SOLOLAST
 
 SCRIPT412 requires a final pre-flight compliance check before delivery. A delivery containing two or more files must be packaged into one ZIP containing the final versions only; if any included file changes, the ZIP must be rebuilt.
 
+
+## Mandatory post-push SOLO validation
+
+SOLO121 adds a delivery acceptance gate for public RULES updates.
+
+After the user performs the local commit/push (`gita` may be the user's local alias) and confirms that the push is complete, the Operator must immediately print the ready-to-run post-push test prompts directly in the chat. No persistent `POST_PUSH_TEST_PROMPT.md` file is created or shipped.
+
+For a full three-family validation the canonical sequence is:
+
+1. new chat -> CTX only;
+2. repository evidence -> CTX + Scripting;
+3. explicit Operator activation -> CTX + Scripting + Operator;
+4. reload -> the same active families, with no extra family.
+
+A RULES update is not considered post-push validated until the prompts printed in chat have been run and the observed versions match the expected published versions.
+
 ## Chat title convention
 
 ```text
@@ -131,7 +147,7 @@ SCRIPT412 requires a final pre-flight compliance check before delivery. A delive
 Examples:
 
 ```text
-000. operator +++OP119_CTX234_S412_20260912
+000. operator +++OP121_CTX234_S412_20260912
 000. scripting +++SCRIPT_REPO_CTX234_S412_20260912
 000. docs +++README_REPO_CONTEXT_RULES_20260912
 ```

@@ -1,21 +1,21 @@
 <!--
 DOCUMENT INFORMATION
-Document Name: _RULES_SOLO119_RULESOPERATOR.md
-Version: SOLO119
-Date / Time: 2026-09-07
+Document Name: _RULES_SOLO121_RULESOPERATOR.md
+Version: SOLO121
+Date / Time: 2026-09-12
 Project: SOLO rules operator contextualization
 Public status: GitHub-safe public rules file
-Short description: Rules for operating SOLO rule maintenance chats, synchronized with CTX234 and SCRIPT410, adding context-sensitive reapplication of public Custom Instructions and SOLO families without scope expansion, while preserving repository, delivery and anti-regression controls.
+Short description: Rules for operating SOLO rule maintenance chats, synchronized with CTX234 and SCRIPT412, adding mandatory post-push new-chat validation generated directly in chat after push confirmation, without creating a persistent test-prompt file.
 -->
 
-# _RULES_SOLO119_RULESOPERATOR.md
+# _RULES_SOLO121_RULESOPERATOR.md
 
-Nom canonique : SOLO119 RULESOPERATOR  
+Nom canonique : SOLO121 RULESOPERATOR  
 Famille : SOLOxxx RULESOPERATOR  
-Version actuelle : 119  
-Document : _RULES_SOLO119_RULESOPERATOR.md  
-Date : 2026-09-07
-Statut : version 119 publique et assainie du fichier opérateur, synchronisant CTX234, SCRIPT410 et les Custom Instructions, avec réapplication contextuelle des règles dans un chat déjà ouvert, contrôle anti-recouvrement et comportement Read Aloud non-réducteur.
+Version actuelle : 121  
+Document : _RULES_SOLO121_RULESOPERATOR.md  
+Date : 2026-09-12
+Statut : version 121 publique et assainie du fichier opérateur, synchronisant CTX234, SCRIPT412 et les Custom Instructions, avec validation post-push obligatoire générée dans le chat après confirmation du push, sans fichier de prompt persistant.
 
 Ces règles contextualisent un chat chargé de créer, modifier, corriger, versionner, documenter et livrer les fichiers de règles SOLO.
 
@@ -1036,3 +1036,84 @@ CTX234 / OP119 / SCRIPT410
 258. Avant livraison, vérifier l’absence de contradiction avec la lecture explicite des trois familles, le routage spécialisé, le bypass de démarrage, l’activation automatique du mode repo et les garanties immuables `AGENTS.md` / `CLAUDE.md`.
 
 259. Règle centrale : une réapplication actualise les familles déjà pertinentes du chat ; elle ne transforme pas un chat normal en chat Scripting ou Operator sans changement réel de périmètre.
+
+
+------------------------------------------------------------------------
+
+## 30. AJOUT SOLO120 — VALIDATION POST-PUSH OBLIGATOIRE ET PROMPT DE TEST
+
+260. Une livraison de nouvelles RULES SOLO destinées au dépôt public ne se termine pas au ZIP. L’Operator doit préparer, dans la même livraison, le contrôle post-push permettant de vérifier que les versions réellement publiées sont celles attendues et que leur bootstrap/routage fonctionne.
+
+261. Le contrôle post-push complète les contrôles de packaging, alias `SOLOLAST`, non-régression, taille, documentation et cohérence déjà imposés. Il ne les remplace pas.
+
+262. Pour toute nouvelle version de CTX, Scripting ou Operator destinée à GitHub, la réponse de livraison doit fournir dans la même foulée :
+- le package ZIP final ;
+- l’identification des nouvelles versions attendues ;
+- un prompt ou une séquence de prompts post-push prête à copier-coller dans un nouveau chat ;
+- les résultats attendus pour chaque étape du test.
+
+263. L’utilisateur reste responsable de la mise à jour de son dépôt local et de son `git push`. Lorsque l’utilisateur utilise `gita`, ce terme peut désigner son alias local de commit/push ; l’Operator ne doit pas prétendre l’avoir exécuté s’il ne dispose pas réellement de l’environnement ou de l’action correspondante.
+
+264. Le prompt de test doit être généré AVANT la fin de la livraison, sans attendre que l’utilisateur revienne demander comment tester. Il doit être adapté aux versions exactes de la livraison courante.
+
+265. Si plusieurs familles publiques sont concernées, le test doit au minimum permettre de vérifier séparément :
+1. bootstrap d’un nouveau chat : CTX uniquement ;
+2. activation Scripting sur preuve claire de repository ;
+3. activation explicite Operator ;
+4. relecture/reload des familles déjà actives sans ajout parasite.
+
+266. Pour un changement limité à une seule famille, l’Operator peut réduire le test aux étapes nécessaires, mais il doit toujours vérifier le bootstrap ou le routage qui permet d’atteindre réellement la nouvelle version.
+
+267. Le test doit demander au nouveau chat de ne déclarer comme lus que les fichiers réellement lus et de retourner leur version exacte. Une simple réponse basée sur mémoire, contexte antérieur ou hypothèse est insuffisante.
+
+268. Le résultat attendu doit utiliser les versions actives exactes de la livraison. Exemple générique :
+```text
+CTX<version> / SCRIPT<version> / OP<version>
+```
+L’Operator ne doit jamais réutiliser mécaniquement des numéros d’une livraison précédente.
+
+269. Lorsque le test est séquentiel, chaque message de test doit être fourni dans l’ordre exact d’exécution et préciser qu’il doit être envoyé dans le même chat après le bootstrap initial, sauf pour le premier message qui doit impérativement être envoyé dans un nouveau chat.
+
+270. La validation post-push n’est acquise que lorsque le résultat observé correspond aux versions et familles attendues. Si une version distante est ancienne, un alias incorrect, une famille absente ou une famille parasite apparaît, l’Operator doit classer le test en échec et rechercher la cause avant de considérer la livraison comme finalisée.
+
+271. Si le dépôt GitHub n’a pas encore été poussé, le prompt reste fourni immédiatement avec le ZIP, mais il doit être présenté comme `POST-PUSH TEST — À EXÉCUTER APRÈS GITA/PUSH`.
+
+272. Après confirmation du push, si l’utilisateur renvoie les réponses ou captures du test, l’Operator doit les comparer aux résultats attendus et répondre clairement `VALIDÉ` ou `ÉCHEC`, avec l’écart exact en cas d’échec.
+
+273. Le fichier de test peut être inclus dans le ZIP sous un nom explicite tel que `POST_PUSH_TEST_PROMPT.md`, mais sa présence dans le ZIP ne dispense pas l’Operator de fournir aussi le prompt directement dans la réponse de livraison lorsque cela est utile à l’exécution immédiate.
+
+274. Règle centrale : **toute nouvelle livraison de RULES destinée à GitHub doit sortir avec son ZIP final ET son test post-push prêt à exécuter ; l’utilisateur ne doit pas devoir revenir demander comment vérifier la publication.**
+
+
+------------------------------------------------------------------------
+
+## 31. AJOUT SOLO121 — POST-PUSH TEST GÉNÉRÉ DANS LE CHAT, AUCUN FICHIER PROMPT
+
+275. SOLO121 corrige et précise le mécanisme post-push introduit par SOLO120.
+
+276. Le test post-push ne doit PAS être livré sous forme de fichier persistant tel que `POST_PUSH_TEST_PROMPT.md`, ni être ajouté à la racine du dépôt, ni à `.docs/`, ni à `.zip/` comme artefact de travail normal.
+
+277. Le prompt de test est un contenu conversationnel généré par l’Operator au moment utile. Il appartient à la réponse du chat, pas au dépôt.
+
+278. Workflow obligatoire :
+1. l’Operator crée/modifie les RULES et livre le ZIP final ;
+2. l’utilisateur place les fichiers dans son dépôt local et exécute son commit/push, notamment via son alias local `gita` s’il le souhaite ;
+3. l’utilisateur confirme dans le chat que le push est terminé (`pushé`, `gita terminé`, `uploadé`, `c'est en ligne` ou équivalent) ;
+4. immédiatement après cette confirmation, l’Operator affiche dans sa réponse le ou les prompts exacts à copier-coller dans un nouveau chat ;
+5. les prompts sont adaptés aux versions exactes qui viennent d’être publiées ;
+6. l’utilisateur renvoie le résultat ou une capture ;
+7. l’Operator prononce clairement `VALIDÉ` ou `ÉCHEC` et indique l’écart exact si nécessaire.
+
+279. Avant confirmation du push, l’Operator peut rappeler qu’un test post-push sera requis, mais il ne doit pas créer un fichier de prompt ni encombrer le package avec ce contenu.
+
+280. Lorsque plusieurs étapes de test sont nécessaires, elles sont affichées directement dans la conversation sous forme de blocs prêts à copier-coller, dans l’ordre d’exécution : nouveau chat, puis messages suivants dans le même chat si nécessaire.
+
+281. Le package de RULES doit rester un package de RULES et de documentation nécessaire. Le prompt post-push n’est pas un fichier de dépôt.
+
+282. La version précédente de la RULE versionnée doit quitter la racine lorsque la nouvelle version devient active et être archivée dans `.old/`. Un fichier déjà versionné, par exemple `_RULES_SOLO120_RULESOPERATOR.md`, peut conserver ce nom dans `.old/` puisqu’il est intrinsèquement unique.
+
+283. Les alias `SOLOLAST` ne sont jamais archivés comme anciennes versions : ils sont remplacés par la copie exacte de la nouvelle version active.
+
+284. Si un fichier archivé risque d’écraser un fichier déjà présent dans `.old/`, l’Operator doit lui donner avant archivage un nom unique contenant au minimum sa version ou, pour les fichiers non versionnés, une date/version d’archive explicite.
+
+285. Règle centrale : **après un push confirmé, l’Operator affiche le test post-push directement dans le chat ; aucun fichier `POST_PUSH_TEST_PROMPT.md` ne doit être créé ou livré.**
