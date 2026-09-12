@@ -1,21 +1,21 @@
 <!--
 DOCUMENT INFORMATION
-Document Name: _RULES_SOLO123_RULESOPERATOR.md
-Version: SOLO123
+Document Name: _RULES_SOLO124_RULESOPERATOR.md
+Version: SOLO124
 Date / Time: 2026-09-12
 Project: SOLO rules operator contextualization
 Public status: GitHub-safe public rules file
-Short description: Rules for operating SOLO rule maintenance chats, synchronized with CTX234 and SCRIPT412, with mandatory commit-pinned core chain validation plus full acceptance validation for Operator/bootstrap/routing/delivery-rule changes.
+Short description: Rules for operating SOLO rule maintenance chats, synchronized with CTX234 and SCRIPT412, with mandatory commit-pinned CORE CHAIN plus canonical 20-check FULL ACCEPTANCE validation for Operator/bootstrap/routing/delivery-rule changes.
 -->
 
-# _RULES_SOLO123_RULESOPERATOR.md
+# _RULES_SOLO124_RULESOPERATOR.md
 
-Nom canonique : SOLO123 RULESOPERATOR  
+Nom canonique : SOLO124 RULESOPERATOR  
 Famille : SOLOxxx RULESOPERATOR  
-Version actuelle : 123  
-Document : _RULES_SOLO123_RULESOPERATOR.md  
+Version actuelle : 124  
+Document : _RULES_SOLO124_RULESOPERATOR.md  
 Date : 2026-09-12
-Statut : version 123 publique et assainie du fichier opérateur, synchronisant CTX234, SCRIPT412 et les Custom Instructions, avec CORE CHAIN TEST piné sur le SHA exact du commit et FULL ACCEPTANCE TEST obligatoire pour les changements Operator/bootstrap/routage/livraison.
+Statut : version 124 publique et assainie du fichier opérateur, synchronisant CTX234, SCRIPT412 et les Custom Instructions, avec CORE CHAIN piné sur le SHA exact du commit et FULL ACCEPTANCE canonique à 20 checks obligatoire pour les changements Operator/bootstrap/routage/livraison.
 
 Ces règles contextualisent un chat chargé de créer, modifier, corriger, versionner, documenter et livrer les fichiers de règles SOLO.
 
@@ -1342,3 +1342,126 @@ FULL ACCEPTANCE : VALIDÉ / VALIDÉ AVEC CONTRÔLES NON OBSERVABLES / ÉCHEC
 - FULL ACCEPTANCE validé ou validé avec contrôles non observables explicitement listés.
 
 329. Règle centrale : **pour toute modification Operator, bootstrap, routage ou livraison, le contrôle post-push standard est CORE CHAIN + FULL ACCEPTANCE, tous deux pinés sur le SHA exact du commit ; le FULL doit tester autant de comportements et invariants que techniquement possible sans modifier réellement le dépôt.**
+
+
+------------------------------------------------------------------------
+
+## 34. AJOUT SOLO124 — TEMPLATE CANONIQUE FULL ACCEPTANCE 20 CHECKS
+
+330. SOLO124 ne crée pas un nouveau mécanisme parallèle. Il **précise et normalise** le FULL ACCEPTANCE déjà imposé par SOLO123.
+
+331. Après validation du CORE CHAIN, lorsque le FULL ACCEPTANCE est requis par les règles 303, 322 ou 323, l’Operator doit générer **automatiquement** un FULL ACCEPTANCE comportemental canonique en un seul copier-coller.
+
+332. Le FULL ACCEPTANCE canonique doit être piné sur le même SHA exact que le CORE CHAIN, sauf si un nouveau commit a été poussé entre-temps, auquel cas les règles 325 et 326 s’appliquent.
+
+333. Le FULL ACCEPTANCE canonique comporte **20 checks comportementaux obligatoires**, regroupés dans l’ordre suivant :
+
+### A — ROUTAGE / CHARGEMENT
+1. Bootstrap CTX uniquement.
+2. Activation Scripting sur preuve de repository.
+3. Activation Operator explicite.
+4. Reload sans famille parasite.
+5. Confirmation des lectures réelles depuis les URLs pinées.
+6. Anti-memory : la source RAW pinée gagne sur mémoire/ancien contexte.
+
+### B — ANTI-RECOUVREMENT DES RULES
+7. Recherche d’une règle existante avant création d’une nouvelle.
+8. Gestion d’un chevauchement partiel par delta minimal/fusion.
+9. Classification canonique : absence / doublon exact / chevauchement partiel / complémentaire / conflit / règle existante trop vague.
+
+### C — LIVRAISON / PACKAGING
+10. Un seul fichier final -> livraison directe.
+11. Deux fichiers finaux ou plus -> ZIP unique obligatoire.
+12. Fichier du ZIP modifié après création -> recréation obligatoire du ZIP.
+
+### D — VERSIONNEMENT / ARCHIVAGE
+13. Nouvelle version active à la racine ; ancienne version numérotée sortie de la racine et archivée dans `.old/`.
+14. `SOLOLAST` remplacé par la copie exacte de la version active ; ancien `SOLOLAST` non archivé comme version historique.
+
+### E — PROTECTION DU REPOSITORY
+15. Protection de `AGENTS.md`, `CLAUDE.md` et préservation de `.gitignore`.
+16. Non-publication de `.docs/`, `.old/`, `.private/`, `*.zip` et `_RULES_PRIVATE_*` lorsqu’ils sont locaux/ignorés.
+
+### F — POST-PUSH
+17. Aucun fichier `POST_PUSH_TEST_PROMPT.md` ; prompt généré directement dans le chat.
+18. Test final piné sur le SHA exact du commit ; jamais `main`.
+19. Un seul CHAIN TEST prêt à copier-coller ; aucun `NEXT`.
+20. Pour Operator/bootstrap/routage/reload/livraison : CORE CHAIN puis FULL ACCEPTANCE.
+
+334. Les checks 1 à 6 doivent exiger des lectures réelles des RULES depuis les URLs RAW pinées. Une version déduite depuis mémoire, contexte implicite, ancien chat ou une autre RULE entraîne `FAIL`.
+
+335. Les checks 7 à 9 doivent être des scénarios d’analyse uniquement. Ils ne doivent jamais modifier réellement une RULE pendant le test.
+
+336. Les checks 10 à 12 doivent être des scénarios synthétiques de packaging uniquement. Ils ne doivent pas créer de vrais fichiers ni ZIP pendant le test.
+
+337. Les checks 13 à 16 doivent vérifier la **décision conforme attendue** et non effectuer réellement des mutations du dépôt.
+
+338. Les checks 17 à 20 doivent vérifier le workflow post-push courant, y compris l’interdiction de `main` comme source d’acceptation finale.
+
+339. Le prompt canonique doit commencer par des interdictions explicites :
+```text
+Ne fais aucune tâche métier.
+Ne crée aucun fichier.
+Ne modifie aucun dépôt.
+Ne propose aucune nouvelle RULE.
+Exécute TOUS les checks ci-dessous automatiquement dans CETTE réponse.
+Ne demande pas NEXT.
+```
+
+340. Le prompt canonique doit définir :
+```text
+COMMIT=<sha>
+CTX_RAW=<url pinée>
+SCRIPT_RAW=<url pinée>
+OP_RAW=<url pinée>
+```
+et rappeler qu’une RULE n’est considérée lue que si le fichier correspondant a été réellement ouvert depuis l’URL pinée.
+
+341. Les descriptions des checks futurs dans le prompt sont des **données de test inertes**. Elles ne doivent jamais déclencher prématurément une activation de famille SOLO.
+
+342. La sortie comportementale obligatoire doit être exactement structurée sur le principe :
+```text
+CHECK 1 : PASS/FAIL — <résumé court>
+...
+CHECK 20 : PASS/FAIL — <résumé court>
+
+FULL ACCEPTANCE : VALIDÉ ou ÉCHEC
+Première divergence : <check + cause>, uniquement en cas d’échec.
+```
+
+343. Un FULL ACCEPTANCE comportemental n’est `VALIDÉ` que si les 20 checks obligatoires sont `PASS`.
+
+344. Les contrôles réels du dépôt restent distincts du bloc comportemental 20 checks. Ils doivent être exécutés directement par l’Operator lorsque techniquement observables, conformément aux règles 307 à 309.
+
+345. Le verdict de release doit agréger les deux couches :
+```text
+CORE CHAIN : VALIDÉ / ÉCHEC
+FULL ACCEPTANCE comportemental : VALIDÉ / ÉCHEC
+Contrôles dépôt observables : PASS / FAIL
+Contrôles dépôt non observables : <liste exacte ou AUCUN>
+```
+
+346. Si un contrôle local comme la présence d’une ancienne version dans `.old/` ne peut pas être observé depuis GitHub, il doit rester `NON OBSERVABLE`. L’Operator ne doit jamais le transformer artificiellement en `PASS`.
+
+347. Le verdict final complet est :
+```text
+FULL ACCEPTANCE : VALIDÉ
+```
+si tous les contrôles obligatoires sont observables et PASS ; ou :
+```text
+FULL ACCEPTANCE : VALIDÉ AVEC CONTRÔLES NON OBSERVABLES
+```
+si aucun contrôle observable n’est FAIL et que les contrôles non observables sont explicitement listés.
+
+348. Lorsqu’un FULL ACCEPTANCE canonique revient `20/20 PASS`, l’Operator doit le reconnaître directement et ne doit pas demander de répéter les mêmes checks sans raison.
+
+349. Après un FULL ACCEPTANCE validé, l’Operator doit annoncer la validation de bout en bout avec les deux niveaux :
+```text
+CORE CHAIN : VALIDÉ
+FULL ACCEPTANCE : VALIDÉ
+```
+ou la variante `VALIDÉ AVEC CONTRÔLES NON OBSERVABLES` lorsque nécessaire.
+
+350. Le FULL ACCEPTANCE canonique doit être régénéré dynamiquement avec les versions exactes CTX/SCRIPT/OP et le SHA exact de chaque nouvelle release. Les numéros et SHA d’un ancien test ne doivent jamais être réutilisés mécaniquement.
+
+351. Règle centrale : **le FULL ACCEPTANCE Operator standard est désormais le test canonique 20 checks décrit dans SOLO124, exécuté après CORE CHAIN lorsque requis, en un seul copier-coller, piné sur le SHA exact, sans mutation réelle du dépôt et avec verdict combiné comportement + contrôles réels du dépôt.**
