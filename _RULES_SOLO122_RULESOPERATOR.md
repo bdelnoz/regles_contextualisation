@@ -1,21 +1,21 @@
 <!--
 DOCUMENT INFORMATION
-Document Name: _RULES_SOLO121_RULESOPERATOR.md
-Version: SOLO121
+Document Name: _RULES_SOLO122_RULESOPERATOR.md
+Version: SOLO122
 Date / Time: 2026-09-12
 Project: SOLO rules operator contextualization
 Public status: GitHub-safe public rules file
-Short description: Rules for operating SOLO rule maintenance chats, synchronized with CTX234 and SCRIPT412, adding mandatory post-push new-chat validation generated directly in chat after push confirmation, without creating a persistent test-prompt file.
+Short description: Rules for operating SOLO rule maintenance chats, synchronized with CTX234 and SCRIPT412, with mandatory commit-pinned single-copy/paste post-push chain validation generated directly in chat after push confirmation.
 -->
 
-# _RULES_SOLO121_RULESOPERATOR.md
+# _RULES_SOLO122_RULESOPERATOR.md
 
-Nom canonique : SOLO121 RULESOPERATOR  
+Nom canonique : SOLO122 RULESOPERATOR  
 Famille : SOLOxxx RULESOPERATOR  
-Version actuelle : 121  
-Document : _RULES_SOLO121_RULESOPERATOR.md  
+Version actuelle : 122  
+Document : _RULES_SOLO122_RULESOPERATOR.md  
 Date : 2026-09-12
-Statut : version 121 publique et assainie du fichier opérateur, synchronisant CTX234, SCRIPT412 et les Custom Instructions, avec validation post-push obligatoire générée dans le chat après confirmation du push, sans fichier de prompt persistant.
+Statut : version 122 publique et assainie du fichier opérateur, synchronisant CTX234, SCRIPT412 et les Custom Instructions, avec test post-push en chaîne piné sur le SHA exact du commit, généré directement dans le chat et exécutable par un seul copier-coller.
 
 Ces règles contextualisent un chat chargé de créer, modifier, corriger, versionner, documenter et livrer les fichiers de règles SOLO.
 
@@ -1117,3 +1117,75 @@ L’Operator ne doit jamais réutiliser mécaniquement des numéros d’une livr
 284. Si un fichier archivé risque d’écraser un fichier déjà présent dans `.old/`, l’Operator doit lui donner avant archivage un nom unique contenant au minimum sa version ou, pour les fichiers non versionnés, une date/version d’archive explicite.
 
 285. Règle centrale : **après un push confirmé, l’Operator affiche le test post-push directement dans le chat ; aucun fichier `POST_PUSH_TEST_PROMPT.md` ne doit être créé ou livré.**
+
+
+------------------------------------------------------------------------
+
+## 32. AJOUT SOLO122 — POST-PUSH CHAIN TEST PINNÉ SUR LE COMMIT
+
+286. SOLO122 complète SOLO121. Le test post-push de référence doit désormais être un **CHAIN TEST unique**, exécutable avec un seul copier-coller dans un nouveau chat.
+
+287. Le test d’acceptation post-push ne doit jamais utiliser la branche flottante `main` comme source de vérité pour les RULES à valider. Les URLs RAW utilisées par le test doivent être pinées sur le SHA exact du commit qui vient d’être poussé.
+
+288. Après confirmation du push (`gita terminé`, `pushé`, `uploadé`, `c'est en ligne` ou équivalent), l’Operator doit :
+1. identifier le SHA du commit réellement poussé depuis la sortie Git fournie dans le chat ou depuis une lecture distante réelle du dépôt si cet accès est disponible ;
+2. vérifier, lorsque possible, que ce commit est bien accessible sur le remote ;
+3. construire les URLs RAW avec ce SHA ;
+4. afficher immédiatement dans le chat un seul prompt `POST-PUSH SOLO CHAIN TEST — COMMIT PINNED` prêt à copier-coller dans un nouveau chat.
+
+289. Si aucun SHA fiable n’est disponible, l’Operator ne doit pas inventer de commit ni retomber silencieusement sur `main`. Il doit demander ou récupérer le SHA réel avant de produire le test d’acceptation final.
+
+290. Le format canonique des sources du test est :
+```text
+COMMIT=<sha>
+
+CTX_RAW=https://raw.githubusercontent.com/<owner>/<repo>/<sha>/_RULES_SOLOLAST_CONTEXTUALISATION.md
+SCRIPT_RAW=https://raw.githubusercontent.com/<owner>/<repo>/<sha>/_RULES_SOLOLAST_SCRIPTING.md
+OP_RAW=https://raw.githubusercontent.com/<owner>/<repo>/<sha>/_RULES_SOLOLAST_RULESOPERATOR.md
+```
+
+291. Le CHAIN TEST complet doit exécuter automatiquement les étapes suivantes dans une seule réponse, sans demander `NEXT` :
+1. BOOTSTRAP : lire réellement `CTX_RAW` uniquement ;
+2. REPOSITORY : lire réellement `SCRIPT_RAW` ;
+3. OPERATOR : lire réellement `OP_RAW` ;
+4. RELOAD : relire réellement `CTX_RAW`, `SCRIPT_RAW` et `OP_RAW`.
+
+292. Une étape n’est `PASS` que si le ou les fichiers requis pour cette étape ont été réellement ouverts et lus depuis les URLs pinées sur le commit. Une version déduite depuis mémoire, contexte, une autre RULE, un ancien chat, un alias local ou une étape précédente ne constitue jamais une validation.
+
+293. Le prompt doit contenir explicitement :
+```text
+RÈGLE ABSOLUE :
+une étape est PASS uniquement si le fichier requis est réellement ouvert et lu depuis l’URL pinée ci-dessus.
+Ne déduis jamais une version depuis mémoire, contexte ou une autre RULE.
+Si une lecture distante échoue : FAIL.
+```
+
+294. Les versions attendues doivent être calculées à partir de la livraison courante, jamais copiées d’un ancien test. Exemple :
+```text
+ÉTAPE 1 : CTX<version>
+ÉTAPE 2 : CTX<version> + SCRIPT<version>
+ÉTAPE 3 : CTX<version> + SCRIPT<version> + OP<version>
+ÉTAPE 4 : CTX<version> + SCRIPT<version> + OP<version>
+```
+
+295. La réponse attendue du chat de test doit rester compacte :
+```text
+ÉTAPE 1 : PASS/FAIL — versions observées
+ÉTAPE 2 : PASS/FAIL — versions observées
+ÉTAPE 3 : PASS/FAIL — versions observées
+ÉTAPE 4 : PASS/FAIL — versions observées
+VERDICT FINAL : VALIDÉ ou ÉCHEC
+Première divergence : <cause>, seulement si échec.
+```
+
+296. Si seules certaines familles sont modifiées, l’Operator peut adapter les versions attendues, mais le test complet CTX → Scripting → Operator → Reload reste le test de référence lorsqu’une modification Operator ou une modification du bootstrap/routage est livrée.
+
+297. Le test post-push reste un contenu de chat. Aucun fichier `POST_PUSH_TEST_PROMPT.md` ne doit être créé, livré ou ajouté au dépôt.
+
+298. Après réception du résultat du CHAIN TEST, l’Operator doit répondre clairement :
+- `POST-PUSH SOLO CHAIN TEST : VALIDÉ` si toutes les étapes sont PASS ;
+- `POST-PUSH SOLO CHAIN TEST : ÉCHEC` sinon, avec la première divergence.
+
+299. Un échec dû à une ancienne version lue via une URL flottante `main` ne doit pas conduire à modifier les RULES sans vérification. L’Operator doit d’abord répéter ou corriger le test avec le SHA piné du commit réellement poussé.
+
+300. Règle centrale : **toute livraison Operator ou de bootstrap destinée à GitHub doit, après push confirmé, produire automatiquement un seul CHAIN TEST piné sur le SHA exact du commit ; aucun test d’acceptation final ne doit dépendre de `main`.**
