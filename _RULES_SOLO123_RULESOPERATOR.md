@@ -1,21 +1,21 @@
 <!--
 DOCUMENT INFORMATION
-Document Name: _RULES_SOLO122_RULESOPERATOR.md
-Version: SOLO122
+Document Name: _RULES_SOLO123_RULESOPERATOR.md
+Version: SOLO123
 Date / Time: 2026-09-12
 Project: SOLO rules operator contextualization
 Public status: GitHub-safe public rules file
-Short description: Rules for operating SOLO rule maintenance chats, synchronized with CTX234 and SCRIPT412, with mandatory commit-pinned single-copy/paste post-push chain validation generated directly in chat after push confirmation.
+Short description: Rules for operating SOLO rule maintenance chats, synchronized with CTX234 and SCRIPT412, with mandatory commit-pinned core chain validation plus full acceptance validation for Operator/bootstrap/routing/delivery-rule changes.
 -->
 
-# _RULES_SOLO122_RULESOPERATOR.md
+# _RULES_SOLO123_RULESOPERATOR.md
 
-Nom canonique : SOLO122 RULESOPERATOR  
+Nom canonique : SOLO123 RULESOPERATOR  
 Famille : SOLOxxx RULESOPERATOR  
-Version actuelle : 122  
-Document : _RULES_SOLO122_RULESOPERATOR.md  
+Version actuelle : 123  
+Document : _RULES_SOLO123_RULESOPERATOR.md  
 Date : 2026-09-12
-Statut : version 122 publique et assainie du fichier opérateur, synchronisant CTX234, SCRIPT412 et les Custom Instructions, avec test post-push en chaîne piné sur le SHA exact du commit, généré directement dans le chat et exécutable par un seul copier-coller.
+Statut : version 123 publique et assainie du fichier opérateur, synchronisant CTX234, SCRIPT412 et les Custom Instructions, avec CORE CHAIN TEST piné sur le SHA exact du commit et FULL ACCEPTANCE TEST obligatoire pour les changements Operator/bootstrap/routage/livraison.
 
 Ces règles contextualisent un chat chargé de créer, modifier, corriger, versionner, documenter et livrer les fichiers de règles SOLO.
 
@@ -1189,3 +1189,156 @@ Première divergence : <cause>, seulement si échec.
 299. Un échec dû à une ancienne version lue via une URL flottante `main` ne doit pas conduire à modifier les RULES sans vérification. L’Operator doit d’abord répéter ou corriger le test avec le SHA piné du commit réellement poussé.
 
 300. Règle centrale : **toute livraison Operator ou de bootstrap destinée à GitHub doit, après push confirmé, produire automatiquement un seul CHAIN TEST piné sur le SHA exact du commit ; aucun test d’acceptation final ne doit dépendre de `main`.**
+
+
+------------------------------------------------------------------------
+
+## 33. AJOUT SOLO123 — FULL ACCEPTANCE TEST OPERATOR
+
+301. SOLO123 conserve intégralement le CORE POST-PUSH CHAIN TEST de SOLO122 et ajoute un second niveau de validation : le **FULL ACCEPTANCE TEST**.
+
+302. Le CORE CHAIN TEST reste obligatoire après tout push concerné. Il valide le routage minimal :
+1. CTX ;
+2. Scripting ;
+3. Operator ;
+4. Reload ;
+avec lectures réelles pinées sur le SHA exact du commit.
+
+303. Le FULL ACCEPTANCE TEST est obligatoire après toute modification qui touche au moins un des domaines suivants :
+- RULESOPERATOR ;
+- bootstrap des Custom Instructions ;
+- routage des familles SOLO ;
+- logique de reload/réapplication ;
+- règles de livraison ou de packaging ;
+- gestion des anciennes versions ;
+- aliases `SOLOLAST` ;
+- post-push validation ;
+- anti-recouvrement/anti-duplication des règles ;
+- structure attendue du dépôt public.
+
+304. Le FULL ACCEPTANCE TEST ne remplace jamais le CORE CHAIN TEST. Le workflow obligatoire est :
+1. push confirmé ;
+2. vérification du commit distant lorsque possible ;
+3. CORE CHAIN TEST piné sur le SHA ;
+4. si CORE = VALIDÉ, FULL ACCEPTANCE TEST ;
+5. verdict final de validation de la release.
+
+305. Le FULL ACCEPTANCE TEST doit être généré directement dans le chat. Aucun fichier persistant de prompt de test ne doit être créé.
+
+306. Le FULL ACCEPTANCE TEST doit être exécutable avec **un seul copier-coller** dans un nouveau chat lorsqu’il s’agit de la partie comportementale.
+
+307. Le FULL ACCEPTANCE TEST doit distinguer deux catégories de contrôles :
+A. contrôles réels du dépôt, effectués par l’Operator lorsqu’il dispose d’un accès réel au dépôt ;
+B. contrôles comportementaux effectués dans un nouveau chat avec lectures réelles des RULES pinées sur le commit.
+
+308. Contrôles réels du dépôt à effectuer lorsque techniquement disponibles :
+- le commit SHA annoncé existe sur le remote ;
+- les fichiers `SOLOLAST` pointent sur les versions attendues ;
+- la version numérotée active existe ;
+- l’ancienne version numérotée ne reste pas à la racine lorsqu’elle doit être archivée ;
+- l’ancienne version est présente dans `.old/` localement si cette information est disponible ;
+- aucun `POST_PUSH_TEST_PROMPT.md` n’est publié ;
+- `.gitignore` n’a pas été modifié sans justification ;
+- `AGENTS.md` n’a pas été modifié ;
+- `CLAUDE.md` n’a pas été remplacé, recréé ou modifié ;
+- le README public référence les bonnes versions actives ;
+- les fichiers privés ou locaux interdits ne sont pas publiés ;
+- le commit ne contient pas de régression de naming évidente.
+
+309. Si un contrôle réel du dépôt n’est pas techniquement observable depuis l’environnement de l’Operator, il doit être marqué `NON OBSERVABLE` et non `PASS`.
+
+310. Le FULL ACCEPTANCE TEST comportemental doit tester au minimum :
+1. bootstrap CTX uniquement ;
+2. activation Scripting sur preuve claire de repository ;
+3. activation Operator sur demande explicite ;
+4. reload sans activation parasite ;
+5. lecture réelle des fichiers depuis les URLs pinées sur le SHA ;
+6. refus de déduire une version depuis mémoire/contexte ;
+7. anti-recouvrement : rechercher une règle existante avant d’en créer une nouvelle ;
+8. classification du problème : absent / doublon / chevauchement partiel / complémentaire / conflit / trop vague ;
+9. si une règle existe déjà, ne pas créer de règle parallèle ;
+10. livraison mono-fichier : fichier direct ;
+11. livraison multi-fichiers : dès deux fichiers, ZIP unique obligatoire ;
+12. ancienne version numérotée : ne doit pas rester active à la racine ;
+13. `SOLOLAST` : doit correspondre exactement à la version active ;
+14. aucun fichier `POST_PUSH_TEST_PROMPT.md` ;
+15. post-push test fourni dans le chat ;
+16. post-push test piné sur le commit SHA et jamais sur `main` ;
+17. verdict final compact et déterministe.
+
+311. Les tests comportementaux qui demandent de simuler une opération dangereuse ou destructive ne doivent pas réellement modifier le dépôt. Ils doivent demander au chat de décrire la décision conforme attendue.
+
+312. Pour les tests de packaging, le FULL ACCEPTANCE TEST doit utiliser des scénarios synthétiques :
+- scénario A : une seule sortie finale -> attendu : livraison directe ;
+- scénario B : deux sorties finales -> attendu : un ZIP unique contenant les deux fichiers finaux ;
+- scénario C : un fichier du ZIP est modifié après création -> attendu : recréation obligatoire du ZIP.
+
+313. Pour l’anti-recouvrement, le test doit fournir un scénario où une règle couvre déjà partiellement la demande et vérifier que l’Operator :
+- cherche la règle existante ;
+- identifie ce qui est déjà couvert ;
+- identifie ce qui est réellement nouveau ;
+- choisit la modification minimale ;
+- ne crée pas une règle parallèle inutile.
+
+314. Pour le contrôle d’archivage, le test doit vérifier la décision suivante :
+- nouvelle version active à la racine ;
+- ancienne version numérotée archivée sous `.old/` ;
+- alias `SOLOLAST` remplacé par la copie exacte de la nouvelle version ;
+- aucun alias historique archivé comme version numérotée.
+
+315. Pour la protection du dépôt, le test doit vérifier que l’Operator refuse de :
+- modifier ou recréer `AGENTS.md` ;
+- modifier ou recréer `CLAUDE.md` ;
+- nettoyer ou réécrire `.gitignore` sans nécessité validée ;
+- publier `.docs/`, `.old/`, `.private/`, ZIPs ou `_RULES_PRIVATE_*` dans la racine publique lorsque ces éléments sont censés rester locaux/ignorés.
+
+316. Le FULL ACCEPTANCE TEST doit afficher un résultat par contrôle sous la forme :
+```text
+CHECK <n> : PASS / FAIL / NON OBSERVABLE — <résumé court>
+```
+
+317. Le verdict final doit être :
+```text
+FULL ACCEPTANCE : VALIDÉ
+```
+uniquement si tous les contrôles obligatoires observables sont PASS et qu’aucun contrôle obligatoire n’est FAIL.
+
+318. Si un ou plusieurs contrôles sont `NON OBSERVABLE`, l’Operator peut conclure :
+```text
+FULL ACCEPTANCE : VALIDÉ AVEC CONTRÔLES NON OBSERVABLES
+```
+uniquement si aucun contrôle observable n’est FAIL, avec la liste exacte des contrôles non observables.
+
+319. En cas d’échec, l’Operator doit indiquer la première divergence exacte et ne pas proposer immédiatement une nouvelle RULE avant d’avoir déterminé si l’échec vient :
+- d’une règle absente ;
+- d’une règle trop vague ;
+- d’une règle existante non appliquée ;
+- d’une mauvaise interprétation ;
+- d’un test incorrect ;
+- d’un cache ou d’une source flottante non pinée.
+
+320. Un échec du test lui-même ne doit jamais être automatiquement interprété comme un défaut des RULES.
+
+321. Avant toute nouvelle modification après échec, l’Operator doit appliquer le contrôle anti-recouvrement existant et déterminer si une règle déjà présente couvre le comportement attendu.
+
+322. Après un CORE CHAIN TEST validé, si le changement entre dans le périmètre de la règle 303, l’Operator doit proposer automatiquement le FULL ACCEPTANCE TEST sans attendre que l’utilisateur le demande.
+
+323. Si l’utilisateur demande explicitement « teste tout », « bétonne », « teste au maximum », « full test », « full acceptance » ou équivalent, l’Operator doit exécuter/proposer le FULL ACCEPTANCE TEST même si la modification courante n’entre pas strictement dans la règle 303.
+
+324. Le FULL ACCEPTANCE TEST doit être adapté dynamiquement aux versions exactes de la release courante. Aucun numéro de version ne doit être recopié mécaniquement depuis un ancien test.
+
+325. Le FULL ACCEPTANCE TEST doit être piné sur le même SHA que le CORE CHAIN TEST de la release concernée.
+
+326. Si un nouveau commit est poussé entre le CORE et le FULL, le FULL doit utiliser le nouveau SHA et le CORE doit être considéré comme appartenant à l’ancien commit.
+
+327. Le verdict de release doit toujours préciser les deux niveaux :
+```text
+CORE CHAIN : VALIDÉ / ÉCHEC
+FULL ACCEPTANCE : VALIDÉ / VALIDÉ AVEC CONTRÔLES NON OBSERVABLES / ÉCHEC
+```
+
+328. Une release Operator/bootstrap/routage/livraison n’est considérée complètement validée qu’après :
+- CORE CHAIN validé ;
+- FULL ACCEPTANCE validé ou validé avec contrôles non observables explicitement listés.
+
+329. Règle centrale : **pour toute modification Operator, bootstrap, routage ou livraison, le contrôle post-push standard est CORE CHAIN + FULL ACCEPTANCE, tous deux pinés sur le SHA exact du commit ; le FULL doit tester autant de comportements et invariants que techniquement possible sans modifier réellement le dépôt.**

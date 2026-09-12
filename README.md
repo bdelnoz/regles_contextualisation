@@ -1,7 +1,7 @@
 <!--
 Document : README.md
 Author : Bruno DELNOZ
-Version : V5.4
+Version : V5.5
 Date : 2026-09-12
 Repository : regles_contextualisation
 -->
@@ -18,7 +18,7 @@ The repository keeps reusable rules, lightweight bootstrap Custom Instructions, 
 |---|---:|---|
 | `_RULES_SOLO234_CONTEXTUALISATION.md` | V234 | Global contextualization rules: general SOLO behavior, Read Aloud, acquired-context/delta control, Emploi/JOBS mode, repository detection and immutable AGENTS/CLAUDE safeguards. |
 | `_RULES_SOLO412_SCRIPTING.md` | SOLO412 | Scripting workflow with mandatory pre-flight compliance and blocking multi-file ZIP delivery: one file direct; two or more files in one final ZIP. |
-| `_RULES_SOLO122_RULESOPERATOR.md` | SOLO122 | Rules-operator workflow with anti-overlap/non-regression controls and mandatory post-push new-chat validation prompt delivered with every GitHub RULES package. |
+| `_RULES_SOLO123_RULESOPERATOR.md` | SOLO123 | Rules-operator workflow with anti-overlap/non-regression controls and mandatory post-push new-chat validation prompt delivered with every GitHub RULES package. |
 
 ## Stable SOLOLAST aliases
 
@@ -59,7 +59,7 @@ Private/business-specific modes are not routed by these public Custom Instructio
 ├── _CUSTOM_INSTRUCTION_1500.md
 ├── _RULES_SOLO234_CONTEXTUALISATION.md
 ├── _RULES_SOLO412_SCRIPTING.md
-├── _RULES_SOLO122_RULESOPERATOR.md
+├── _RULES_SOLO123_RULESOPERATOR.md
 ├── _RULES_SOLOLAST_CONTEXTUALISATION.md
 ├── _RULES_SOLOLAST_SCRIPTING.md
 ├── _RULES_SOLOLAST_RULESOPERATOR.md
@@ -125,7 +125,7 @@ SCRIPT412 requires a final pre-flight compliance check before delivery. A delive
 
 ## Mandatory post-push SOLO validation
 
-SOLO122 adds a delivery acceptance gate for public RULES updates.
+SOLO123 adds a delivery acceptance gate for public RULES updates.
 
 After the user performs the local commit/push (`gita` may be the user's local alias) and confirms that the push is complete, the Operator must immediately print the ready-to-run post-push test prompts directly in the chat. No persistent `POST_PUSH_TEST_PROMPT.md` file is created or shipped.
 
@@ -152,6 +152,22 @@ The test must:
 
 No persistent post-push prompt file is created.
 
+
+## Full acceptance validation
+
+After a successful commit-pinned CORE CHAIN test, changes affecting Operator, bootstrap, routing, reload, delivery, packaging, aliases, old-version handling or post-push validation require a second validation layer: FULL ACCEPTANCE.
+
+FULL ACCEPTANCE combines:
+- observable repository checks;
+- one-copy/paste behavioral checks;
+- anti-overlap behavior;
+- single-file vs multi-file delivery rules;
+- archive/SOLOLAST decisions;
+- repository protection invariants;
+- commit-pinned post-push behavior.
+
+The final release verdict reports both CORE CHAIN and FULL ACCEPTANCE.
+
 ## Chat title convention
 
 ```text
@@ -161,7 +177,7 @@ No persistent post-push prompt file is created.
 Examples:
 
 ```text
-000. operator +++OP122_CTX234_S412_20260912
+000. operator +++OP123_CTX234_S412_20260912
 000. scripting +++SCRIPT_REPO_CTX234_S412_20260912
 000. docs +++README_REPO_CONTEXT_RULES_20260912
 ```
