@@ -1,3 +1,13 @@
-RELOAD SOLO 
+# RELOAD SOLO
 
-Recharge maintenant depuis GitHub les trois fichiers complets _RULES_SOLOLAST_CONTEXTUALISATION.md, _RULES_SOLOLAST_SCRIPTING.md et _RULES_SOLOLAST_RULESOPERATOR.md. Relis-les intégralement, remplace les anciennes versions chargées dans ce chat par les versions actuelles du remote, puis applique-les immédiatement à toute la suite de cette conversation. Confirme-moi les numéros de version réellement chargés.
+Explicitly refresh the active public SOLO rules from the current repository:
+
+- CTX: https://raw.githubusercontent.com/bdelnoz/ai-context-rules/main/_RULES_SOLOLAST_CONTEXTUALIZATION.md
+- SCRIPT: https://raw.githubusercontent.com/bdelnoz/ai-context-rules/main/_RULES_SOLOLAST_SCRIPTING.md
+- OPERATOR: https://raw.githubusercontent.com/bdelnoz/ai-context-rules/main/_RULES_SOLOLAST_RULESOPERATOR.md
+
+Read the three files in full, replace any older loaded public versions in this chat, and apply the newly observed versions immediately.
+
+This prompt is an explicit reload trigger. Outside an explicit reload/refresh/update request, already-loaded active families must be applied without unnecessary remote rereads.
+
+Confirm only the version numbers that were actually read.

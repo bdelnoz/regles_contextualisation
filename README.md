@@ -1,30 +1,32 @@
 <!--
 Document : README.md
 Author : Bruno DELNOZ
-Version : V5.6
-Date : 2026-09-12
-Repository : regles_contextualisation
+Version : V6.1
+Date : 2026-09-14
+Repository : ai-context-rules
 -->
 
-# Regles Contextualisation
+# AI Context Rules
 
 Public Markdown repository for reusable SOLO operating rules used to guide AI-assisted work, especially with ChatGPT-style assistants.
 
 The repository keeps reusable rules, lightweight bootstrap Custom Instructions, AI working notes, and feature-request material in plain Markdown so they can be reviewed, versioned, shared, and reused across AI sessions.
 
+The public repository is maintained in English so the framework can be reviewed, reused, and discussed internationally.
+
 ## Active public SOLO rule files
 
 | File | Version | Purpose |
 |---|---:|---|
-| `_RULES_SOLO234_CONTEXTUALISATION.md` | V234 | Global contextualization rules: general SOLO behavior, Read Aloud, acquired-context/delta control, Emploi/JOBS mode, repository detection and immutable AGENTS/CLAUDE safeguards. |
-| `_RULES_SOLO412_SCRIPTING.md` | SOLO412 | Scripting workflow with mandatory pre-flight compliance and blocking multi-file ZIP delivery: one file direct; two or more files in one final ZIP. |
-| `_RULES_SOLO124_RULESOPERATOR.md` | SOLO124 | Rules-operator workflow with anti-overlap/non-regression controls and mandatory post-push new-chat validation prompt delivered with every GitHub RULES package. |
+| `_RULES_SOLO234_CONTEXTUALIZATION.md` | V234 | Global contextualization rules: general SOLO behavior, Read Aloud, acquired-context/delta control, Employment/JOBS mode, repository detection and immutable AGENTS/CLAUDE safeguards. |
+| `_RULES_SOLO413_SCRIPTING.md` | SOLO413 | Scripting workflow with blocking canonical CLI compliance, reserved control aliases, `--exec --<action>` invocation, pre-flight validation, and mandatory multi-file ZIP delivery. |
+| `_RULES_SOLO125_RULESOPERATOR.md` | SOLO125 | Rules-operator workflow with anti-overlap/non-regression controls, idempotent loaded-rule state, and commit-pinned CORE + FULL post-push validation. |
 
 ## Stable SOLOLAST aliases
 
 | Stable file | Points to |
 |---|---|
-| `_RULES_SOLOLAST_CONTEXTUALISATION.md` | latest contextualisation rule |
+| `_RULES_SOLOLAST_CONTEXTUALIZATION.md` | latest contextualization rule |
 | `_RULES_SOLOLAST_SCRIPTING.md` | latest scripting rule |
 | `_RULES_SOLOLAST_RULESOPERATOR.md` | latest rules-operator rule |
 
@@ -37,11 +39,11 @@ Each `SOLOLAST` file is an exact active copy of its current numbered rule file.
 Its job is only to bootstrap/route the public SOLO families:
 
 - on the first message of a normal new chat, before answering, read CTX from its direct RAW GitHub URL;
-- explicit Scripting request: CTX + Scripting;
-- clear repository evidence: activate Scripting repo at that moment;
-- explicit Operator request: CTX + Operator;
-- explicit request for all SOLO rules: CTX + Scripting + Operator;
-- reload in an already specialized chat: CTX + the family/families already active;
+- activate Scripting or Operator by reading only the family that is still missing when CTX is already loaded;
+- clear repository evidence activates Scripting once; repeated repository evidence does not repeatedly reload the same file;
+- ordinary mentions of `scripting`, continued code work, or questions about already-loaded rules do not trigger remote rereads;
+- explicit `reload`, `reapply`, `refresh`, `load latest/current rules`, or a stated rules/repository update triggers the appropriate real reread;
+- reload in an already specialized chat rereads CTX + the active family/families;
 - never claim a rule file was loaded without a real read.
 
 `_CUSTOM_INSTRUCTION_1500.md` is the reduced bootstrap variant for environments with a 1500-character Custom Instructions limit. It follows the same routing logic with less wording.
@@ -57,10 +59,10 @@ Private/business-specific modes are not routed by these public Custom Instructio
 ├── README.md
 ├── _CUSTOM_INSTRUCTIONS.md
 ├── _CUSTOM_INSTRUCTION_1500.md
-├── _RULES_SOLO234_CONTEXTUALISATION.md
-├── _RULES_SOLO412_SCRIPTING.md
-├── _RULES_SOLO124_RULESOPERATOR.md
-├── _RULES_SOLOLAST_CONTEXTUALISATION.md
+├── _RULES_SOLO234_CONTEXTUALIZATION.md
+├── _RULES_SOLO413_SCRIPTING.md
+├── _RULES_SOLO125_RULESOPERATOR.md
+├── _RULES_SOLOLAST_CONTEXTUALIZATION.md
 ├── _RULES_SOLOLAST_SCRIPTING.md
 ├── _RULES_SOLOLAST_RULESOPERATOR.md
 └── AI_STUDYING_FILES/
@@ -111,21 +113,49 @@ Public files must not contain personal case details, health/family details, secr
 
 ## How to use the rules
 
-1. Start with `_RULES_SOLOLAST_CONTEXTUALISATION.md`.
+1. Start with `_RULES_SOLOLAST_CONTEXTUALIZATION.md`.
 2. Add `_RULES_SOLOLAST_SCRIPTING.md` when Scripting is explicitly activated or repository evidence activates Scripting repo.
 3. Add `_RULES_SOLOLAST_RULESOPERATOR.md` when Operator is explicitly activated.
-4. Use `lis toutes les règles SOLO` only when all three public families are deliberately required.
+4. Use `read all SOLO rules` only when all three public families are deliberately required.
 
 ## Versioning and delivery
 
 New rule changes create a new numbered version and update the matching `SOLOLAST` alias.
 
-SCRIPT412 requires a final pre-flight compliance check before delivery. A delivery containing two or more files must be packaged into one ZIP containing the final versions only; if any included file changes, the ZIP must be rebuilt.
+SCRIPT413 requires a final pre-flight compliance check before delivery, including the blocking CLI parser/help/example contract when a durable CLI is in scope. A delivery containing two or more files must be packaged into one ZIP containing the final versions only; if any included file changes, the ZIP must be rebuilt.
 
+
+## Canonical SOLO CLI contract
+
+SCRIPT413 makes the durable CLI contract blocking and unambiguous.
+
+For operational scripts, the canonical pattern is:
+
+```text
+./script.sh --exec --<business-action> [OPTIONS]
+./script.sh --simulate --<business-action> [OPTIONS]
+```
+
+Canonical control aliases are reserved when applicable:
+
+```text
+-h   --help
+-exe --exec
+-s   --simulate
+-pr  --prerequis
+-i   --install
+-st  --stop
+-ch  --changelog
+-pu  --purge
+```
+
+Business options must not reuse active reserved aliases. Legacy alias conflicts preserve the business long option/behavior while only the conflicting short alias is removed or remapped. Positional business actions such as `script.sh CAPTURE` are not canonical unless explicitly requested.
+
+Before delivery, SCRIPT413 requires parser/help/example consistency checks; syntax-only validation is insufficient.
 
 ## Mandatory post-push SOLO validation
 
-SOLO124 adds a delivery acceptance gate for public RULES updates.
+SOLO125 preserves the delivery acceptance gate and adds idempotent loaded-rule-state validation so already-active families are not repeatedly fetched during normal follow-up work.
 
 After the user performs the local commit/push (`gita` may be the user's local alias) and confirms that the push is complete, the Operator must immediately print the ready-to-run post-push test prompts directly in the chat. No persistent `POST_PUSH_TEST_PROMPT.md` file is created or shipped.
 
@@ -187,15 +217,15 @@ Repository-observable checks remain a separate Operator-side layer. Non-observab
 ## Chat title convention
 
 ```text
-000. <type lisible> +++<TYPE_TECH>_<PROJECT_OR_SCOPE>_<VERSIONS_OR_CONTEXT>_<YYYYMMDD>
+000. <readable type> +++<TYPE_TECH>_<PROJECT_OR_SCOPE>_<VERSIONS_OR_CONTEXT>_<YYYYMMDD>
 ```
 
 Examples:
 
 ```text
-000. operator +++OP124_CTX234_S412_20260912
-000. scripting +++SCRIPT_REPO_CTX234_S412_20260912
-000. docs +++README_REPO_CONTEXT_RULES_20260912
+000. operator +++OP125_CTX234_S413_20260914
+000. scripting +++SCRIPT_REPO_CTX234_S413_20260914
+000. docs +++README_REPO_CONTEXT_RULES_20260914
 ```
 
 ## Markdown-first design
