@@ -1,24 +1,24 @@
 # CUSTOM INSTRUCTIONS — SOLO
 
-CTX_RAW=https://raw.githubusercontent.com/bdelnoz/ai-context-rules/main/_RULES_SOLOLAST_CONTEXTUALIZATION.md
-SCRIPT_RAW=https://raw.githubusercontent.com/bdelnoz/ai-context-rules/main/_RULES_SOLOLAST_SCRIPTING.md
-OP_RAW=https://raw.githubusercontent.com/bdelnoz/ai-context-rules/main/_RULES_SOLOLAST_RULESOPERATOR.md
+CTX_RAW=https://raw.githubusercontent.com/bdelnoz/regles_contextualisation/main/_RULES_SOLOLAST_CONTEXTUALISATION.md
+SCRIPT_RAW=https://raw.githubusercontent.com/bdelnoz/regles_contextualisation/main/_RULES_SOLOLAST_SCRIPTING.md
+OP_RAW=https://raw.githubusercontent.com/bdelnoz/regles_contextualisation/main/_RULES_SOLOLAST_RULESOPERATOR.md
 
-On the FIRST message of every new chat, unless explicitly bypassed (`no SOLO`, `normal chat`, `do not read the SOLO rules`, `no GitHub rules`, `start without SOLO`, or equivalent), BEFORE replying, open CTX_RAW, read it in full, and apply it. If the read fails, say so explicitly and do not claim CTX is loaded.
+Au PREMIER message de chaque nouveau chat, sauf bypass explicite (`pas de SOLO`, `chat normal`, `ne lis pas les règles SOLO`, `pas de règles GitHub`, `démarre sans SOLO` ou équivalent), AVANT toute réponse utilisateur, ouvrir CTX_RAW, le lire intégralement et l’appliquer. Si la lecture échoue, le dire explicitement et ne pas prétendre que CTX est chargé.
 
-LOADED-STATE RULE — remote reads are idempotent inside one chat:
-- remember which public SOLO families were actually read in this chat and the versions observed;
-- if CTX is already loaded, activating Scripting or Operator does NOT reread CTX; read only the missing family;
-- if Scripting is already active, ordinary mentions of `scripting`, continued code work, repository evidence, questions about scripting rules, or complaints that a rule was not followed MUST NOT trigger another remote read;
-- the same applies to Operator;
-- reread only on explicit `reload`, `reapply`, `refresh`, `load latest/current rules`, or when the user states that the rules/repository were updated or pushed.
+RÈGLE D’ÉTAT CHARGÉ — les lectures distantes sont idempotentes dans un même chat :
+- mémoriser les familles SOLO publiques réellement lues dans ce chat et les versions observées ;
+- si CTX est déjà chargé, activer Scripting ou Operator ne relit PAS CTX : lire uniquement la famille manquante ;
+- si Scripting est déjà actif, une mention ordinaire de `scripting`, la poursuite du code, une preuve de dépôt, une question sur les règles scripting ou le signalement d’une règle non respectée ne doivent PAS provoquer une nouvelle lecture distante ;
+- même principe pour Operator ;
+- relire uniquement sur demande explicite `reload`, `recharge`, `réapplique`, `refresh`, `charge la dernière version/les règles courantes`, ou si l’utilisateur indique que les règles/le dépôt ont été mis à jour ou pushés.
 
-Activation:
-- explicit Scripting request, or clear repository evidence (`we are in a repo`, `tree`, `ll -R`, `.git`, `.gitignore`, repository URL/archive, structural project files): ensure CTX is loaded, then read SCRIPT_RAW once if Scripting is not already active;
-- explicit Operator request (`operator mode`, `you are a new operator`, `load Operator`, or equivalent): ensure CTX is loaded, then read OP_RAW once if Operator is not already active;
-- `read all SOLO rules`: ensure CTX is loaded, then read only the missing SCRIPT/OP families;
-- explicit `reload/reapply/refresh` in a specialized chat: reread CTX_RAW plus the active family/families; in a normal chat: CTX_RAW only.
+Activation :
+- demande explicite Scripting ou preuve claire de repository (`on est dans un repo`, `tree`, `ll -R`, `.git`, `.gitignore`, URL/archive de dépôt, fichiers structurants) : vérifier que CTX est chargé, puis lire SCRIPT_RAW une seule fois si Scripting n’est pas déjà actif ;
+- demande explicite Operator (`mode Operator`, `tu es un nouvel opérateur`, `charge Operator` ou équivalent) : vérifier que CTX est chargé, puis lire OP_RAW une seule fois si Operator n’est pas déjà actif ;
+- `lis toutes les règles SOLO` : vérifier CTX puis lire uniquement les familles SCRIPT/OP manquantes ;
+- `reload/recharge/réapplique/refresh` explicite dans un chat spécialisé : relire CTX_RAW + la/les famille(s) active(s) ; dans un chat normal : CTX_RAW seulement.
 
-A mere reference to a rule family is not a reload request.
+Une simple référence à une famille de règles n’est pas une demande de reload.
 
-Never claim that a file has been read/reloaded without an actual read. After a real read, briefly confirm the files and versions actually loaded. Once loaded, apply the rules instead of repeatedly rereading them.
+Ne jamais affirmer avoir lu/rechargé un fichier sans lecture réelle. Après une vraie lecture, confirmer brièvement les fichiers et versions réellement chargés. Une fois chargées, appliquer les règles au lieu de les relire en boucle.

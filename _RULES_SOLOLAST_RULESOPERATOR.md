@@ -5,102 +5,103 @@ Version: SOLO125
 Date / Time: 2026-09-14
 Project: SOLO rules operator contextualization
 Public status: GitHub-safe public rules file
-Language: English
-Short description: Rules for operating SOLO rule-maintenance chats, synchronized with CTX234 and SCRIPT413, with a mandatory commit-pinned CORE CHAIN plus the canonical 20-check FULL ACCEPTANCE validation for Operator/bootstrap/routing/delivery-rule changes.
+Short description: Règles d’exploitation des chats de maintenance SOLO, synchronisées avec CTX234 et SCRIPT413, avec CORE CHAIN obligatoire piné sur le commit, FULL ACCEPTANCE canonique à 20 checks et chargement idempotent des familles SOLO.
 -->
 
 # _RULES_SOLO125_RULESOPERATOR.md
 
-Canonical name: SOLO125 RULESOPERATOR  
-Family: SOLOxxx RULESOPERATOR  
-Current version: 125  
-Document: _RULES_SOLO125_RULESOPERATOR.md  
-Date: 2026-09-14  
-Status: public, sanitized version 125 of the Operator rules file, synchronized with CTX234, SCRIPT413, and the Custom Instructions, with a CORE CHAIN pinned to the exact commit SHA and a mandatory canonical 20-check FULL ACCEPTANCE for Operator/bootstrap/routing/delivery changes.
+Nom canonique : SOLO125 RULESOPERATOR  
+Famille : SOLOxxx RULESOPERATOR  
+Version actuelle : 125  
+Document : _RULES_SOLO125_RULESOPERATOR.md  
+Date : 2026-09-14
+Statut : version 125 publique et assainie du fichier opérateur, synchronisant CTX234, SCRIPT413 et les Custom Instructions, avec CORE CHAIN piné sur le SHA exact du commit, FULL ACCEPTANCE canonique à 20 checks obligatoire et chargement idempotent des familles SOLO dans un chat déjà ouvert.
 
-These rules contextualize a chat dedicated to creating, modifying, correcting, versioning, documenting, and delivering SOLO rule files.
+Ces règles contextualisent un chat chargé de créer, modifier, corriger, versionner, documenter et livrer les fichiers de règles SOLO.
 
-They define how a rules-operator chat must work. They do not replace the following rule families:
+Elles définissent la méthode de travail d’un chat opérateur de règles. Elles ne remplacent pas les familles de règles suivantes :
 
 ```text
-_RULES_SOLOXXX_CONTEXTUALIZATION.md
+_RULES_SOLOXXX_CONTEXTUALISATION.md
 _RULES_SOLOXXX_SCRIPTING.md
 ```
 
 ------------------------------------------------------------------------
 
-## 1. SCOPE
+## 1. PORTÉE
 
-1. The RULESOPERATOR file applies to chats dedicated to SOLO rule maintenance.
+1. Le fichier RULESOPERATOR s’applique aux chats dédiés à la maintenance des règles SOLO.
 
-2. It covers:
-- creating new rules;
-- modifying existing rules;
-- correcting wording;
-- versioning;
-- updating local documentation;
-- updating the local changelog;
-- anti-regression checks;
-- private-data leak checks;
-- file delivery;
-- preparation of ZIP packages.
+2. Il couvre les opérations suivantes :
+- création de nouvelles règles ;
+- modification de règles existantes ;
+- correction de formulation ;
+- versionnement ;
+- mise à jour de la documentation locale ;
+- mise à jour du changelog local ;
+- contrôle anti-régression ;
+- contrôle anti-fuite de données privées ;
+- livraison des fichiers ;
+- préparation de packages ZIP.
 
-3. It does not define the business/content rules of the global or scripting families.
+3. Il ne définit pas le contenu métier des règles globales ou scripting.
 
-4. It defines how the assistant must operate when the user provides rules to integrate.
+4. Il définit comment l’assistant doit opérer quand l’utilisateur lui donne des règles à intégrer.
 
 ------------------------------------------------------------------------
 
-## 2. PUBLIC RULE FAMILIES
+## 2. FAMILLES DE RÈGLES PUBLIQUES
 
-5. The three main families must remain separate:
-
-```text
-_RULES_SOLOXXX_CONTEXTUALIZATION.md
-_RULES_SOLOXXX_SCRIPTING.md
-_RULES_SOLOXXX_RULESOPERATOR.md
-```
-
-6. In the public `ai-context-rules` repository, only public RULES files from the active families are intended for publication.
-
-7. The active public slots are:
+5. Les trois familles principales doivent rester séparées :
 
 ```text
-_RULES_SOLOXXX_CONTEXTUALIZATION.md
+_RULES_SOLOXXX_CONTEXTUALISATION.md
 _RULES_SOLOXXX_SCRIPTING.md
 _RULES_SOLOXXX_RULESOPERATOR.md
 ```
 
-8. README files, CHANGELOG files, ZIPs, archives, internal documents, and private modules are local or delivery files, not public files to publish at repository root.
+6. Dans le dépôt public `regles_contextualisation`, seuls les fichiers RULES publics des familles actives sont destinés à être publiés.
 
-9. README and CHANGELOG files remain useful for delivery and local traceability, but they must be placed under `.docs/` or in a local delivery ZIP ignored by Git.
+7. Les slots publics actifs sont :
 
-10. Public RULES files must not contain their own embedded changelog.
+```text
+_RULES_SOLOXXX_CONTEXTUALISATION.md
+_RULES_SOLOXXX_SCRIPTING.md
+_RULES_SOLOXXX_RULESOPERATOR.md
+```
 
-11. A public RULES file must contain active rules only, not detailed history of previous versions.
+8. Les fichiers README, CHANGELOG, ZIP, archives, documents internes et modules privés sont des fichiers locaux ou de livraison, pas des fichiers publics à publier dans la racine du dépôt.
+
+9. Les fichiers README et CHANGELOG restent utiles pour la livraison et la traçabilité locale, mais ils doivent être placés dans `.docs/` ou dans un ZIP de livraison local ignoré par Git.
+
+10. Les fichiers RULES publics ne doivent pas contenir leur propre changelog embarqué.
+
+11. Un fichier RULES public doit contenir les règles actives uniquement, pas l’historique détaillé des anciennes versions.
 
 ------------------------------------------------------------------------
 
-## 3. CANONICAL PUBLIC REPOSITORY STRUCTURE
+## 3. STRUCTURE CANONIQUE DU DÉPÔT PUBLIC
 
-12. The canonical local repository is:
+12. Le dépôt local canonique est :
 
 ```text
-/mnt/data2_78g/Security/scripts/Projects_web/ai-context-rules
+/mnt/data2_78g/Security/scripts/Projects_web/regles_contextualisation
 ```
 
-13. The expected public root includes, in particular:
+13. La racine publique attendue contient notamment :
 
 ```text
 AGENTS.md
 CLAUDE.md -> AGENTS.md
-AI_STUDYING_FILES/
-_RULES_SOLOXXX_CONTEXTUALIZATION.md
+Feature_requests_standardization/
+350_QUESTIONS_TO_GET_AI_WORKING_INFOS/
+VISUALS/
+_RULES_SOLOXXX_CONTEXTUALISATION.md
 _RULES_SOLOXXX_SCRIPTING.md
 _RULES_SOLOXXX_RULESOPERATOR.md
 ```
 
-14. The following folders and files are local or private and must not be published:
+14. Les dossiers et fichiers suivants sont locaux ou privés et ne doivent pas être publiés :
 
 ```text
 *.zip
@@ -131,329 +132,330 @@ secrets/
 .zip/
 ```
 
-15. The project `.gitignore` structure must remain compatible with this public/local separation.
+15. La structure `.gitignore` du projet doit rester compatible avec cette séparation public/local.
 
-16. If a delivery contains README, CHANGELOG, or ZIP files, they may be delivered to the user but must not be treated as public repository-root files.
+16. Si une livraison contient des README, CHANGELOG ou ZIP, ces fichiers peuvent être fournis à l’utilisateur, mais ils ne doivent pas être considérés comme des fichiers publics du dépôt.
 
-17. If a delivery is to be copied into the local repository, README and CHANGELOG files must go under `.docs/`, ZIPs may go under `.zip/` or remain ignored by `*.zip`, and private modules must remain under `.private/` or under the `_RULES_PRIVATE_*` pattern.
+17. Si une livraison doit être copiée dans le dépôt local, les fichiers README et CHANGELOG doivent aller sous `.docs/`, les ZIP peuvent aller sous `.zip/` ou rester ignorés par `*.zip`, et les modules privés doivent rester sous `.private/` ou sous le pattern `_RULES_PRIVATE_*`.
 
 ------------------------------------------------------------------------
 
-## 4. PROHIBITION ON PRIVATE-DATA LEAKS
+## 4. INTERDICTION DES FUITES DE DONNÉES PRIVÉES
 
-18. The three public RULES files must never contain unnecessary personal, family, medical, private, sensitive, nominative, or historical data.
+18. Les trois fichiers RULES publics ne doivent jamais contenir de données personnelles, familiales, médicales, privées, sensibles, nominatives ou historiques inutiles.
 
-19. This rule applies first and foremost to:
+19. Cette règle s’applique en priorité aux fichiers publics suivants :
 
 ```text
-_RULES_SOLOXXX_CONTEXTUALIZATION.md
+_RULES_SOLOXXX_CONTEXTUALISATION.md
 _RULES_SOLOXXX_SCRIPTING.md
 _RULES_SOLOXXX_RULESOPERATOR.md
 ```
 
-20. Before producing or modifying a public RULES file, the assistant must perform an anti-leak check.
+20. Avant de produire ou modifier un fichier RULES public, l’assistant doit appliquer un contrôle anti-fuite.
 
-21. The anti-leak check must search for and exclude, in particular:
-- names of private individuals;
-- identifying family references;
-- medical or health information;
-- personal legal or administrative data;
-- addresses, phone numbers, or private email addresses not explicitly intended for publication;
-- details of personal conflicts;
-- examples containing a real identifiable situation;
-- internal histories containing sensitive data;
-- old embedded changelogs containing private information.
+21. Le contrôle anti-fuite doit rechercher et exclure notamment :
+- noms de personnes privées ;
+- références familiales identifiantes ;
+- données médicales ou de santé ;
+- données légales ou administratives personnelles ;
+- adresses, téléphones, emails privés non explicitement destinés à la publication ;
+- détails de conflits personnels ;
+- exemples contenant une situation réelle identifiable ;
+- historiques internes contenant des données sensibles ;
+- anciens changelogs embarqués contenant des informations privées.
 
-22. If a useful rule contains private data, the assistant must generalize the public rule and move the private information to an appropriate local private file.
+22. Si une règle utile contient une donnée privée, l’assistant doit généraliser la règle publique et déplacer l’information privée dans un fichier local privé.
 
-23. The assistant must not silently delete useful private information: it must extract it to an appropriate private file.
+23. L’assistant ne doit pas supprimer silencieusement une donnée privée utile : il doit l’extraire vers un fichier privé approprié.
 
-24. Private files must use a clear local name, for example:
+24. Les fichiers privés doivent utiliser un nom local clair, par exemple :
 
 ```text
 _RULES_PRIVATE_SOLOXXX_<MODULE>.md
 ```
 
-25. Private files may also be organized under `.private/` when requested by the user or required by the local context.
+25. Les fichiers privés peuvent aussi être organisés sous `.private/` lorsque l’utilisateur le demande ou lorsque le contexte local l’exige.
 
-26. Private files must never be included in a public package.
+26. Les fichiers privés ne doivent jamais être inclus dans un package public.
 
-27. Public files must not cite the exact names of private modules if the name itself reveals sensitive information. They may cite the generic pattern `_RULES_PRIVATE_SOLOXXX_<MODULE>.md`.
+27. Les fichiers publics ne doivent pas citer les noms précis des modules privés si cette citation révèle elle-même une information sensible. Ils peuvent citer le pattern générique `_RULES_PRIVATE_SOLOXXX_<MODULE>.md`.
 
-28. If the user explicitly provides the name of a private module already present in the local repository, the assistant may use that name in a delivery response, but must avoid reintroducing it into a public rule if the name is sensitive.
-
-------------------------------------------------------------------------
-
-## 5. GO, APPROVAL, AND INTEGRATION
-
-29. Without a clear GO, the assistant does not generate final files unless the user explicitly requests immediate execution.
-
-30. When the user gives GO, the assistant produces the complete files directly.
-
-31. GO may be expressed naturally: `go`, `go ahead`, `do the job`, `proceed`, `you can generate`, or equivalent.
-
-32. After GO, the assistant must not ask for confirmation again for items already approved.
-
-33. The user remains the final authority for approval, deletions, renames, private extractions, and version changes.
-
-34. A discussion about a SOLO rule is working material for a file, not authorization for persistent memory, unless explicitly requested by the user.
+28. Si l’utilisateur fournit explicitement un nom de module privé déjà présent dans le dépôt local, l’assistant peut l’utiliser dans la réponse de livraison, mais doit éviter de le réintroduire dans une règle publique si ce nom est sensible.
 
 ------------------------------------------------------------------------
 
-## 6. VERSIONING
+## 5. GO, VALIDATION ET INTÉGRATION
 
-35. Any real modification to a rules file must increment its version.
+29. Sans GO clair, l’assistant ne génère pas les fichiers finaux sauf demande explicite d’exécution immédiate.
 
-36. Any real modification to an associated local README or CHANGELOG must update its metadata.
+30. Quand l’utilisateur donne GO, l’assistant produit directement les fichiers complets.
 
-37. The version number must be visible in:
-- the filename when required by the naming convention;
-- the header;
-- the content;
-- the local changelog.
+31. Le GO peut être formulé naturellement : `go`, `vas-y`, `fais le job`, `en avant`, `tu peux générer`, ou équivalent.
 
-38. Versions must remain traceable, but history must no longer be embedded in the public RULES file.
+32. Après GO, l’assistant ne redemande pas confirmation pour les éléments déjà validés.
 
-39. The detailed changelog must remain in the corresponding local CHANGELOG file, ideally under `.docs/` in the local repository.
+33. L’utilisateur reste l’autorité finale sur la validation, les suppressions, les changements de nom, les extractions privées et les changements de version.
 
-40. If an intermediate version has no documented changelog, the assistant must state clearly that the changelog was not documented and must not invent history.
+34. Une discussion de règle SOLO est une matière de travail pour fichier, pas une autorisation de mémoire persistante, sauf demande explicite de l’utilisateur.
+
+------------------------------------------------------------------------
+
+## 6. VERSIONNEMENT
+
+35. Toute modification réelle d’un fichier de règles doit incrémenter la version.
+
+36. Toute modification réelle d’un README ou CHANGELOG local associé doit mettre à jour ses métadonnées.
+
+37. Le numéro de version doit être visible dans :
+- le nom de fichier quand la convention le prévoit ;
+- le header ;
+- le contenu ;
+- le changelog local.
+
+38. Les versions doivent rester traçables, mais l’historique ne doit plus être embarqué dans le fichier RULES public.
+
+39. Le changelog détaillé doit rester dans le fichier CHANGELOG local correspondant, idéalement placé sous `.docs/` dans le dépôt local.
+
+40. Si une version intermédiaire n’a pas de changelog documenté, l’assistant doit écrire clairement que le changelog n’était pas documenté et ne pas inventer l’historique.
 
 ------------------------------------------------------------------------
 
 ## 7. NAMING
 
-41. Active public patterns are:
+41. Les patterns publics actifs sont :
 
 ```text
-_RULES_SOLOXXX_CONTEXTUALIZATION.md
+_RULES_SOLOXXX_CONTEXTUALISATION.md
 _RULES_SOLOXXX_SCRIPTING.md
 _RULES_SOLOXXX_RULESOPERATOR.md
 ```
 
-42. Local documentation patterns are:
+42. Les patterns locaux de documentation sont :
 
 ```text
-.docs/README_SOLOXXX_CONTEXTUALIZATION.md
-.docs/CHANGELOG_SOLOXXX_CONTEXTUALIZATION.md
+.docs/README_SOLOXXX_CONTEXTUALISATION.md
+.docs/CHANGELOG_SOLOXXX_CONTEXTUALISATION.md
 .docs/README_SOLOXXX_SCRIPTING.md
 .docs/CHANGELOG_SOLOXXX_SCRIPTING.md
 .docs/README_SOLOXXX_RULESOPERATOR.md
 .docs/CHANGELOG_SOLOXXX_RULESOPERATOR.md
 ```
 
-43. Local single-rule ZIP patterns are:
+43. Les patterns locaux de ZIP règle-seule sont :
 
 ```text
-_RULES_SOLOXXX_CONTEXTUALIZATION.zip
+_RULES_SOLOXXX_CONTEXTUALISATION.zip
 _RULES_SOLOXXX_SCRIPTING.zip
 _RULES_SOLOXXX_RULESOPERATOR.zip
 ```
 
-44. Local full-package patterns are:
+44. Les patterns locaux de package complet sont :
 
 ```text
-SOLOXXX_CONTEXTUALIZATION_PACKAGE.zip
+SOLOXXX_CONTEXTUALISATION_PACKAGE.zip
 SOLOXXX_SCRIPTING_PACKAGE.zip
 SOLOXXX_RULESOPERATOR_PACKAGE.zip
 ```
 
-45. Local private patterns are:
+45. Les patterns privés locaux sont :
 
 ```text
 _RULES_PRIVATE_SOLOXXX_<MODULE>.md
-.private/<private_file>
+.private/<fichier_privé>
 ```
 
-46. The single-rule ZIP must have exactly the same basename as its `_RULES_...md` file, changing only `.md` to `.zip`.
+46. Le ZIP règle-seule doit porter exactement le même nom de base que le fichier `_RULES_...md`, avec seulement l’extension changée de `.md` vers `.zip`.
 
-47. The single-rule ZIP must contain only the corresponding rules file.
+47. Le ZIP règle-seule doit contenir uniquement le fichier de règles correspondant.
 
-48. A complete family delivery package may contain:
-- the public RULES file;
-- the local README;
-- the local CHANGELOG;
-- the single-rule ZIP.
+48. Le package complet de livraison peut contenir :
+- le fichier RULES public ;
+- le README local ;
+- le CHANGELOG local ;
+- le ZIP règle-seule.
 
-49. When the package is intended to be extracted into the local repository, README and CHANGELOG must be placed under `.docs/` inside the ZIP to avoid accidental publication.
-
-------------------------------------------------------------------------
-
-## 8. ANTI-REGRESSION AND ANTI-LEAK
-
-50. No existing file may become smaller, summarized, impoverished, or simplified unless explicitly requested by the user.
-
-51. A size reduction is allowed when it explicitly results from:
-- private-data cleanup;
-- externalization to a private file;
-- removal of an embedded changelog;
-- duplicate removal;
-- a user-approved GitHub-safe restructuring.
-
-52. Before delivery, the assistant must compare line and byte counts of modified files against their references.
-
-53. If a modified file is shorter, the assistant must explain the exact reason for the reduction.
-
-54. The anti-regression check must report:
-- source file;
-- produced file;
-- old line count;
-- new line count;
-- old byte count;
-- new byte count;
-- status: OK, JUSTIFIED OK, or FAIL.
-
-55. The anti-leak check must confirm that public files do not contain the private data targeted by the request.
-
-56. If a block removed from the public file remains useful, it must exist in a local private file or local private archive.
-
-57. The file supplied by the user or produced in the current chat is the source of truth.
-
-58. The assistant must not reconstruct a complete supplied file from memory.
+49. Lorsque le package est destiné à être extrait dans le dépôt local, le README et le CHANGELOG doivent être placés sous `.docs/` dans le ZIP pour éviter une publication accidentelle.
 
 ------------------------------------------------------------------------
 
-## 9. FILE DELIVERY
+## 8. ANTI-RÉGRESSION ET ANTI-FUITE
 
-59. For a SOLO-family modification, a delivery ZIP remains mandatory.
+50. Aucun fichier existant ne doit revenir plus petit, résumé, appauvri ou simplifié sauf demande explicite de l’utilisateur.
 
-60. In the delivery response, present the complete package first, then any useful individual files.
+51. Une réduction de taille est autorisée lorsqu’elle correspond explicitement à :
+- un nettoyage de données privées ;
+- une externalisation vers un fichier privé ;
+- un retrait de changelog embarqué ;
+- une suppression de doublons ;
+- une restructuration GitHub-safe validée par l’utilisateur.
 
-61. For a public family in `ai-context-rules`, the normal delivery contains:
+52. Avant livraison, l’assistant doit comparer les lignes et octets des fichiers modifiés avec leurs références.
+
+53. Si un fichier modifié est plus court, l’assistant doit expliquer précisément la raison de la réduction.
+
+54. Le contrôle anti-régression doit indiquer :
+- fichier source ;
+- fichier produit ;
+- anciennes lignes ;
+- nouvelles lignes ;
+- anciens octets ;
+- nouveaux octets ;
+- statut OK, OK JUSTIFIÉ ou FAIL.
+
+55. Le contrôle anti-fuite doit confirmer que les fichiers publics ne contiennent pas les données privées ciblées par la demande.
+
+56. Si un bloc retiré du public reste utile, il doit exister dans un fichier privé local ou dans une archive privée locale.
+
+57. Le fichier fourni par l’utilisateur ou produit dans le chat courant est la source de vérité.
+
+58. L’assistant ne doit pas reconstruire depuis mémoire un fichier fourni complet.
+
+------------------------------------------------------------------------
+
+## 9. LIVRAISON DES FICHIERS
+
+59. Pour une modification de famille SOLO, le ZIP de livraison reste obligatoire.
+
+60. Dans la réponse de livraison, le package complet doit être présenté d’abord, puis les fichiers individuels utiles.
+
+61. Pour une famille publique du dépôt `regles_contextualisation`, la livraison normale contient :
 
 ```text
-_RULES_SOLOXXX_<FAMILY>.md
-.docs/README_SOLOXXX_<FAMILY>.md
-.docs/CHANGELOG_SOLOXXX_<FAMILY>.md
-_RULES_SOLOXXX_<FAMILY>.zip
-SOLOXXX_<FAMILY>_PACKAGE.zip
+_RULES_SOLOXXX_<FAMILLE>.md
+.docs/README_SOLOXXX_<FAMILLE>.md
+.docs/CHANGELOG_SOLOXXX_<FAMILLE>.md
+_RULES_SOLOXXX_<FAMILLE>.zip
+SOLOXXX_<FAMILLE>_PACKAGE.zip
 ```
 
-62. A public package must never include `.private/`, `.old/`, sensitive `.docs/`, `_RULES_PRIVATE_*`, or other private files unless the user explicitly requests a complete public+private package.
+62. Le package public ne doit jamais inclure `.private/`, `.old/`, `.docs/` sensibles, `_RULES_PRIVATE_*` ou d’autres fichiers privés, sauf demande explicite de package complet public+privé.
 
-63. A local delivery package may contain `.docs/` so README and CHANGELOG remain outside GitHub publication.
+63. Un package de livraison local peut contenir `.docs/` pour garder README et CHANGELOG hors publication GitHub.
 
-64. If the user requests one ZIP containing everything, the assistant must state clearly whether the ZIP also contains private files.
-
-------------------------------------------------------------------------
-
-## 10. PRESENTATION OF MODIFICATIONS
-
-65. When the user asks for a SOLO-rule modification, the assistant should by default present only the expected final result.
-
-66. The assistant should not automatically display:
-- the old rule;
-- a before/after comparison;
-- a diff;
-- a long justification;
-- a historical reconstruction;
-- an explanation of every old wording.
-
-67. Unless explicitly requested otherwise, show only:
-- the complete corrected rule;
-- the new block to integrate;
-- the proposed final wording;
-- new changes not yet approved.
-
-68. If the user explicitly requests a comparison, audit, explanation, or before/after view, the assistant may show the old and new versions.
-
-69. In a chat dedicated to creating, correcting, or maintaining SOLO rules, the default behavior is: final result first; comparison only on request.
+64. Si l’utilisateur demande un ZIP contenant tout, l’assistant doit préciser clairement si le ZIP contient aussi des fichiers privés.
 
 ------------------------------------------------------------------------
 
-## 11. COMPLIANCE ERRORS AND RULE VIOLATIONS
+## 10. PRÉSENTATION DES MODIFICATIONS
 
-70. If the user reports that a SOLO rule was not followed, the assistant must not immediately propose a new corrective rule.
+65. Quand l’utilisateur demande une modification de règle SOLO, l’assistant doit présenter par défaut uniquement le résultat final attendu.
 
-71. It must first reread or search for the relevant existing rule in the supplied or active SOLO file.
+66. L’assistant ne doit pas afficher automatiquement :
+- l’ancienne règle ;
+- un comparatif avant / après ;
+- un diff ;
+- une longue justification ;
+- une reconstruction historique ;
+- une explication de toutes les anciennes formulations.
 
-72. It must identify the existing rule precisely: number, title, section, or relevant wording.
+67. Sauf demande explicite contraire, l’assistant doit montrer seulement :
+- la règle corrigée complète ;
+- le nouveau bloc à intégrer ;
+- la formulation finale proposée ;
+- les modifications nouvelles non encore validées.
 
-73. It must then state whether the error comes from a missing rule, an existing rule that is too vague, an existing rule that was not applied, or a misinterpretation of the rule.
+68. Si l’utilisateur demande explicitement un comparatif, un audit, une explication ou un avant / après, l’assistant peut afficher l’ancienne version et la nouvelle version.
 
-74. If the existing rule already covers the problem, the assistant must not create a parallel rule.
+69. Dans un chat dédié à la création, correction ou maintenance des règles SOLO, le comportement par défaut est : résultat final d’abord, comparaison seulement sur demande.
 
-75. If the existing rule already covers the problem, the assistant must propose a minimal correction to that rule, as an anti-regression sub-rule or a targeted clarification.
+------------------------------------------------------------------------
 
-76. Before proposing any new rule, the assistant must display this mandatory template:
+
+## 11. ERREURS DE CONFORMITÉ ET VIOLATIONS DE RÈGLES
+
+70. Si l’utilisateur signale qu’une règle SOLO n’a pas été respectée, l’assistant ne doit pas proposer immédiatement une nouvelle règle corrective.
+
+71. L’assistant doit d’abord relire ou rechercher la règle existante concernée dans le fichier SOLO fourni ou actif.
+
+72. L’assistant doit identifier précisément la règle déjà existante : numéro, titre, section ou formulation pertinente.
+
+73. L’assistant doit ensuite dire si l’erreur vient d’une absence de règle, d’une règle trop vague, d’une règle existante non appliquée ou d’une mauvaise interprétation de la règle.
+
+74. Si la règle existante couvre déjà le problème, l’assistant ne doit pas créer une règle parallèle.
+
+75. Si la règle existante couvre déjà le problème, l’assistant doit proposer une correction minimale de cette règle existante, sous forme de sous-règle anti-régression ou de clarification ciblée.
+
+76. Avant toute proposition de nouvelle règle, l’assistant doit afficher la formule obligatoire suivante :
 
 ```text
-existing rule found: yes / no
-number or title of the relevant rule: <reference>
-problem covered by the existing rule: yes / no
-cause of the error: missing rule / rule too vague / existing rule not applied / misinterpretation
-minimal proposed modification: <targeted correction>
+règle existante trouvée : oui / non
+numéro ou titre de la règle concernée : <référence>
+problème couvert par la règle existante : oui / non
+cause de l’erreur : absence de règle / règle trop vague / règle existante non appliquée / mauvaise interprétation
+modification minimale proposée : <correction ciblée>
 ```
 
-77. The purpose is to prevent the assistant from inventing a corrective rule when a rule already exists but simply was not applied.
+77. L’objectif est d’empêcher l’assistant d’inventer une règle corrective alors qu’une règle existe déjà, mais n’a simplement pas été appliquée.
 
-78. The assistant must not merely say that the user is right.
+78. L’assistant ne doit pas seulement dire que l’utilisateur a raison.
 
-79. It must explain why the error occurred without inventing an unverified cause.
+79. L’assistant doit expliquer pourquoi l’erreur s’est produite, sans inventer de cause non vérifiée.
 
-80. If the cause is scope confusion, it must say so clearly.
-
-------------------------------------------------------------------------
-
-## 12. CONTINUATION MODE
-
-81. When a chat becomes too long, the assistant must propose a short continuation context rather than asking the user to paste the full export.
-
-82. To continue in a new chat, the preferred flow is:
-- provide the latest active files;
-- provide a short continuation summary;
-- avoid pasting the full raw history unless needed for an audit or bug report.
-
-83. The full chat export is primarily for archiving, export debugging, or auditing.
-
-84. It should not be pasted by default into a new working chat when active files and a summary are sufficient.
+80. Si la cause est une confusion de périmètre, il doit l’indiquer clairement.
 
 ------------------------------------------------------------------------
 
-## 13. SOLO105 ADDITION — GITHUB-SAFE STRUCTURE AND PUBLIC ANTI-LEAK
+## 12. MODE DE CONTINUATION
 
-85. SOLO105 establishes the public/local-only structure of the `ai-context-rules` repository.
+81. Quand un chat devient trop long, l’assistant doit proposer un contexte de continuation court plutôt que demander de coller tout l’export complet.
 
-86. SOLO105 prohibits private data in the three public RULES files.
+82. Pour continuer dans un nouveau chat, le meilleur flux est :
+- fournir les derniers fichiers actifs ;
+- fournir un résumé de continuation court ;
+- éviter de coller tout l’historique brut sauf besoin d’audit ou de bug report.
 
-87. SOLO105 removes the embedded changelog from the public RULESOPERATOR file: detailed history lives in the corresponding local CHANGELOG file.
+83. L’export complet du chat sert surtout à l’archive, au debug d’export ou à l’audit.
 
-88. SOLO105 requires README and CHANGELOG files generated for deliveries to be treated as local documentation or delivery artifacts, not as public repository-root files.
-
-89. SOLO105 requires any sensitive content extracted from a public file to be preserved in a local private file when still useful.
-
-90. SOLO105 requires the public/local separation to be checked before delivery: public root for public RULES, `.docs/` for local documentation, `.private/` or `_RULES_PRIVATE_*` for private content, and ZIPs ignored by Git.
+84. Il ne doit pas être collé par défaut dans un nouveau chat de travail si les fichiers actifs et le résumé suffisent.
 
 ------------------------------------------------------------------------
 
-## 14. SOLO111 ADDITION — HUMAN-READABLE TITLES FOR ACTIVE CHATS OF ALL TYPES
+## 13. AJOUT SOLO105 — STRUCTURE GITHUB-SAFE ET ANTI-FUITE PUBLIQUE
 
-91. The active-chat title convention is no longer limited to SOLO Operator chats.
+85. SOLO105 fixe la structure publique/local-only du dépôt `regles_contextualisation`.
 
-92. It applies to any chat currently used for an active workflow: Operator, contextualization, scripting, extension development, debugging, feature request, publication, packaging, documentation, or another technical project.
+86. SOLO105 interdit la présence de données privées dans les trois fichiers RULES publics.
 
-93. The assistant must not claim it can rename the chat automatically unless the ChatGPT interface explicitly gives it that capability.
+87. SOLO105 retire le changelog embarqué du fichier RULESOPERATOR public : le changelog détaillé vit dans le fichier CHANGELOG local correspondant.
 
-94. When a new active working chat is created, or a chat becomes the current chat for a workflow, the assistant must propose a short, sortable title ready to copy and paste.
+88. SOLO105 impose que les README et CHANGELOG générés pour les livraisons soient traités comme documentation locale ou artefacts de livraison, pas comme fichiers publics.
 
-95. The canonical prefix for currently active chats is:
+89. SOLO105 impose que tout contenu sensible extrait d’un fichier public soit conservé dans un fichier privé local si ce contenu reste utile.
+
+90. SOLO105 impose que la séparation public/local soit vérifiée avant livraison : public root pour les RULES publics, `.docs/` pour documentation locale, `.private/` ou `_RULES_PRIVATE_*` pour contenu privé, ZIP ignorés par Git.
+
+------------------------------------------------------------------------
+
+## 14. AJOUT SOLO111 — TITRAGE LISIBLE DES CHATS ACTIFS TOUS TYPES
+
+91. La convention de titre de chat actif n’est plus limitée aux chats SOLO Operator.
+
+92. Elle s’applique à tout chat actuellement utilisé pour un workflow actif : Operator, contextualisation, scripting, développement d’extension, debug, feature request, publication, packaging, documentation ou projet technique en cours.
+
+93. L’assistant ne doit pas prétendre pouvoir renommer automatiquement le chat si l’interface ChatGPT ne lui donne pas explicitement cette capacité.
+
+94. Lorsqu’un nouveau chat de travail actif est créé, ou lorsqu’un chat devient le chat courant d’un workflow, l’assistant doit proposer un titre court, triable et prêt à copier-coller.
+
+95. Le préfixe canonique des chats actuellement actifs est :
 
 ```text
-000. <readable type> +++
+000. <type lisible> +++
 ```
 
-96. `000.` means: current, priority, or actively used chat.
+96. `000.` signifie : chat courant, prioritaire ou actuellement utilisé.
 
-97. `<readable type>` must appear immediately after `000.` so the chat list remains human-readable.
+97. Le `<type lisible>` doit être placé immédiatement après `000.` pour rendre la liste des chats humainement lisible.
 
-98. `+++` remains the visual and quick-search marker in ChatGPT, but it comes after the readable type.
+98. `+++` reste le marqueur visuel et de recherche rapide dans ChatGPT, mais il vient après le type lisible.
 
-99. Recommended canonical pattern:
+99. Le pattern canonique recommandé est :
 
 ```text
-000. <readable_type> +++<TECH_TYPE>_<PROJECT_OR_SCOPE>_<VERSIONS_OR_CONTEXT>_<YYYYMMDD>
+000. <type_lisible> +++<TYPE_TECH>_<PROJET_OU_SCOPE>_<VERSIONS_OU_CONTEXTE>_<YYYYMMDD>
 ```
 
-100. Recommended examples:
+100. Exemples recommandés :
 
 ```text
 000. operator +++OP113_CTX231_S409_20260802
@@ -462,85 +464,85 @@ minimal proposed modification: <targeted correction>
 000. docs +++README_REPO_CONTEXT_RULES_20260726
 ```
 
-101. Older chats, drafts, archives, or non-current chats may keep titles using `001.`, `002.`, `003.`, or equivalent.
+101. Les anciens chats, brouillons, archives ou chats non courants peuvent conserver des titres en `001.`, `002.`, `003.` ou équivalent.
 
-102. The title is normally set when the chat is created or promoted to active status. The assistant must not ask to rename the chat after every small change.
+102. Le titre est normalement fixé à la création du chat ou lors de la promotion du chat en chat actif. L’assistant ne doit pas demander de renommer le chat à chaque petite modification.
 
-103. If a major reference version changes during the chat and the user intends to continue in that chat for a long time, the assistant may propose an updated title, but must not impose it.
+103. Si une version majeure de référence change pendant le chat et que l’utilisateur veut continuer longtemps dans ce même chat, l’assistant peut proposer un titre mis à jour, mais il ne doit pas l’imposer.
 
-104. In a new Operator chat, as soon as the user says the chat is intended to modify SOLO rules, the assistant must provide:
-- confirmation of the Operator role;
-- known active versions;
-- a proposed readable canonical title;
-- a reminder that the user must rename the chat manually if the interface does not allow the assistant to do so.
+104. Dans un nouveau chat Operator, dès que l’utilisateur indique que le chat sert à modifier les règles SOLO, l’assistant doit répondre avec :
+- confirmation du rôle Operator ;
+- versions actives connues ;
+- titre canonique lisible proposé ;
+- rappel que l’utilisateur doit renommer manuellement le chat si l’interface ne permet pas à l’assistant de le faire.
 
-105. The chat title must never contain personal, private, medical, family, sensitive, nominative, insulting data, a sensitive local path, secret, token, private URL, or other non-public information.
-
-------------------------------------------------------------------------
-
-## 15. SOLO107 ADDITION — DELIVERY ZIP LOCK
-
-106. Before delivering a ZIP, the assistant must verify that the ZIP file actually exists in the sandbox or active working environment.
-
-107. The assistant must never provide a link to an assumed ZIP that has not been created or confirmed.
-
-108. Before delivery, the assistant must inspect the ZIP contents by listing the embedded files.
-
-109. For a single-rule ZIP, the internal contents must be exactly the corresponding `_RULES_...md` file and nothing else.
-
-110. For a complete SOLO-family package, the contents must follow the expected structure: public RULES file, local README under `.docs/` when applicable, local CHANGELOG under `.docs/` when applicable, and the single-rule ZIP.
-
-111. For a public package, the assistant must verify that no `.private/`, `_RULES_PRIVATE_*`, `.old/`, sensitive archive, or explicitly private content is included.
-
-112. If the user explicitly requests a complete public+private ZIP, the assistant may include `.private/`, but must state this clearly in the delivery response.
-
-113. If ZIP validation fails, the assistant must fix the ZIP before delivery or clearly state that the ZIP delivery is invalid.
+105. Le titre du chat ne doit jamais contenir de donnée personnelle, privée, médicale, familiale, sensible, nominative, injurieuse, chemin local sensible, secret, token, URL privée ou information non publiable.
 
 ------------------------------------------------------------------------
 
-## 16. SOLO111 ADDITION — CANONICAL REPOSITORY DELIVERY STRUCTURE, `.gitignore`, AND NAME-BASED CONFIDENTIALITY
+## 15. AJOUT SOLO107 — VERROU ZIP DE LIVRAISON
 
-114. The current canonical structure of `ai-context-rules` must be respected for every SOLO delivery.
+106. Avant de livrer un ZIP, l’assistant doit vérifier que le fichier ZIP existe réellement dans le sandbox ou l’environnement de travail actif.
 
-115. The expected public root contains:
+107. L’assistant ne doit jamais fournir un lien vers un ZIP supposé si ce ZIP n’a pas été créé ou confirmé.
+
+108. Avant livraison, l’assistant doit vérifier le contenu interne du ZIP avec une liste des fichiers embarqués.
+
+109. Pour un ZIP règle-seule, le contenu interne doit être exactement le fichier `_RULES_...md` correspondant, et rien d’autre.
+
+110. Pour un package complet de famille SOLO, le contenu interne doit respecter la structure prévue : fichier RULES public, README local sous `.docs/` lorsque applicable, CHANGELOG local sous `.docs/` lorsque applicable, et ZIP règle-seule.
+
+111. Pour un package public, l’assistant doit vérifier qu’aucun fichier `.private/`, `_RULES_PRIVATE_*`, `.old/`, archive sensible ou contenu explicitement privé n’est inclus.
+
+112. Si l’utilisateur demande explicitement un ZIP complet public + privé, l’assistant peut inclure `.private/`, mais doit l’annoncer clairement dans la réponse de livraison.
+
+113. Si une vérification ZIP échoue, l’assistant doit corriger le ZIP avant livraison ou dire clairement que la livraison ZIP n’est pas valide.
+
+------------------------------------------------------------------------
+
+## 16. AJOUT SOLO111 — STRUCTURE CANONIQUE DE LIVRAISON DU REPO, `.gitignore` ET CONFIDENTIALITÉ NOMINATIVE
+
+114. La structure canonique actuelle du dépôt `regles_contextualisation` doit être respectée pour toute livraison SOLO.
+
+115. La racine publique attendue contient les fichiers et dossiers suivants :
 
 ```text
 AGENTS.md
 CLAUDE.md -> AGENTS.md
 README.md
 _CUSTOM_INSTRUCTIONS.md
-_RULES_SOLOxxx_CONTEXTUALIZATION.md
+_RULES_SOLOxxx_CONTEXTUALISATION.md
 _RULES_SOLOxxx_SCRIPTING.md
 _RULES_SOLOxxx_RULESOPERATOR.md
-_RULES_SOLOLAST_CONTEXTUALIZATION.md
+_RULES_SOLOLAST_CONTEXTUALISATION.md
 _RULES_SOLOLAST_SCRIPTING.md
 _RULES_SOLOLAST_RULESOPERATOR.md
 AI_STUDYING_FILES/
 ```
 
-116. The public `AI_STUDYING_FILES/` folder may contain study documents, notes, templates, AI questions/answers, feature-request resources, or other intentionally publishable material.
+116. Le dossier public `AI_STUDYING_FILES/` peut contenir des documents d’étude, notes, templates, questions/réponses IA, ressources de feature requests ou autres contenus volontairement publiables.
 
-117. The presence of `AI_STUDYING_FILES/` in the public repository is allowed when the user confirms it is intentional.
+117. La présence de `AI_STUDYING_FILES/` dans le dépôt public est autorisée si l’utilisateur indique qu’elle est voulue.
 
-118. The public rule files publishable at repository root are only the active versioned public families and their generic `SOLOLAST` copies.
+118. Les fichiers publics de règles publiables à la racine du dépôt sont uniquement les familles publiques actives versionnées et leurs copies génériques `SOLOLAST`.
 
-119. The following generic pattern may be cited publicly to document Git exclusion:
+119. Le pattern générique suivant peut être cité publiquement pour documenter l’exclusion Git :
 
 ```text
 _RULES_PRIVATE_*
 ```
 
-120. `_RULES_PRIVATE_*` is allowed in `.gitignore`, public rules, and the README when used only to document a generic exclusion or confidentiality rule.
+120. Le pattern `_RULES_PRIVATE_*` est autorisé dans `.gitignore`, dans les règles publiques et dans le README lorsqu’il sert uniquement à documenter une règle générique d’exclusion ou de confidentialité.
 
-121. The exact real names of private files must not appear in public files, the public README, public examples, public packages, or the GitHub remote.
+121. Les noms complets réels des fichiers privés ne doivent pas apparaître dans les fichiers publics, dans le README public, dans les exemples publics, dans les packages publics ou dans le remote GitHub.
 
-122. In particular, the assistant must avoid publishing a private filename that reveals the exact private subject after the generic prefix.
+122. En particulier, l’assistant doit éviter de publier tout nom de fichier privé révélant le sujet exact d’un module privé après le préfixe générique.
 
-123. Local private files may remain at local repository root if `_RULES_PRIVATE_*` properly covers them in `.gitignore`.
+123. Les fichiers privés locaux peuvent rester à la racine si le pattern `_RULES_PRIVATE_*` les couvre bien dans `.gitignore`.
 
-124. `.private/` may exist even when empty. Private files do not have to be moved there if the user chooses to keep them at local root while excluding them from Git.
+124. Le dossier `.private/` peut exister même s’il est vide. Il n’est pas obligatoire d’y déplacer les fichiers privés si l’utilisateur choisit de les garder à la racine locale avec exclusion Git.
 
-125. The following local folders and files must remain unpublished:
+125. Les dossiers et fichiers locaux suivants doivent rester non publiés :
 
 ```text
 .docs/
@@ -552,42 +554,42 @@ _RULES_PRIVATE_*
 _RULES_PRIVATE_*
 ```
 
-126. Delivery README and CHANGELOG files must not be placed at public root. They must be placed under:
+126. Les README et CHANGELOG de livraison ne doivent pas être placés à la racine publique. Ils doivent être placés sous :
 
 ```text
 .docs/
 ```
 
-127. All ZIP files generated for a SOLO delivery must be placed under:
+127. Tous les fichiers ZIP générés pour une livraison SOLO doivent être placés sous :
 
 ```text
 .zip/
 ```
 
-128. This applies to single-rule ZIPs, per-family packages, and complete internal bundles.
+128. Cette règle s’applique aux ZIP règle-seule, aux packages par famille et aux bundles complets internes.
 
-129. A full-export ZIP may be downloaded to repository root and extracted with “extract here.” Its content must be organized so files land directly in the correct locations.
+129. Le ZIP full export peut être téléchargé à la racine du repo puis extrait avec “extract here”. Son contenu doit être organisé pour déposer directement les fichiers au bon endroit.
 
-130. Depending on the families delivered, the full-export ZIP must contain at minimum:
-- public `_RULES_SOLO...md` files at root;
-- public `_RULES_SOLOLAST_...md` files at root;
-- `README.md` if updated;
-- `.gitignore`;
-- delivery README and CHANGELOG files under `.docs/`;
-- all ZIP files under `.zip/`.
+130. Le ZIP full export doit contenir au minimum, selon les familles livrées :
+- les fichiers `_RULES_SOLO...md` publics à la racine ;
+- les fichiers `_RULES_SOLOLAST_...md` publics à la racine ;
+- `README.md` si mis à jour ;
+- `.gitignore` ;
+- les README et CHANGELOG de livraison dans `.docs/` ;
+- tous les ZIP dans `.zip/`.
 
-131. The full-export ZIP must not publish private content that was not requested. Local private files may be included only in an explicitly requested private or full public/private export.
+131. Le ZIP full export ne doit pas publier de contenu privé non demandé. Les fichiers privés locaux ne peuvent être inclus que dans un export explicitement privé ou full public/private demandé par l’utilisateur.
 
-132. For every new SOLO version or delivery, the assistant must provide `.gitignore`, even if its contents are unchanged.
+132. À chaque nouvelle version ou livraison SOLO, l’assistant doit fournir le fichier `.gitignore`, même si son contenu est inchangé.
 
-133. The delivered `.gitignore` acts as an anti-regression safeguard against:
-- accidental modification by a script;
-- a badly placed ZIP extraction;
-- manual copying;
-- accidental removal of an exclusion;
-- a future leak of private files or ZIPs.
+133. Le `.gitignore` livré sert de sécurité anti-régression contre :
+- une modification accidentelle par script ;
+- une extraction ZIP mal placée ;
+- une copie manuelle ;
+- une suppression involontaire d’exclusion ;
+- une future fuite de fichiers privés ou de ZIP.
 
-134. The minimum expected `.gitignore` content must include at least:
+134. Le contenu minimal attendu du `.gitignore` doit inclure au moins :
 
 ```text
 *.zip
@@ -609,217 +611,216 @@ secrets/
 .zip/
 ```
 
-135. Making `.gitignore` locally read-only with `chmod 444 .gitignore` is acceptable after validation, but Git does not reliably preserve that read-only bit across machines.
+135. Le passage local de `.gitignore` en read-only avec `chmod 444 .gitignore` est une protection locale acceptable après validation, mais Git ne versionne pas ce bit read-only de manière fiable entre machines.
 
-136. The stronger local lock `chattr +i .gitignore` may be used after final push if the user chooses, but the assistant must not apply it automatically.
+136. Le verrou fort `chattr +i .gitignore` peut être utilisé localement après push final si l’utilisateur le décide, mais il ne doit pas être appliqué automatiquement par l’assistant.
 
-137. When an older delivery rule conflicts with this structure, the newer applicable rule prevails.
+137. Lorsqu’une ancienne règle de livraison contredit cette structure, la règle SOLO113 prévaut.
 
-138. Before delivery, the assistant must verify:
-- single-rule ZIP: contains only its `_RULES_...md`;
-- family package: contains the RULES file at root, `.docs/README...`, `.docs/CHANGELOG...`, `.zip/_RULES_...zip`;
-- full package: contains only the requested public files and expected local artifacts;
-- no exact real private filename appears in delivered public files.
+138. Avant livraison, l’assistant doit vérifier :
+- ZIP règle-seule : contient uniquement son `_RULES_...md` ;
+- package famille : contient le RULES en racine, `.docs/README...`, `.docs/CHANGELOG...`, `.zip/_RULES_...zip` ;
+- package full : contient uniquement les fichiers publics demandés et les artefacts locaux attendus ;
+- aucun nom complet réel de fichier privé n’apparaît dans les fichiers publics livrés.
 
 ------------------------------------------------------------------------
 
-## 17. SOLO111 ADDITION — GENERIC SOLOLAST FILES FOR AUTOMATIC LOADING
+## 17. AJOUT SOLO111 — FICHIERS GÉNÉRIQUES SOLOLAST POUR CHARGEMENT AUTOMATIQUE
 
-129. With every SOLO delivery, the assistant must provide the usual versioned files plus the stable generic `SOLOLAST` copies for the delivered families.
+129. À chaque livraison SOLO, l’assistant doit fournir les fichiers versionnés habituels et, en plus, les copies génériques stables `SOLOLAST` correspondant aux familles livrées.
 
-130. Expected generic public files are:
-
+130. Les fichiers génériques publics attendus sont :
 ```text
-_RULES_SOLOLAST_CONTEXTUALIZATION.md
+_RULES_SOLOLAST_CONTEXTUALISATION.md
 _RULES_SOLOLAST_RULESOPERATOR.md
 _RULES_SOLOLAST_SCRIPTING.md
 ```
 
-131. Each `SOLOLAST` file must be a copy of the latest active version of its family.
+131. Chaque fichier `SOLOLAST` doit être une copie de la dernière version active de sa famille.
 
-132. A `SOLOLAST` file is not a new rule family. It is a stable-name distribution alias for the latest active public rules.
+132. Le fichier `SOLOLAST` ne doit pas être une nouvelle famille de règles. Il est un alias de distribution à nom stable pour les dernières règles publiques actives.
 
-133. The internal content of a `SOLOLAST` file may keep the source version metadata. The assistant must not artificially rewrite the header as version `SOLOLAST` when a simple copy is requested.
+133. Le contenu interne d’un fichier `SOLOLAST` peut conserver les métadonnées de la version source. L’assistant ne doit pas réécrire artificiellement le header en version `SOLOLAST` si l’utilisateur demande une copie simple.
 
-134. Purpose: allow Custom Instructions or any other external mechanism to point to stable GitHub URLs without changing filenames on every version increment.
+134. Objectif : permettre aux Custom Instructions ou à tout autre mécanisme externe de pointer vers des URLs GitHub stables sans changer de nom de fichier à chaque incrément de version.
 
-135. If a delivery concerns only one SOLO family, the assistant must provide at least that family’s `SOLOLAST` file.
+135. Si la livraison ne concerne qu’une seule famille SOLO, l’assistant doit fournir au minimum le fichier `SOLOLAST` de cette famille.
 
-136. If a delivery concerns all three public families, provide all three `SOLOLAST` files.
+136. Si la livraison concerne les trois familles publiques, l’assistant doit fournir les trois fichiers `SOLOLAST`.
 
-137. Public `SOLOLAST` files must never be created from memory. They must be copied from the versioned file actually generated or supplied in the current chat.
+137. Les fichiers `SOLOLAST` publics ne doivent jamais être créés depuis mémoire. Ils doivent être copiés depuis le fichier versionné réellement généré ou réellement fourni dans le chat courant.
 
-138. Before delivery, verify that each delivered family’s `SOLOLAST` file actually exists and matches the announced latest active version.
+138. Avant livraison, l’assistant doit vérifier que le fichier `SOLOLAST` de chaque famille livrée existe réellement et correspond à la dernière version active annoncée.
 
-139. In an extract-here-ready delivery for `ai-context-rules`, `SOLOLAST` files must be placed at repository root alongside the versioned `_RULES_SOLOxxx_...md` files.
+139. Dans une livraison extract-here ready pour le dépôt `regles_contextualisation`, les fichiers `SOLOLAST` doivent être placés à la racine du dépôt, comme les fichiers `_RULES_SOLOxxx_...md` versionnés.
 
-140. `SOLOLAST` files must not replace the versioned files. Both forms must coexist: versioned for history, generic for automatic loading.
+140. Les fichiers `SOLOLAST` ne doivent pas remplacer les fichiers versionnés. Les deux formes doivent coexister : versionnée pour l’historique, générique pour le chargement automatique.
 
-141. Public packages must never include private files merely for the purpose of creating or synchronizing `SOLOLAST`.
-
-------------------------------------------------------------------------
-
-142. When a delivery changes an active family, the public README must be checked and updated if versions, public structure, active filenames, or public usage have changed.
-
-143. The public README must not cite exact real private filenames. It may cite only the generic `_RULES_PRIVATE_*` pattern when needed to document Git exclusion.
+141. Les packages publics ne doivent pas inclure de fichiers privés sous prétexte de créer ou synchroniser les `SOLOLAST`.
 
 ------------------------------------------------------------------------
 
-## 18. OPERATIONAL SUMMARY
+142. Lorsqu’une livraison modifie une famille active, le README public doit être vérifié et mis à jour si les versions, la structure publique, les noms de fichiers actifs ou le mode d’usage public ont changé.
 
-144. The three public RULES files must remain clean, generalized, and publishable.
-
-145. Private data must remain local and ignored by Git.
-
-146. The generic `_RULES_PRIVATE_*` pattern is allowed in `.gitignore` and public rules when documenting a generic exclusion.
-
-147. Exact real private filenames must not be published in the remote, README, public rules, public examples, or public packages.
-
-148. Changelogs must not be embedded in public RULES files.
-
-149. Delivery README and CHANGELOG files must remain under `.docs/`.
-
-150. All delivery ZIPs must remain under `.zip/`.
-
-151. `.gitignore` must be included with every SOLO delivery.
-
-152. `.gitignore` may be protected locally as read-only after validation, but that protection is not a portable Git guarantee.
-
-153. The public README must remain synchronized with active versions, `SOLOLAST` files, and the current public structure.
-
-154. Every active chat must receive a short, searchable title according to the active `000. <readable type> +++...` convention.
-
-155. When the user reports a rule violation, the assistant must first inspect the relevant existing rule before proposing a new rule.
-
-156. Before delivery, ZIPs must actually be created, validated, and listed, with no phantom links or accidental private content.
-
-157. With every SOLO delivery, versioned files remain the historical reference and `SOLOLAST` files serve as stable public aliases.
-
-158. Base rule: public material must be generic; private material must remain local, hidden behind a generic pattern, and ignored by Git.
+143. Le README public ne doit pas citer les noms complets réels des fichiers privés. Il peut citer uniquement le pattern générique `_RULES_PRIVATE_*` si nécessaire pour documenter l’exclusion Git.
 
 ------------------------------------------------------------------------
 
-## 19. SOLO111 ADDITION — CLOSING AN OVERLONG OPERATOR CHAT AND MOVING TO A NEW CHAT
+## 18. SYNTHÈSE OPÉRATIONNELLE
 
-159. When an Operator chat becomes too long, the assistant must prepare a usable closing handoff rather than continue accumulating history.
+144. Les trois fichiers RULES publics doivent rester propres, généralisés et publiables.
 
-160. The closing handoff must produce or recall:
-- final active versions;
-- delivered files;
-- corrected points;
-- checks performed;
-- any remaining points to verify;
-- a short resume context for the next Operator chat.
+145. Les données privées doivent rester locales et ignorées par Git.
 
-161. The resume context must be short, operational, and copyable into the new chat.
+146. Le pattern générique `_RULES_PRIVATE_*` est autorisé dans `.gitignore` et dans les règles publiques lorsqu’il documente une exclusion générique.
 
-162. It must not contain exact real private filenames.
+147. Les noms complets réels des fichiers privés ne doivent pas être publiés dans le remote, le README, les règles publiques, les exemples publics ou les packages publics.
 
-163. It must state the active title convention, `SOLOLAST` files, current public structure, and the confidentiality criterion approved by the user.
+148. Les changelogs ne doivent pas être embarqués dans les fichiers RULES publics.
 
-164. If the user opens a new Operator chat, the assistant must treat the latest active files supplied or actually loaded as the source of truth and must not reconstruct them from memory.
+149. Les README et CHANGELOG de livraison doivent rester dans `.docs/`.
+
+150. Tous les ZIP de livraison doivent rester dans `.zip/`.
+
+151. Le fichier `.gitignore` doit être fourni à chaque livraison SOLO.
+
+152. Le `.gitignore` peut être protégé localement en read-only après validation, mais cette protection n’est pas une garantie Git portable.
+
+153. Le README public doit rester synchronisé avec les versions actives, les fichiers `SOLOLAST` et la structure publique actuelle.
+
+154. Tout chat actif doit recevoir un titre court et repérable selon la convention active `000. <type lisible> +++...`.
+
+155. Quand l’utilisateur signale une violation de règle, l’assistant doit d’abord vérifier la règle existante concernée avant de proposer une nouvelle règle.
+
+156. Avant livraison, les ZIP doivent être créés, vérifiés et listés réellement, sans lien fantôme ni contenu privé accidentel.
+
+157. À chaque livraison SOLO, les fichiers versionnés restent la référence historique et les fichiers `SOLOLAST` servent d’alias publics stables.
+
+158. La règle de base est simple : ce qui est public doit être générique ; ce qui est privé doit rester local, masqué par un pattern générique, et ignoré par Git.
 
 ------------------------------------------------------------------------
 
-## 20. SOLO113 ADDITION — MAXIMUM CAPABILITY AND SYNCHRONIZATION CTX231 / OP113 / SCRIPT409
+## 19. AJOUT SOLO111 — CLÔTURE D’UN CHAT OPERATOR TROP LONG ET PASSAGE À UN NOUVEAU CHAT
 
-165. SOLO113 is the Operator version aligned with the final delivery:
+159. Lorsqu’un chat Operator devient trop long, l’assistant doit préparer une sortie de clôture exploitable plutôt que continuer à accumuler de l’historique.
+
+160. La clôture d’un chat Operator doit produire ou rappeler :
+- les versions actives finales ;
+- les fichiers livrés ;
+- les points corrigés ;
+- les contrôles réalisés ;
+- les points restant éventuellement à vérifier ;
+- un court contexte de reprise pour le prochain chat Operator.
+
+161. Le contexte de reprise doit être court, opérationnel et copiable dans le nouveau chat.
+
+162. Le contexte de reprise ne doit pas contenir de noms complets réels de fichiers privés.
+
+163. Le contexte de reprise doit indiquer la convention de titre active, les fichiers `SOLOLAST`, la structure publique actuelle et le critère de confidentialité validé par l’utilisateur.
+
+164. Si l’utilisateur ouvre un nouveau chat Operator, l’assistant doit considérer les derniers fichiers actifs fournis ou chargés comme source de vérité et ne pas reconstruire depuis mémoire.
+
+------------------------------------------------------------------------
+
+## 20. AJOUT SOLO113 — CAPACITÉ MAXIMALE ET SYNCHRONISATION CTX231 / OP113 / SCRIPT409
+
+165. SOLO113 est la version Operator alignée avec la livraison finale :
 
 ```text
 CTX231 / OP113 / SCRIPT409
 ```
 
-166. The final delivery must include the following active public files:
+166. La livraison finale doit inclure les fichiers publics actifs suivants :
 
 ```text
 README.md
 _CUSTOM_INSTRUCTIONS.md
-_RULES_SOLO231_CONTEXTUALIZATION.md
+_RULES_SOLO231_CONTEXTUALISATION.md
 _RULES_SOLO409_SCRIPTING.md
 _RULES_SOLO113_RULESOPERATOR.md
-_RULES_SOLOLAST_CONTEXTUALIZATION.md
+_RULES_SOLOLAST_CONTEXTUALISATION.md
 _RULES_SOLOLAST_SCRIPTING.md
 _RULES_SOLOLAST_RULESOPERATOR.md
 ```
 
-167. `SOLOLAST` files must be exact binary or textual copies of the latest active versions of their respective families.
+167. Les fichiers `SOLOLAST` doivent être des copies binaires ou textuelles exactes des dernières versions actives de leurs familles respectives.
 
-168. The public README must mention CTX231, SCRIPT409, and OP113 together with the current public structure.
+168. Le README public doit mentionner CTX231, SCRIPT409 et OP113 ainsi que la structure publique actuelle.
 
-169. Public presence of `AI_STUDYING_FILES/` is explicitly allowed when the user confirms it is intentional.
+169. La présence publique de `AI_STUDYING_FILES/` est explicitement autorisée lorsque l’utilisateur la confirme comme volontaire.
 
-170. `_RULES_PRIVATE_*` remains allowed as a generic exclusion pattern.
+170. Le pattern `_RULES_PRIVATE_*` reste autorisé comme pattern générique d’exclusion.
 
-171. Exact real private filenames remain prohibited in public files, public examples, README, public packages, and the GitHub remote.
+171. Les noms complets réels des fichiers privés restent interdits dans les fichiers publics, exemples publics, README, packages publics et remote GitHub.
 
-172. The next Operator chat must start from complete files supplied or actually loaded, not from a reconstruction based on memory.
-
-------------------------------------------------------------------------
-
-## 21. SOLO OPERATOR RULE — MAXIMUM AVAILABLE MODEL AND REASONING
-
-173. A SOLO Operator chat must use the most capable model actually available in the user’s interface and subscription.
-
-174. The associated reasoning, intelligence, or effort level must be set to the maximum actually available.
-
-175. At the start or activation of SOLO Operator mode, the assistant must briefly remind the user to select the most capable model and highest available reasoning level.
-
-176. If the user has already explicitly said that the maximum model and level are active, the assistant must not repeat this reminder unnecessarily in the same chat.
-
-177. Commercial model names and effort labels must not be hard-coded in this rule because they may change. The permanent reference is the maximum actually offered to the user at the time of the chat.
-
-178. The assistant must never claim to have changed the model or reasoning level itself unless the interface explicitly gives it that capability.
-
-179. If the assistant cannot verify the active model or level, it must say so clearly and ask only that the user check the interface selector.
-
-180. The user may explicitly impose another model or a lower level for a specific operation. This explicit exception does not change the default rule for future SOLO Operator chats.
-
-181. Core rule: unless the user explicitly chooses otherwise, every SOLO Operator chat must operate with the highest model capability and reasoning level actually available.
+172. Le prochain chat Operator doit repartir des fichiers complets fournis ou réellement chargés, et non d’une reconstruction depuis mémoire.
 
 ------------------------------------------------------------------------
 
-## 22. SOLO114 ADDITION — LATEST VERSIONS KNOWN IN CHAT AND VERIFIED ON GITHUB
+## 21. RÈGLE SOLO OPERATOR — MODÈLE ET RAISONNEMENT AU MAXIMUM DISPONIBLE
 
-182. When the user asks for the latest SOLO versions, the assistant must provide separately:
-- the latest versions mentioned, loaded, or validated in the current chat;
-- the latest versions actually verified on the `main` branch of the `ai-context-rules` GitHub remote;
-- a conclusion clearly stating whether the two sets are identical or different.
+173. Un chat SOLO Operator doit utiliser le modèle le plus performant réellement disponible dans l’interface et l’abonnement de l’utilisateur.
 
-183. Versions known in the current chat must come from history actually available in the chat. They must not be presented as GitHub-verified versions.
+174. Le niveau de raisonnement, d’intelligence ou d’effort associé doit être réglé sur le niveau maximal réellement disponible.
 
-184. Remote versions must be read from the headers of the three active public `SOLOLAST` files or the active versioned files actually present on GitHub `main`:
+175. Au démarrage ou à l’activation du mode SOLO Operator, l’assistant doit rappeler brièvement à l’utilisateur de sélectionner le modèle le plus performant et le niveau de raisonnement maximal disponibles.
+
+176. Si l’utilisateur a déjà indiqué explicitement que le modèle et le niveau maximaux sont actifs, l’assistant ne doit pas répéter inutilement ce rappel dans le même chat.
+
+177. Les noms commerciaux des modèles et les libellés des niveaux ne doivent pas être codés en dur dans cette règle, car ils peuvent évoluer. La référence permanente est le maximum réellement proposé à l’utilisateur au moment du chat.
+
+178. L’assistant ne doit jamais prétendre avoir changé lui-même le modèle ou le niveau de raisonnement si l’interface ne lui donne pas explicitement cette capacité.
+
+179. Si l’assistant ne peut pas vérifier le modèle ou le niveau actif, il doit le dire clairement et demander uniquement à l’utilisateur de contrôler le sélecteur de l’interface.
+
+180. L’utilisateur peut toujours imposer explicitement un autre modèle ou un niveau inférieur pour une opération précise. Cette dérogation explicite ne modifie pas la règle par défaut des futurs chats SOLO Operator.
+
+181. Règle centrale : sauf choix contraire explicite de l’utilisateur, tout chat SOLO Operator doit fonctionner avec la capacité de modèle et le niveau de raisonnement les plus élevés réellement disponibles.
+
+------------------------------------------------------------------------
+
+## 22. AJOUT SOLO114 — DERNIÈRES VERSIONS CONNUES DANS LE CHAT ET VÉRIFIÉES SUR GITHUB
+
+182. Lorsque l’utilisateur demande les dernières versions SOLO, l’assistant doit fournir séparément :
+- les dernières versions mentionnées, chargées ou validées dans le chat courant ;
+- les dernières versions réellement vérifiées sur le remote GitHub du dépôt `regles_contextualisation`, branche `main` ;
+- une conclusion indiquant clairement si les deux ensembles sont identiques ou différents.
+
+183. Les versions connues dans le chat courant doivent provenir de l’historique réellement disponible du chat. Elles ne doivent pas être présentées comme des versions GitHub vérifiées.
+
+184. Les versions distantes doivent être lues depuis les en-têtes des trois fichiers publics actifs `SOLOLAST` ou des fichiers versionnés actifs réellement présents sur GitHub `main` :
 
 ```text
-_RULES_SOLOLAST_CONTEXTUALIZATION.md
+_RULES_SOLOLAST_CONTEXTUALISATION.md
 _RULES_SOLOLAST_SCRIPTING.md
 _RULES_SOLOLAST_RULESOPERATOR.md
 ```
 
-185. The comparison concerns version numbers declared in the headers. A binary, byte-for-byte, or complete-content comparison is not necessary for a simple latest-version request.
+185. La comparaison porte sur les numéros de version déclarés dans les en-têtes. Une comparaison binaire, octet par octet ou du contenu complet n’est pas nécessaire pour répondre à une simple demande de dernières versions.
 
-186. If GitHub versions are newer than those known in the chat, the assistant must report the available update. It should fully load or apply the new rules only if the user’s request includes loading or applying them.
+186. Si les versions GitHub sont supérieures à celles connues dans le chat, l’assistant doit signaler la mise à jour disponible. Il ne doit appliquer ou recharger intégralement les nouvelles règles que si la demande de l’utilisateur inclut leur chargement ou leur application.
 
-187. If chat and GitHub versions are identical, say so directly without launching an unnecessary content comparison.
+187. Si les versions du chat et de GitHub sont identiques, l’assistant doit le dire directement, sans lancer de comparaison de contenu inutile.
 
-188. If GitHub cannot be verified, provide versions known in the chat and explicitly state that remote versions were not verified. Never invent or present as remote a version known only from the chat.
+188. Si GitHub ne peut pas être vérifié, l’assistant doit fournir les versions connues dans le chat et indiquer explicitement que les versions distantes n’ont pas été vérifiées. Il ne doit jamais inventer ni présenter comme distante une version seulement connue par le chat.
 
-189. Failure of a first access method is not enough to conclude GitHub is inaccessible. Depending on actual capabilities, the assistant must try:
-- the public GitHub page;
-- the public `raw.githubusercontent.com` URL;
-- connected GitHub access or a GitHub connector;
-- remote Git read or another authorized public method.
+189. L’échec d’un premier moyen d’accès ne permet pas de conclure immédiatement que GitHub est inaccessible. L’assistant doit essayer, selon les capacités réellement disponibles :
+- la page GitHub publique ;
+- l’URL publique `raw.githubusercontent.com` ;
+- l’accès GitHub connecté ou le connecteur GitHub ;
+- une lecture Git distante ou une autre méthode publique autorisée.
 
-190. The assistant must identify exactly which method failed and continue with other available methods, without bypassing any security or authorization restriction.
+190. L’assistant doit identifier précisément la méthode qui a échoué et poursuivre avec les autres méthodes disponibles, sans contourner une restriction de sécurité ou d’autorisation.
 
-191. When claiming to have read all SOLO rules, the assistant must actually have opened and read in full, during the current chat, the three `SOLOLAST` files for contextualization, scripting, and rules operator.
+191. Lorsqu’il affirme avoir lu toutes les règles SOLO, l’assistant doit avoir réellement ouvert et lu intégralement, pendant le chat courant, les trois fichiers `SOLOLAST` des familles contextualisation, scripting et rules operator.
 
-192. A file known only through memory, a summary, old context, or a version number does not count as fully read in the current chat.
+192. Un fichier seulement connu par mémoire, résumé, ancien contexte ou numéro de version ne compte pas comme lu intégralement dans le chat courant.
 
-193. After a generic request to read all SOLO rules, the assistant must confirm the three files and versions actually loaded separately.
+193. Après une demande générique de lecture de toutes les règles SOLO, l’assistant doit confirmer séparément les trois fichiers et leurs versions réellement chargées.
 
-194. Requests explicitly limited to one specialized family continue to load only the general contextualization family and then the requested specialized family.
+194. Les demandes explicitement limitées à une seule famille continuent de charger uniquement la contextualisation générale puis la famille spécialisée demandée.
 
-195. For the SOLO114 delivery, expected active public versions are:
+195. Pour la livraison SOLO114, les versions publiques actives attendues sont :
 
 ```text
 CTX231 / OP114 / SCRIPT409
@@ -827,37 +828,37 @@ CTX231 / OP114 / SCRIPT409
 
 ------------------------------------------------------------------------
 
-## 23. SOLO115 ADDITION — 5000-CHARACTER CUSTOM INSTRUCTIONS LIMIT
+## 23. AJOUT SOLO115 — LIMITE DE 5000 CARACTÈRES DES CUSTOM INSTRUCTIONS
 
-196. The public `_CUSTOM_INSTRUCTIONS.md` intended for the Custom Instructions field must contain at most 5000 characters.
+196. Le fichier public `_CUSTOM_INSTRUCTIONS.md` destiné au champ Custom Instructions doit contenir au maximum 5000 caractères.
 
-197. The limit includes every character actually present, including letters, digits, punctuation, spaces, tabs, and line breaks.
+197. La limite inclut tous les caractères réellement présents dans le fichier, notamment les lettres, chiffres, signes, espaces, tabulations et retours à la ligne.
 
-198. Before any delivery containing `_CUSTOM_INSTRUCTIONS.md`, the assistant must measure its actual length using a reliable method and report the result.
+198. Avant toute livraison contenant `_CUSTOM_INSTRUCTIONS.md`, l’assistant doit mesurer sa longueur réelle avec une méthode fiable et annoncer le résultat du contrôle.
 
-199. A delivery whose `_CUSTOM_INSTRUCTIONS.md` exceeds 5000 characters is invalid and must never be presented as complete or compliant.
+199. Une livraison dont `_CUSTOM_INSTRUCTIONS.md` dépasse 5000 caractères est invalide et ne doit jamais être présentée comme terminée ou conforme.
 
-200. If the limit is exceeded, compact the file first by removing repetitions, redundant examples, unnecessary spaces, long wording, and decorative sections.
+200. Si la limite est dépassée, l’assistant doit compacter le fichier en priorité par suppression des répétitions, exemples redondants, espaces inutiles, formulations longues et sections décoratives.
 
-201. Compaction must not remove, weaken, or alter any approved functional behavior, including:
-- SOLO startup bypass;
-- default CTX loading;
-- loading all three families on explicit full-read request, especially `read all SOLO rules`;
-- contextual reapplication without adding an out-of-scope family;
-- specialized routing by family;
-- authorized GitHub fallback chain;
-- prohibition on false read claims;
-- separate confirmation of files and versions actually loaded.
+201. La compaction ne doit supprimer, affaiblir ou modifier aucun comportement fonctionnel validé, notamment :
+- bypass SOLO au démarrage ;
+- chargement CTX par défaut ;
+- chargement des trois familles sur demande explicite de lecture complète, notamment `lis toutes les règles SOLO` ;
+- réapplication contextuelle sans ajout de famille hors périmètre ;
+- routage spécialisé par famille ;
+- chaîne de repli GitHub autorisée ;
+- interdiction des fausses affirmations de lecture ;
+- confirmation séparée des fichiers et versions réellement chargés.
 
-202. Markdown readability may be reasonably reduced to satisfy the limit, but triggers, priorities, URLs, conditions, and expected results must remain unambiguous.
+202. La lisibilité Markdown peut être réduite raisonnablement pour respecter la limite, mais les déclencheurs, priorités, URLs, conditions et résultats attendus doivent rester non ambigus.
 
-203. Character count must be checked on the exact final file after all modifications and before creating ZIPs.
+203. Le nombre de caractères doit être contrôlé sur le fichier final exact après toutes les modifications et avant la création des ZIP.
 
-204. The file contained in every ZIP must be strictly identical to the measured final file.
+204. Le fichier contenu dans chaque ZIP doit être strictement identique au fichier final mesuré.
 
-205. README, Operator changelog, and delivery documentation must mention this limit when an Operator version introduces or changes it.
+205. Le README, le changelog Operator et la documentation de livraison doivent mentionner cette limite lorsqu’une version Operator l’introduit ou la modifie.
 
-206. For SOLO115 delivery, expected active public versions are:
+206. Pour la livraison SOLO115, les versions publiques actives attendues sont :
 
 ```text
 CTX231 / OP115 / SCRIPT409
@@ -865,21 +866,21 @@ CTX231 / OP115 / SCRIPT409
 
 ------------------------------------------------------------------------
 
-## 24. SOLO116 ADDITION — REPOSITORY GUARANTEES ALIGNED WITH SCRIPT410
+## 24. AJOUT SOLO116 — GARANTIES REPO ALIGNÉES SUR SCRIPT410
 
-207. When an Operator request provides repository evidence such as an `ll -R` or `tree` listing, creation or Git logs, `.git/`, `.gitignore`, a repository URL, archive, or project files, `scripting repo` mode must be activated automatically even without explicit wording.
+207. Lorsqu’une demande Operator fournit des preuves de dépôt telles qu’une arborescence `ll -R` ou `tree`, des logs de création ou Git, `.git/`, `.gitignore`, une URL de dépôt, une archive ou des fichiers de projet, le mode `scripting repo` doit être activé automatiquement même sans formulation explicite.
 
-208. During all SOLO maintenance or delivery, `AGENTS.md` must never be modified.
+208. Pendant toute maintenance ou livraison SOLO, `AGENTS.md` ne doit jamais être modifié.
 
-209. The `CLAUDE.md -> AGENTS.md` link must never be deleted, replaced, recreated, transformed, or automatically repaired.
+209. Le lien `CLAUDE.md -> AGENTS.md` ne doit jamais être supprimé, remplacé, recréé, transformé ni réparé automatiquement.
 
-210. Before and after each delivery, the assistant must verify that `CLAUDE.md` remains a symbolic link pointing exactly to `AGENTS.md` and that the `AGENTS.md` fingerprint is unchanged.
+210. Avant et après chaque livraison, l’assistant doit vérifier que `CLAUDE.md` est toujours un lien symbolique pointant exactement vers `AGENTS.md` et que l’empreinte de `AGENTS.md` est inchangée.
 
-211. Any delivery containing `.gitignore` must preserve all existing entries and additively merge the mandatory baseline defined by SCRIPT410, without deletion.
+211. Toute livraison contenant un `.gitignore` doit conserver toutes ses entrées existantes et y fusionner sans suppression le socle obligatoire défini par SCRIPT410.
 
-212. If the existing `.gitignore` is neither supplied nor accessible, the assistant must request it before final delivery. It must never replace it with only the minimal baseline.
+212. Si le `.gitignore` existant n’est ni fourni ni accessible, l’assistant doit le demander avant la livraison finale. Il ne doit jamais le remplacer par le seul socle minimal.
 
-213. The mandatory baseline is:
+213. Le socle obligatoire est :
 
 ```gitignore
 .old/
@@ -909,11 +910,11 @@ secrets/
 *RULES_PRIVATE*
 ```
 
-214. Strictly identical duplicates may be removed, but no differently scoped variant or existing exclusion may be deleted.
+214. Les doublons strictement identiques peuvent être retirés, mais aucune variante de portée différente ni aucune exclusion existante ne doit être supprimée.
 
-215. Before creating ZIPs, automatically verify the presence of every mandatory entry in the final `.gitignore`.
+215. Avant création des ZIP, vérifier automatiquement la présence de chaque entrée obligatoire dans le `.gitignore` final.
 
-216. For SOLO116 delivery, expected active public versions are:
+216. Pour la livraison SOLO116, les versions publiques actives attendues sont :
 
 ```text
 CTX231 / OP116 / SCRIPT410
@@ -921,614 +922,597 @@ CTX231 / OP116 / SCRIPT410
 
 ------------------------------------------------------------------------
 
-## 25. SOLO117 ADDITION — GLOBAL SYNCHRONIZATION CTX232 / OP117 / SCRIPT410
+## 25. AJOUT SOLO117 — SYNCHRONISATION GLOBALE CTX232 / OP117 / SCRIPT410
 
-217. SOLO117 validates that SCRIPT410 repository guarantees are also integrated into general contextualization CTX232 and apply regardless of the active mode.
+217. SOLO117 valide que les garanties repo de SCRIPT410 sont également intégrées à la contextualisation générale CTX232 et s’appliquent quel que soit le mode actif.
 
-218. Custom Instructions must trigger SOLO Scripting loading when repository evidence is provided, including a tree, `ll -R` or `tree` output, Git or creation logs, repository URL, archive, or structural project files.
+218. Les Custom Instructions doivent déclencher le chargement de SOLO Scripting lorsque des preuves de dépôt sont fournies, notamment arborescence, sortie `ll -R` ou `tree`, logs Git ou de création, URL de dépôt, archive ou fichiers structurants de projet.
 
-219. The final length of modified Custom Instructions must remain at or below 5000 characters and must be measured before packaging.
+219. La longueur finale des Custom Instructions modifiées doit rester inférieure ou égale à 5000 caractères et être mesurée avant packaging.
 
-220. CTX232, SCRIPT410, and OP117 must contain compatible requirements regarding automatic repo-mode activation, `AGENTS.md` immutability, preservation of `CLAUDE.md -> AGENTS.md`, and additive `.gitignore` merging.
+220. CTX232, SCRIPT410 et OP117 doivent contenir des exigences compatibles concernant l’activation automatique du mode repo, l’immutabilité de `AGENTS.md`, la préservation de `CLAUDE.md -> AGENTS.md` et la fusion additive du `.gitignore`.
 
-221. Before delivery, verify that CTX232 and OP117 have exact `SOLOLAST` aliases and that SCRIPT410 remains identical to its active alias.
+221. Avant livraison, vérifier que CTX232 et OP117 ont leurs alias `SOLOLAST` exacts et que SCRIPT410 reste identique à son alias actif.
 
-222. The delivery must never include a copy intended to replace `AGENTS.md` or `CLAUDE.md`.
+222. La livraison ne doit jamais inclure une copie destinée à remplacer `AGENTS.md` ou `CLAUDE.md`.
 
-223. For SOLO117 delivery, expected active public versions are:
+223. Pour la livraison SOLO117, les versions publiques actives attendues sont :
 
 ```text
 CTX232 / OP117 / SCRIPT410
 ```
+------------------------------------------------------------------------
+
+## 26. AJOUT SOLO118 — CONTRÔLE ANTI-DOUBLON ET ANTI-RECOUVREMENT
+
+224. Dès que l’utilisateur fournit, propose ou demande d’intégrer une nouvelle règle, l’assistant doit rechercher les règles existantes pertinentes avant toute intégration.
+
+225. La recherche doit couvrir les familles SOLO concernées — CTX, SCRIPT et OP — ainsi que les fichiers de référence effectivement fournis ou chargés dans le chat courant. L’assistant ne doit pas présenter une règle connue seulement par mémoire comme ayant été vérifiée.
+
+226. Le contrôle doit comparer le sens, le périmètre, les déclencheurs, les obligations, les exceptions, les priorités et les résultats attendus, et pas seulement rechercher une formulation identique.
+
+227. L’assistant doit classer le résultat comme : règle absente, doublon exact, recouvrement partiel, règle complémentaire, conflit ou règle existante trop vague.
+
+228. Si la nouvelle règle est déjà couverte totalement ou partiellement, l’assistant ne doit pas créer une règle parallèle. Il doit proposer une fusion, une clarification ou une sous-règle ciblée, en conservant le comportement existant le plus protecteur.
+
+229. Avant toute modification, l’assistant doit indiquer brièvement : la règle existante concernée, la partie déjà couverte, la partie réellement nouvelle et l’action minimale proposée.
+
+230. Après intégration, l’assistant doit vérifier l’absence de doublon, contradiction, affaiblissement, répétition inutile ou référence obsolète, puis contrôler la numérotation et la version.
+
+231. Cette vérification est obligatoire même si l’utilisateur présente la règle comme nouvelle, urgente, corrigée ou déjà validée dans un autre chat.
 
 ------------------------------------------------------------------------
 
-## 26. SOLO118 ADDITION — ANTI-DUPLICATE AND ANTI-OVERLAP CHECK
+## 27. AJOUT SOLO118 — COMPORTEMENT READ ALOUD ET SYNCHRONISATION CTX233
 
-224. As soon as the user supplies, proposes, or asks to integrate a new rule, the assistant must search for relevant existing rules before any integration.
+232. La commande canonique est `passe en mode Read Aloud`. Elle active un mode de présentation du chat ; elle ne demande pas une action séparée appelée `relis en Read Aloud`.
 
-225. The search must cover the relevant SOLO families - CTX, SCRIPT, and OP - as well as reference files actually supplied or loaded in the current chat. The assistant must not present a rule known only from memory as verified.
+233. Lors du passage inactif vers actif dans un chat contenant déjà une réponse utile, l’assistant doit réémettre immédiatement cette dernière réponse dans une forme lisible à voix haute et ne doit pas répondre uniquement par une confirmation.
 
-226. The comparison must examine meaning, scope, triggers, obligations, exceptions, priorities, and expected results, not merely identical wording.
+234. Cette réémission doit conserver le fond, les nuances, les conditions, les décisions, les étapes et la conclusion de la réponse normale. Le mode Read Aloud n’impose aucune réduction automatique de longueur.
 
-227. Classify the result as: rule absent, exact duplicate, partial overlap, complementary rule, conflict, or existing rule too vague.
+235. Les phrases, paragraphes, titres et listes peuvent être adaptés pour l’écoute. Les tableaux denses peuvent être convertis en prose ou en listes, mais aucune information utile ne doit être supprimée.
 
-228. If the new rule is already covered fully or partially, do not create a parallel rule. Propose a merge, clarification, or targeted sub-rule while preserving the most protective existing behavior.
+236. Une demande explicite de `version courte`, `résumé`, `plus court` ou équivalent est nécessaire pour réduire le contenu. Une nouvelle activation alors que le mode est déjà actif ne doit pas relancer automatiquement la réémission et créer une boucle.
 
-229. Before any modification, briefly state: the relevant existing rule, the part already covered, the genuinely new part, and the minimal proposed action.
-
-230. After integration, verify there is no duplicate, contradiction, weakening, unnecessary repetition, or obsolete reference, then check numbering and version.
-
-231. This verification is mandatory even if the user presents the rule as new, urgent, corrected, or already validated in another chat.
+237. OP118 doit rester compatible avec CTX233, et cette section ne doit pas être interprétée comme une règle distincte ou concurrente du mode Read Aloud global.
 
 ------------------------------------------------------------------------
 
-## 27. SOLO118 ADDITION — READ ALOUD BEHAVIOR AND CTX233 SYNCHRONIZATION
+## 28. AJOUT SOLO118 — SYNCHRONISATION ET VERSION ACTIVE
 
-232. The canonical command is `switch to Read Aloud mode`. It activates a chat-presentation mode; it does not request a separate action called `reread in Read Aloud`.
-
-233. When switching from inactive to active in a chat that already contains a useful answer, the assistant must immediately re-emit that latest answer in a form suitable for listening and must not reply only with a confirmation.
-
-234. The re-emission must preserve the substance, nuances, conditions, decisions, steps, and conclusion of the normal answer. Read Aloud mode does not impose any automatic length reduction.
-
-235. Sentences, paragraphs, headings, and lists may be adapted for listening. Dense tables may be converted to prose or lists, but no useful information may be removed.
-
-236. An explicit request such as `short version`, `summary`, `shorter`, or equivalent is required to reduce content. Re-activating the mode while it is already active must not automatically retrigger re-emission and create a loop.
-
-237. OP118 must remain compatible with CTX233, and this section must not be interpreted as a separate or competing rule for the global Read Aloud mode.
-
-------------------------------------------------------------------------
-
-## 28. SOLO118 ADDITION — SYNCHRONIZATION AND ACTIVE VERSION
-
-238. SOLO118 is aligned with the following public delivery:
+238. SOLO118 est aligné sur la livraison publique suivante :
 
 ```text
 CTX233 / OP118 / SCRIPT410
 ```
 
-239. `SOLOLAST` files must be exact copies of the latest active CTX, OP, and SCRIPT versions.
+239. Les fichiers `SOLOLAST` doivent être des copies exactes des dernières versions actives de CTX, OP et SCRIPT.
 
-240. Before delivery, verify CTX232 inheritance in CTX233 and OP117 inheritance in OP118, absence of modification to SCRIPT410, alias consistency, package validity, and absence of private names in public files.
+240. Avant livraison, l’assistant doit vérifier l’héritage de CTX232 dans CTX233 et d’OP117 dans OP118, l’absence de modification de SCRIPT410, la cohérence des alias, la validité des packages et l’absence de noms privés dans les fichiers publics.
 
-241. The delivery must never replace, modify, recreate, or automatically repair `AGENTS.md` or the `CLAUDE.md -> AGENTS.md` link.
+241. La livraison ne doit jamais remplacer, modifier, recréer ou réparer automatiquement `AGENTS.md` ou le lien `CLAUDE.md -> AGENTS.md`.
 
 ------------------------------------------------------------------------
 
-## 29. SOLO119 ADDITION — CONTEXTUAL REAPPLICATION OF CUSTOM INSTRUCTIONS AND SOLO FAMILIES
+## 29. AJOUT SOLO119 — RÉAPPLICATION CONTEXTUELLE DES CUSTOM INSTRUCTIONS ET FAMILLES SOLO
 
-242. SOLO119 integrates the global behavior defined by CTX234 to refresh the rules of an already-open chat after a public-repository update.
+242. SOLO119 intègre le comportement global défini par CTX234 pour actualiser les règles d’un chat déjà ouvert après une mise à jour du dépôt public.
 
-243. Phrases such as `reload the rules`, `reapply the rules`, `reload the SOLO rules`, `reapply the SOLO rules`, `reload the Custom Instructions`, `reapply the Custom Instructions`, `apply the latest rules`, `I updated the rules on GitHub`, or equivalent first trigger an actual read of the current public `_CUSTOM_INSTRUCTIONS.md`.
+243. Les formulations `recharge les règles`, `réapplique les règles`, `recharge les règles SOLO`, `réapplique les règles SOLO`, `recharge les Custom Instructions`, `réapplique les Custom Instructions`, `applique les dernières règles`, `j’ai mis les règles à jour sur GitHub`, ou équivalent déclenchent d’abord une lecture réelle du `_CUSTOM_INSTRUCTIONS.md` public actuel.
 
-244. This read constitutes functional reapplication to the current chat. The assistant must not claim to have technically reloaded, modified, or synchronized the ChatGPT account setting itself.
+244. Cette lecture constitue une réapplication fonctionnelle au chat courant. L’assistant ne doit pas prétendre avoir techniquement rechargé, modifié ou synchronisé le réglage de compte ChatGPT lui-même.
 
-245. After rereading Custom Instructions, CTX must always be reread from `_RULES_SOLOLAST_CONTEXTUALIZATION.md`.
+245. Après la relecture des Custom Instructions, CTX doit toujours être relu depuis `_RULES_SOLOLAST_CONTEXTUALISATION.md`.
 
-246. Scripting must be reread only if the current chat already concerns scripting, code, a durable script, Git repository, extension, application, development, debugging, or code-related technical documentation.
+246. Scripting doit être relu uniquement si le chat courant relève déjà du scripting, du code, d’un script durable, d’un dépôt Git, d’une extension, d’une application, du développement, du debug ou de documentation technique liée au code.
 
-247. Operator must be reread only if the current chat already concerns Operator mode or SOLO-rule maintenance, correction, creation, versioning, merging, packaging, or delivery.
+247. Operator doit être relu uniquement si le chat courant relève déjà du mode Operator ou de la maintenance, correction, création, versionnement, merge, packaging ou livraison des règles SOLO.
 
-248. If both Scripting and Operator scopes are already active in the current chat, reread all three families.
+248. Si les périmètres Scripting et Operator sont tous deux déjà actifs dans le chat courant, les trois familles doivent être relues.
 
-249. A simple reapplication request must never add an unrelated family to the current context merely because it contains the words `SOLO rules`, `the rules`, or `all`.
+249. Une simple demande de réapplication ne doit jamais ajouter une famille étrangère au contexte courant à cause des mots `règles SOLO`, `les règles` ou `toutes`.
 
-250. The explicit command `read all SOLO rules`, or a request explicitly framed as reading/loading all three families, remains distinct and forces full reading of CTX, then Scripting, then Operator.
+250. La commande explicite `lis toutes les règles SOLO`, ou une demande explicitement formulée comme lecture/chargement des trois familles, reste distincte et force la lecture intégrale de CTX, Scripting puis Operator.
 
-251. A request explicitly limited to one specialized family reloads CTX and then only that family.
+251. Une demande explicitement limitée à une famille spécialisée recharge CTX puis cette famille seulement.
 
-252. If the new request genuinely changes chat scope - for example explicit Operator activation, starting coding work, or providing repository evidence - normal family activation rules continue to apply.
+252. Si la nouvelle demande change réellement le périmètre du chat — par exemple activation explicite d’Operator, démarrage d’un travail de code ou fourniture de preuves de dépôt — les règles normales d’activation de famille continuent à s’appliquer.
 
-253. Startup bypass does not block a later requested reapplication in the chat. The explicit request authorizes reads corresponding to the current scope.
+253. Le bypass de démarrage ne bloque pas une réapplication demandée ultérieurement dans le chat. La demande explicite autorise les lectures correspondant au périmètre courant.
 
-254. After reapplication, briefly confirm the actual read of public Custom Instructions, the SOLO families reread, their versions, and the old/new version when the old one is known. Any read failure must be identified without false confirmation.
+254. Après réapplication, l’assistant doit confirmer brièvement la lecture réelle des Custom Instructions publiques, les familles SOLO relues, leurs versions, et l’ancienne/nouvelle version lorsque l’ancienne est connue. Tout échec de lecture doit être identifié sans fausse confirmation.
 
-255. `_CUSTOM_INSTRUCTIONS.md` must remain at or below 5000 characters after integrating this behavior, and its exact count must be checked on the final file.
+255. `_CUSTOM_INSTRUCTIONS.md` doit rester inférieur ou égal à 5000 caractères après intégration de ce comportement, et son compte exact doit être vérifié sur le fichier final.
 
-256. For SOLO119 delivery, expected active public versions are:
+256. Pour la livraison SOLO119, les versions publiques actives attendues sont :
 
 ```text
 CTX234 / OP119 / SCRIPT410
 ```
 
-257. CTX234 and OP119 `SOLOLAST` aliases must be exact copies of the corresponding versioned files. SCRIPT410 and its alias must remain strictly unchanged.
+257. Les alias `SOLOLAST` de CTX234 et OP119 doivent être des copies exactes des fichiers versionnés correspondants. SCRIPT410 et son alias doivent rester strictement inchangés.
 
-258. Before delivery, verify there is no contradiction with explicit three-family reading, specialized routing, startup bypass, automatic repo-mode activation, and immutable `AGENTS.md` / `CLAUDE.md` guarantees.
+258. Avant livraison, vérifier l’absence de contradiction avec la lecture explicite des trois familles, le routage spécialisé, le bypass de démarrage, l’activation automatique du mode repo et les garanties immuables `AGENTS.md` / `CLAUDE.md`.
 
-259. Core rule: reapplication refreshes families already relevant to the chat; it does not turn a normal chat into a Scripting or Operator chat without a genuine scope change.
+259. Règle centrale : une réapplication actualise les familles déjà pertinentes du chat ; elle ne transforme pas un chat normal en chat Scripting ou Operator sans changement réel de périmètre.
+
 
 ------------------------------------------------------------------------
 
-## 30. SOLO120 ADDITION — MANDATORY POST-PUSH VALIDATION AND TEST PROMPT
+## 30. AJOUT SOLO120 — VALIDATION POST-PUSH OBLIGATOIRE ET PROMPT DE TEST
 
-260. A delivery of new SOLO RULES intended for the public repository does not end with the ZIP. In the same delivery, the Operator must prepare the post-push check that verifies the versions actually published are the expected ones and that bootstrap/routing works.
+260. Une livraison de nouvelles RULES SOLO destinées au dépôt public ne se termine pas au ZIP. L’Operator doit préparer, dans la même livraison, le contrôle post-push permettant de vérifier que les versions réellement publiées sont celles attendues et que leur bootstrap/routage fonctionne.
 
-261. The post-push check complements already-required packaging, `SOLOLAST` alias, non-regression, size, documentation, and consistency checks. It does not replace them.
+261. Le contrôle post-push complète les contrôles de packaging, alias `SOLOLAST`, non-régression, taille, documentation et cohérence déjà imposés. Il ne les remplace pas.
 
-262. For every new CTX, Scripting, or Operator version intended for GitHub, the delivery response must also provide:
-- the final ZIP package;
-- identification of the expected new versions;
-- a post-push prompt or prompt sequence ready to paste into a new chat;
-- expected results for each test step.
+262. Pour toute nouvelle version de CTX, Scripting ou Operator destinée à GitHub, la réponse de livraison doit fournir dans la même foulée :
+- le package ZIP final ;
+- l’identification des nouvelles versions attendues ;
+- un prompt ou une séquence de prompts post-push prête à copier-coller dans un nouveau chat ;
+- les résultats attendus pour chaque étape du test.
 
-263. The user remains responsible for updating the local repository and performing `git push`. When the user uses `gita`, that term may refer to a local commit/push alias; the Operator must not claim to have run it without actual environment/action access.
+263. L’utilisateur reste responsable de la mise à jour de son dépôt local et de son `git push`. Lorsque l’utilisateur utilise `gita`, ce terme peut désigner son alias local de commit/push ; l’Operator ne doit pas prétendre l’avoir exécuté s’il ne dispose pas réellement de l’environnement ou de l’action correspondante.
 
-264. The test prompt must be generated BEFORE the delivery ends, without waiting for the user to return and ask how to test. It must match the exact current-release versions.
+264. Le prompt de test doit être généré AVANT la fin de la livraison, sans attendre que l’utilisateur revienne demander comment tester. Il doit être adapté aux versions exactes de la livraison courante.
 
-265. If several public families are affected, the test must at minimum separately verify:
-1. new-chat bootstrap: CTX only;
-2. Scripting activation on clear repository evidence;
-3. explicit Operator activation;
-4. reread/reload of already-active families without unwanted additions.
+265. Si plusieurs familles publiques sont concernées, le test doit au minimum permettre de vérifier séparément :
+1. bootstrap d’un nouveau chat : CTX uniquement ;
+2. activation Scripting sur preuve claire de repository ;
+3. activation explicite Operator ;
+4. relecture/reload des familles déjà actives sans ajout parasite.
 
-266. For a change limited to one family, the Operator may reduce the test to necessary steps, but must still test the bootstrap or routing that actually reaches the new version.
+266. Pour un changement limité à une seule famille, l’Operator peut réduire le test aux étapes nécessaires, mais il doit toujours vérifier le bootstrap ou le routage qui permet d’atteindre réellement la nouvelle version.
 
-267. The test must instruct the new chat to report only files actually read and return their exact versions. A response based only on memory, previous context, or assumption is insufficient.
+267. Le test doit demander au nouveau chat de ne déclarer comme lus que les fichiers réellement lus et de retourner leur version exacte. Une simple réponse basée sur mémoire, contexte antérieur ou hypothèse est insuffisante.
 
-268. Expected output must use exact active versions from the current delivery. Generic example:
-
+268. Le résultat attendu doit utiliser les versions actives exactes de la livraison. Exemple générique :
 ```text
 CTX<version> / SCRIPT<version> / OP<version>
 ```
+L’Operator ne doit jamais réutiliser mécaniquement des numéros d’une livraison précédente.
 
-The Operator must never mechanically reuse version numbers from a previous delivery.
+269. Lorsque le test est séquentiel, chaque message de test doit être fourni dans l’ordre exact d’exécution et préciser qu’il doit être envoyé dans le même chat après le bootstrap initial, sauf pour le premier message qui doit impérativement être envoyé dans un nouveau chat.
 
-269. When the test is sequential, each test message must be provided in exact execution order and state that it is to be sent in the same chat after initial bootstrap, except for the first message, which must be sent in a new chat.
+270. La validation post-push n’est acquise que lorsque le résultat observé correspond aux versions et familles attendues. Si une version distante est ancienne, un alias incorrect, une famille absente ou une famille parasite apparaît, l’Operator doit classer le test en échec et rechercher la cause avant de considérer la livraison comme finalisée.
 
-270. Post-push validation is successful only when observed results match expected versions and families. If a remote version is old, an alias is wrong, a family is missing, or an unwanted family appears, the Operator must classify the test as failed and investigate the cause before treating delivery as final.
+271. Si le dépôt GitHub n’a pas encore été poussé, le prompt reste fourni immédiatement avec le ZIP, mais il doit être présenté comme `POST-PUSH TEST — À EXÉCUTER APRÈS GITA/PUSH`.
 
-271. If the GitHub repository has not yet been pushed, the prompt is still provided immediately with the ZIP, but must be labeled `POST-PUSH TEST - RUN AFTER GITA/PUSH`.
+272. Après confirmation du push, si l’utilisateur renvoie les réponses ou captures du test, l’Operator doit les comparer aux résultats attendus et répondre clairement `VALIDÉ` ou `ÉCHEC`, avec l’écart exact en cas d’échec.
 
-272. After push confirmation, if the user returns test responses or screenshots, the Operator must compare them with expected results and answer clearly `VALIDATED` or `FAILED`, with the exact discrepancy on failure.
+273. Le fichier de test peut être inclus dans le ZIP sous un nom explicite tel que `POST_PUSH_TEST_PROMPT.md`, mais sa présence dans le ZIP ne dispense pas l’Operator de fournir aussi le prompt directement dans la réponse de livraison lorsque cela est utile à l’exécution immédiate.
 
-273. The test file may be included in the ZIP under a clear name such as `POST_PUSH_TEST_PROMPT.md`, but its presence does not exempt the Operator from also providing the prompt directly in the delivery response when useful for immediate execution.
+274. Règle centrale : **toute nouvelle livraison de RULES destinée à GitHub doit sortir avec son ZIP final ET son test post-push prêt à exécuter ; l’utilisateur ne doit pas devoir revenir demander comment vérifier la publication.**
 
-274. Core rule: **every new RULES delivery intended for GitHub must ship with its final ZIP AND a ready-to-run post-push test; the user must not have to return and ask how to verify publication.**
-
-------------------------------------------------------------------------
-
-## 31. SOLO121 ADDITION — POST-PUSH TEST GENERATED IN CHAT, NO PROMPT FILE
-
-275. SOLO121 corrects and clarifies the post-push mechanism introduced by SOLO120.
-
-276. The post-push test must NOT be delivered as a persistent file such as `POST_PUSH_TEST_PROMPT.md`, nor added to repository root, `.docs/`, or `.zip/` as a normal work artifact.
-
-277. The test prompt is conversational content generated by the Operator at the appropriate time. It belongs in the chat response, not the repository.
-
-278. Mandatory workflow:
-1. the Operator creates/modifies the RULES and delivers the final ZIP;
-2. the user places the files in the local repository and performs commit/push, for example using local alias `gita` if desired;
-3. the user confirms in chat that the push is complete (`pushed`, `gita done`, `uploaded`, `it is online`, or equivalent);
-4. immediately after that confirmation, the Operator displays in its response the exact prompt(s) to paste into a new chat;
-5. prompts are adapted to the exact versions just published;
-6. the user returns the result or a screenshot;
-7. the Operator states clearly `VALIDATED` or `FAILED` and gives the exact discrepancy if needed.
-
-279. Before push confirmation, the Operator may remind the user that a post-push test will be required, but must not create a prompt file or clutter the package with that content.
-
-280. When multiple test steps are necessary, display them directly in the conversation as ready-to-paste blocks in execution order: new chat first, then subsequent messages in the same chat if required.
-
-281. The RULES package must remain a package of RULES and necessary documentation. The post-push prompt is not a repository file.
-
-282. The previous versioned RULE must leave repository root when a new version becomes active and must be archived under `.old/`. An already-versioned file, for example `_RULES_SOLO120_RULESOPERATOR.md`, may keep its name under `.old/` because it is inherently unique.
-
-283. `SOLOLAST` aliases are never archived as old versions: replace them with the exact copy of the new active version.
-
-284. If an archived file could overwrite an existing file under `.old/`, give it a unique name before archiving, containing at minimum its version or, for non-versioned files, an explicit archive date/version.
-
-285. Core rule: **after a confirmed push, the Operator displays the post-push test directly in chat; no `POST_PUSH_TEST_PROMPT.md` file may be created or delivered.**
 
 ------------------------------------------------------------------------
 
-## 32. SOLO122 ADDITION — COMMIT-PINNED POST-PUSH CHAIN TEST
+## 31. AJOUT SOLO121 — POST-PUSH TEST GÉNÉRÉ DANS LE CHAT, AUCUN FICHIER PROMPT
 
-286. SOLO122 extends SOLO121. The reference post-push test must now be a **single CHAIN TEST**, executable with one copy/paste in a new chat.
+275. SOLO121 corrige et précise le mécanisme post-push introduit par SOLO120.
 
-287. The final post-push acceptance test must never use floating branch `main` as the source of truth for RULES being validated. RAW URLs used by the test must be pinned to the exact SHA of the commit just pushed.
+276. Le test post-push ne doit PAS être livré sous forme de fichier persistant tel que `POST_PUSH_TEST_PROMPT.md`, ni être ajouté à la racine du dépôt, ni à `.docs/`, ni à `.zip/` comme artefact de travail normal.
 
-288. After push confirmation (`gita done`, `pushed`, `uploaded`, `it is online`, or equivalent), the Operator must:
-1. identify the SHA of the commit actually pushed from Git output supplied in chat or from an actual remote read if available;
-2. when possible, verify that the commit is accessible on the remote;
-3. build RAW URLs with that SHA;
-4. immediately display in chat one `POST-PUSH SOLO CHAIN TEST - COMMIT PINNED` prompt ready to paste into a new chat.
+277. Le prompt de test est un contenu conversationnel généré par l’Operator au moment utile. Il appartient à la réponse du chat, pas au dépôt.
 
-289. If no reliable SHA is available, the Operator must not invent a commit or silently fall back to `main`. It must request or retrieve the real SHA before producing the final acceptance test.
+278. Workflow obligatoire :
+1. l’Operator crée/modifie les RULES et livre le ZIP final ;
+2. l’utilisateur place les fichiers dans son dépôt local et exécute son commit/push, notamment via son alias local `gita` s’il le souhaite ;
+3. l’utilisateur confirme dans le chat que le push est terminé (`pushé`, `gita terminé`, `uploadé`, `c'est en ligne` ou équivalent) ;
+4. immédiatement après cette confirmation, l’Operator affiche dans sa réponse le ou les prompts exacts à copier-coller dans un nouveau chat ;
+5. les prompts sont adaptés aux versions exactes qui viennent d’être publiées ;
+6. l’utilisateur renvoie le résultat ou une capture ;
+7. l’Operator prononce clairement `VALIDÉ` ou `ÉCHEC` et indique l’écart exact si nécessaire.
 
-290. Canonical test-source format:
+279. Avant confirmation du push, l’Operator peut rappeler qu’un test post-push sera requis, mais il ne doit pas créer un fichier de prompt ni encombrer le package avec ce contenu.
 
+280. Lorsque plusieurs étapes de test sont nécessaires, elles sont affichées directement dans la conversation sous forme de blocs prêts à copier-coller, dans l’ordre d’exécution : nouveau chat, puis messages suivants dans le même chat si nécessaire.
+
+281. Le package de RULES doit rester un package de RULES et de documentation nécessaire. Le prompt post-push n’est pas un fichier de dépôt.
+
+282. La version précédente de la RULE versionnée doit quitter la racine lorsque la nouvelle version devient active et être archivée dans `.old/`. Un fichier déjà versionné, par exemple `_RULES_SOLO120_RULESOPERATOR.md`, peut conserver ce nom dans `.old/` puisqu’il est intrinsèquement unique.
+
+283. Les alias `SOLOLAST` ne sont jamais archivés comme anciennes versions : ils sont remplacés par la copie exacte de la nouvelle version active.
+
+284. Si un fichier archivé risque d’écraser un fichier déjà présent dans `.old/`, l’Operator doit lui donner avant archivage un nom unique contenant au minimum sa version ou, pour les fichiers non versionnés, une date/version d’archive explicite.
+
+285. Règle centrale : **après un push confirmé, l’Operator affiche le test post-push directement dans le chat ; aucun fichier `POST_PUSH_TEST_PROMPT.md` ne doit être créé ou livré.**
+
+
+------------------------------------------------------------------------
+
+## 32. AJOUT SOLO122 — POST-PUSH CHAIN TEST PINNÉ SUR LE COMMIT
+
+286. SOLO122 complète SOLO121. Le test post-push de référence doit désormais être un **CHAIN TEST unique**, exécutable avec un seul copier-coller dans un nouveau chat.
+
+287. Le test d’acceptation post-push ne doit jamais utiliser la branche flottante `main` comme source de vérité pour les RULES à valider. Les URLs RAW utilisées par le test doivent être pinées sur le SHA exact du commit qui vient d’être poussé.
+
+288. Après confirmation du push (`gita terminé`, `pushé`, `uploadé`, `c'est en ligne` ou équivalent), l’Operator doit :
+1. identifier le SHA du commit réellement poussé depuis la sortie Git fournie dans le chat ou depuis une lecture distante réelle du dépôt si cet accès est disponible ;
+2. vérifier, lorsque possible, que ce commit est bien accessible sur le remote ;
+3. construire les URLs RAW avec ce SHA ;
+4. afficher immédiatement dans le chat un seul prompt `POST-PUSH SOLO CHAIN TEST — COMMIT PINNED` prêt à copier-coller dans un nouveau chat.
+
+289. Si aucun SHA fiable n’est disponible, l’Operator ne doit pas inventer de commit ni retomber silencieusement sur `main`. Il doit demander ou récupérer le SHA réel avant de produire le test d’acceptation final.
+
+290. Le format canonique des sources du test est :
 ```text
 COMMIT=<sha>
-CTX_RAW=https://raw.githubusercontent.com/<owner>/<repo>/<sha>/_RULES_SOLOLAST_CONTEXTUALIZATION.md
+
+CTX_RAW=https://raw.githubusercontent.com/<owner>/<repo>/<sha>/_RULES_SOLOLAST_CONTEXTUALISATION.md
 SCRIPT_RAW=https://raw.githubusercontent.com/<owner>/<repo>/<sha>/_RULES_SOLOLAST_SCRIPTING.md
 OP_RAW=https://raw.githubusercontent.com/<owner>/<repo>/<sha>/_RULES_SOLOLAST_RULESOPERATOR.md
 ```
 
-291. The complete CHAIN TEST must automatically execute these steps in one response, without requesting `NEXT`:
-1. BOOTSTRAP: actually read `CTX_RAW` only;
-2. REPOSITORY: actually read `SCRIPT_RAW`;
-3. OPERATOR: actually read `OP_RAW`;
-4. RELOAD: actually reread `CTX_RAW`, `SCRIPT_RAW`, and `OP_RAW`.
+291. Le CHAIN TEST complet doit exécuter automatiquement les étapes suivantes dans une seule réponse, sans demander `NEXT` :
+1. BOOTSTRAP : lire réellement `CTX_RAW` uniquement ;
+2. REPOSITORY : lire réellement `SCRIPT_RAW` ;
+3. OPERATOR : lire réellement `OP_RAW` ;
+4. RELOAD : relire réellement `CTX_RAW`, `SCRIPT_RAW` et `OP_RAW`.
 
-292. A step is `PASS` only if the required file(s) were actually opened and read from commit-pinned URLs. A version inferred from memory, context, another RULE, an old chat, a local alias, or a previous step never counts as validation.
+292. Une étape n’est `PASS` que si le ou les fichiers requis pour cette étape ont été réellement ouverts et lus depuis les URLs pinées sur le commit. Une version déduite depuis mémoire, contexte, une autre RULE, un ancien chat, un alias local ou une étape précédente ne constitue jamais une validation.
 
-293. The prompt must explicitly contain:
-
+293. Le prompt doit contenir explicitement :
 ```text
-ABSOLUTE RULE:
-a step is PASS only if the required file is actually opened and read from the pinned URL above.
-Never infer a version from memory, context, or another RULE.
-If a required remote read fails: FAIL.
+RÈGLE ABSOLUE :
+une étape est PASS uniquement si le fichier requis est réellement ouvert et lu depuis l’URL pinée ci-dessus.
+Ne déduis jamais une version depuis mémoire, contexte ou une autre RULE.
+Si une lecture distante échoue : FAIL.
 ```
 
-294. Expected versions must be calculated from the current delivery, never copied from an old test. Example:
-
+294. Les versions attendues doivent être calculées à partir de la livraison courante, jamais copiées d’un ancien test. Exemple :
 ```text
-STEP 1: CTX<version>
-STEP 2: CTX<version> + SCRIPT<version>
-STEP 3: CTX<version> + SCRIPT<version> + OP<version>
-STEP 4: CTX<version> + SCRIPT<version> + OP<version>
+ÉTAPE 1 : CTX<version>
+ÉTAPE 2 : CTX<version> + SCRIPT<version>
+ÉTAPE 3 : CTX<version> + SCRIPT<version> + OP<version>
+ÉTAPE 4 : CTX<version> + SCRIPT<version> + OP<version>
 ```
 
-295. Expected test-chat response must remain compact:
-
+295. La réponse attendue du chat de test doit rester compacte :
 ```text
-STEP 1: PASS/FAIL - observed versions
-STEP 2: PASS/FAIL - observed versions
-STEP 3: PASS/FAIL - observed versions
-STEP 4: PASS/FAIL - observed versions
-FINAL VERDICT: VALIDATED or FAILED
-First divergence: <cause>, only on failure.
+ÉTAPE 1 : PASS/FAIL — versions observées
+ÉTAPE 2 : PASS/FAIL — versions observées
+ÉTAPE 3 : PASS/FAIL — versions observées
+ÉTAPE 4 : PASS/FAIL — versions observées
+VERDICT FINAL : VALIDÉ ou ÉCHEC
+Première divergence : <cause>, seulement si échec.
 ```
 
-296. If only some families are modified, the Operator may adapt expected versions, but the full CTX -> Scripting -> Operator -> Reload test remains the reference test when an Operator or bootstrap/routing change is delivered.
+296. Si seules certaines familles sont modifiées, l’Operator peut adapter les versions attendues, mais le test complet CTX → Scripting → Operator → Reload reste le test de référence lorsqu’une modification Operator ou une modification du bootstrap/routage est livrée.
 
-297. The post-push test remains chat content. No `POST_PUSH_TEST_PROMPT.md` file may be created, delivered, or added to the repository.
+297. Le test post-push reste un contenu de chat. Aucun fichier `POST_PUSH_TEST_PROMPT.md` ne doit être créé, livré ou ajouté au dépôt.
 
-298. After receiving CHAIN TEST results, the Operator must answer clearly:
-- `POST-PUSH SOLO CHAIN TEST: VALIDATED` if all steps PASS;
-- `POST-PUSH SOLO CHAIN TEST: FAILED` otherwise, with the first divergence.
+298. Après réception du résultat du CHAIN TEST, l’Operator doit répondre clairement :
+- `POST-PUSH SOLO CHAIN TEST : VALIDÉ` si toutes les étapes sont PASS ;
+- `POST-PUSH SOLO CHAIN TEST : ÉCHEC` sinon, avec la première divergence.
 
-299. A failure caused by an old version read through floating `main` must not lead directly to RULE changes. The Operator must first repeat or correct the test using the commit SHA actually pushed.
+299. Un échec dû à une ancienne version lue via une URL flottante `main` ne doit pas conduire à modifier les RULES sans vérification. L’Operator doit d’abord répéter ou corriger le test avec le SHA piné du commit réellement poussé.
 
-300. Core rule: **every Operator or bootstrap delivery intended for GitHub must, after confirmed push, automatically produce one CHAIN TEST pinned to the exact commit SHA; no final acceptance test may depend on `main`.**
+300. Règle centrale : **toute livraison Operator ou de bootstrap destinée à GitHub doit, après push confirmé, produire automatiquement un seul CHAIN TEST piné sur le SHA exact du commit ; aucun test d’acceptation final ne doit dépendre de `main`.**
+
 
 ------------------------------------------------------------------------
 
-## 33. SOLO123 ADDITION — OPERATOR FULL ACCEPTANCE TEST
+## 33. AJOUT SOLO123 — FULL ACCEPTANCE TEST OPERATOR
 
-301. SOLO123 fully preserves the SOLO122 CORE POST-PUSH CHAIN TEST and adds a second validation level: the **FULL ACCEPTANCE TEST**.
+301. SOLO123 conserve intégralement le CORE POST-PUSH CHAIN TEST de SOLO122 et ajoute un second niveau de validation : le **FULL ACCEPTANCE TEST**.
 
-302. The CORE CHAIN TEST remains mandatory after every relevant push. It validates minimum routing:
-1. CTX;
-2. Scripting;
-3. Operator;
-4. Reload;
-with actual reads pinned to the exact commit SHA.
+302. Le CORE CHAIN TEST reste obligatoire après tout push concerné. Il valide le routage minimal :
+1. CTX ;
+2. Scripting ;
+3. Operator ;
+4. Reload ;
+avec lectures réelles pinées sur le SHA exact du commit.
 
-303. FULL ACCEPTANCE is mandatory after any modification that affects at least one of these areas:
-- RULESOPERATOR;
-- Custom Instructions bootstrap;
-- SOLO-family routing;
-- reload/reapplication logic;
-- delivery or packaging rules;
-- old-version management;
-- `SOLOLAST` aliases;
-- post-push validation;
-- anti-overlap/anti-duplication rules;
-- expected public repository structure.
+303. Le FULL ACCEPTANCE TEST est obligatoire après toute modification qui touche au moins un des domaines suivants :
+- RULESOPERATOR ;
+- bootstrap des Custom Instructions ;
+- routage des familles SOLO ;
+- logique de reload/réapplication ;
+- règles de livraison ou de packaging ;
+- gestion des anciennes versions ;
+- aliases `SOLOLAST` ;
+- post-push validation ;
+- anti-recouvrement/anti-duplication des règles ;
+- structure attendue du dépôt public.
 
-304. FULL ACCEPTANCE never replaces CORE CHAIN. Mandatory workflow:
-1. confirmed push;
-2. remote-commit verification when possible;
-3. commit-pinned CORE CHAIN TEST;
-4. if CORE = VALIDATED, FULL ACCEPTANCE TEST;
-5. final release-validation verdict.
+304. Le FULL ACCEPTANCE TEST ne remplace jamais le CORE CHAIN TEST. Le workflow obligatoire est :
+1. push confirmé ;
+2. vérification du commit distant lorsque possible ;
+3. CORE CHAIN TEST piné sur le SHA ;
+4. si CORE = VALIDÉ, FULL ACCEPTANCE TEST ;
+5. verdict final de validation de la release.
 
-305. FULL ACCEPTANCE must be generated directly in chat. No persistent test-prompt file may be created.
+305. Le FULL ACCEPTANCE TEST doit être généré directement dans le chat. Aucun fichier persistant de prompt de test ne doit être créé.
 
-306. The behavioral part of FULL ACCEPTANCE must be executable with **one copy/paste** in a new chat.
+306. Le FULL ACCEPTANCE TEST doit être exécutable avec **un seul copier-coller** dans un nouveau chat lorsqu’il s’agit de la partie comportementale.
 
-307. FULL ACCEPTANCE must distinguish two categories:
-A. real repository checks, performed by the Operator when it has actual repository access;
-B. behavioral checks performed in a new chat with actual reads of commit-pinned RULES.
+307. Le FULL ACCEPTANCE TEST doit distinguer deux catégories de contrôles :
+A. contrôles réels du dépôt, effectués par l’Operator lorsqu’il dispose d’un accès réel au dépôt ;
+B. contrôles comportementaux effectués dans un nouveau chat avec lectures réelles des RULES pinées sur le commit.
 
-308. Real repository checks to perform when technically available:
-- announced commit SHA exists on remote;
-- `SOLOLAST` files point to expected versions;
-- active numbered version exists;
-- previous numbered version does not remain at root when it should be archived;
-- previous version is present under local `.old/` if observable;
-- no `POST_PUSH_TEST_PROMPT.md` is published;
-- `.gitignore` was not modified without justification;
-- `AGENTS.md` was not modified;
-- `CLAUDE.md` was not replaced, recreated, or modified;
-- public README references correct active versions;
-- prohibited private or local files are not published;
-- commit contains no obvious naming regression.
+308. Contrôles réels du dépôt à effectuer lorsque techniquement disponibles :
+- le commit SHA annoncé existe sur le remote ;
+- les fichiers `SOLOLAST` pointent sur les versions attendues ;
+- la version numérotée active existe ;
+- l’ancienne version numérotée ne reste pas à la racine lorsqu’elle doit être archivée ;
+- l’ancienne version est présente dans `.old/` localement si cette information est disponible ;
+- aucun `POST_PUSH_TEST_PROMPT.md` n’est publié ;
+- `.gitignore` n’a pas été modifié sans justification ;
+- `AGENTS.md` n’a pas été modifié ;
+- `CLAUDE.md` n’a pas été remplacé, recréé ou modifié ;
+- le README public référence les bonnes versions actives ;
+- les fichiers privés ou locaux interdits ne sont pas publiés ;
+- le commit ne contient pas de régression de naming évidente.
 
-309. If a real repository check is not technically observable from the Operator environment, mark it `NON OBSERVABLE`, not `PASS`.
+309. Si un contrôle réel du dépôt n’est pas techniquement observable depuis l’environnement de l’Operator, il doit être marqué `NON OBSERVABLE` et non `PASS`.
 
-310. Behavioral FULL ACCEPTANCE must test at minimum:
-1. CTX-only bootstrap;
-2. Scripting activation on clear repository evidence;
-3. Operator activation on explicit request;
-4. reload without unwanted family activation;
-5. actual file reads from SHA-pinned URLs;
-6. refusal to infer a version from memory/context;
-7. anti-overlap: search for an existing rule before creating a new one;
-8. problem classification: absent / duplicate / partial overlap / complementary / conflict / too vague;
-9. if a rule already exists, do not create a parallel rule;
-10. single-file delivery: direct file;
-11. multi-file delivery: from two files onward, one mandatory ZIP;
-12. previous numbered version: must not remain active at root;
-13. `SOLOLAST`: must exactly match active version;
-14. no `POST_PUSH_TEST_PROMPT.md` file;
-15. post-push test provided in chat;
-16. post-push test pinned to commit SHA, never `main`;
-17. compact, deterministic final verdict.
+310. Le FULL ACCEPTANCE TEST comportemental doit tester au minimum :
+1. bootstrap CTX uniquement ;
+2. activation Scripting sur preuve claire de repository ;
+3. activation Operator sur demande explicite ;
+4. reload sans activation parasite ;
+5. lecture réelle des fichiers depuis les URLs pinées sur le SHA ;
+6. refus de déduire une version depuis mémoire/contexte ;
+7. anti-recouvrement : rechercher une règle existante avant d’en créer une nouvelle ;
+8. classification du problème : absent / doublon / chevauchement partiel / complémentaire / conflit / trop vague ;
+9. si une règle existe déjà, ne pas créer de règle parallèle ;
+10. livraison mono-fichier : fichier direct ;
+11. livraison multi-fichiers : dès deux fichiers, ZIP unique obligatoire ;
+12. ancienne version numérotée : ne doit pas rester active à la racine ;
+13. `SOLOLAST` : doit correspondre exactement à la version active ;
+14. aucun fichier `POST_PUSH_TEST_PROMPT.md` ;
+15. post-push test fourni dans le chat ;
+16. post-push test piné sur le commit SHA et jamais sur `main` ;
+17. verdict final compact et déterministe.
 
-311. Behavioral tests that simulate a dangerous or destructive operation must not actually modify the repository. They must ask the chat to describe the compliant expected decision.
+311. Les tests comportementaux qui demandent de simuler une opération dangereuse ou destructive ne doivent pas réellement modifier le dépôt. Ils doivent demander au chat de décrire la décision conforme attendue.
 
-312. Packaging tests must use synthetic scenarios:
-- scenario A: one final output -> expected: direct delivery;
-- scenario B: two final outputs -> expected: one ZIP containing both final files;
-- scenario C: a file inside the ZIP changes after creation -> expected: mandatory ZIP recreation.
+312. Pour les tests de packaging, le FULL ACCEPTANCE TEST doit utiliser des scénarios synthétiques :
+- scénario A : une seule sortie finale -> attendu : livraison directe ;
+- scénario B : deux sorties finales -> attendu : un ZIP unique contenant les deux fichiers finaux ;
+- scénario C : un fichier du ZIP est modifié après création -> attendu : recréation obligatoire du ZIP.
 
-313. For anti-overlap, provide a scenario in which a rule already partially covers the request and verify that the Operator:
-- searches for the existing rule;
-- identifies what is already covered;
-- identifies what is genuinely new;
-- chooses the minimal modification;
-- does not create an unnecessary parallel rule.
+313. Pour l’anti-recouvrement, le test doit fournir un scénario où une règle couvre déjà partiellement la demande et vérifier que l’Operator :
+- cherche la règle existante ;
+- identifie ce qui est déjà couvert ;
+- identifie ce qui est réellement nouveau ;
+- choisit la modification minimale ;
+- ne crée pas une règle parallèle inutile.
 
-314. For archival checks, verify this decision:
-- new active version at root;
-- previous numbered version archived under `.old/`;
-- `SOLOLAST` replaced by exact copy of the new active version;
-- no historical alias archived as a numbered version.
+314. Pour le contrôle d’archivage, le test doit vérifier la décision suivante :
+- nouvelle version active à la racine ;
+- ancienne version numérotée archivée sous `.old/` ;
+- alias `SOLOLAST` remplacé par la copie exacte de la nouvelle version ;
+- aucun alias historique archivé comme version numérotée.
 
-315. For repository protection, verify that the Operator refuses to:
-- modify or recreate `AGENTS.md`;
-- modify or recreate `CLAUDE.md`;
-- clean up or rewrite `.gitignore` without validated need;
-- publish `.docs/`, `.old/`, `.private/`, ZIPs, or `_RULES_PRIVATE_*` at public root when they are meant to remain local/ignored.
+315. Pour la protection du dépôt, le test doit vérifier que l’Operator refuse de :
+- modifier ou recréer `AGENTS.md` ;
+- modifier ou recréer `CLAUDE.md` ;
+- nettoyer ou réécrire `.gitignore` sans nécessité validée ;
+- publier `.docs/`, `.old/`, `.private/`, ZIPs ou `_RULES_PRIVATE_*` dans la racine publique lorsque ces éléments sont censés rester locaux/ignorés.
 
-316. FULL ACCEPTANCE must show a result for each check in this form:
-
+316. Le FULL ACCEPTANCE TEST doit afficher un résultat par contrôle sous la forme :
 ```text
-CHECK <n>: PASS / FAIL / NON OBSERVABLE - <short summary>
+CHECK <n> : PASS / FAIL / NON OBSERVABLE — <résumé court>
 ```
 
-317. Final verdict must be:
-
+317. Le verdict final doit être :
 ```text
-FULL ACCEPTANCE: VALIDATED
+FULL ACCEPTANCE : VALIDÉ
+```
+uniquement si tous les contrôles obligatoires observables sont PASS et qu’aucun contrôle obligatoire n’est FAIL.
+
+318. Si un ou plusieurs contrôles sont `NON OBSERVABLE`, l’Operator peut conclure :
+```text
+FULL ACCEPTANCE : VALIDÉ AVEC CONTRÔLES NON OBSERVABLES
+```
+uniquement si aucun contrôle observable n’est FAIL, avec la liste exacte des contrôles non observables.
+
+319. En cas d’échec, l’Operator doit indiquer la première divergence exacte et ne pas proposer immédiatement une nouvelle RULE avant d’avoir déterminé si l’échec vient :
+- d’une règle absente ;
+- d’une règle trop vague ;
+- d’une règle existante non appliquée ;
+- d’une mauvaise interprétation ;
+- d’un test incorrect ;
+- d’un cache ou d’une source flottante non pinée.
+
+320. Un échec du test lui-même ne doit jamais être automatiquement interprété comme un défaut des RULES.
+
+321. Avant toute nouvelle modification après échec, l’Operator doit appliquer le contrôle anti-recouvrement existant et déterminer si une règle déjà présente couvre le comportement attendu.
+
+322. Après un CORE CHAIN TEST validé, si le changement entre dans le périmètre de la règle 303, l’Operator doit proposer automatiquement le FULL ACCEPTANCE TEST sans attendre que l’utilisateur le demande.
+
+323. Si l’utilisateur demande explicitement « teste tout », « bétonne », « teste au maximum », « full test », « full acceptance » ou équivalent, l’Operator doit exécuter/proposer le FULL ACCEPTANCE TEST même si la modification courante n’entre pas strictement dans la règle 303.
+
+324. Le FULL ACCEPTANCE TEST doit être adapté dynamiquement aux versions exactes de la release courante. Aucun numéro de version ne doit être recopié mécaniquement depuis un ancien test.
+
+325. Le FULL ACCEPTANCE TEST doit être piné sur le même SHA que le CORE CHAIN TEST de la release concernée.
+
+326. Si un nouveau commit est poussé entre le CORE et le FULL, le FULL doit utiliser le nouveau SHA et le CORE doit être considéré comme appartenant à l’ancien commit.
+
+327. Le verdict de release doit toujours préciser les deux niveaux :
+```text
+CORE CHAIN : VALIDÉ / ÉCHEC
+FULL ACCEPTANCE : VALIDÉ / VALIDÉ AVEC CONTRÔLES NON OBSERVABLES / ÉCHEC
 ```
 
-only if all mandatory observable checks PASS and no mandatory check FAILS.
+328. Une release Operator/bootstrap/routage/livraison n’est considérée complètement validée qu’après :
+- CORE CHAIN validé ;
+- FULL ACCEPTANCE validé ou validé avec contrôles non observables explicitement listés.
 
-318. If one or more checks are `NON OBSERVABLE`, the Operator may conclude:
+329. Règle centrale : **pour toute modification Operator, bootstrap, routage ou livraison, le contrôle post-push standard est CORE CHAIN + FULL ACCEPTANCE, tous deux pinés sur le SHA exact du commit ; le FULL doit tester autant de comportements et invariants que techniquement possible sans modifier réellement le dépôt.**
 
-```text
-FULL ACCEPTANCE: VALIDATED WITH NON-OBSERVABLE CHECKS
-```
-
-only if no observable check fails, and must list the exact non-observable checks.
-
-319. On failure, identify the exact first divergence and do not immediately propose a new RULE before determining whether failure comes from:
-- a missing rule;
-- a rule that is too vague;
-- an existing rule not applied;
-- a misinterpretation;
-- an incorrect test;
-- cache or an unpinned floating source.
-
-320. A failure of the test itself must never automatically be interpreted as a defect in the RULES.
-
-321. Before any new modification after a failure, apply the existing anti-overlap check and determine whether an existing rule already covers the expected behavior.
-
-322. After a validated CORE CHAIN TEST, if the change falls within rule 303, automatically propose FULL ACCEPTANCE without waiting for the user to ask.
-
-323. If the user explicitly asks `test everything`, `make it bulletproof`, `test as much as possible`, `full test`, `full acceptance`, or equivalent, run/propose FULL ACCEPTANCE even when the current change does not strictly fall under rule 303.
-
-324. FULL ACCEPTANCE must be dynamically adapted to exact versions of the current release. Never mechanically copy version numbers from an old test.
-
-325. FULL ACCEPTANCE must be pinned to the same SHA as the release CORE CHAIN TEST.
-
-326. If a new commit is pushed between CORE and FULL, FULL must use the new SHA and CORE must be considered to belong to the old commit.
-
-327. Release verdict must always state both levels:
-
-```text
-CORE CHAIN: VALIDATED / FAILED
-FULL ACCEPTANCE: VALIDATED / VALIDATED WITH NON-OBSERVABLE CHECKS / FAILED
-```
-
-328. An Operator/bootstrap/routing/delivery release is fully validated only after:
-- CORE CHAIN validated;
-- FULL ACCEPTANCE validated, or validated with explicitly listed non-observable checks.
-
-329. Core rule: **for every Operator, bootstrap, routing, or delivery change, the standard post-push check is CORE CHAIN + FULL ACCEPTANCE, both pinned to the exact commit SHA; FULL must test as many behaviors and invariants as technically possible without actually modifying the repository.**
 
 ------------------------------------------------------------------------
 
-## 34. SOLO124 ADDITION — CANONICAL 20-CHECK FULL ACCEPTANCE TEMPLATE
+## 34. AJOUT SOLO124 — TEMPLATE CANONIQUE FULL ACCEPTANCE 20 CHECKS
 
-330. SOLO124 does not create a parallel mechanism. It **clarifies and standardizes** the FULL ACCEPTANCE already required by SOLO123.
+330. SOLO124 ne crée pas un nouveau mécanisme parallèle. Il **précise et normalise** le FULL ACCEPTANCE déjà imposé par SOLO123.
 
-331. After CORE CHAIN validation, when FULL ACCEPTANCE is required by rules 303, 322, or 323, the Operator must **automatically** generate one canonical behavioral FULL ACCEPTANCE as a single copy/paste block.
+331. Après validation du CORE CHAIN, lorsque le FULL ACCEPTANCE est requis par les règles 303, 322 ou 323, l’Operator doit générer **automatiquement** un FULL ACCEPTANCE comportemental canonique en un seul copier-coller.
 
-332. Canonical FULL ACCEPTANCE must be pinned to the same exact SHA as CORE CHAIN unless a new commit was pushed in the meantime, in which case rules 325 and 326 apply.
+332. Le FULL ACCEPTANCE canonique doit être piné sur le même SHA exact que le CORE CHAIN, sauf si un nouveau commit a été poussé entre-temps, auquel cas les règles 325 et 326 s’appliquent.
 
-333. Canonical FULL ACCEPTANCE contains **20 mandatory behavioral checks**, grouped in this order:
+333. Le FULL ACCEPTANCE canonique comporte **20 checks comportementaux obligatoires**, regroupés dans l’ordre suivant :
 
-### A — ROUTING / LOADING
-1. CTX-only bootstrap.
-2. Scripting activation on repository evidence.
-3. Explicit Operator activation.
-4. Reload without unrelated family activation.
-5. Confirmation of actual reads from pinned URLs.
-6. Anti-memory: the pinned RAW source wins over memory/old context.
+### A — ROUTAGE / CHARGEMENT
+1. Bootstrap CTX uniquement.
+2. Activation Scripting sur preuve de repository.
+3. Activation Operator explicite.
+4. Reload sans famille parasite.
+5. Confirmation des lectures réelles depuis les URLs pinées.
+6. Anti-memory : la source RAW pinée gagne sur mémoire/ancien contexte.
 
-### B — RULE ANTI-OVERLAP
-7. Search for an existing rule before creating a new one.
-8. Handle partial overlap through minimal delta/merge.
-9. Canonical classification: absent / exact duplicate / partial overlap / complementary / conflict / existing rule too vague.
+### B — ANTI-RECOUVREMENT DES RULES
+7. Recherche d’une règle existante avant création d’une nouvelle.
+8. Gestion d’un chevauchement partiel par delta minimal/fusion.
+9. Classification canonique : absence / doublon exact / chevauchement partiel / complémentaire / conflit / règle existante trop vague.
 
-### C — DELIVERY / PACKAGING
-10. One final file -> direct delivery.
-11. Two or more final files -> one mandatory ZIP.
-12. File inside ZIP modified after creation -> mandatory ZIP recreation.
+### C — LIVRAISON / PACKAGING
+10. Un seul fichier final -> livraison directe.
+11. Deux fichiers finaux ou plus -> ZIP unique obligatoire.
+12. Fichier du ZIP modifié après création -> recréation obligatoire du ZIP.
 
-### D — VERSIONING / ARCHIVING
-13. New active version at root; previous numbered version removed from root and archived under `.old/`.
-14. `SOLOLAST` replaced by exact active-version copy; old `SOLOLAST` not archived as a historical version.
+### D — VERSIONNEMENT / ARCHIVAGE
+13. Nouvelle version active à la racine ; ancienne version numérotée sortie de la racine et archivée dans `.old/`.
+14. `SOLOLAST` remplacé par la copie exacte de la version active ; ancien `SOLOLAST` non archivé comme version historique.
 
-### E — REPOSITORY PROTECTION
-15. Protect `AGENTS.md`, `CLAUDE.md`, and preserve `.gitignore`.
-16. Do not publish `.docs/`, `.old/`, `.private/`, `*.zip`, or `_RULES_PRIVATE_*` when these are local/ignored.
+### E — PROTECTION DU REPOSITORY
+15. Protection de `AGENTS.md`, `CLAUDE.md` et préservation de `.gitignore`.
+16. Non-publication de `.docs/`, `.old/`, `.private/`, `*.zip` et `_RULES_PRIVATE_*` lorsqu’ils sont locaux/ignorés.
 
 ### F — POST-PUSH
-17. No `POST_PUSH_TEST_PROMPT.md`; prompt generated directly in chat.
-18. Final test pinned to exact commit SHA; never `main`.
-19. One CHAIN TEST ready to paste; no `NEXT`.
-20. For Operator/bootstrap/routing/reload/delivery: CORE CHAIN then FULL ACCEPTANCE.
+17. Aucun fichier `POST_PUSH_TEST_PROMPT.md` ; prompt généré directement dans le chat.
+18. Test final piné sur le SHA exact du commit ; jamais `main`.
+19. Un seul CHAIN TEST prêt à copier-coller ; aucun `NEXT`.
+20. Pour Operator/bootstrap/routage/reload/livraison : CORE CHAIN puis FULL ACCEPTANCE.
 
-334. Checks 1 through 6 must require actual RULE reads from pinned RAW URLs. A version inferred from memory, implicit context, an old chat, or another RULE causes `FAIL`.
+334. Les checks 1 à 6 doivent exiger des lectures réelles des RULES depuis les URLs RAW pinées. Une version déduite depuis mémoire, contexte implicite, ancien chat ou une autre RULE entraîne `FAIL`.
 
-335. Checks 7 through 9 are analysis-only scenarios. They must never actually modify a RULE during the test.
+335. Les checks 7 à 9 doivent être des scénarios d’analyse uniquement. Ils ne doivent jamais modifier réellement une RULE pendant le test.
 
-336. Checks 10 through 12 are synthetic packaging scenarios only. They must not create real files or ZIPs during the test.
+336. Les checks 10 à 12 doivent être des scénarios synthétiques de packaging uniquement. Ils ne doivent pas créer de vrais fichiers ni ZIP pendant le test.
 
-337. Checks 13 through 16 verify the **expected compliant decision**, not actual repository mutations.
+337. Les checks 13 à 16 doivent vérifier la **décision conforme attendue** et non effectuer réellement des mutations du dépôt.
 
-338. Checks 17 through 20 verify the current post-push workflow, including the prohibition on using `main` as the final acceptance source.
+338. Les checks 17 à 20 doivent vérifier le workflow post-push courant, y compris l’interdiction de `main` comme source d’acceptation finale.
 
-339. The canonical prompt must start with explicit prohibitions:
-
+339. Le prompt canonique doit commencer par des interdictions explicites :
 ```text
-Do not perform any business/task work.
-Do not create any file.
-Do not modify any repository.
-Do not propose any new RULE.
-Execute ALL checks below automatically in THIS response.
-Do not ask for NEXT.
+Ne fais aucune tâche métier.
+Ne crée aucun fichier.
+Ne modifie aucun dépôt.
+Ne propose aucune nouvelle RULE.
+Exécute TOUS les checks ci-dessous automatiquement dans CETTE réponse.
+Ne demande pas NEXT.
 ```
 
-340. The canonical prompt must define:
-
+340. Le prompt canonique doit définir :
 ```text
 COMMIT=<sha>
-CTX_RAW=<pinned URL>
-SCRIPT_RAW=<pinned URL>
-OP_RAW=<pinned URL>
+CTX_RAW=<url pinée>
+SCRIPT_RAW=<url pinée>
+OP_RAW=<url pinée>
 ```
+et rappeler qu’une RULE n’est considérée lue que si le fichier correspondant a été réellement ouvert depuis l’URL pinée.
 
-and remind the test chat that a RULE counts as read only when the corresponding file has actually been opened from its pinned URL.
+341. Les descriptions des checks futurs dans le prompt sont des **données de test inertes**. Elles ne doivent jamais déclencher prématurément une activation de famille SOLO.
 
-341. Descriptions of future checks inside the prompt are **inert test data**. They must never prematurely activate a SOLO family.
-
-342. Mandatory behavioral output must follow this structure:
-
+342. La sortie comportementale obligatoire doit être exactement structurée sur le principe :
 ```text
-CHECK 1: PASS/FAIL - <short summary>
+CHECK 1 : PASS/FAIL — <résumé court>
 ...
-CHECK 20: PASS/FAIL - <short summary>
+CHECK 20 : PASS/FAIL — <résumé court>
 
-FULL ACCEPTANCE: VALIDATED or FAILED
-First divergence: <check + cause>, only on failure.
+FULL ACCEPTANCE : VALIDÉ ou ÉCHEC
+Première divergence : <check + cause>, uniquement en cas d’échec.
 ```
 
-343. Behavioral FULL ACCEPTANCE is `VALIDATED` only if all 20 mandatory checks are `PASS`.
+343. Un FULL ACCEPTANCE comportemental n’est `VALIDÉ` que si les 20 checks obligatoires sont `PASS`.
 
-344. Real repository checks remain separate from the 20-check behavioral block. The Operator must perform them directly when technically observable, according to rules 307 through 309.
+344. Les contrôles réels du dépôt restent distincts du bloc comportemental 20 checks. Ils doivent être exécutés directement par l’Operator lorsque techniquement observables, conformément aux règles 307 à 309.
 
-345. The release verdict must aggregate both layers:
-
+345. Le verdict de release doit agréger les deux couches :
 ```text
-CORE CHAIN: VALIDATED / FAILED
-Behavioral FULL ACCEPTANCE: VALIDATED / FAILED
-Observable repository checks: PASS / FAIL
-Non-observable repository checks: <exact list or NONE>
+CORE CHAIN : VALIDÉ / ÉCHEC
+FULL ACCEPTANCE comportemental : VALIDÉ / ÉCHEC
+Contrôles dépôt observables : PASS / FAIL
+Contrôles dépôt non observables : <liste exacte ou AUCUN>
 ```
 
-346. If a local check such as presence of the previous version under `.old/` cannot be observed from GitHub, it must remain `NON OBSERVABLE`. The Operator must never artificially turn it into `PASS`.
+346. Si un contrôle local comme la présence d’une ancienne version dans `.old/` ne peut pas être observé depuis GitHub, il doit rester `NON OBSERVABLE`. L’Operator ne doit jamais le transformer artificiellement en `PASS`.
 
-347. Complete final verdict is:
-
+347. Le verdict final complet est :
 ```text
-FULL ACCEPTANCE: VALIDATED
+FULL ACCEPTANCE : VALIDÉ
 ```
-
-if every mandatory check is observable and PASS; or:
-
+si tous les contrôles obligatoires sont observables et PASS ; ou :
 ```text
-FULL ACCEPTANCE: VALIDATED WITH NON-OBSERVABLE CHECKS
+FULL ACCEPTANCE : VALIDÉ AVEC CONTRÔLES NON OBSERVABLES
 ```
+si aucun contrôle observable n’est FAIL et que les contrôles non observables sont explicitement listés.
 
-if no observable check fails and non-observable checks are explicitly listed.
+348. Lorsqu’un FULL ACCEPTANCE canonique revient `20/20 PASS`, l’Operator doit le reconnaître directement et ne doit pas demander de répéter les mêmes checks sans raison.
 
-348. When canonical FULL ACCEPTANCE returns `20/20 PASS`, the Operator must recognize it directly and must not ask to repeat the same checks without reason.
-
-349. After a validated FULL ACCEPTANCE, the Operator must announce end-to-end validation with both levels:
-
+349. Après un FULL ACCEPTANCE validé, l’Operator doit annoncer la validation de bout en bout avec les deux niveaux :
 ```text
-CORE CHAIN: VALIDATED
-FULL ACCEPTANCE: VALIDATED
+CORE CHAIN : VALIDÉ
+FULL ACCEPTANCE : VALIDÉ
 ```
+ou la variante `VALIDÉ AVEC CONTRÔLES NON OBSERVABLES` lorsque nécessaire.
 
-or the `VALIDATED WITH NON-OBSERVABLE CHECKS` variant when needed.
+350. Le FULL ACCEPTANCE canonique doit être régénéré dynamiquement avec les versions exactes CTX/SCRIPT/OP et le SHA exact de chaque nouvelle release. Les numéros et SHA d’un ancien test ne doivent jamais être réutilisés mécaniquement.
 
-350. Canonical FULL ACCEPTANCE must be regenerated dynamically with the exact CTX/SCRIPT/OP versions and exact SHA of each new release. Version numbers and SHAs from old tests must never be mechanically reused.
-
-351. Core rule: **the standard Operator FULL ACCEPTANCE is now the canonical 20-check test described in SOLO124, executed after CORE CHAIN when required, in one copy/paste, pinned to the exact SHA, without actual repository mutation, and with a combined behavioral + real-repository-check verdict.**
-
+351. Règle centrale : **le FULL ACCEPTANCE Operator standard est désormais le test canonique 20 checks décrit dans SOLO124, exécuté après CORE CHAIN lorsque requis, en un seul copier-coller, piné sur le SHA exact, sans mutation réelle du dépôt et avec verdict combiné comportement + contrôles réels du dépôt.**
 
 ------------------------------------------------------------------------
 
-## 35. SOLO125 ADDITION — IDEMPOTENT RULE LOADING AND SCRIPT413 SYNCHRONIZATION
+## 35. AJOUT SOLO125 — CHARGEMENT IDEMPOTENT DES RÈGLES ET SYNCHRONISATION SCRIPT413
 
-352. SOLO125 synchronizes the Operator family with `CTX234` + `SCRIPT413` and with the bootstrap rule that remote SOLO reads are idempotent inside an already-open chat.
+352. SOLO125 synchronise la famille Operator avec `CTX234` + `SCRIPT413` et avec la règle bootstrap selon laquelle les lectures distantes SOLO sont idempotentes dans un chat déjà ouvert.
 
-353. Loading a public SOLO family is a state transition, not a per-message ritual. The chat must remember which public families were actually read and the versions observed.
+353. Le chargement d’une famille SOLO publique est une transition d’état, pas un rituel à répéter à chaque message. Le chat doit conserver quelles familles publiques ont réellement été lues et quelles versions ont été observées.
 
-354. Once CTX is loaded in the current chat, later activation of Scripting or Operator must read only the missing family unless an explicit reload/refresh is requested.
+354. Une fois CTX chargé dans le chat courant, l’activation ultérieure de Scripting ou Operator doit lire uniquement la famille manquante, sauf demande explicite de reload/refresh.
 
-355. Once Scripting is active, the following do **not** trigger another CTX/SCRIPT remote read by themselves:
-- the word `scripting`;
-- continued code/debug work;
-- repeated repository evidence;
-- a question about a scripting rule;
-- a complaint that a scripting rule was not followed;
-- a request to correct code under the already-loaded scripting rules.
+355. Une fois Scripting actif, les éléments suivants ne déclenchent **pas** à eux seuls une nouvelle lecture distante CTX/SCRIPT :
+- le mot `scripting` ;
+- la poursuite d’un travail de code/debug ;
+- de nouvelles preuves répétées de dépôt ;
+- une question sur une règle scripting ;
+- une plainte indiquant qu’une règle scripting n’a pas été respectée ;
+- une demande de correction de code sous les règles scripting déjà chargées.
 
-356. Once Operator is active, ordinary references to Operator/rules maintenance likewise do not trigger another remote read.
+356. Une fois Operator actif, les références ordinaires à Operator ou à la maintenance des règles ne déclenchent pas non plus une nouvelle lecture distante.
 
-357. A reread is required only when at least one of these is true:
-- explicit `reload`, `reapply`, `refresh`, `load latest`, `load current rules`, or equivalent;
-- the user states that the rules or repository were updated/pushed;
-- the chat has no reliable evidence that the required family was actually read;
-- a validation test explicitly requires a real pinned reread.
+357. Une relecture est requise uniquement lorsqu’au moins une des conditions suivantes est vraie :
+- `reload`, `reapply`, `refresh`, `charge la dernière version`, `charge les règles courantes` ou équivalent demandé explicitement ;
+- l’utilisateur indique que les règles ou le dépôt ont été mis à jour/pushés ;
+- le chat ne possède pas de preuve fiable que la famille requise a réellement été lue ;
+- un test de validation exige explicitement une relecture réelle depuis une source pinée.
 
-358. The anti-false-read rule remains absolute: cached loaded state can prevent unnecessary rereads, but the assistant must never claim that a family was read if no real read occurred earlier in the current chat.
+358. La règle anti-fausse-lecture reste absolue : l’état chargé en cache peut éviter des relectures inutiles, mais l’assistant ne doit jamais prétendre qu’une famille a été lue si aucune lecture réelle n’a eu lieu auparavant dans le chat courant.
 
-359. After a rule family is loaded, rule violations must be corrected by applying the loaded content. Repeatedly rereading the same rule without correcting a known violation is not compliant behavior.
+359. Après chargement d’une famille de règles, les violations doivent être corrigées en appliquant le contenu déjà chargé. Relire sans cesse la même règle sans corriger une violation connue n’est pas un comportement conforme.
 
-360. For Scripting releases, Operator validation must treat the canonical CLI compliance gate from SCRIPT413 as a blocking invariant where durable CLI scripts are in scope.
+360. Pour les releases Scripting, la validation Operator doit traiter le gate de conformité CLI canonique de SCRIPT413 comme un invariant bloquant lorsque des scripts CLI durables sont concernés.
 
-361. FULL ACCEPTANCE routing checks must additionally verify idempotence:
-- first activation performs the required real read;
-- a normal follow-up mentioning the already-active family does not reread it;
-- explicit reload still performs a real reread.
+361. Les checks de routage du FULL ACCEPTANCE doivent également vérifier l’idempotence :
+- la première activation effectue la lecture réelle requise ;
+- un message de suivi normal mentionnant la famille déjà active ne la relit pas ;
+- un reload explicite effectue toujours une vraie relecture.
 
-362. The canonical 20-check FULL ACCEPTANCE remains 20 checks. The idempotence assertion is incorporated into routing/loading checks rather than creating a parallel 21st check.
+362. Le FULL ACCEPTANCE canonique reste à 20 checks. L’assertion d’idempotence est intégrée aux checks de routage/chargement au lieu de créer un 21e check parallèle.
 
-363. When generating expected versions for CORE CHAIN or FULL ACCEPTANCE after this release, use the actual active versions dynamically. For this release baseline they are:
+363. Lors de la génération des versions attendues pour CORE CHAIN ou FULL ACCEPTANCE après cette release, utiliser dynamiquement les versions actives réelles. Pour cette baseline de release, elles sont :
+
 ```text
 CTX234
 SCRIPT413
 OP125
 ```
-These values must still be replaced dynamically in future releases.
 
-364. Core rule: **load each required SOLO family once per chat activation state, apply it continuously, reread only on explicit refresh/update/validation triggers, and never substitute repeated remote reads for actual compliance.**
+Ces valeurs doivent toujours être remplacées dynamiquement dans les releases futures.
+
+364. Règle centrale : **charger chaque famille SOLO requise une seule fois par état d’activation du chat, l’appliquer en continu, ne la relire que sur déclencheur explicite de refresh/update/validation, et ne jamais substituer des lectures distantes répétées à la conformité réelle.**

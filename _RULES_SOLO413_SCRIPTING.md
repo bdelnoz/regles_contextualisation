@@ -1,533 +1,532 @@
-Canonical name: SOLO413  
-Family: SOLOxxx (xxx = version number)  
-Current version: 413  
-Document: _RULES_SOLO413_SCRIPTING.md  
-Author: not published in the public version  
-Email: not published in the public version  
-Date: 2026-09-14  
-Language: English  
-Status: public sanitized scripting version preserving SOLO412 and adding a blocking canonical CLI-compliance gate, reserved control aliases, canonical `--exec --<action>` business invocation, and explicit conflict precedence for legacy CLI aliases.
+Nom canonique : SOLO413  
+Famille : SOLOxxx (xxx = numéro de version)  
+Version actuelle : 413
+Document : _RULES_SOLO413_SCRIPTING.md  
+Auteur : non publié dans la version publique
+Email : non publié dans la version publique
+Date : 2026-09-14
+Statut : version scripting publique assainie conservant SOLO412 et ajoutant un gate bloquant de conformité CLI canonique, des alias de contrôle réservés, l’invocation métier canonique `--exec --<action>` et une priorité explicite en cas de conflit avec des alias CLI historiques.
 
-THESE SCRIPTING RULES ARE CALLED SOLOxxx, where xxx is the version number.
+CES RÈGLES DE SCRIPTING S’APPELLENT SOLOxxx, où xxx représente le numéro de version.
 
-When I say SOLO413, I mean version 413 of these rules.
+Lorsque je dis SOLO413, je fais référence à la version 413 des règles.
 
-When I say SOLO followed by a number, for example SOLO405, I mean the corresponding version.
+Lorsque je dis SOLO suivi d’un numéro, par exemple SOLO405, je fais référence à la version correspondante.
 
-When I simply say SOLO, it means the latest published version.
+Lorsque je dis simplement SOLO, cela fait référence à la dernière version publiée.
 
-SOLO413 supersedes SOLO412, SOLO411, SOLO410, SOLO409, SOLO408, SOLO407, SOLO406, SOLO405, SOLO404, SOLO403, SOLO402, SOLO401, SOLO400, SOLO311, SOLO310, SOLO309, SOLO308, SOLO307, SOLO306, SOLO305, SOLO304, SOLO303, SOLO302, SOLO301, SOLO300, and all previous SOLO scripting versions for scripting requests, code generation, code correction, technical-file generation, and documentation related to scripts.
+SOLO413 remplace SOLO412, SOLO411, SOLO410, SOLO409, SOLO408, SOLO407, SOLO406, SOLO405, SOLO404, SOLO403, SOLO402, SOLO401, SOLO400, SOLO311, SOLO310, SOLO309, SOLO308, SOLO307, SOLO306, SOLO305, SOLO304, SOLO303, SOLO302, SOLO301, SOLO300 et toutes les versions SOLO scripting précédentes pour les demandes de scripting, génération de code, correction de code, génération de fichiers techniques et génération de documentation liée à des scripts.
 
-SOLO413 is designed for chat LLMs, including ChatGPT, LeChat, or equivalents.
+SOLO413 est conçu pour les LLM de chat, notamment ChatGPT, LeChat ou équivalents.
 
-SOLO413 carries the working logic of AGENTS.md into a form adapted to a chat LLM: the same expectations for rigor, documentation, non-deletion, versioning, specifications, and complete deliverables, with a pre-flight check before writing/delivery and a mandatory final ZIP gate from two files onward, without claiming to replace the system rules of the platform in use.
+SOLO413 reprend la logique de travail de AGENTS.md sous une forme adaptée à un LLM de chat : mêmes attentes de rigueur, documentation, non-suppression, versionnement, spécifications et livrables complets, avec contrôle pré-flight avant écriture/livraison, gate final ZIP obligatoire dès deux fichiers et gate bloquant de conformité CLI, sans prétendre remplacer les règles système de la plateforme utilisée.
 
-# Scripting Contextualization Rules
-
-------------------------------------------------------------------------
-
-## 1. SCOPE OF SOLO405
-
-### 1.1 Purpose
-
-SOLO405 defines the rules that apply to user requests concerning:
-
-- script creation;
-- script correction;
-- script improvement;
-- code generation;
-- code modification;
-- generation of technical files related to a script;
-- documentation related to a script or script repository;
-- preparatory technical analysis before modifying scripts.
-
-### 1.2 Nature of SOLO405
-
-SOLO405 is an LLM adaptation of repository rules such as AGENTS.md.
-
-SOLO405 should allow a chat LLM to work with the same logic as AGENTS.md even when AGENTS.md is not supplied in the chat.
-
-SOLO405 is not a platform system rule.
-
-SOLO405 applies within the technical, functional, legal, and safety limits of the platform in use.
-
-### 1.3 Operational priority
-
-For scripting requests, apply the following order:
-
-1. platform system and safety rules;
-2. explicit user instructions in the current message;
-3. AGENTS.md if the user supplies it or the repository context contains it;
-4. SOLO405;
-5. the user's general conversation preferences.
-
-If AGENTS.md is supplied or explicitly present in the repository, AGENTS.md remains the master repository rule file.
-
-SOLO405 then serves as an LLM translation and response preference as long as it does not conflict with AGENTS.md.
+# Règles de contextualisation Scripting
 
 ------------------------------------------------------------------------
 
-## 2. REPO MODE BY DEFAULT AND EXCEPTIONAL SIMPLE MODE
+## 1. PORTÉE DE SOLO405
 
-### 2.1 Repo mode by default
+### 1.1 Objectif
 
-By default, every scripting request must be treated as work intended for a Git repository.
+SOLO405 définit les règles applicables aux demandes utilisateur concernant :
 
-The assistant must steer toward repo mode when the request concerns:
+- création de scripts ;
+- correction de scripts ;
+- amélioration de scripts ;
+- génération de code ;
+- modification de code ;
+- génération de fichiers techniques liés à un script ;
+- documentation liée à un script ou à un dépôt de scripts ;
+- analyse technique préparatoire avant modification de scripts.
 
-- a durable script;
-- modification of an existing script;
-- a script project;
-- an existing repository;
-- a versioned file;
-- a reusable tool;
-- automation;
-- associated documentation;
-- a change affecting behavior, outputs, options, files, or workflow.
+### 1.2 Nature de SOLO405
 
-### 2.2 Recommendation to use repo mode
+SOLO405 est une adaptation LLM des règles de dépôt de type AGENTS.md.
 
-If the user asks for scripting without specifying context, the assistant must treat repo mode as the normal path.
+SOLO405 doit permettre à un LLM de chat de travailler avec la même logique que AGENTS.md, même lorsque le fichier AGENTS.md n’est pas fourni dans le chat.
 
-It may briefly remind the user that repo mode is recommended unless the user explicitly asks for a simple script outside a repository.
+SOLO405 n’est pas une règle système de plateforme.
 
-### 2.3 Simple script mode outside a repository
+SOLO405 s’applique dans les limites techniques, fonctionnelles, légales et de sécurité de la plateforme utilisée.
 
-Simple script mode outside a repository is a rare exception.
+### 1.3 Priorité opérationnelle
 
-It is allowed only when the user explicitly requests it or clearly states that no repo workflow is wanted.
+Pour les demandes de scripting, appliquer l’ordre suivant :
 
-Examples of explicit requests:
+1. règles système et règles de sécurité de la plateforme ;
+2. instructions explicites de l’utilisateur dans le message courant ;
+3. fichier AGENTS.md si l’utilisateur le fournit ou si le contexte du dépôt le contient ;
+4. SOLO405 ;
+5. préférences générales de conversation de l’utilisateur.
 
-- `just make me a small simple script`;
-- `no repo needed`;
-- `no AGENTS workflow`;
-- `no full documentation`;
-- `temporary script`;
-- `turn this quick command into a script`.
+Si AGENTS.md est fourni ou explicitement présent dans le dépôt, AGENTS.md reste la règle de dépôt master.
 
-### 2.4 Minimum rules in simple-script mode
-
-Even outside a repo, the script must contain at minimum:
-
-- a complete script;
-- a clean header;
-- author;
-- email;
-- version;
-- date;
-- target usage;
-- minimal changelog;
-- help if the script accepts arguments;
-- no hard-coded secret;
-- non-destructive behavior by default where possible.
-
-In simple mode, SPECIFICATIONS, README, CHANGELOG, INSTALL, and WHY files are not mandatory unless explicitly requested by the user.
+SOLO405 sert alors de traduction LLM et de préférence de réponse tant qu’il ne contredit pas AGENTS.md.
 
 ------------------------------------------------------------------------
 
-## 3. ABSOLUTE PROTECTION RULE FOR AGENTS.md, CLAUDE.md, AND INSTRUCTION SYMLINKS
+## 2. MODE REPO PAR DÉFAUT ET MODE SIMPLE EXCEPTIONNEL
 
-### 3.1 AGENTS.md as repository reference
+### 2.1 Mode repo par défaut
 
-In a user repository, AGENTS.md is considered the master repository rule file if it exists or if the user supplied it.
+Par défaut, toute demande de scripting doit être considérée comme un travail destiné à un dépôt Git.
 
-SOLO405 must not compete with AGENTS.md.
+L’assistant doit orienter l’utilisateur vers le mode repo lorsque la demande concerne :
 
-SOLO405 must not replace AGENTS.md.
+- un script durable ;
+- une modification de script existant ;
+- un projet de scripts ;
+- un dépôt existant ;
+- un fichier avec versionnement ;
+- un outil réutilisable ;
+- une automatisation ;
+- une documentation associée ;
+- une modification ayant un impact sur le comportement, les sorties, les options, les fichiers ou le workflow.
 
-SOLO405 must not arbitrarily merge contradictory rules into AGENTS.md.
+### 2.2 Recommandation de passage en mode repo
 
-If SOLO405 and AGENTS.md conflict in repository context, AGENTS.md takes precedence for the repository.
+Si l’utilisateur demande de scripter sans préciser le contexte, l’assistant doit considérer le mode repo comme la voie normale.
 
-### 3.2 Strict prohibition on modifying AGENTS.md
+L’assistant peut rappeler brièvement que le mode repo est recommandé, sauf si l’utilisateur demande explicitement un script simple hors repo.
 
-AGENTS.md must never be modified automatically.
+### 2.3 Mode script simple hors repo
 
-The assistant must never modify, rewrite, reformat, normalize, rename, delete, move, regenerate, convert, copy, overwrite, version, or bump the version of AGENTS.md unless the user explicitly requests modification of AGENTS.md in the current request.
+Le mode script simple hors repo est une exception rare.
 
-AGENTS.md must never be included in an automatic documentation, specification, synchronization, cleanup, formatting, maintenance, refactor, changelog, or repository-wide update.
+Il est autorisé uniquement si l’utilisateur le demande explicitement ou indique clairement qu’il ne veut pas de workflow repo.
 
-AGENTS.md is not ordinary project documentation.
+Exemples de demande explicite :
 
-AGENTS.md is a repository-governance file.
+- « fais-moi juste un petit script simple » ;
+- « pas besoin de repo » ;
+- « pas de workflow AGENTS » ;
+- « pas de documentation complète » ;
+- « script temporaire » ;
+- « commande rapide transformée en script ».
 
-If a proposal, patch, generated file, archive, or instruction includes an unrequested change to AGENTS.md, the assistant must stop that part, report the error, and provide a corrected version without changing AGENTS.md.
+### 2.4 Règles minimales en mode script simple
 
-### 3.3 Strict prohibition on modifying CLAUDE.md
+Même en mode simple hors repo, le script doit contenir au minimum :
 
-CLAUDE.md must never be modified automatically.
+- un script complet ;
+- un en-tête propre ;
+- auteur ;
+- email ;
+- version ;
+- date ;
+- usage cible ;
+- changelog minimal ;
+- aide si le script prend des arguments ;
+- absence de secret en dur ;
+- comportement non destructif par défaut lorsque possible.
 
-The assistant must never modify, rewrite, reformat, normalize, rename, delete, move, regenerate, convert, copy, overwrite, version, or bump the version of CLAUDE.md unless the user explicitly requests modification of CLAUDE.md in the current request.
+En mode simple hors repo, les fichiers SPECIFICATIONS, README, CHANGELOG, INSTALL et WHY ne sont pas obligatoires sauf demande explicite de l’utilisateur.
 
-CLAUDE.md must be treated as a symbolic link to AGENTS.md.
+------------------------------------------------------------------------
 
-Expected state:
+## 3. RÈGLE ABSOLUE DE PROTECTION AGENTS.md, CLAUDE.md ET SYMLINKS D’INSTRUCTION
+
+### 3.1 AGENTS.md comme référence de dépôt
+
+Dans un dépôt utilisateur, AGENTS.md est considéré comme la règle master de dépôt si le fichier existe ou si l’utilisateur l’a fourni.
+
+SOLO405 ne doit pas concurrencer AGENTS.md.
+
+SOLO405 ne doit pas remplacer AGENTS.md.
+
+SOLO405 ne doit pas fusionner arbitrairement des règles contradictoires avec AGENTS.md.
+
+En cas de conflit entre SOLO405 et AGENTS.md dans un contexte de dépôt, AGENTS.md prime pour le dépôt.
+
+### 3.2 Interdiction stricte de modification de AGENTS.md
+
+AGENTS.md ne doit jamais être modifié automatiquement.
+
+L’assistant ne doit jamais modifier, réécrire, reformater, normaliser, renommer, supprimer, déplacer, régénérer, convertir, copier, écraser, versionner ou version-bumper AGENTS.md sauf si l’utilisateur demande explicitement une modification de AGENTS.md dans la demande courante.
+
+AGENTS.md ne doit jamais être inclus dans une mise à jour automatique de documentation, de spécifications, de synchronisation, de nettoyage, de formatage, de maintenance, de refactor, de changelog ou de repository-wide update.
+
+AGENTS.md n’est pas une documentation normale de projet.
+
+AGENTS.md est un fichier de gouvernance du dépôt.
+
+Si une proposition, un patch, un fichier généré, une archive ou une instruction inclut une modification non demandée de AGENTS.md, l’assistant doit arrêter cette partie, signaler l’erreur et fournir une version corrigée sans modification de AGENTS.md.
+
+### 3.3 Interdiction stricte de modification de CLAUDE.md
+
+CLAUDE.md ne doit jamais être modifié automatiquement.
+
+L’assistant ne doit jamais modifier, réécrire, reformater, normaliser, renommer, supprimer, déplacer, régénérer, convertir, copier, écraser, versionner ou version-bumper CLAUDE.md sauf si l’utilisateur demande explicitement une modification de CLAUDE.md dans la demande courante.
+
+CLAUDE.md doit être traité comme un lien symbolique vers AGENTS.md.
+
+L’état attendu est :
 
 ```text
 CLAUDE.md -> AGENTS.md
 ```
 
-CLAUDE.md must never be replaced by a normal Markdown file containing a copy of AGENTS.md.
+CLAUDE.md ne doit jamais être remplacé par un fichier Markdown normal contenant une copie de AGENTS.md.
 
-CLAUDE.md must never become an independent rules source.
+CLAUDE.md ne doit jamais devenir une source indépendante de règles.
 
-CLAUDE.md must never contain a duplicated, divergent, reworded, or condensed version of AGENTS.md rules.
+CLAUDE.md ne doit jamais contenir une version dupliquée, divergente, reformulée ou condensée des règles AGENTS.md.
 
-### 3.4 Strict prohibition on modifying instruction symlinks related to AGENTS.md and CLAUDE.md
+### 3.4 Interdiction stricte de modification des symlinks d’instruction liés à AGENTS.md et CLAUDE.md
 
-Instruction symlinks related to AGENTS.md or CLAUDE.md must never be modified automatically.
+Les liens symboliques d’instruction liés à AGENTS.md ou CLAUDE.md ne doivent jamais être modifiés automatiquement.
 
-The assistant must never modify, rewrite, reformat, normalize, rename, delete, move, regenerate, convert, copy, overwrite, version, or version-bump an instruction symlink related to AGENTS.md or CLAUDE.md unless the user explicitly requests modification of that exact symlink in the current request.
+L’assistant ne doit jamais modifier, réécrire, reformater, normaliser, renommer, supprimer, déplacer, régénérer, convertir, copier, écraser, versionner ou version-bumper un symlink d’instruction lié à AGENTS.md ou CLAUDE.md, sauf si l’utilisateur demande explicitement une modification de ce symlink exact dans la demande courante.
 
-Instruction symlinks must never be replaced by normal Markdown files.
+Les liens symboliques d’instruction ne doivent jamais être remplacés par des fichiers Markdown normaux.
 
-Instruction symlinks must never be dereferenced and then overwritten with their target.
+Les liens symboliques d’instruction ne doivent jamais être déréférencés puis écrasés par leur cible.
 
-Instruction symlinks must never be converted into independent copies.
+Les liens symboliques d’instruction ne doivent jamais être convertis en copies indépendantes.
 
-This protection applies only to instruction symlinks explicitly related to AGENTS.md or CLAUDE.md unless the user explicitly requests otherwise.
+Cette protection s’applique uniquement aux liens symboliques d’instruction explicitement liés à AGENTS.md ou CLAUDE.md, sauf demande explicite contraire de l’utilisateur.
 
-Without an explicit request, AGENTS.md, CLAUDE.md, and their instruction symlinks remain out of scope, including during generation, synchronization, documentation updates, archive creation, or repository cleanup.
+Sans demande explicite, AGENTS.md, CLAUDE.md et leurs symlinks d’instruction restent hors périmètre, même pendant une génération, une synchronisation, une mise à jour documentaire, une création d’archive ou un nettoyage de dépôt.
 
-### 3.5 Behavior when CLAUDE.md is absent or incorrect
+### 3.5 Comportement si CLAUDE.md est absent ou incorrect
 
-If CLAUDE.md is absent, incorrect, not a symlink, broken, or replaced by a copy, the assistant must not correct it automatically unless explicitly requested by the user.
+Si CLAUDE.md est absent, incorrect, non symbolique, cassé ou remplacé par une copie, l’assistant ne doit pas le corriger automatiquement sauf demande explicite de l’utilisateur.
 
-The assistant may report the observed state and provide a correction command only when useful and explicitly requested.
+L’assistant peut signaler l’état constaté et fournir une commande de correction uniquement si cela est utile et explicitement demandé.
 
-Without an explicit request, AGENTS.md and CLAUDE.md remain untouchable.
+Sans demande explicite, AGENTS.md et CLAUDE.md restent intouchables.
 
-### 3.6 Practical priority rule
+### 3.6 Règle de priorité pratique
 
-For scripting, documentation, specifications, cleanup, file generation, archive creation, or repository maintenance, treat AGENTS.md, CLAUDE.md, and all instruction symlinks explicitly related to AGENTS.md or CLAUDE.md as out of scope by default.
+Pour tout travail de scripting, documentation, spécifications, nettoyage, génération de fichiers, création d’archive ou maintenance de dépôt, considérer AGENTS.md, CLAUDE.md et tous les symlinks d’instruction explicitement liés à AGENTS.md ou CLAUDE.md comme hors périmètre par défaut.
 
-They enter scope only if the user explicitly names them as files to modify.
+Ils ne deviennent dans le périmètre que si l’utilisateur les nomme explicitement comme fichiers à modifier.
 
-### 3.7 Exclusion of instruction files from deliverables
+### 3.7 Exclusion des fichiers d’instruction dans les livrables
 
-AGENTS.md, CLAUDE.md, and all instruction symlinks explicitly related to AGENTS.md or CLAUDE.md must not be included in ZIP archives, deliverables, file bundles, project reports, or generated-file packages unless the user explicitly requests it.
+AGENTS.md, CLAUDE.md et tous les symlinks d’instruction explicitement liés à AGENTS.md ou CLAUDE.md ne doivent jamais être inclus dans les archives ZIP, livrables, paquets de fichiers, bundles, rapports de projet ou fichiers générés, sauf demande explicite de l’utilisateur.
 
-The assistant must not deliver a copy of AGENTS.md or CLAUDE.md as a project file.
+L’assistant ne doit pas livrer une copie de AGENTS.md ou CLAUDE.md comme fichier projet.
 
-The assistant must not include these files in an archive merely for completeness, synchronization, context, compliance, or documentation.
+L’assistant ne doit pas inclure ces fichiers dans une archive sous prétexte de complétude, synchronisation, contexte, conformité ou documentation.
 
-### 3.8 No AGENTS.md / CLAUDE.md verification procedure by default
+### 3.8 Aucune procédure de vérification AGENTS.md / CLAUDE.md
 
-The assistant must not propose a verification procedure for AGENTS.md, CLAUDE.md, or their symlinks unless the user explicitly asks.
+L’assistant ne doit pas proposer de procédure de vérification de AGENTS.md, CLAUDE.md ou de leurs liens symboliques, sauf demande explicite de l’utilisateur.
 
-It must not spontaneously provide `find`, `readlink`, `ls -l`, `test -L`, `cp`, `ln`, `rm`, `unzip`, or equivalent commands to manage or verify these instruction files.
+L’assistant ne doit pas fournir spontanément de commandes `find`, `readlink`, `ls -l`, `test -L`, `cp`, `ln`, `rm`, `unzip`, ou équivalentes pour gérer ou vérifier ces fichiers d’instruction.
 
-The presence, absence, state, or symlink status of AGENTS.md or CLAUDE.md is not for the assistant to manage by default.
+La présence, l’absence, l’état ou le lien symbolique de AGENTS.md ou CLAUDE.md n’est pas à gérer par l’assistant.
 
-The user manages these files and their symlinks.
-
-------------------------------------------------------------------------
-
-## 4. GIT RULE
-
-### 4.1 Git outside SOLO405 scope
-
-SOLO405 does not define the user's Git workflow.
-
-The user manages:
-
-- branches;
-- commits;
-- pull;
-- push;
-- rebase;
-- reset;
-- tags;
-- PRs;
-- Git aliases;
-- commands such as `gita` or equivalents.
-
-### 4.2 Do not add an automatic Git workflow
-
-The assistant must not include Git rules in SOLO405 unless explicitly requested.
-
-It must not impose Git commands in scripting deliverables unless the user requests them.
-
-It may mention that a file should be added to the repository, but must not automate the Git workflow by default.
+L’utilisateur gère lui-même ces fichiers et leurs liens symboliques.
 
 ------------------------------------------------------------------------
 
-## 5. LLM-ADAPTED SPECIFICATIONS GATE
+## 4. RÈGLE GIT
 
-### 5.1 General principle
+### 4.1 Git hors périmètre SOLO405
 
-For any repo-mode scripting work that creates or changes durable behavior, the assistant must apply a specification-first approach inspired by AGENTS.md.
+SOLO405 ne définit pas le workflow Git de l’utilisateur.
 
-This rule applies to requests that may change:
+L’utilisateur gère lui-même :
 
-- behavior;
-- logic;
-- outputs;
-- interfaces;
-- CLI options;
-- filenames;
-- directory structure;
-- validation;
-- configuration;
-- dependencies;
-- architecture;
-- semantic documentation;
-- execution workflow;
-- expected results.
+- branches ;
+- commits ;
+- pull ;
+- push ;
+- rebase ;
+- reset ;
+- tags ;
+- PR ;
+- aliases Git ;
+- commandes comme gita ou équivalents.
 
-### 5.2 Expected specification files in repo mode
+### 4.2 Ne pas ajouter de workflow Git automatique
 
-Expected specification files are:
+L’assistant ne doit pas inclure de règles Git dans SOLO405 sauf demande explicite.
 
-- `./SPECIFICATIONS_GLOBAL.md`;
-- `./SPECIFICATIONS_GLOBAL_FR.md`;
-- `./SPECIFICATIONS.md`;
+L’assistant ne doit pas imposer de commandes Git dans les livrables scripting sauf si l’utilisateur le demande.
+
+L’assistant peut mentionner qu’un fichier doit être ajouté au dépôt, mais ne doit pas automatiser le workflow Git par défaut.
+
+------------------------------------------------------------------------
+
+## 5. GATE DE SPÉCIFICATIONS ADAPTÉ LLM
+
+### 5.1 Principe général
+
+Pour tout travail de scripting en mode repo qui modifie ou crée un comportement durable, l’assistant doit appliquer une logique specification-first inspirée de AGENTS.md.
+
+Cette règle concerne les demandes qui peuvent modifier :
+
+- comportement ;
+- logique ;
+- sorties ;
+- interfaces ;
+- options CLI ;
+- noms de fichiers ;
+- structure de dossiers ;
+- validation ;
+- configuration ;
+- dépendances ;
+- architecture ;
+- documentation sémantique ;
+- workflow d’exécution ;
+- résultats attendus.
+
+### 5.2 Fichiers de spécification attendus en mode repo
+
+En mode repo, les fichiers de spécification attendus sont :
+
+- `./SPECIFICATIONS_GLOBAL.md` ;
+- `./SPECIFICATIONS_GLOBAL_FR.md` ;
+- `./SPECIFICATIONS.md` ;
 - `./SPECIFICATIONS_FR.md`.
 
-`SPECIFICATIONS_GLOBAL.md` describes the stable repository baseline.
+`SPECIFICATIONS_GLOBAL.md` décrit la baseline stable du dépôt.
 
-`SPECIFICATIONS_GLOBAL_FR.md` is the faithful French translation of `SPECIFICATIONS_GLOBAL.md`.
+`SPECIFICATIONS_GLOBAL_FR.md` est la traduction française fidèle de `SPECIFICATIONS_GLOBAL.md`.
 
-`SPECIFICATIONS.md` describes the task-specific specification.
+`SPECIFICATIONS.md` décrit la spécification ciblée de la tâche courante.
 
-`SPECIFICATIONS_FR.md` is the faithful French translation of `SPECIFICATIONS.md`.
+`SPECIFICATIONS_FR.md` est la traduction française fidèle de `SPECIFICATIONS.md`.
 
-### 5.3 Adaptation for ChatGPT or other chat LLMs
+### 5.3 Adaptation à ChatGPT ou LLM de chat
 
-If the assistant has no access to the real repository, it must provide complete files ready to download or copy into the repository.
+Si l’assistant n’a pas accès au dépôt réel, il doit fournir les fichiers complets prêts à télécharger ou prêts à copier dans le dépôt.
 
-The assistant must not claim to have modified the repository when files were not actually written there.
+L’assistant ne doit pas prétendre avoir modifié le dépôt si les fichiers n’ont pas réellement été écrits dans le dépôt.
 
-It must clearly distinguish:
+L’assistant doit distinguer clairement :
 
-- proposed file;
-- generated downloadable file;
-- file actually modified in a tool-enabled environment;
-- action not executed.
+- fichier proposé ;
+- fichier généré en téléchargement ;
+- fichier réellement modifié dans un environnement outillé ;
+- action non exécutée.
 
-### 5.4 User approval
+### 5.4 Validation utilisateur
 
-In repo mode with a structural modification, the assistant must first produce or propose the complete specifications.
+En mode repo avec modification structurante, l’assistant doit d’abord produire ou proposer les spécifications complètes.
 
-Implementation starts only after explicit user approval, for example `GO`, unless the user explicitly requested simple mode outside a repo.
+L’implémentation ne doit commencer qu’après validation explicite de l’utilisateur, par exemple `GO`, sauf si l’utilisateur a explicitement demandé un mode simple hors repo.
 
-This approval concerns functional and documentation content, not the Git workflow.
+Cette validation concerne le contenu fonctionnel et documentaire, pas le workflow Git.
 
-### 5.5 Minimum content of SPECIFICATIONS_GLOBAL.md
+### 5.5 Contenu minimal de SPECIFICATIONS_GLOBAL.md
 
-`SPECIFICATIONS_GLOBAL.md` must contain at least:
+`SPECIFICATIONS_GLOBAL.md` doit contenir au minimum :
 
-- Purpose;
-- Global scope;
-- Stable verified repository behavior;
-- Repository architecture;
-- Global functional requirements;
-- Global non-functional requirements;
-- Global inputs;
-- Global outputs;
-- Global files and directories;
-- Global interfaces and commands;
-- Global constraints and safety rules;
-- Global validation and acceptance criteria;
-- Task-scoped specification boundary;
-- Out-of-scope items;
+- Purpose ;
+- Global scope ;
+- Stable verified repository behavior ;
+- Repository architecture ;
+- Global functional requirements ;
+- Global non-functional requirements ;
+- Global inputs ;
+- Global outputs ;
+- Global files and directories ;
+- Global interfaces and commands ;
+- Global constraints and safety rules ;
+- Global validation and acceptance criteria ;
+- Task-scoped specification boundary ;
+- Out-of-scope items ;
 - Changelog.
 
-### 5.6 Minimum content of SPECIFICATIONS.md
+### 5.6 Contenu minimal de SPECIFICATIONS.md
 
-`SPECIFICATIONS.md` must contain at least:
+`SPECIFICATIONS.md` doit contenir au minimum :
 
-- Purpose;
-- Scope;
-- Existing verified behavior;
-- Functional requirements;
-- Non-functional requirements;
-- Inputs;
-- Outputs;
-- Files and directories concerned;
-- Interfaces and commands;
-- Constraints and safety rules;
-- Validation and acceptance criteria;
-- Out-of-scope items;
+- Purpose ;
+- Scope ;
+- Existing verified behavior ;
+- Functional requirements ;
+- Non-functional requirements ;
+- Inputs ;
+- Outputs ;
+- Files and directories concerned ;
+- Interfaces and commands ;
+- Constraints and safety rules ;
+- Validation and acceptance criteria ;
+- Out-of-scope items ;
 - Changelog.
 
-### 5.7 Specification changelog
+### 5.7 Changelog des spécifications
 
-Specification files must be versioned.
+Les fichiers de spécifications doivent être versionnés.
 
-They must contain an internal append-only changelog.
+Ils doivent contenir un changelog interne append-only.
 
-The changelog must preserve complete history.
+Le changelog doit conserver l’historique complet.
 
-No historical version may be deleted, compressed, or replaced by a summary.
+Aucune version historique ne doit être supprimée, compressée ou remplacée par un résumé.
 
-### 5.8 French translations
+### 5.8 Traductions françaises
 
-`SPECIFICATIONS_GLOBAL_FR.md` and `SPECIFICATIONS_FR.md` must be faithful French translations.
+`SPECIFICATIONS_GLOBAL_FR.md` et `SPECIFICATIONS_FR.md` doivent être des traductions françaises fidèles.
 
-They must not add rules absent from the English version.
+Elles ne doivent pas ajouter de règles absentes de la version anglaise.
 
-They must not omit rules present in the English version.
+Elles ne doivent pas omettre de règles présentes dans la version anglaise.
 
-If there is a contradiction, the English version is the reference source and the French version must be corrected.
+En cas de contradiction, la version anglaise est la source de référence et la version française doit être corrigée.
 
 ------------------------------------------------------------------------
 
-## 6. CONTENT AND ARTIFACT DELIVERY
+## 6. FOURNITURE DE CONTENU ET ARTEFACTS
 
-### 6.1 Download link by default
+### 6.1 Lien de téléchargement par défaut
 
-Scripts, documents, Markdown files, text files, archives, reports, or other content produced by ChatGPT, LeChat, or another LLM should be provided as downloadable files when the platform allows it.
+Les scripts, documents, fichiers Markdown, fichiers texte, archives, rapports ou autres contenus produits par ChatGPT, LeChat ou un LLM doivent être fournis sous forme de lien de téléchargement lorsque la plateforme le permet.
 
-This rule applies by default.
+Cette règle s’applique par défaut.
 
-After providing the download link, the assistant may ask whether the user also wants the complete content displayed in a Markdown block.
+Après avoir fourni le lien de téléchargement, l’assistant peut demander si l’utilisateur veut aussi afficher le contenu complet dans une boîte Markdown.
 
-If the user explicitly asks for inline content, the assistant may display it directly.
+Si l’utilisateur demande explicitement le contenu inline, l’assistant peut l’afficher directement.
 
-### 6.2 Mandatory ZIP delivery from two files onward
+### 6.2 Livraison ZIP obligatoire dès deux fichiers
 
-Before every delivery, the assistant must count the total number of files that make up the final delivery.
+Avant toute livraison, l’assistant doit compter le nombre total de fichiers qui constituent la livraison finale.
 
-Delivery type is determined only by this number:
+Le type de livrable est déterminé uniquement par ce nombre :
 
-- if exactly one file is to be delivered, provide that file directly;
-- if two or more files are to be delivered, a ZIP containing every delivery file is mandatory and must be provided as the primary artifact;
-- never force the user to download several files separately when a ZIP is required.
+- si un seul fichier doit être livré, fournir directement ce fichier en téléchargement ;
+- si deux fichiers ou plus doivent être livrés, créer obligatoirement un ZIP contenant tous les fichiers de la livraison et fournir ce ZIP comme artefact principal ;
+- ne jamais obliger l’utilisateur à télécharger séparément plusieurs fichiers lorsqu’un ZIP est requis.
 
-The count must be performed after all generation, corrections, and validation, immediately before the final response.
+Le comptage doit être effectué après toutes les générations, corrections et validations, immédiatement avant la réponse finale.
 
-Files already created, displayed, or individually provided earlier do not remove the final ZIP requirement when at least two files belong to the delivery.
+Le fait d’avoir déjà créé, affiché ou fourni individuellement certains fichiers ne dispense jamais de créer le ZIP final lorsqu’au moins deux fichiers font partie de la livraison.
 
-The final ZIP must:
+Le ZIP final doit :
 
-- contain every expected file;
-- contain no missing file;
-- contain no obsolete, intermediate, or previous-version file;
-- preserve final filenames;
-- be created after all corrections and validation;
-- be recreated if any included file changes after ZIP creation;
-- contain only files actually expected for the current delivery.
+- contenir la totalité des fichiers attendus ;
+- ne contenir aucun fichier manquant ;
+- ne contenir aucun fichier obsolète, intermédiaire ou appartenant à une version précédente ;
+- préserver les noms définitifs des fichiers ;
+- être créé après toutes les corrections et validations ;
+- être recréé si un seul fichier inclus est modifié après la génération du ZIP ;
+- contenir uniquement les fichiers réellement attendus pour la livraison courante.
 
-A ZIP archive must never contain AGENTS.md, CLAUDE.md, or any instruction symlink explicitly related to AGENTS.md or CLAUDE.md unless explicitly requested by the user.
+Une archive ZIP ne doit jamais contenir AGENTS.md, CLAUDE.md, ni aucun symlink d’instruction explicitement lié à AGENTS.md ou CLAUDE.md, sauf demande explicite de l’utilisateur.
 
-A ZIP archive must not contain a static validation report unless explicitly requested.
+Une archive ZIP ne doit pas contenir de rapport de validation statique sauf demande explicite de l’utilisateur.
 
-During script-development iterations, if the user says Markdown documents will be done later, deliver only the scripts or strictly relevant files.
+Pendant une phase de mise au point des scripts, si l’utilisateur indique que les documents Markdown seront faits plus tard, l’assistant doit livrer uniquement les scripts ou fichiers strictement concernés.
 
-Unless explicitly requested or performing the final documentation pass, a scripting deliverable must not contain extra documentary Markdown files, side reports, additional README files, validation notes, or explanation files.
+Sauf demande explicite ou passe documentaire finale, un livrable de scripting ne doit pas contenir de fichiers Markdown documentaires additionnels, de rapports annexes, de README supplémentaires, de notes de validation ou de fichiers d’explication.
 
-For the first complete delivery of a project or a stabilized version, required Markdown files must be delivered with the scripts.
+Lors d’une première livraison complète d’un projet ou d’une version stabilisée, les fichiers Markdown requis doivent être fournis avec les scripts.
 
-When the user explicitly asks for a complete delivery, stabilized version, or final documentation pass, provide synchronized scripts and Markdown documents.
+Quand l’utilisateur demande explicitement une livraison complète, une version stabilisée ou la passe documentaire finale, l’assistant doit fournir les scripts et les documents Markdown synchronisés.
 
-Validation performed by the assistant must be reported in the chat response, not delivered as a project file inside the archive.
+Les validations effectuées par l’assistant doivent être indiquées dans la réponse de chat, pas livrées comme fichier projet dans l’archive.
 
-The assistant must not assume the exact local download path.
+L’assistant ne doit pas supposer le chemin local exact du téléchargement.
 
-The assistant must not create a `zip/` directory inside the user's repository unless explicitly requested.
+L’assistant ne doit pas écrire lui-même le répertoire `zip/` dans le dépôt utilisateur sauf demande explicite.
 
-### 6.2.1 User workflow for ZIPs
+### 6.2.1 Workflow utilisateur pour les ZIP
 
-When a ZIP is explicitly provided or required, respect this user-side workflow:
+Workflow utilisateur à respecter lorsqu’un ZIP est explicitement fourni ou nécessaire :
 
-- the user creates `./zip` inside the repository if desired;
-- the user downloads the ZIP into `./zip`;
-- the user extracts it through their file manager;
-- the user moves extracted files to repository root or other intended locations.
+- l’utilisateur crée lui-même le répertoire `./zip` dans le dossier du dépôt ;
+- l’utilisateur télécharge lui-même l’archive ZIP dans `./zip` ;
+- l’utilisateur extrait lui-même l’archive via Thunar ;
+- l’utilisateur déplace lui-même les fichiers extraits vers la racine ou les emplacements voulus du dépôt.
 
-The assistant must not spontaneously provide `unzip`, `cp`, `mv`, `find`, `readlink`, or equivalent procedures for applying the archive to the repository.
+L’assistant ne doit pas fournir spontanément de procédure `unzip`, `cp`, `mv`, `find`, `readlink`, ou équivalente pour appliquer l’archive dans le dépôt.
 
-It must not provide extraction, copying, moving, or instruction-file verification procedures unless explicitly requested.
+L’assistant ne doit pas fournir de procédure d’extraction, de copie, de déplacement ou de vérification des fichiers d’instruction sauf demande explicite de l’utilisateur.
 
-### 6.3 Complete files
+### 6.3 Fichiers complets
 
-When a script or file is created or modified, provide the complete file.
+Lorsqu’un script ou un fichier est créé ou modifié, l’assistant doit fournir le fichier complet.
 
-Do not provide only a diff, excerpt, or partial patch unless the user explicitly requests a diff.
+Ne pas fournir uniquement un diff, un extrait ou une rustine partielle, sauf si l’utilisateur demande explicitement un diff.
 
-### 6.3.1 Immediate delivery after a real script correction
+### 6.3.1 Livraison immédiate après correction réelle d’un script
 
-After every real correction to a script, immediately provide the complete corrected file for download.
+À chaque correction réelle d’un script, l’assistant doit fournir immédiatement le fichier complet corrigé en téléchargement.
 
-This delivery must include the complete script with:
+Cette livraison doit inclure le script complet avec :
 
-- incremented version;
-- updated date;
-- updated internal changelog;
-- complete preservation of previous version history.
+- version incrémentée ;
+- date mise à jour ;
+- changelog interne mis à jour ;
+- conservation de l’historique complet des versions précédentes.
 
-Do not wait for the user to ask again for the corrected file.
+L’assistant ne doit pas attendre que l’utilisateur redemande explicitement le fichier corrigé.
 
-If the correction produces a single file, provide only that file directly, without a ZIP.
+Si la correction produit un seul fichier, fournir uniquement ce fichier en téléchargement, sans ZIP.
 
-Never limit the response to explaining a real script correction without providing the complete corrected file when the correction actually changes script content.
+L'assistant ne doit jamais se limiter à expliquer la correction réelle d'un script sans fournir le fichier complet corrigé lorsque la correction modifie effectivement le contenu du script.
 
-Even during rapid iteration, every delivery of a modified script must contain the complete script, not only changed lines.
+Même pendant une phase d'itération rapide, toute livraison d'un script modifié doit contenir la version complète du script, pas seulement les lignes modifiées.
 
-### 6.4 No placeholders
+### 6.4 Pas de placeholders
 
-Deliverables must not contain placeholders such as:
+Les livrables ne doivent pas contenir de placeholders tels que :
 
-- TODO;
-- FIXME;
-- `<value_here>`;
-- `to be adapted`;
-- `example to complete`;
-- `put here`.
+- TODO ;
+- FIXME ;
+- `<value_here>` ;
+- « à adapter » ;
+- « exemple à compléter » ;
+- « mettre ici ».
 
-Exception: the user explicitly requests a template.
+Exception : l’utilisateur demande explicitement un template.
 
-### 6.5 Do not invent
+### 6.5 Ne pas inventer
 
-The assistant must never invent:
+L’assistant ne doit jamais inventer :
 
-- tests executed;
-- validations performed;
-- results;
-- metrics;
-- dates;
-- environments;
-- repository state;
-- file presence;
-- completed actions.
+- tests exécutés ;
+- validations réalisées ;
+- résultats ;
+- métriques ;
+- dates ;
+- environnements ;
+- état du dépôt ;
+- présence de fichiers ;
+- actions terminées.
 
-If something was not executed or verified, state that clearly.
+Si quelque chose n’a pas été exécuté ou vérifié, l’assistant doit le dire clairement.
 
 ------------------------------------------------------------------------
 
-## 7. SECRETS, PASSWORDS, CERTIFICATES, AND SENSITIVE DATA
+## 7. SECRETS, PASSWORDS, CERTIFICATS ET DONNÉES SENSIBLES
 
-### 7.1 No hard-coded secrets
+### 7.1 Secrets interdits en dur
 
-Never place secrets, passwords, private certificates, tokens, API keys, or equivalents directly in versioned code.
+Ne jamais placer de secrets, mots de passe, certificats privés, tokens, clés API ou équivalents directement dans le code versionné.
 
-### 7.2 `./.secrets` file
+### 7.2 Fichier ./.secrets
 
-If a script needs secrets, use a local file:
+Si un script a besoin de secrets, utiliser un fichier local :
 
 ```text
 ./.secrets
 ```
 
-### 7.3 `.gitignore`
+### 7.3 .gitignore
 
-`./.secrets` must be covered by `.gitignore`.
+Le fichier `./.secrets` doit être couvert par `.gitignore`.
 
-Before modifying `.gitignore`, ask the user to provide the existing repository `.gitignore` or template.
+Avant de modifier `.gitignore`, l’assistant doit demander à l’utilisateur de fournir le `.gitignore` existant ou le template `.gitignore` du dépôt.
 
-Do not create a `gitignore_additions_*` file.
+L’assistant ne doit pas créer de fichier `gitignore_additions_*`.
 
-If `.gitignore` additions are required, provide a complete `.gitignore` merged with the existing one only if the user explicitly requests modification of `.gitignore` or supplies the existing `.gitignore` to merge.
+Si des ajouts `.gitignore` sont nécessaires, l’assistant doit fournir un fichier `.gitignore` complet fusionné avec l’existant, uniquement si l’utilisateur demande explicitement la modification de `.gitignore` ou fournit le `.gitignore` existant à fusionner.
 
-Do not provide an isolated fragment, partial patch, or separate additions file for `.gitignore` unless explicitly requested.
+Ne pas fournir un fragment isolé, un patch partiel ou un fichier d’additions séparé pour `.gitignore`, sauf demande explicite de l’utilisateur.
 
-### 7.4 `./.secrets` template and field names
+### 7.4 Modèle ./.secrets et noms de champs
 
-For scripts using `./.secrets`, prefer generic field names when reusable.
+Pour les scripts utilisant un fichier `./.secrets`, utiliser des noms de champs génériques lorsque c’est réutilisable.
 
-Preferred generic names:
+Noms génériques préférés :
 
 - `EMAIL`
 - `PASSWORD`
@@ -536,325 +535,325 @@ Preferred generic names:
 - `TOKEN`
 - `API_KEY`
 
-Do not unnecessarily prefix variables with a service name unless technically required, needed to resolve field conflicts, or required for multiple services in the same file.
+Ne pas préfixer inutilement les variables par le nom du service sauf nécessité technique réelle, conflit de champs ou besoin multi-service dans le même fichier.
 
-A delivered `./.secrets` template must contain correct field names with dummy non-sensitive values or empty values.
+Le fichier `./.secrets` livré comme modèle doit contenir les bons noms de champs, avec des valeurs bidon non sensibles ou des valeurs vides.
 
-An empty primary or sensitive value in `./.secrets` is allowed.
+Une valeur principale ou sensible vide dans `./.secrets` est autorisée.
 
-An empty primary or sensitive value may intentionally force runtime input.
+Une valeur principale ou sensible vide dans `./.secrets` peut être volontairement utilisée pour forcer une saisie runtime.
 
-### 7.5 Runtime secret input
+### 7.5 Saisie runtime des secrets
 
-If a primary or sensitive field is empty in `./.secrets`, the script must ask the user for the value at runtime.
+Si un champ principal ou sensible est vide dans `./.secrets`, le script doit demander cette valeur à l’utilisateur à l’exécution.
 
-For `PASSWORD`, `AUTH_CODE`, `OTP`, `TOKEN`, `API_KEY`, and equivalents, interactive input must be masked.
+Pour `PASSWORD`, `AUTH_CODE`, `OTP`, `TOKEN`, `API_KEY` et équivalents, la saisie interactive doit être masquée.
 
-If technically possible, masked input should display asterisks while typing.
+Si techniquement possible, la saisie masquée doit afficher des astérisques pendant la frappe.
 
-If asterisks are not technically possible, the fallback must be no terminal echo.
+Si l’affichage d’astérisques n’est pas techniquement possible, le fallback doit être une saisie sans écho terminal.
 
-The script must never display sensitive values in clear text in the console.
+Le script ne doit jamais afficher les valeurs sensibles en clair dans la console.
 
-The script must never write sensitive values to logs.
+Le script ne doit jamais écrire les valeurs sensibles dans les logs.
 
-The script must allow a sensitive field to remain intentionally empty in `./.secrets` to force runtime input on every execution.
+Le script doit accepter qu’un champ sensible soit volontairement laissé vide dans `./.secrets` pour imposer une saisie runtime à chaque exécution.
 
-If a CLI tool requires a password, token, auth code, or secret as an argument, the assistant must not invent an unverified interactive mode.
+Si un outil CLI exige un password, token, auth code ou secret en argument, l’assistant ne doit pas inventer un mode interactif non vérifié.
 
-It must respect or verify the real CLI syntax and create a wrapper using `./.secrets` plus runtime prompting for sensitive values when necessary.
+L’assistant doit vérifier ou respecter la syntaxe réelle de l’outil CLI et créer un wrapper utilisant `./.secrets` avec prompt runtime pour les valeurs sensibles lorsque c’est nécessaire.
 
-### 7.6 No pushing secrets
+### 7.6 Pas de push de secrets
 
-No secret may be included in a file intended for the repository or a public artifact.
+Aucun secret ne doit être inclus dans un fichier destiné au dépôt ou à un artefact public.
 
-### 7.7 Confidential repository data
+### 7.7 Données confidentielles de dépôt
 
-The assistant must not send or suggest sending repository content, secrets, logs, prompts, internal files, environment variables, or extracted data to external services without the user's explicit request.
-
-------------------------------------------------------------------------
-
-## 8. GENERAL SCRIPTING AND CODE-GENERATION RULES
-
-### 8.1 Complete script mandatory
-
-For every script creation, correction, or improvement, provide the complete script.
-
-Never reply only with changes to make.
-
-Never provide only isolated fragments when the user expects a usable script.
-
-### 8.2 No unrequested simplification
-
-Do not simplify an existing script unless explicitly requested.
-
-Do not condense an existing script unless explicitly requested.
-
-Do not deliberately reduce existing functionality.
-
-Do not remove existing comments, options, checks, logs, changelogs, validations, or documentation sections unless explicitly requested.
-
-### 8.3 No unrequested deletion
-
-Never remove an existing function, option, behavior, validation, or output unless explicitly requested by the user.
-
-If the request implies deletion or simplification, clearly state that it removes an existing part before producing the reduced version.
-
-### 8.4 Do not rename without an explicit request
-
-Do not rename existing files, functions, variables, directories, services, commands, CLI options, or interfaces unless explicitly requested.
-
-### 8.5 Preserve existing structure
-
-When an existing file is supplied, preserve its logic, general structure, history, comments, and conventions unless explicitly requested otherwise.
-
-### 8.6 Expected technical level
-
-Deliverables must be ready to use, operational, precise, and suitable for an advanced Linux user.
-
-Do not over-explain basic Linux, shell, Git, APT, logging, or permissions unless explicitly asked.
-
-### 8.7 Prohibition on substitution one-liners in repo development mode
-
-When the user is explicitly working in development mode, a Git repository, a durable script, a reusable tool, or a versioned project, do not replace a request for a script or feature with a one-liner, temporary heredoc, inline Python block, compact shell command, or disposable procedure.
-
-If the user requests a durable repository feature, provide a real complete file in the requested language or the language appropriate to the project.
-
-This applies in particular to requests for:
-
-- a new script;
-- a secondary script;
-- a report filter;
-- data extraction from files generated by another script;
-- reusable automation;
-- a feature intended to be versioned.
-
-One-liners remain allowed only when the user explicitly asks for a quick command, temporary test, one-off diagnostic, or quick mode.
-
-In repo or development mode, a compliant solution must include at minimum:
-
-- a complete script file;
-- a versioned header;
-- an append-only internal changelog;
-- structured help;
-- no-argument behavior that displays help;
-- applicable CLI options according to SOLO;
-- clearly stated minimum validation;
-- no unrequested destructive effect.
-
-If the assistant mistakenly supplies a one-liner instead of a durable file in repo mode, it must acknowledge the violation, provide the complete corrected script, and identify the relevant SOLO rule.
+L’assistant ne doit pas envoyer ou suggérer d’envoyer le contenu du dépôt, secrets, logs, prompts, fichiers internes, variables d’environnement ou données extraites vers des services externes sans demande explicite de l’utilisateur.
 
 ------------------------------------------------------------------------
 
-## 9. SCRIPT HEADERS, AUTHOR, VERSION, AND CHANGELOG
+## 8. RÈGLES GÉNÉRALES DE SCRIPTING ET GÉNÉRATION DE CODE
 
-### 9.1 Detailed internal comments
+### 8.1 Script complet obligatoire
 
-Every important block and section of the script must be commented to explain internal logic.
+Pour toute création, correction ou amélioration de script, fournir le script complet.
 
-Comments must be useful, not decorative.
+Ne jamais répondre seulement avec les modifications à faire.
 
-### 9.2 Mandatory header
+Ne jamais fournir uniquement des fragments isolés si l’utilisateur attend un script utilisable.
 
-Every executable script must begin with a structured, readable, immediately understandable header.
+### 8.2 Pas de simplification non demandée
 
-For shell scripts, the mandatory reference format is:
+Ne pas simplifier un script existant sans demande explicite.
+
+Ne pas condenser un script existant sans demande explicite.
+
+Ne pas réduire volontairement les fonctionnalités existantes.
+
+Ne pas retirer les commentaires, options, checks, logs, changelogs, validations ou sections de documentation existantes sans demande explicite.
+
+### 8.3 Pas de suppression non demandée
+
+Ne jamais supprimer de fonction existante, option existante, comportement existant, validation existante ou sortie existante sauf si l’utilisateur le demande explicitement.
+
+Si la demande implique une suppression ou simplification, l’assistant doit signaler clairement que cela retire une partie existante avant de produire la version réduite.
+
+### 8.4 Ne pas renommer sans demande explicite
+
+Ne pas renommer les fichiers, fonctions, variables, dossiers, services, commandes, options CLI ou interfaces existantes sauf demande explicite.
+
+### 8.5 Préserver la structure existante
+
+Quand un fichier existant est fourni, préserver sa logique, sa structure générale, son historique, ses commentaires et ses conventions sauf demande explicite contraire.
+
+### 8.6 Niveau technique attendu
+
+Les livrables doivent être prêts à l’emploi, opérationnels, précis et adaptés à un utilisateur Linux avancé.
+
+Ne pas sur-expliquer les bases Linux, shell, Git, APT, logs ou permissions sauf demande explicite.
+
+### 8.7 Interdiction des one-liners de substitution en mode développement repo
+
+Quand l’utilisateur travaille explicitement en mode développement, dépôt Git, script durable, outil réutilisable ou projet versionné, l’assistant ne doit pas remplacer une demande de script ou de fonctionnalité par une commande one-liner, un heredoc temporaire, un bloc Python inline, une commande shell compacte ou une procédure jetable.
+
+Si l’utilisateur demande une fonctionnalité durable dans un dépôt, l’assistant doit fournir un vrai fichier complet correspondant au langage demandé ou au langage approprié au projet.
+
+Cette règle s’applique notamment lorsque l’utilisateur demande :
+
+- un nouveau script ;
+- un script secondaire ;
+- un filtre de rapports ;
+- une extraction de données depuis des fichiers générés par un autre script ;
+- une automatisation réutilisable ;
+- une fonctionnalité destinée à être versionnée.
+
+Les one-liners restent autorisés uniquement si l’utilisateur demande explicitement une commande rapide, un test temporaire, un diagnostic ponctuel ou un mode rapide.
+
+En mode repo ou développement, une solution conforme doit inclure au minimum :
+
+- un fichier script complet ;
+- un header versionné ;
+- un changelog interne append-only ;
+- un help structuré ;
+- un comportement sans argument affichant le help ;
+- les options CLI applicables selon SOLO ;
+- une validation minimale annoncée clairement ;
+- aucun effet destructif non demandé.
+
+Si l’assistant fournit par erreur un one-liner à la place d’un fichier durable en mode repo, il doit reconnaître la violation, fournir le script complet corrigé et identifier la règle SOLO concernée.
+
+------------------------------------------------------------------------
+
+## 9. EN-TÊTES, AUTEUR, VERSION ET CHANGELOG DES SCRIPTS
+
+### 9.1 Commentaires internes détaillés
+
+Chaque bloc important et chaque section du script doivent être commentés pour expliquer la logique interne.
+
+Les commentaires doivent être utiles, pas décoratifs.
+
+### 9.2 En-tête obligatoire
+
+Chaque script exécutable doit commencer par un en-tête structuré, lisible et immédiatement compréhensible.
+
+Pour les scripts shell, le format de référence obligatoire est le suivant :
 
 ```sh
 #!/bin/sh
 # ==============================================================================
-# PATH         : ./script_name.sh
-# SCRIPT NAME  : script_name.sh
-# AUTHOR       : <AUTHOR>
+# PATH         : ./nom_du_script.sh
+# SCRIPT NAME  : nom_du_script.sh
+# AUTHOR       : <AUTEUR>
 # EMAIL        : <EMAIL>
-# TARGET USAGE : <SHORT_USAGE>
+# TARGET USAGE : <USAGE_COURT>
 # VERSION      : vX.Y.Z
 # DATE         : YYYY-MM-DD HH:MM
 # ==============================================================================
 # CHANGELOG:
-#   vX.Y.Z - YYYY-MM-DD HH:MM - <AUTHOR>
+#   vX.Y.Z – YYYY-MM-DD HH:MM – <AUTEUR>
 #       Changed:
-#       - <CHANGE_1>
-#       - <CHANGE_2>
+#       - <CHANGEMENT_1>
+#       - <CHANGEMENT_2>
 # ==============================================================================
 ```
 
-The shell-header date must always include the time.
+La date du header shell doit toujours inclure l’heure.
 
-The header must contain at minimum:
+L’en-tête doit contenir au minimum :
 
-- intended or relative script path;
-- script name;
-- author;
-- email;
-- target usage or short purpose;
-- version;
-- date and time;
-- append-only internal changelog.
+- chemin prévu ou chemin relatif du script ;
+- nom du script ;
+- auteur ;
+- email ;
+- usage cible ou objectif court ;
+- version ;
+- date et heure ;
+- changelog interne append-only.
 
-The header must remain readable in the source file.
+Le header doit rester lisible dans le fichier source.
 
-It must not be an unreadable compact block, minimal comment, or simple version reminder.
+Il ne doit pas être un bloc compact illisible, un commentaire minimal, ou un simple rappel de version.
 
-### 9.2.1 Mandatory header readability
+### 9.2.1 Lisibilité obligatoire du header
 
-The header must be organized into clear lines or sections.
+Le header doit être organisé par lignes ou sections claires.
 
-It must allow quick identification of:
+Il doit permettre d’identifier rapidement :
 
-- script name;
-- role;
-- author;
-- current version;
-- date and time;
-- complete internal version history.
+- le nom du script ;
+- son rôle ;
+- son auteur ;
+- sa version courante ;
+- sa date et son heure ;
+- l’historique complet des versions internes.
 
-The internal header changelog must be append-only.
+Le changelog interne du header doit être append-only.
 
-No historical internal-changelog entry may be deleted, rewritten, compressed, or replaced by a summary.
+Aucune entrée historique du changelog interne ne doit être supprimée, réécrite, compressée ou remplacée par un résumé.
 
-### 9.2.2 Official shell-header reference
+### 9.2.2 Référence officielle du header shell
 
-Future shell scripts delivered by the assistant must follow the header template above as the primary reference.
+Les futurs scripts shell livrés par l’assistant doivent suivre le modèle de header ci-dessus comme référence principale.
 
-Older scripts such as `create_repo.sh` or `syncgit.sh` are no longer the formal header reference.
+Les anciens exemples de scripts tels que `create_repo.sh` ou `syncgit.sh` ne sont plus la référence formelle pour le header.
 
-They may be ignored when their structure differs from the SOLO405 template.
+Ils peuvent être ignorés si leur structure diverge du modèle SOLO405.
 
-### 9.3 Default author
+### 9.3 Auteur par défaut
 
-Use the following values unless explicitly requested otherwise:
+Utiliser les valeurs suivantes sauf demande explicite contraire :
 
 ```text
-Author: <AUTHOR_NAME>
-Email : <AUTHOR_EMAIL>
+Auteur : <AUTHOR_NAME>
+Email  : <AUTHOR_EMAIL>
 ```
 
-### 9.4 Versioning
+### 9.4 Versionnement
 
-All generated or modified scripts must be versioned and dated.
+Tous les scripts générés ou modifiés doivent être versionnés et datés.
 
-The first version should start at `v1.0.0` or `v1.0`.
+La première version doit commencer à `v1.0.0` ou `v1.0`.
 
-Every real script modification must increment the version.
+Toute modification réelle d’un script doit incrémenter la version.
 
-Never modify a script without updating together:
+Ne jamais modifier un script sans mettre à jour ensemble :
 
-- version;
-- date;
-- internal changelog.
+- version ;
+- date ;
+- changelog interne.
 
-### 9.5 Internal changelog
+### 9.5 Changelog interne
 
-The script's internal changelog must preserve complete history.
+Le changelog interne du script doit conserver l’historique complet.
 
-No version may be removed.
+Aucune version ne doit être retirée.
 
-No historical entry may be compressed or erased.
+Aucune entrée historique ne doit être compressée ou effacée.
 
-Do not add an entry that merely says new SOLO rules were applied.
+Ne pas ajouter d’entrée indiquant seulement que de nouvelles règles SOLO ont été appliquées.
 
-Every real script change requires:
+Chaque modification réelle d’un script impose :
 
-- internal version increment;
-- updated date and time;
-- a new append-only internal-changelog entry;
-- preservation of all old entries;
-- `--changelog` showing the complete changelog.
+- incrémenter la version interne ;
+- mettre à jour la date et l’heure ;
+- ajouter une entrée append-only au changelog interne ;
+- ne jamais supprimer les anciennes entrées ;
+- faire en sorte que `--changelog` affiche le changelog complet.
 
-Recommended internal-entry format:
+Format recommandé pour les entrées internes :
 
 ```md
-## vX.Y.Z - YYYY-MM-DD HH:MM - <AUTHOR>
+## vX.Y.Z – YYYY-MM-DD HH:MM – <AUTEUR>
   - ADDED: ...
   - CHANGED: ...
   - FIXED: ...
   - REMOVED: ...
 ```
 
-Use categories according to the real change.
+Les catégories doivent être utilisées selon le contenu réel du changement.
 
-Do not create empty categories with no value.
+Ne pas créer de catégorie vide si elle n’apporte rien.
 
-### 9.6 Mandatory `--changelog`
+### 9.6 Option --changelog obligatoire
 
-Every durable CLI script must include `--changelog` and display the complete script changelog.
+Tout script CLI durable doit inclure `--changelog` et afficher le changelog complet du script.
 
-Changelog display must use a readable format, ideally Markdown when practical.
+L’affichage du changelog doit utiliser une mise en forme lisible, idéalement Markdown lorsque possible.
 
-`--changelog` must display the complete changelog, preserving all previous versions.
+L’option `--changelog` doit afficher le changelog complet du script, avec toutes les versions précédentes conservées.
 
-It must never show only an excerpt, partial summary, incomplete header, or latest version only.
+Elle ne doit jamais afficher seulement un extrait, un résumé partiel, un header incomplet ou uniquement la dernière version.
 
-During an iteration phase in which the user has paused Markdown updates, the assistant must still maintain the script's internal changelog with every real correction.
+Pendant une phase d’itération où l’utilisateur a suspendu les mises à jour Markdown, l’assistant doit quand même maintenir le changelog interne du script à chaque correction réelle.
 
-### 9.7 Non-shell scripts
+### 9.7 Scripts non-shell
 
-Executable scripts in Python, JavaScript, Java, PowerShell, or other languages must carry the same header information.
+Les scripts exécutables non-shell, par exemple Python, JavaScript, Java, PowerShell ou équivalents, doivent porter les mêmes informations d’en-tête.
 
-Only comment syntax changes according to language.
+Seule la syntaxe de commentaire change selon le langage.
 
-The header must be at the beginning of the file, after the shebang where applicable.
+L’en-tête doit être placé au début du fichier, après le shebang si applicable.
 
 ------------------------------------------------------------------------
 
-## 10. MANDATORY CLI BEHAVIOR
+## 10. COMPORTEMENT CLI OBLIGATOIRE
 
-### 10.1 Mandatory help
+### 10.1 Help obligatoire
 
-A help block is mandatory for every durable CLI script.
+Un bloc help est obligatoire pour tout script CLI durable.
 
-If no argument is provided, the script must display help by default.
+Si aucun argument n’est fourni, le script doit afficher l’aide par défaut.
 
-### 10.2 Mandatory `--help`
+### 10.2 Option --help obligatoire
 
-Every durable CLI script must include:
+Chaque script CLI durable doit inclure :
 
 ```text
 --help
 -h
 ```
 
-No-argument execution must display the same structured help.
+L’exécution sans argument doit afficher le même help structuré.
 
-Help must be complete, terminal-readable, and organized into sections.
+Le help doit être complet, lisible en terminal et organisé par sections.
 
-At minimum, help must contain:
+Le help doit contenir au minimum :
 
-- script title;
-- version;
-- date and time;
-- author;
-- description;
-- usage;
-- actions;
-- options;
-- arguments where applicable;
-- default values;
-- allowed values;
-- clear examples;
-- generated files;
-- important behavior;
-- effects of sensitive options;
-- safety notes when applicable.
+- titre du script ;
+- version ;
+- date et heure ;
+- auteur ;
+- description ;
+- usage ;
+- actions ;
+- options ;
+- arguments si applicable ;
+- valeurs par défaut ;
+- valeurs possibles ;
+- exemples clairs ;
+- fichiers générés ;
+- comportement important ;
+- effets des options sensibles ;
+- notes de sécurité si applicable.
 
-Help must not be a compact, incomplete, or hard-to-read terminal block.
+Le help ne doit pas être un bloc compact, incomplet ou difficile à lire en terminal.
 
-### 10.2.1 Official terminal-help template
+### 10.2.1 Template officiel du help terminal
 
-Recommended style:
+Le style recommandé est un help terminal structuré par séparateurs, au format suivant :
 
 ```text
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  script_name.sh - vX.Y.Z - YYYY-MM-DD HH:MM
-  Author : <AUTHOR> <<EMAIL>>
+  nom_du_script.sh – vX.Y.Z – YYYY-MM-DD HH:MM
+  Author : <AUTEUR> <<EMAIL>>
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 DESCRIPTION:
   <description>
 
 USAGE:
-  ./script_name.sh [ACTION] [OPTIONS]
+  ./nom_du_script.sh [ACTION] [OPTIONS]
 
 ACTIONS:
   --exec,       -exe   ...
@@ -870,257 +869,259 @@ OPTIONS:
   --option <value>     ...
 
 EXAMPLES:
-  ./script_name.sh --simulate
-  ./script_name.sh --exec
+  ./nom_du_script.sh --simulate
+  ./nom_du_script.sh --exec
 
 FILES GENERATED:
   Logs:
-    ./logs/log.script_name.sh.<TIMESTAMP>.vX.Y.Z.log
+    ./logs/log.nom_du_script.sh.<TIMESTAMP>.vX.Y.Z.log
 ```
 
-Exact section names may be adapted to the script, but minimum content must remain present.
+Les noms exacts des sections peuvent être adaptés au script, mais le contenu minimal doit rester présent.
 
-Help must remain terminal-readable and avoid unnecessary line breaks.
+Le help doit rester lisible en terminal et ne pas multiplier les retours à la ligne inutiles.
 
-### 10.2.2 Help and terminal readability
+### 10.2.2 Help et lisibilité terminal
 
-Help must be designed for direct terminal reading.
+Le help doit être conçu pour être lu directement dans un terminal.
 
-Avoid:
+Il doit éviter :
 
-- unnecessarily compact lines;
-- unnecessary line breaks;
-- untitled blocks;
-- undocumented options;
-- missing examples;
-- unexplained sensitive behavior;
-- undocumented generated files.
+- les lignes inutilement compactes ;
+- les retours à la ligne inutiles ;
+- les blocs sans titres ;
+- les options non documentées ;
+- les exemples absents ;
+- les comportements sensibles non expliqués ;
+- les fichiers générés non documentés.
 
-### 10.2.3 Official help reference
+### 10.2.3 Référence officielle du help
 
-The SOLO405 help template is the official reference for future scripts.
+Le template de help défini dans SOLO405 est la référence officielle pour les futurs scripts.
 
-Older scripts such as `create_repo.sh` or `syncgit.sh` are no longer the formal help reference and may be ignored if their structure differs from SOLO405.
+Les anciens exemples de scripts tels que `create_repo.sh` ou `syncgit.sh` ne sont plus la référence formelle du help.
 
-### 10.2.4 Mandatory validation of no-argument behavior
+Ils peuvent être ignorés si leur structure diverge du modèle SOLO405.
 
-For every durable CLI script, the assistant must explicitly test no-argument behavior before delivery when real execution is possible in the current environment.
+### 10.2.4 Validation obligatoire du comportement sans argument
 
-Validation must include at minimum both forms when applicable:
+Pour tout script CLI durable, l’assistant doit tester explicitement le comportement sans argument avant livraison lorsque l’exécution réelle est possible dans l’environnement courant.
+
+La validation doit inclure au minimum les deux formes suivantes quand elles sont applicables :
 
 ```text
 python3 ./script.py
 ./script.py
 ```
 
-or the equivalent for the language, shebang, actual script name, and intended execution mode.
+ou l’équivalent adapté au langage, au shebang, au nom réel du script et au mode d’exécution prévu.
 
-Expected no-argument result:
+Le résultat attendu du lancement sans argument doit être :
 
-- structured help is displayed;
-- main action does not start;
-- no business/result files are generated;
-- no user files are modified;
-- no side effects other than strictly intended logs, when logging applies.
+- affichage du help structuré ;
+- aucun lancement de l’action principale ;
+- aucune génération de fichiers métier ;
+- aucune modification de fichiers utilisateur ;
+- aucun effet de bord hors logs strictement prévus, si les logs sont applicables.
 
-If the script supports `--exec`, main action may start only with `--exec` or another explicitly specified action validated in the specifications.
+Si le script supporte `--exec`, l’action principale ne doit être lancée qu’avec `--exec` ou avec une action explicitement prévue par les spécifications validées.
 
-If the script supports `--simulate`, no-argument execution must not be treated as implicit simulation.
+Si le script supporte `--simulate`, l’exécution sans argument ne doit pas être assimilée à un mode simulation implicite.
 
-If the script has a default source, current folder, destination, or other default values, those defaults must not trigger the main action when launched without arguments.
+Si le script supporte une source par défaut, un dossier courant par défaut, une destination par défaut ou des valeurs par défaut, ces valeurs ne doivent pas déclencher l’action principale lorsque le script est lancé sans argument.
 
-The delivery response may state:
+La réponse de livraison doit mentionner explicitement :
 
 ```text
 No-argument help behavior: OK
 ```
 
-only if that test was actually executed and validated.
+uniquement si ce test a réellement été exécuté et validé.
 
-If the test was not executed, state that clearly and do not present the delivery as fully validated.
+Si ce test n’a pas été exécuté, l’assistant doit le dire clairement et ne doit pas présenter la livraison comme complètement validée.
 
-If no-argument behavior does not display structured help, the delivery is invalid and must be corrected before being presented as compliant.
+Si le comportement sans argument n’affiche pas le help structuré, la livraison est invalide et doit être corrigée avant d’être fournie comme version conforme.
 
-### 10.3 Mandatory options when applicable
+### 10.3 Options obligatoires quand applicables
 
-Include these options whenever applicable:
+Inclure ces options chaque fois qu’elles sont applicables au script :
 
 ```text
---help       -h    display complete help
---exec       -exe  execute the main action
---stop       -st   stop what the script started, if applicable
---prerequis  -pr   check prerequisites
---install    -i    install missing prerequisites, if applicable
---simulate   -s    run in dry-run mode
---changelog  -ch   display the complete changelog
---purge      -pu   purge runtime artifacts managed by the script, if applicable
+--help       -h    afficher l'aide complète
+--exec       -exe  exécuter l'action principale
+--stop       -st   stopper ce que le script a démarré, si applicable
+--prerequis  -pr   vérifier les prérequis
+--install    -i    installer les prérequis manquants, si applicable
+--simulate   -s    exécuter en dry-run
+--changelog  -ch   afficher le changelog complet
+--purge      -pu   purger les artefacts runtime du script, si applicable
 ```
 
-### 10.4 Default values
+### 10.4 Valeurs par défaut
 
-Scripts must define default values when arguments are omitted.
+Les scripts doivent définir des valeurs par défaut lorsque des arguments sont omis.
 
-Help must display those defaults.
+Le help doit afficher ces valeurs par défaut.
 
-### 10.5 Simulate mode
+### 10.5 Mode simulate
 
-`--simulate` is off by default.
+`--simulate` est inactif par défaut.
 
-The presence of `--simulate` enables dry-run mode.
+La présence de `--simulate` active le dry-run.
 
-No `true` or `false` value should be required.
+Aucune valeur `true` ou `false` ne doit être exigée.
 
-`script.sh --simulate` must be valid if the script supports simulation.
+`script.sh --simulate` doit être valide si le script supporte la simulation.
 
-`--simulate` must work by itself without requiring `--exec`.
+`--simulate` doit fonctionner seul, sans nécessiter `--exec`.
 
-In simulate mode:
+En mode simulate :
 
-- reads allowed;
-- analysis allowed;
-- logs allowed;
-- display allowed;
-- sensitive or system modifications prohibited.
+- lectures autorisées ;
+- analyses autorisées ;
+- logs autorisés ;
+- affichage autorisé ;
+- modifications sensibles ou système interdites.
 
-### 10.6 Prerequisites
+### 10.6 Prérequis
 
-`--prerequis` must list prerequisites and show for each:
+`--prerequis` doit lister les prérequis et afficher pour chacun :
 
-- present;
-- missing;
-- detected version where relevant;
-- recommended action if missing.
+- présent ;
+- manquant ;
+- version détectée si pertinent ;
+- action recommandée si manquant.
 
-If a prerequisite is missing, the script must handle the error cleanly and offer `--install` when automated installation is appropriate.
+Si un prérequis manque, le script doit gérer proprement l’erreur et proposer `--install` lorsque l’installation automatisée est pertinente.
 
-Error messages must show the exact command to run when a fix, retry, or user action is expected.
+Les messages d’erreur doivent afficher la commande exacte à exécuter quand une correction, une relance ou une action utilisateur est attendue.
 
-### 10.7 Automating CLI tools through pipe, here-doc, or stdin
+### 10.7 Automatisation d’outils CLI via pipe, here-doc ou stdin
 
-When a script automates a CLI tool through a pipe, here-doc, stdin redirection, or automated stdin writes, the assistant must never assume the tool exits on its own after the primary command.
+Quand un script automatise un outil CLI via pipe, here-doc, redirection standard input ou écriture automatisée sur stdin, l’assistant ne doit jamais supposer que l’outil quitte seul après la commande principale.
 
-If the CLI tool has an expected exit command, the script must send it explicitly.
+Si l’outil CLI dispose d’une commande de sortie attendue, le script doit l’envoyer explicitement.
 
-Possible commands, depending on the tool, include:
+Exemples de commandes de sortie possibles selon l’outil :
 
-- `quit`;
-- `exit`;
-- `bye`;
-- another exit command documented by the tool.
+- `quit` ;
+- `exit` ;
+- `bye` ;
+- commande équivalente documentée par l’outil.
 
-The assistant must not invent the exit command.
+L’assistant ne doit pas inventer la commande de sortie.
 
-Select it according to the real tool syntax or information supplied by the user.
+La commande de sortie doit être choisie selon la syntaxe réelle de l’outil utilisé ou selon les informations fournies par l’utilisateur.
 
-When a CLI tool can hang, wait indefinitely, or keep a session open, wrap the call with `timeout` or an equivalent time limit.
+Lorsqu’un outil CLI peut rester bloqué, attendre indéfiniment ou conserver une session ouverte, l’appel doit être encadré par `timeout` ou par un mécanisme équivalent de limite temporelle.
 
-If `timeout` fires, the script must clearly show:
+Si `timeout` se déclenche, le script doit afficher clairement :
 
-- the blocked step;
-- the command or logical action involved;
-- the return code;
-- that the blockage came from a timeout;
-- the exact retry or diagnostic action when applicable.
+- l’étape bloquée ;
+- la commande ou action logique concernée ;
+- le code retour ;
+- le fait que le blocage provient d’un timeout ;
+- l’action de relance ou de diagnostic exacte à exécuter si applicable.
 
-Do not hide a hang behind silent redirection.
+Le script ne doit pas masquer un blocage derrière une redirection silencieuse.
 
-Redirects to `/dev/null` must not remove information needed to identify the blocked step, invoked tool, and return code.
+Les redirections vers `/dev/null` ne doivent pas supprimer les informations nécessaires pour identifier l’étape bloquée, l’outil appelé et le code retour.
 
-Secrets must never be displayed in console or logs, even on timeout or failure.
+Les secrets ne doivent jamais être affichés, ni en console, ni dans les logs, même en cas de timeout ou d’échec.
 
-Diagnostics must remain sufficient to understand where the script is blocked without exposing sensitive values.
+Le diagnostic doit rester suffisant pour comprendre à quelle étape le script est bloqué sans exposer les valeurs sensibles.
 
-Vague messages such as `retry correctly` or `check the configuration` are insufficient when an exact command can be supplied.
+Les messages vagues du type « relancez correctement » ou « vérifiez la configuration » sont insuffisants lorsqu’une commande exacte peut être fournie.
 
-#### 10.7.1 Mandatory short rule
+#### 10.7.1 Règle courte obligatoire
 
-When a script drives a CLI tool through stdin, a pipe, or a here-doc, it must explicitly send the tool's expected exit command, such as `quit` or `exit`, and wrap the call with `timeout` when the tool can hang.
+Quand un script pilote un outil CLI via stdin, pipe ou here-doc, il doit envoyer explicitement la commande de sortie attendue par l’outil, par exemple `quit` ou `exit`, et encadrer l’appel par `timeout` si l’outil peut rester bloqué.
 
-Secrets must never be shown, but the blocked step and return code must be visible.
+Les secrets ne doivent jamais être affichés, mais l’étape bloquée et le code retour doivent être visibles.
 
-### 10.8 Asynchronous CLI tools, login, sync, and server operations
+### 10.8 Outils CLI asynchrones, login, sync et opérations serveur
 
-For asynchronous CLI tools, after login, synchronization, resume, server-operation start, or remote operation, the script must not check state only once immediately and then conclude.
+Pour les outils CLI asynchrones, après une commande de login, de synchronisation, de reprise, de lancement d’opération serveur ou d’opération distante, le script ne doit pas vérifier l’état une seule fois immédiatement puis conclure.
 
-Add a bounded verification loop when final state may take time to appear.
+Le script doit ajouter une boucle de vérification bornée lorsque l’état final peut prendre du temps à apparaître.
 
-The loop must include:
+Cette boucle doit inclure :
 
-- a global timeout;
-- a maximum number of attempts or clear time limit;
-- a reasonable interval between checks;
-- display of observed state at each meaningful check;
-- explicit handling of transient states.
+- un timeout global ;
+- un nombre maximal d’essais ou une limite temporelle claire ;
+- un intervalle d’attente raisonnable entre les vérifications ;
+- l’affichage de l’état observé à chaque vérification significative ;
+- la gestion explicite des états transitoires.
 
-Examples of transient states when exposed by the tool:
+Exemples d’états transitoires à gérer lorsque l’outil les expose :
 
-- `login in`;
-- `logging in`;
-- `resuming`;
-- `busy`;
-- `syncing`;
-- `pending`;
-- `connecting`;
-- another documented equivalent.
+- `login in` ;
+- `logging in` ;
+- `resuming` ;
+- `busy` ;
+- `syncing` ;
+- `pending` ;
+- `connecting` ;
+- équivalent documenté par l’outil.
 
-If the final expected state is not reached before the limit, terminate cleanly as a timeout and display:
+Si l’état final attendu n’est pas atteint avant la limite, le script doit terminer proprement en timeout et afficher :
 
-- the relevant step;
-- last observed state;
-- available return code;
-- exact retry, diagnostic, or manual-check command when known.
+- l’étape concernée ;
+- le dernier état observé ;
+- le code retour disponible ;
+- la commande exacte à exécuter pour relancer, diagnostiquer ou vérifier manuellement lorsque cette commande est connue.
 
-Do not hide secrets by replacing diagnostics with empty logs; instead show step names, states, non-sensitive paths, return codes, and diagnostic commands without sensitive values.
+Le script ne doit jamais masquer les secrets dans les diagnostics en les remplaçant par des logs vides : il doit plutôt afficher les noms d’étapes, états, chemins non sensibles, codes retour et commandes de diagnostic sans valeurs sensibles.
 
-### 10.9 Traps for sensitive interactive scripts
+### 10.9 Traps pour scripts interactifs sensibles
 
-For sensitive interactive scripts, add traps when language and environment support them.
+Pour les scripts interactifs sensibles, l’assistant doit ajouter des traps lorsque le langage et l’environnement le permettent.
 
-At minimum handle:
+Les signaux à gérer au minimum sont :
 
-- `INT`;
-- `TERM`;
+- `INT` ;
+- `TERM` ;
 - `HUP`.
 
-Traps must:
+Les traps doivent servir à :
 
-- restore terminal state if echo was disabled;
-- clean up temporary files created by the script;
-- terminate child processes launched by the script when applicable;
-- exit with a coherent return code;
-- display a clear message without revealing secrets.
+- restaurer l’état du terminal si l’écho a été désactivé ;
+- nettoyer les fichiers temporaires créés par le script ;
+- terminer proprement les processus enfants lancés par le script lorsque c’est applicable ;
+- sortir avec un code retour cohérent ;
+- afficher un message clair sans révéler de secret.
 
-A script that masks sensitive input or drives a blocking tool must not leave the terminal broken after user interruption, session close, or timeout.
+Un script qui masque une saisie sensible ou qui pilote un outil bloquant ne doit pas laisser le terminal dans un état cassé après interruption utilisateur, fermeture de session ou timeout.
 
 ------------------------------------------------------------------------
 
-## 11. DISPLAY, LOGS, AND RESULTS
+## 11. AFFICHAGE, LOGS ET RÉSULTATS
 
-### 11.1 Console display
+### 11.1 Affichage console
 
-For every execution, the script must explain steps in clear text.
+Pour chaque exécution, le script doit expliquer les étapes en texte clair.
 
-For a multi-step script, show the current step with its index.
+Pour un script multi-étapes, afficher l’étape courante avec son index.
 
-Example:
+Exemple :
 
 ```text
-Disk scan (1/56)
+Scan du disque (1/56)
 ```
 
-### 11.2 Post-execution summary
+### 11.2 Résumé post-exécution
 
-After execution, display a numbered list of actions performed.
+Après exécution, le script doit afficher une liste numérotée des actions effectuées.
 
-In simulate mode, distinguish simulated actions from actions actually executed.
+En mode simulate, le résumé doit distinguer les actions simulées des actions réellement exécutées.
 
 ### 11.3 Logs
 
-Create `./logs` next to the script when necessary.
+Créer un dossier `./logs` à côté du script si nécessaire.
 
-Detailed logs must be written there.
+Les logs détaillés doivent être écrits dans ce dossier.
 
-Recommended log filename:
+Le nom de fichier log recommandé est :
 
 ```text
 ./logs/log.<script_name>.<full_timestamp>.<script_version>.log
@@ -1128,63 +1129,63 @@ Recommended log filename:
 
 ### 11.4 Results
 
-Do not create `./results` artificially when the script produces no runtime result file.
+`./results` ne doit pas être créé artificiellement si le script ne produit aucun fichier de résultat runtime.
 
-If the script truly generates result files, create `./results` next to the script when necessary.
+Si le script génère réellement des fichiers de résultat, créer un dossier `./results` à côté du script si nécessaire.
 
-Generated files must have names related to script and version.
+Les fichiers générés doivent avoir un nom lié au script et à sa version.
 
-Example:
+Exemple :
 
 ```text
 ./results/<name>.<script_name>.vX.X.X.txt
 ```
 
-The result destination must be configurable with `--dest_dir` when the script produces results.
+Le dossier de destination des résultats doit être modifiable avec `--dest_dir` lorsque le script produit des résultats.
 
 ### 11.5 Purge
 
-`--purge` may delete only runtime artifacts explicitly managed by the script.
+`--purge` ne doit supprimer que les artefacts runtime explicitement gérés par le script.
 
-By default it may target:
+Par défaut, `--purge` peut viser :
 
-- `./logs`;
-- `./results`, only when used;
-- other runtime directories explicitly documented by the script.
+- `./logs` ;
+- `./results`, seulement si utilisé ;
+- autres dossiers runtime explicitement documentés par le script.
 
-`--purge` must never delete source code, documentation, specifications, secrets, or user files not created by the script.
+`--purge` ne doit jamais supprimer du code source, des fichiers de documentation, des spécifications, des secrets ou des fichiers utilisateur non créés par le script.
 
 ------------------------------------------------------------------------
 
-## 12. SUDO AND READY-TO-USE BEHAVIOR
+## 12. SUDO ET COMPORTEMENT PRÊT À L’EMPLOI
 
-### 12.1 Internal sudo
+### 12.1 Sudo interne
 
-When elevated privileges are necessary, prefer internal `sudo` calls inside the script.
+Lorsque des privilèges élevés sont nécessaires, préférer les appels `sudo` internes au script.
 
-Avoid forcing the user to run:
+Éviter d’obliger l’utilisateur à lancer :
 
 ```text
 sudo ./script.sh
 ```
 
-### 12.2 Zero external sudo where possible
+### 12.2 Zéro sudo externe si possible
 
-The script should be ready to use with as little manual preparation as possible.
+Le script doit être prêt à l’emploi avec le moins de préparation manuelle possible.
 
-### 12.3 Safety of sensitive actions
+### 12.3 Sécurité des actions sensibles
 
-Destructive, system, or sensitive actions must be clearly displayed and logged.
+Les actions destructives, système ou sensibles doivent être clairement affichées et journalisées.
 
-They must be disabled in `--simulate` mode.
+Elles doivent être désactivées en mode `--simulate`.
 
 ------------------------------------------------------------------------
 
-## 13. MANDATORY DOCUMENTATION IN REPO MODE
+## 13. DOCUMENTATION OBLIGATOIRE EN MODE REPO
 
-### 13.1 Mandatory root documentation files
+### 13.1 Fichiers documentation root obligatoires
 
-In repo mode, the only mandatory documentation files at root are:
+En mode repo, les fichiers de documentation obligatoires sont uniquement à la racine :
 
 ```text
 ./README.md
@@ -1193,11 +1194,11 @@ In repo mode, the only mandatory documentation files at root are:
 ./WHY.md
 ```
 
-### 13.1.1 Strict naming convention for project Markdown documents
+### 13.1.1 Convention stricte de nommage des documents Markdown projet
 
-For project or repository Markdown documentation, the filename stem must be uppercase and the `.md` extension lowercase.
+Pour les fichiers Markdown de documentation projet ou dépôt, le nom du fichier doit utiliser un stem en majuscules et une extension `.md` en minuscules.
 
-Compliant examples:
+Exemples conformes :
 
 ```text
 README.md
@@ -1215,19 +1216,19 @@ ARCHITECTURE.md
 REMIX.md
 ```
 
-The assistant must announce and deliver the exact real filename that will be created.
+L’assistant doit annoncer et livrer le vrai nom exact du fichier documentaire qui sera créé.
 
-It must not announce `remix.md` if the expected project-document filename is `REMIX.md`.
+Il ne doit pas annoncer `remix.md` si le fichier documentaire projet attendu est `REMIX.md`.
 
-This rule concerns project-documentation Markdown files, not one-off exports, free-form user files, data files, raw notes, drafts, or files explicitly named differently by the user.
+Cette règle concerne les documents Markdown de documentation projet, pas les exports ponctuels, fichiers utilisateur libres, fichiers de données, notes brutes, brouillons ou fichiers explicitement nommés autrement par l’utilisateur.
 
-If the user explicitly requests a different name, the explicit user request wins.
+Si l’utilisateur demande explicitement un nom différent, la demande explicite de l’utilisateur prime.
 
-### 13.2 Removal of `./infos` logic
+### 13.2 Suppression de la logique ./infos
 
-SOLO405 removes the `./infos` logic from SOLO200.
+SOLO405 supprime la logique `./infos` de SOLO200.
 
-Do not automatically create:
+Ne pas créer automatiquement :
 
 ```text
 ./infos/README.md
@@ -1237,50 +1238,50 @@ Do not automatically create:
 ./infos/WHY.md
 ```
 
-Unless explicitly requested, `./infos` is obsolete.
+Sauf demande explicite de l’utilisateur, `./infos` est considéré comme obsolète.
 
-### 13.3 Documentation synchronization
+### 13.3 Synchronisation documentaire
 
-For the first complete project delivery or a stabilized version, any script modification in repo mode must trigger verification and, when needed, update of:
+Lors d’une première livraison complète d’un projet ou d’une version stabilisée, toute modification de script en mode repo doit déclencher la vérification et, si nécessaire, la mise à jour de :
 
-- `./README.md`;
-- `./CHANGELOG.md`;
-- `./INSTALL.md`;
-- `./WHY.md`;
-- relevant SPECIFICATIONS files.
+- `./README.md` ;
+- `./CHANGELOG.md` ;
+- `./INSTALL.md` ;
+- `./WHY.md` ;
+- fichiers SPECIFICATIONS concernés.
 
-During active development, if the user says Markdown documents will be done later, do not regenerate them at every iteration.
+Pendant une phase de mise au point, si l’utilisateur indique que les documents Markdown seront faits plus tard, l’assistant ne doit plus régénérer ces documents à chaque itération.
 
-In that case, deliver only files strictly modified or needed for the current iteration.
+Dans ce cas, fournir uniquement les fichiers strictement modifiés ou strictement nécessaires à l’itération courante.
 
-When the user explicitly requests a complete delivery, stabilized version, or final documentation pass, provide synchronized scripts and Markdown documents.
+Quand l’utilisateur demande explicitement une livraison complète, une version stabilisée ou la passe documentaire finale, fournir alors les scripts et les documents Markdown synchronisés.
 
-A script task must be declared fully complete only if applicable mandatory documentation is present, current, and consistent with the script, unless the user explicitly postponed documentation to a later final pass.
+Une tâche script ne doit être déclarée complètement finalisée que si la documentation obligatoire applicable est présente, à jour et cohérente avec le script, sauf si l’utilisateur a explicitement reporté la documentation à une passe finale ultérieure.
 
-### 13.4 Append-only `CHANGELOG.md`
+### 13.4 CHANGELOG.md append-only
 
-`CHANGELOG.md` must preserve complete history.
+`CHANGELOG.md` doit conserver l’historique complet.
 
-Never delete old entries.
+Ne jamais supprimer les anciennes entrées.
 
-Never compress history.
+Ne jamais compresser l’historique.
 
-Never replace older versions with a summary.
+Ne jamais remplacer les anciennes versions par un résumé.
 
-Every new entry must contain at minimum:
+Toute nouvelle entrée doit contenir au minimum :
 
-- version;
-- date;
-- time when available;
-- author;
-- clear list of changes;
-- short change context.
+- version ;
+- date ;
+- heure si disponible ;
+- auteur ;
+- liste claire des modifications ;
+- contexte court de la modification.
 
-### 13.5 Markdown document metadata
+### 13.5 Métadonnées des documents Markdown
 
-Every generated Markdown document must begin with a metadata block before the first heading.
+Tout document Markdown généré doit commencer par un bloc de métadonnées avant le premier titre.
 
-Recommended format:
+Format recommandé :
 
 ```md
 <!--
@@ -1293,118 +1294,118 @@ Date : YYYY-MM-DD HH:MM
 # <Document title>
 ```
 
-For French documents, `Auteur` may be used instead of `Author` when requested.
+Pour les documents français, `Auteur` peut être utilisé à la place de `Author` si demandé.
 
-### 13.6 `INSTALL.md`
+### 13.6 INSTALL.md
 
-`INSTALL.md` must contain installation instructions, dependencies, prerequisites, and useful checks.
+`INSTALL.md` doit contenir les instructions d’installation, dépendances, prérequis et vérifications utiles.
 
-If no special installation is required, say so clearly.
+Si aucune installation spécifique n’est nécessaire, le fichier doit le dire clairement.
 
-### 13.7 `WHY.md`
+### 13.7 WHY.md
 
-`WHY.md` must explain why the script/project exists, the problem solved, main choices, and limitations.
+`WHY.md` doit expliquer la raison d’être du script ou du projet, le problème résolu, les choix principaux et les limites.
 
-### 13.8 `MVP.md` and MVP framing at project start
+### 13.8 MVP.md et cadrage MVP au démarrage d’un projet
 
-When a new scripting project, tool, application, software suite, or technical repository starts, check whether the work should be framed around an MVP.
+Lorsqu’un nouveau projet de scripting, d’outil, d’application, de suite logicielle ou de dépôt technique est démarré, l’assistant doit vérifier si le travail doit être cadré autour d’un MVP.
 
-If the user explicitly mentions an MVP, minimal first version, starting version, testable version, phase 1, or says not to build everything at once, create or propose `MVP.md`.
+Si l’utilisateur évoque explicitement un MVP, une première version minimale, une version de départ, une version testable, une phase 1, ou indique qu’il ne faut pas tout faire en une seule fois, l’assistant doit créer ou proposer un fichier `MVP.md`.
 
-If the user has not yet specified initial scope, briefly ask whether `MVP.md` should be created unless the current request requires direct action.
+Si l’utilisateur n’a pas encore précisé le périmètre initial, l’assistant doit demander brièvement si un `MVP.md` doit être créé, sauf si la demande courante impose d’agir directement.
 
-`MVP.md` must describe only the first useful minimum project version, without mixing long-term ideas into initial scope.
+`MVP.md` doit décrire uniquement la première version minimale utile du projet, sans mélanger les idées long terme avec le périmètre initial.
 
-At minimum it must contain:
+`MVP.md` doit contenir au minimum :
 
-- MVP objective;
-- problem covered by the MVP;
-- included features;
-- explicitly excluded features;
-- expected inputs;
-- expected outputs;
-- technical constraints;
-- acceptance criteria;
-- known limitations;
-- relationship to `WHY.md`, `ARCHITECTURE.md`, `ROADMAP.md`, and `SPECIFICATIONS.md`.
+- objectif du MVP ;
+- problème couvert par le MVP ;
+- fonctionnalités incluses ;
+- fonctionnalités explicitement exclues ;
+- entrées attendues ;
+- sorties attendues ;
+- contraintes techniques ;
+- critères d’acceptation ;
+- limites connues ;
+- lien avec `WHY.md`, `ARCHITECTURE.md`, `ROADMAP.md` et `SPECIFICATIONS.md`.
 
-Future ideas must remain in `ROADMAP.md`, `IDEAS.md`, `ARCHITECTURE.md`, or global specifications and must not artificially inflate the MVP.
+Les idées futures doivent rester dans `ROADMAP.md`, `IDEAS.md`, `ARCHITECTURE.md` ou les spécifications globales, mais ne doivent pas gonfler artificiellement le MVP.
 
-The MVP must remain testable, limited, realistic, and deliverable.
+Le MVP doit rester testable, limité, réaliste et livrable.
 
 ------------------------------------------------------------------------
 
-## 14. LANGUAGE OF RESPONSES AND DELIVERABLES
+## 14. LANGUE DES RÉPONSES ET DES LIVRABLES
 
 ### 14.1 Chat
 
-Direct conversations with the user are in French by default.
+Les échanges directs avec l’utilisateur doivent être en français par défaut.
 
-### 14.2 Repository artifacts
+### 14.2 Artefacts de dépôt
 
-Repository artifacts are in English by default.
+Les artefacts de dépôt doivent être en anglais par défaut.
 
-This includes, in particular:
+Cela inclut notamment :
 
-- scripts;
-- comments intended for the repository;
-- README;
-- CHANGELOG;
-- INSTALL;
-- WHY;
-- SPECIFICATIONS;
-- documentation messages.
+- scripts ;
+- commentaires destinés au dépôt ;
+- README ;
+- CHANGELOG ;
+- INSTALL ;
+- WHY ;
+- SPECIFICATIONS ;
+- messages de documentation.
 
-### 14.3 Mandatory French exceptions
+### 14.3 Exceptions françaises obligatoires
 
-The following files are in French:
+Les fichiers suivants doivent être en français :
 
-- `SPECIFICATIONS_FR.md`;
+- `SPECIFICATIONS_FR.md` ;
 - `SPECIFICATIONS_GLOBAL_FR.md`.
 
-### 14.4 User exception
+### 14.4 Exception utilisateur
 
-If the user explicitly requests French deliverables, follow the request unless it conflicts with a more specific rule.
+Si l’utilisateur demande explicitement des livrables en français, suivre sa demande sauf conflit avec une règle plus spécifique.
 
 ------------------------------------------------------------------------
 
-## 15. RULES FOR NON-SCRIPT DOCUMENTS AND ARTIFACTS
+## 15. RÈGLES POUR DOCUMENTS ET ARTEFACTS NON-SCRIPTS
 
-### 15.1 Standalone Markdown documents
+### 15.1 Documents Markdown standalone
 
-Every delivered documentary Markdown file must start with a readable metadata block.
+Tout fichier Markdown documentaire livré doit commencer par un bloc de métadonnées lisible.
 
-Mandatory reference format:
+Le format de référence obligatoire est :
 
 ```md
 <!--
 DOCUMENT INFORMATION
-Document Name: <DOCUMENT_NAME.md>
-Author: <AUTHOR>
+Document Name: <NOM_DU_DOCUMENT.md>
+Author: <AUTEUR>
 Email: <EMAIL>
 Version: <VERSION>
 Date / Time: YYYY-MM-DD HH:MM
-Project: <PROJECT_NAME>
-Short description: <SHORT_DESCRIPTION>
+Project: <NOM_DU_PROJET>
+Short description: <DESCRIPTION_COURTE>
 -->
 ```
 
-The date must always include the time.
+La date doit toujours inclure l’heure.
 
-A standalone `.md` document does not need an internal changelog unless:
+Un document `.md` standalone n’a pas besoin d’un changelog interne sauf si :
 
-- it is repository documentation governed by changelog rules;
-- it is a SPECIFICATIONS file;
-- the user requests it;
-- project context requires it.
+- c’est un fichier de documentation repo soumis aux règles de changelog ;
+- c’est un fichier SPECIFICATIONS ;
+- l’utilisateur le demande ;
+- le contexte du projet l’impose.
 
-Older Markdown-header formats may be replaced by this format when a file is generated or delivered as a new documentary version.
+Les anciens formats de headers Markdown peuvent être remplacés par ce format lorsque le fichier est généré ou livré comme nouvelle version documentaire.
 
-### 15.2 Standalone TXT documents
+### 15.2 Documents TXT standalone
 
-A standalone `.txt` document must contain a readable metadata block.
+Un document `.txt` standalone doit contenir un bloc de métadonnées lisible.
 
-Recommended format:
+Format recommandé :
 
 ```txt
 ----- SOLO DOCUMENT METADATA BEGIN -----
@@ -1416,377 +1417,379 @@ Date : YYYY-MM-DD HH:MM
 ----- SOLO DOCUMENT METADATA END -----
 ```
 
-### 15.3 DOCX documents
+### 15.3 Documents DOCX
 
-`.docx` documents must not contain a raw script-style technical header.
+Les documents `.docx` ne doivent pas contenir un header technique brut de type script.
 
-The first page or cover page must contain at minimum:
+La première page ou page de garde doit contenir au minimum :
 
-- document;
-- author;
-- email;
-- version;
-- date and time.
+- document ;
+- auteur ;
+- email ;
+- version ;
+- date et heure.
 
-### 15.4 PDF documents
+### 15.4 Documents PDF
 
-`.pdf` documents follow the same logic as `.docx` documents.
+Les documents `.pdf` doivent suivre la même logique que les documents `.docx`.
 
-They must have a cover page or visible header with:
+Ils doivent avoir une page de garde ou un en-tête visible avec :
 
-- document;
-- author;
-- email;
-- version;
-- date and time.
+- document ;
+- auteur ;
+- email ;
+- version ;
+- date et heure.
 
 ------------------------------------------------------------------------
 
-## 16. VALIDATION, TESTS, AND EVIDENCE
+## 16. VALIDATION, TESTS ET PREUVES
 
-### 16.1 Do not claim testing that was not performed
+### 16.1 Ne pas prétendre avoir testé
 
-The assistant must never claim a test was performed when it was not executed.
+L’assistant ne doit jamais affirmer qu’un test a été réalisé si ce test n’a pas été exécuté.
 
-### 16.2 Distinguish statuses
+### 16.2 Distinguer les statuts
 
-The assistant must distinguish:
+L’assistant doit distinguer :
 
-- generated;
-- proposed;
-- untested;
-- tested by static reasoning;
-- tested by actual execution;
-- to be run by the user;
-- impossible to verify in the current context.
+- généré ;
+- proposé ;
+- non testé ;
+- testé par raisonnement statique ;
+- testé par exécution réelle ;
+- à exécuter par l’utilisateur ;
+- impossible à vérifier dans le contexte courant.
 
-### 16.3 Validation commands
+### 16.3 Commandes de validation
 
-When useful, provide ready-to-run validation commands.
+Quand utile, fournir des commandes de validation prêtes à exécuter.
 
-If several commands are required, provide them in one Markdown block with comments unless the user requests otherwise.
+Si plusieurs commandes sont nécessaires, les fournir dans une seule boîte Markdown avec commentaires, sauf demande contraire de l’utilisateur.
 
-### 16.4 User report
+### 16.4 Rapport utilisateur
 
-When a command produces a report intended for the user, prefer a timestamped file such as:
+Quand une commande produit un rapport destiné à l’utilisateur, utiliser de préférence un fichier horodaté du type :
 
 ```text
 /tmp/output4ChatGPT.YYYY-MM-DD_HHMMSS.md
 ```
 
-When relevant, plan a final `chown nox:nox` to simplify user access.
+Lorsque pertinent, prévoir un `chown nox:nox` à la fin pour faciliter l’accès utilisateur.
 
-When relevant, open the report with Kate at the end.
-
-------------------------------------------------------------------------
-
-## 17. NETWORK AND EXTERNAL-SOURCE RULES
-
-### 17.1 HTTPS only
-
-For repositories, downloads, sources, documentation, and proposed network commands, prefer HTTPS only.
-
-Do not propose HTTP or FTP unless explicitly requested and clearly justified.
-
-### 17.2 No unrequested external access for repository content
-
-Do not suggest sending repository content to external services.
-
-Do not use an external service to analyze, enrich, correct, or validate repository content unless explicitly requested by the user.
-
-### 17.3 Citations and sources
-
-For important technical, security, legal, medical, or factual claims, provide verifiable sources when possible and relevant.
-
-For changing topics, verify information before answering.
+Lorsque pertinent, ouvrir le rapport avec Kate à la fin.
 
 ------------------------------------------------------------------------
 
-## 18. DEFINITION OF DONE IN REPO MODE
+## 17. RÈGLES RÉSEAU ET SOURCES EXTERNES
 
-A repo-mode scripting task is complete only if:
+### 17.1 HTTPS uniquement
 
-- no request for a durable script, versioned feature, or reusable automation was replaced by a one-liner, temporary heredoc, inline block, or disposable procedure unless the user explicitly requested a quick command, temporary test, one-off diagnostic, or quick mode;
-- applicable specifications were proposed or updated when necessary;
-- user approval was obtained when the specification gate applies;
-- the complete script is provided;
-- script version is updated;
-- script date is updated;
-- internal script changelog is updated;
-- for a first complete delivery or stabilized version, `README.md`, `CHANGELOG.md`, `INSTALL.md`, `WHY.md`, and relevant SPECIFICATIONS files are checked or updated;
-- during an iteration phase where Markdown has been postponed, only strictly modified files are delivered;
-- temporary suspension of Markdown updates never suspends maintenance of the internal script changelog;
-- secrets are not embedded in code;
-- artifacts are delivered as downloads where possible;
-- for one modified file, only that file is delivered directly;
-- as soon as two or more files form the final delivery, one ZIP containing all final files is mandatory;
-- no final answer presents multiple separate download links when a ZIP is required;
-- ZIP archives do not contain AGENTS.md, CLAUDE.md, or an instruction symlink explicitly related to them unless explicitly requested;
-- no `gitignore_additions_*` file is created;
-- no `.gitignore` modification is proposed without requesting the existing `.gitignore` or its template;
-- if `.gitignore` must change, a complete merged `.gitignore` is provided only when the user requests it;
-- no static validation report is included in the ZIP unless explicitly requested;
-- `./.secrets` templates use generic fields where possible;
-- empty secrets in `./.secrets` trigger secure runtime input;
-- `PASSWORD`, `AUTH_CODE`, `OTP`, `TOKEN`, `API_KEY`, and equivalents are masked, with asterisks where possible, otherwise no terminal echo;
-- `--simulate` works by itself without `--exec`;
-- CLI automation through pipe, here-doc, or stdin has an explicit exit and a timeout when the tool may hang;
-- asynchronous CLI tools have a bounded verification loop after login, sync, or server operation when final state may be delayed;
-- transient states such as `login in`, `resuming`, `busy`, `syncing`, or equivalents are displayed and handled when exposed by the tool;
-- sensitive interactive scripts use `INT`, `TERM`, and `HUP` traps when supported;
-- terminal state is restored after interruption, timeout, or error if the script changed terminal echo;
-- useful error messages show the exact command to run;
-- no-argument behavior was tested for every durable CLI script when actual execution is possible;
-- if no-argument behavior was executed and validated, the delivery response says `No-argument help behavior: OK`;
-- if the no-argument test was not executed, that limitation is clearly stated and the delivery is not presented as fully validated;
-- validation/execution limitations are clearly stated in chat;
-- when a new project starts as an MVP, minimal first version, phase 1, or testable version, `MVP.md` is created or proposed and remains limited to the initial testable scope.
+Pour les dépôts, téléchargements, sources, documentation et commandes réseau proposées, privilégier HTTPS uniquement.
 
-Git workflow remains outside SOLO405 scope and is the user's responsibility.
+Ne pas proposer HTTP ou FTP sauf demande explicite et justification claire.
+
+### 17.2 Pas d’accès externe non demandé pour contenu de dépôt
+
+Ne pas suggérer d’envoyer le contenu du dépôt vers des services externes.
+
+Ne pas utiliser de service externe pour analyser, enrichir, corriger ou valider le contenu du dépôt sauf demande explicite de l’utilisateur.
+
+### 17.3 Citations et sources
+
+Pour les affirmations techniques, sécurité, légales, médicales ou factuelles importantes, fournir des sources vérifiables lorsque c’est possible et pertinent.
+
+Pour les sujets évolutifs, vérifier les informations avant de répondre.
 
 ------------------------------------------------------------------------
 
-## 19. PRIMARY CONTENT ANTI-REGRESSION RULE
+## 18. DÉFINITION DE DONE EN MODE REPO
 
-### 19.1 Critical priority
+Une tâche de scripting en mode repo est complète seulement si :
 
-Never replace a detailed existing file with a shorter, summarized, condensed, or simplified version unless explicitly requested by the user.
+- aucune demande de script durable, fonctionnalité versionnée ou automatisation réutilisable n’a été remplacée par un one-liner, heredoc temporaire, bloc inline ou procédure jetable sauf demande explicite de commande rapide, test temporaire, diagnostic ponctuel ou mode rapide ;
+- les spécifications applicables ont été proposées ou mises à jour si nécessaire ;
+- la validation utilisateur a été obtenue lorsque le gate de spécification s’applique ;
+- le script complet est fourni ;
+- la version du script est mise à jour ;
+- la date du script est mise à jour ;
+- le changelog interne du script est mis à jour ;
+- lors d’une première livraison complète ou version stabilisée, `README.md`, `CHANGELOG.md`, `INSTALL.md`, `WHY.md` et les fichiers SPECIFICATIONS concernés sont vérifiés ou mis à jour ;
+- pendant une phase de mise au point où l’utilisateur a reporté les Markdown, seuls les fichiers strictement modifiés sont livrés ;
+- la suspension temporaire des Markdown ne suspend jamais le maintien du changelog interne du script ;
+- les secrets ne sont pas intégrés au code ;
+- les artefacts sont fournis en téléchargement lorsque possible ;
+- pour un seul fichier modifié, seul ce fichier est fourni en téléchargement ;
+- dès que deux fichiers ou plus composent la livraison finale, un ZIP unique contenant tous les fichiers finaux est obligatoire ;
+- aucune réponse finale ne doit présenter plusieurs liens de téléchargement séparés lorsqu’un ZIP est requis ;
+- les archives ZIP ne contiennent pas AGENTS.md, CLAUDE.md ou symlink d’instruction explicitement lié à AGENTS.md ou CLAUDE.md, sauf demande explicite ;
+- aucun fichier `gitignore_additions_*` n’est créé ;
+- aucune modification `.gitignore` n’est proposée sans demander le `.gitignore` existant ou son template ;
+- si `.gitignore` doit changer, un `.gitignore` complet fusionné est fourni seulement si l’utilisateur le demande ;
+- aucun rapport de validation statique n’est inclus dans le ZIP sauf demande explicite ;
+- les modèles `./.secrets` utilisent des champs génériques quand possible ;
+- les secrets vides dans `./.secrets` déclenchent une saisie runtime sécurisée ;
+- les saisies `PASSWORD`, `AUTH_CODE`, `OTP`, `TOKEN`, `API_KEY` et équivalents sont masquées, avec astérisques si possible, sinon sans écho terminal ;
+- `--simulate` fonctionne seul sans `--exec` ;
+- les automatisations CLI via pipe, here-doc ou stdin disposent d’une sortie explicite et d’un timeout lorsque l’outil peut rester bloqué ;
+- les outils CLI asynchrones disposent d’une boucle de vérification bornée après login, sync ou opération serveur lorsque l’état final peut être différé ;
+- les états transitoires comme `login in`, `resuming`, `busy`, `syncing` ou équivalents sont affichés et gérés lorsque l’outil les expose ;
+- les scripts interactifs sensibles disposent de traps `INT`, `TERM` et `HUP` lorsque le langage et l’environnement le permettent ;
+- le terminal est restauré après interruption, timeout ou erreur si le script a modifié l’écho terminal ;
+- les messages d’erreur utiles affichent la commande exacte à exécuter ;
+- pour tout script CLI durable, le comportement sans argument a été testé quand l’exécution réelle est possible ;
+- si le test sans argument a été exécuté et validé, la réponse de livraison indique `No-argument help behavior: OK` ;
+- si le test sans argument n’a pas été exécuté, cette limite est indiquée clairement et la livraison n’est pas présentée comme complètement validée ;
+- les limites de validation ou d’exécution sont clairement indiquées dans la réponse de chat ;
+- lorsqu’un nouveau projet est démarré en mode MVP, première version minimale, phase 1 ou version testable, `MVP.md` est créé ou proposé et reste limité au périmètre initial testable.
 
-This is a primary SOLO405 rule.
+Le workflow Git reste hors périmètre de SOLO405 et sous responsabilité utilisateur.
 
-It applies to every delivered, modified, generated, or replaced file in a scripting or repository context, including:
+------------------------------------------------------------------------
 
-- scripts;
-- Markdown files;
-- specifications;
-- README;
-- CHANGELOG;
-- INSTALL;
-- WHY;
-- configuration files;
-- secret templates;
-- documentation files;
-- any other repository artifact.
 
-### 19.2 Prohibition on unrequested condensation
+## 19. RÈGLE PRIMAIRE ANTI-RÉGRESSION DE CONTENU
 
-Without an explicit user request, never:
+### 19.1 Priorité critique
 
-- condense an existing file;
-- summarize an existing file;
-- remove existing sections;
-- remove existing comments;
-- remove existing examples;
-- remove existing validations;
-- remove existing changelog entries;
-- replace detailed content with shorter content;
-- rewrite a complete file as a simplified version;
-- perform a documentation refactor that reduces information;
-- reduce functional coverage;
-- reduce documentation coverage;
-- reduce validation coverage;
-- reduce help or example coverage.
+Ne jamais remplacer un fichier existant détaillé par une version plus courte, résumée, condensée ou simplifiée, sauf demande explicite de l’utilisateur.
 
-Only exception: the user explicitly requests reduction, simplification, summary, compression, cleanup, or deletion.
+Cette règle est une règle primaire de SOLO405.
 
-If the user request is ambiguous, preserve existing content and add changes append-only or by extension rather than reducing it.
+Elle s’applique à tous les fichiers livrés, modifiés, générés ou remplacés dans un contexte de scripting ou de dépôt, notamment :
 
-### 19.3 Mandatory size gate before delivery
+- scripts ;
+- fichiers Markdown ;
+- spécifications ;
+- README ;
+- CHANGELOG ;
+- INSTALL ;
+- WHY ;
+- fichiers de configuration ;
+- modèles de secrets ;
+- fichiers de documentation ;
+- tout autre artefact de dépôt.
 
-Before delivering a new version of an existing file, compare it with the previous version or user-provided reference when available.
+### 19.2 Interdiction de condensation non demandée
 
-For each modified file, verify:
+L’assistant ne doit jamais, sans demande explicite de l’utilisateur :
 
-- byte count does not decrease;
-- line count does not decrease;
-- changelog does not become shorter;
-- existing sections do not disappear;
-- existing examples do not disappear;
-- existing validations do not disappear;
-- existing functions do not disappear;
-- existing CLI options do not disappear;
-- useful existing comments do not disappear;
-- behaviors already validated by the user do not disappear.
+- condenser un fichier existant ;
+- résumer un fichier existant ;
+- supprimer des sections existantes ;
+- supprimer des commentaires existants ;
+- supprimer des exemples existants ;
+- supprimer des validations existantes ;
+- supprimer des entrées de changelog existantes ;
+- remplacer un contenu détaillé par un contenu plus court ;
+- reformuler un fichier complet en version simplifiée ;
+- faire un refactor documentaire qui réduit la quantité d’information ;
+- réduire la couverture fonctionnelle ;
+- réduire la couverture documentaire ;
+- réduire la couverture de validation ;
+- réduire la couverture d’aide ou d’exemples.
 
-If a file is shorter than the previous/reference version without an explicit request for reduction, delivery is invalid.
+Exception unique : l’utilisateur demande explicitement une réduction, une simplification, un résumé, une compression, un nettoyage ou une suppression.
 
-Correct it before providing the file or ZIP.
+Si la demande de l’utilisateur est ambiguë, l’assistant doit préserver le contenu existant et ajouter les changements en mode append-only ou extension, au lieu de réduire.
 
-### 19.4 Normal growth rule
+### 19.3 Gate obligatoire de taille avant livraison
 
-For a normal incremented version, a modified file should be equal to or greater than the previous version in useful content.
+Avant de livrer une nouvelle version d’un fichier existant, l’assistant doit comparer avec la version précédente ou la version de référence fournie par l’utilisateur lorsque cette version est disponible.
 
-When in doubt, add an append-only section or changelog entry; never delete or summarize existing material.
+Pour chaque fichier modifié, vérifier :
 
-A real modification should be integrated by extension, conservative targeted replacement, or structured addition, not a condensed rewrite.
+- le nombre d’octets ne doit pas être inférieur ;
+- le nombre de lignes ne doit pas être inférieur ;
+- le changelog ne doit pas être plus court ;
+- les sections existantes ne doivent pas disparaître ;
+- les exemples existants ne doivent pas disparaître ;
+- les validations existantes ne doivent pas disparaître ;
+- les fonctions existantes ne doivent pas disparaître ;
+- les options CLI existantes ne doivent pas disparaître ;
+- les commentaires utiles existants ne doivent pas disparaître ;
+- les comportements déjà validés par l’utilisateur ne doivent pas disparaître.
 
-### 19.5 Special rule for ZIPs
+Si un fichier est plus court que la version précédente ou de référence sans demande explicite de réduction, la livraison est invalide.
 
-Before providing a complete ZIP, perform an anti-regression check on all modified files inside when a previous/reference version is available.
+L’assistant doit corriger avant de fournir le fichier ou le ZIP.
 
-Report the validation summary in chat unless the user explicitly requests a report file.
+### 19.4 Règle de croissance normale
 
-The summary must state:
+Pour une version incrémentée normale, un fichier modifié doit être égal ou supérieur à la version précédente en contenu utile.
 
-- files checked;
-- old byte count;
-- new byte count;
-- old line count;
-- new line count;
-- status OK or FAIL.
+Dans le doute, ajouter une section append-only ou une entrée de changelog, mais ne jamais supprimer ou résumer l’existant.
 
-If even one file FAILS, do not deliver the ZIP as valid.
+Une modification réelle doit être intégrée par extension, remplacement ciblé conservateur ou ajout structuré, pas par réécriture condensée.
 
-Correct it before delivery.
+### 19.5 Règle spéciale pour les ZIP
 
-### 19.6 Special rule for specifications
+Avant de fournir un ZIP complet, l’assistant doit faire un contrôle anti-régression sur tous les fichiers modifiés contenus dans le ZIP, lorsque la version précédente ou de référence est disponible.
 
-The following files are append-only unless explicitly requested otherwise:
+Le résumé de validation doit être indiqué dans la réponse de chat, sauf demande explicite de fichier de rapport.
 
-- `SPECIFICATIONS.md`;
-- `SPECIFICATIONS_FR.md`;
-- `SPECIFICATIONS_GLOBAL.md`;
+Le résumé doit indiquer explicitement :
+
+- fichiers vérifiés ;
+- ancien nombre d’octets ;
+- nouveau nombre d’octets ;
+- ancien nombre de lignes ;
+- nouveau nombre de lignes ;
+- statut OK ou FAIL.
+
+Si un seul fichier est FAIL, le ZIP ne doit pas être livré comme valide.
+
+Le ZIP doit être corrigé avant livraison.
+
+### 19.6 Règle spéciale pour les spécifications
+
+Les fichiers suivants sont append-only sauf demande explicite contraire :
+
+- `SPECIFICATIONS.md` ;
+- `SPECIFICATIONS_FR.md` ;
+- `SPECIFICATIONS_GLOBAL.md` ;
 - `SPECIFICATIONS_GLOBAL_FR.md`.
 
-They must never be replaced by summarized versions.
+Ils ne doivent jamais être remplacés par des versions résumées.
 
-Every new requirement must be added to the existing structure and internal changelog.
+Toute nouvelle exigence doit être ajoutée à la structure existante et au changelog interne.
 
-Preserve old requirements, decisions, validations, acceptance criteria, and changelog entries.
+Les anciennes exigences, décisions, validations, critères d’acceptation et entrées de changelog doivent être conservés.
 
-### 19.7 Special rule for scripts
+### 19.7 Règle spéciale pour les scripts
 
-An existing script must never be replaced by a shorter script or condensed refactor unless explicitly requested.
+Un script existant ne doit jamais être remplacé par un script plus court ou un refactor condensé sauf demande explicite.
 
-Every correction must preserve:
+Toute correction doit préserver :
 
-- existing functions;
-- existing CLI options;
-- existing logs;
-- existing validations;
-- existing traps;
-- useful existing comments;
-- complete existing changelog;
-- user-validated behavior;
-- existing help;
-- existing examples;
-- existing error handling;
-- existing safeguards;
-- `--simulate`, `--help`, `--changelog`, `--prerequis`, `--install`, `--purge`, `--stop` modes when they exist or apply.
+- fonctions existantes ;
+- options CLI existantes ;
+- logs existants ;
+- validations existantes ;
+- traps existants ;
+- commentaires utiles existants ;
+- changelog complet existant ;
+- comportement validé par l’utilisateur ;
+- aide existante ;
+- exemples existants ;
+- gestion des erreurs existante ;
+- garde-fous existants ;
+- modes `--simulate`, `--help`, `--changelog`, `--prerequis`, `--install`, `--purge`, `--stop` lorsqu’ils existent ou sont applicables.
 
-Every real modification must increment the version, update date/time, and add an append-only changelog entry.
+Chaque modification réelle doit incrémenter la version, mettre à jour la date et l’heure, et ajouter une entrée changelog append-only.
 
-### 19.8 Special rule for documentary Markdown files
+### 19.8 Règle spéciale pour les fichiers Markdown documentaires
 
-An existing documentary Markdown file must never be replaced by a shorter version unless explicitly requested by the user.
+Un fichier Markdown documentaire existant ne doit jamais être remplacé par une version plus courte sauf demande explicite de l’utilisateur.
 
-Preserve existing sections, examples, explanations, prerequisites, limitations, procedures, safety notes, changelogs, and decisions.
+Les sections existantes, exemples, explications, prérequis, limites, procédures, notes de sécurité, changelogs et décisions doivent être conservés.
 
-A documentation update must add to, complete, or correct existing content without reducing it.
+Une mise à jour documentaire doit ajouter, compléter ou corriger le contenu existant sans le réduire.
 
-### 19.9 Special rule for changelogs
+### 19.9 Règle spéciale pour les changelogs
 
-All changelogs are append-only unless explicitly requested otherwise.
+Tous les changelogs sont append-only sauf demande explicite contraire.
 
-A new version adds an entry at the top or at the position required by existing structure without deleting or condensing older entries.
+Une nouvelle version doit ajouter une entrée au-dessus ou à l’endroit prévu par la structure existante, sans supprimer ni condenser les anciennes entrées.
 
-If both an external and internal changelog exist, both must remain consistent with the scope of the modification.
+Si un changelog externe et un changelog interne existent, les deux doivent rester cohérents avec le périmètre de la modification.
 
-### 19.10 Behavior when comparison is impossible
+### 19.10 Comportement en cas d’impossibilité de comparer
 
-If the assistant does not have the previous/reference version of an existing file, say so clearly.
+Si l’assistant ne dispose pas de la version précédente ou de référence d’un fichier existant, il doit le signaler clairement.
 
-In that case, avoid a condensed global rewrite.
+Dans ce cas, il doit éviter toute réécriture globale condensée.
 
-Produce a complete conservative version based on available content, or request the reference file when exact preservation is necessary.
+Il doit produire une version complète conservatrice basée sur le contenu disponible, ou demander le fichier de référence si la conservation exacte est nécessaire.
 
-### 19.16 Mandatory identification of the violated rule
+### 19.16 Identification obligatoire de la règle violée
 
-When the user reports a SOLO-compliance error and the assistant acknowledges it, the assistant must always explicitly identify:
+Quand l’utilisateur signale une erreur de conformité à SOLO et que l’assistant reconnaît l’erreur, l’assistant doit toujours indiquer explicitement :
 
-- the name of the relevant rule;
-- the exact SOLO section number;
-- behavior expected by that rule;
-- behavior delivered that violated it.
+- le nom de la règle concernée ;
+- le numéro exact de section SOLO concerné ;
+- le comportement attendu par cette règle ;
+- le comportement livré qui a violé cette règle.
 
-The assistant must not limit itself to `it is in SOLO`, `you are right`, or equivalent generic wording.
+L’assistant ne doit pas se limiter à dire « c’est bien dans SOLO », « tu as raison » ou une formulation générique équivalente.
 
-Expected format is concrete and verifiable.
+Le format attendu est concret et vérifiable.
 
-Example:
+Exemple :
 
 ```text
-Violated rule: SOLO405 §10.1 - Mandatory help.
-Expected: with no argument, the script displays help.
-Delivered by mistake: with no argument, the script started execution or another default behavior.
+Règle violée : SOLO405 §10.1 — Help obligatoire.
+Attendu : sans argument, le script affiche le help.
+Livré par erreur : sans argument, le script lançait l’exécution ou un comportement par défaut.
 ```
 
-This rule complements section `19.15` on factual explanation of rule errors.
+Cette règle complète la section `19.15` sur l’explication factuelle des erreurs de règles.
+
 
 ------------------------------------------------------------------------
 
-## SOLO405 ADDITION — VISIBLE VERSION IN WIDGETS, EXTENSIONS, AND INTERFACES
+## AJOUT SOLO405 — VERSION VISIBLE DANS WIDGETS, EXTENSIONS ET INTERFACES
 
-### Rule 405.1 — Visible version display in browser widgets and extensions
+### Règle 405.1 — Affichage visible de version dans les widgets et extensions browser
 
-When the assistant creates, corrects, or modifies a widget, browser extension, Brave/Chrome/Chromium/Firefox extension, WebExtension, userscript, popup, floating panel, embedded UI, or equivalent visual interface, it must provide a visible display of the code version in the user interface.
+Quand l’assistant crée, corrige ou modifie un widget, une extension browser, une extension Brave, Chrome, Chromium, Firefox, WebExtension, userscript, popup, panneau flottant, interface embarquée ou interface visuelle équivalente, il doit prévoir un affichage visible de la version du code dans l’interface utilisateur.
 
-The displayed version must be visible directly in the main interface area, ideally in the title bar, header, top banner, or another stable location.
+La version affichée doit être visible directement dans la zone principale de l’interface, idéalement dans la barre de titre, le header, le bandeau supérieur ou une zone stable équivalente.
 
-Purpose: let the user immediately verify which widget, popup, or UI-code version is actually loaded in the browser.
+Objectif : permettre à l’utilisateur de vérifier immédiatement quelle version du widget, popup ou code UI est réellement chargée dans le navigateur.
 
-The displayed version must be synchronized with the version declared in code/project files.
+L’affichage de version doit être synchronisé avec la version déclarée dans le code ou les fichiers du projet.
 
-If the project uses a version constant such as `APP_VERSION`, `WIDGET_VERSION`, `VERSION`, `EXTENSION_VERSION`, or equivalent, the interface must display that same value.
+Si le projet utilise une constante de version, par exemple `APP_VERSION`, `WIDGET_VERSION`, `VERSION`, `EXTENSION_VERSION` ou équivalent, l’interface doit afficher cette même valeur.
 
-If the project contains `manifest.json`, avoid inconsistencies between:
-- manifest version;
-- version displayed in the interface;
-- version in file headers;
-- version in README or CHANGELOG.
+Si le projet contient un `manifest.json`, l’assistant doit éviter les incohérences entre :
+- la version du manifest ;
+- la version affichée dans l’interface ;
+- la version indiquée dans les headers de fichiers ;
+- la version indiquée dans README ou CHANGELOG.
 
-This applies in particular to:
-- floating widget;
-- extension popup;
-- settings panel;
-- overlay;
-- export button;
-- debug interface;
-- voice-to-text interface;
-- text-to-voice interface;
-- autosend interface;
-- local-monitoring interface;
-- any test UI delivered with the code.
+La règle s’applique notamment aux éléments suivants :
+- widget flottant ;
+- popup d’extension ;
+- panneau de configuration ;
+- overlay ;
+- bouton d’export ;
+- interface de debug ;
+- interface de voice-to-text ;
+- interface de text-to-voice ;
+- interface d’autosend ;
+- interface de monitoring local ;
+- toute UI de test livrée avec le code.
 
-Recommended format is short and readable, for example:
-- `v1.2.3`;
-- `Widget v1.2.3`;
-- `Export Widget v1.2.3`;
+Le format recommandé est court et lisible, par exemple :
+- `v1.2.3` ;
+- `Widget v1.2.3` ;
+- `Export Widget v1.2.3` ;
 - `AutoSend v1.2.3`.
 
-Do not hide the version only in code, the manifest, console, README, or changelog.
+L’assistant ne doit pas cacher la version uniquement dans le code, dans le manifest, dans la console, dans le README ou dans le changelog.
 
-The version may also appear in an About area, but that does not replace the main visible display when the user uses or requests a working widget.
+La version peut aussi être disponible dans une zone About, mais cela ne remplace pas l’affichage visible principal lorsque l’utilisateur demande ou utilise un widget de travail.
 
-When a widget/extension correction is delivered, verify that the visible version was updated if the code version was incremented.
+Lorsqu’une correction de widget ou d’extension est livrée, l’assistant doit vérifier que la version visible a été mise à jour si la version du code a été incrémentée.
 
 ------------------------------------------------------------------------
 
-## SOLO406 ADDITION — TITLES FOR ACTIVE SCRIPTING, DEV, AND DEBUG CHATS
+## AJOUT SOLO406 — TITRAGE DES CHATS ACTIFS DE SCRIPTING, DEV ET DEBUG
 
-When a chat is actively used for scripting, development, debugging, a browser extension, UI work, repo workflow, a technical correction, or an ongoing code project, the assistant must propose an active-chat title using the global convention:
+Quand un chat sert activement à du scripting, du développement, du debug, une extension browser, une interface UI, un workflow repo, une correction technique ou un projet de code en cours, l’assistant doit proposer un titre de chat actif selon la convention globale :
 
 ```text
-000. +++<TYPE>_<PROJECT_OR_SCOPE>_<VERSIONS_OR_CONTEXT>_<YYYYMMDD>
+000. +++<TYPE>_<PROJET_OU_SCOPE>_<VERSIONS_OU_CONTEXTE>_<YYYYMMDD>
 ```
 
-Mandatory prefix for a currently used chat:
+Le préfixe obligatoire pour un chat actuellement utilisé est :
 
 ```text
 000. +++
 ```
 
-Examples:
+Exemples adaptés au scripting et au développement :
 
 ```text
 000. +++SCRIPT_FIREWALL_CTX227_S406_20260630
@@ -1795,79 +1798,79 @@ Examples:
 000. +++REPO_CREATE_GITIGNORE_S406_20260630
 ```
 
-The title must be short, visible in ChatGPT search, sortable, and immediately understandable.
+Le titre doit être court, visible dans la recherche ChatGPT, triable et directement compréhensible.
 
-Older chats, tests, drafts, archives, or non-current workflows may keep `001.`, `002.`, `003.`, or equivalent.
+Les anciens chats, essais, brouillons, archives ou workflows non courants peuvent conserver `001.`, `002.`, `003.` ou équivalent.
 
-The assistant must not claim it can rename the chat automatically unless the interface explicitly provides that capability. It must provide a ready-to-copy title.
+L’assistant ne doit pas prétendre pouvoir renommer automatiquement le chat si l’interface ne lui donne pas explicitement cette capacité. Il doit fournir un titre prêt à copier-coller.
 
-The title must never contain personal, medical, family, private, sensitive, nominative data, secrets, tokens, private URLs, or sensitive local paths.
+Le titre ne doit jamais contenir de donnée personnelle, médicale, familiale, privée, sensible, nominative, secret, token, URL privée ou chemin local sensible.
 
-This rule complements script versioning rules and does not replace them.
+Cette règle complète les règles de versionnement des scripts et ne les remplace pas.
 
 ------------------------------------------------------------------------
 
-## SOLO407 ADDITION — REPOSITORY STRUCTURE, ZIP UNDER `.zip/`, AND MANDATORY `.gitignore`
+## AJOUT SOLO407 — STRUCTURE REPO, ZIP SOUS `.zip/` ET `.gitignore` OBLIGATOIRE
 
-For scripts, workflows, or file generation related to `ai-context-rules`, respect the following canonical structure.
+Pour les scripts, workflows ou générations de fichiers liés au dépôt `regles_contextualisation`, l’assistant doit respecter la structure canonique suivante.
 
-Public `_RULES_SOLO...md` files go at repository root.
+Les fichiers `_RULES_SOLO...md` publics vont à la racine du dépôt.
 
-Delivery README and CHANGELOG files go under:
+Les fichiers README et CHANGELOG de livraison vont sous :
 
 ```text
 .docs/
 ```
 
-All generated ZIP files go under:
+Tous les ZIP générés vont sous :
 
 ```text
 .zip/
 ```
 
-`.gitignore` must be included with every new version or delivery, even when unchanged.
+Le fichier `.gitignore` doit être livré avec chaque nouvelle version ou livraison, même s’il est inchangé.
 
-This is a safeguard against scripts, ZIP extractions, or manual copies that could modify or overwrite exclusions.
+Cette règle sert de sécurité contre les scripts, extractions ZIP ou copies manuelles qui modifieraient ou écraseraient les exclusions.
 
-Private files using this prefix may remain locally at root:
+Les fichiers privés nommés avec le préfixe suivant peuvent rester localement à la racine :
 
 ```text
 _RULES_PRIVATE_*
 ```
 
-They must remain excluded by `.gitignore` and must never be included in a public package.
+Ils doivent rester exclus par `.gitignore` et ne doivent jamais être inclus dans un package public.
 
-When a packaging script creates a full export for the repository, the archive must be extract-here ready:
+Quand un script de packaging crée un full export pour le dépôt, l’archive doit être extract-here ready :
 
-- public RULES at root;
-- `README.md` and `.gitignore` at root when provided;
-- delivery README/CHANGELOG under `.docs/`;
-- single-rule ZIPs and packages under `.zip/`;
-- no private content in public packages.
+- RULES publics à la racine ;
+- `README.md` et `.gitignore` à la racine si fournis ;
+- README/CHANGELOG de livraison sous `.docs/` ;
+- ZIP règle-seule et packages sous `.zip/` ;
+- aucun contenu privé dans les packages publics.
 
-Before announcing a ZIP as delivered, the script or assistant must verify:
-- ZIP actually exists;
-- internal contents;
-- absence of `.private/`, `.old/`, `_RULES_PRIVATE_*` in public packages;
-- presence of `.gitignore` in the delivery.
+Avant d’annoncer un ZIP comme livré, le script ou l’assistant doit vérifier :
+- existence réelle du ZIP ;
+- contenu interne ;
+- absence de `.private/`, `.old/`, `_RULES_PRIVATE_*` dans les packages publics ;
+- présence de `.gitignore` dans la livraison.
 
 ------------------------------------------------------------------------
 
-## 22. SOLO408 ADDITION — HUMAN-READABLE TITLES FOR ACTIVE SCRIPTING AND DEVELOPMENT CHATS
+## 22. AJOUT SOLO408 — TITRAGE LISIBLE DES CHATS ACTIFS DE SCRIPTING ET DÉVELOPPEMENT
 
-The canonical active scripting/development chat-title format replaces the old `000. +++...` format.
+Le format canonique de titrage des chats actifs de scripting et développement remplace l’ancien format `000. +++...`.
 
-An active scripting, development, extension, debug, technical-documentation, or repository-work chat must use a short, readable, sortable title.
+Un chat actif de scripting, développement, extension, debug, documentation technique ou travail de dépôt doit utiliser un titre lisible, court et triable.
 
-Recommended format:
+Le format recommandé est :
 
 ```text
-000. <readable_type> +++<TECH_TYPE>_<PROJECT_OR_SCOPE>_<VERSIONS_OR_CONTEXT>_<YYYYMMDD>
+000. <type_lisible> +++<TYPE_TECH>_<PROJET_OU_SCOPE>_<VERSIONS_OU_CONTEXTE>_<YYYYMMDD>
 ```
 
-`<readable_type>` must appear immediately after `000.`.
+Le `<type_lisible>` doit apparaître immédiatement après `000.`.
 
-Recommended examples:
+Exemples recommandés :
 
 ```text
 000. scripting +++SCRIPT_FIREWALL_CTX230_S409_20260726
@@ -1876,76 +1879,78 @@ Recommended examples:
 000. repo +++PROJECT_REPO_CLEANUP_CTX230_S409_20260726
 ```
 
-`000.` indicates that the chat is active or prioritized.
+`000.` indique que le chat est actif ou prioritaire.
 
-`+++` remains the quick-search marker but comes after the readable type.
+`+++` reste le marqueur de recherche rapide, mais il vient après le type lisible.
 
-The assistant must not claim it can rename the chat automatically unless the interface explicitly provides that capability.
+L’assistant ne doit pas prétendre pouvoir renommer automatiquement le chat si l’interface ne lui donne pas explicitement cette capacité.
 
-The title must never contain a secret, token, sensitive local path, private data, medical data, family data, or non-public information.
+Le titre ne doit jamais contenir de secret, token, chemin local sensible, donnée privée, donnée médicale, donnée familiale ou information non publiable.
 
-This rule does not replace versioning of files, scripts, packages, documents, or deliverables.
+Cette règle ne remplace pas le versionnement des fichiers, scripts, packages, documents ou livrables.
 
 ------------------------------------------------------------------------
 
-## 23. SOLO408 ADDITION — SOLOLAST LOADING, BYPASS, AND TARGETED SCRIPTING ACTIVATION
+------------------------------------------------------------------------
 
-For scripting requests, Custom Instructions or startup instructions may automatically load generic SOLO files from GitHub.
+## 23. AJOUT SOLO408 — CHARGEMENT SOLOLAST, BYPASS ET ACTIVATION SCRIPTING CIBLÉE
 
-The generic public file for this family is:
+Pour les demandes de scripting, les Custom Instructions ou consignes de démarrage peuvent charger automatiquement des fichiers SOLO génériques depuis GitHub.
+
+Le fichier générique public de cette famille est :
 
 ```text
 _RULES_SOLOLAST_SCRIPTING.md
 ```
 
-This file must be a copy of the latest active scripting-family version.
+Ce fichier doit être une copie de la dernière version active de la famille scripting.
 
-When a SOLO scripting delivery is produced, provide both:
+Lorsqu’une livraison SOLO scripting est produite, l’assistant doit fournir à la fois :
 
 ```text
 _RULES_SOLO408_SCRIPTING.md
 _RULES_SOLOLAST_SCRIPTING.md
 ```
 
-The versioned file is for history.
+Le fichier versionné sert à l’historique.
 
-`SOLOLAST` is for stable GitHub-URL loading, especially from Custom Instructions.
+Le fichier `SOLOLAST` sert au chargement stable par URL GitHub, notamment depuis les Custom Instructions.
 
-If the first message of a new chat contains a clear bypass such as `do not fetch the rules`, `no SOLO at startup`, `no GitHub rules`, `normal chat`, or equivalent, do not automatically load SOLO scripting from GitHub.
+Si le premier message d’un nouveau chat contient un bypass clair, par exemple `ne va pas chercher les rules`, `pas de SOLO au démarrage`, `pas de rules GitHub`, `chat normal`, ou équivalent, l’assistant ne doit pas charger automatiquement SOLO scripting depuis GitHub.
 
-This bypass does not permanently disable SOLO scripting. The user may later explicitly request `apply the SOLO scripting rules`, `scripting repo mode`, `simple scripting mode`, `load SOLO scripting`, or equivalent.
+Ce bypass ne désactive pas définitivement SOLO scripting. L’utilisateur peut ensuite demander explicitement `applique les rules SOLO scripting`, `mode scripting repo`, `mode scripting simple`, `charge SOLO scripting`, ou équivalent.
 
-When SOLO scripting is activated after bypass, first load general contextualization if it has not already been loaded, then load `_RULES_SOLOLAST_SCRIPTING.md`.
+Quand SOLO scripting est activé après bypass, l’assistant doit d’abord charger la contextualisation générale si elle n’a pas encore été chargée, puis charger `_RULES_SOLOLAST_SCRIPTING.md`.
 
-Never claim to have read a GitHub file if the actual read was not performed or access failed.
+L’assistant ne doit jamais prétendre avoir lu un fichier GitHub si la lecture réelle n’a pas été effectuée ou si l’accès a échoué.
 
-If the user supplies a newer or higher-priority SOLO scripting file in chat, that supplied file becomes the reference for the current chat.
+Si l’utilisateur fournit dans le chat une version plus récente ou prioritaire du fichier SOLO scripting, cette version fournie dans le chat devient la référence du chat courant.
 
-This rule complements general contextualization and Operator rules without replacing platform system rules or technical limits.
+Cette règle complète la contextualisation générale et les règles Operator, sans remplacer les règles système ni les limites techniques de la plateforme.
 
 ------------------------------------------------------------------------
 
-## 24. SOLO409 ADDITION — FINAL PUBLIC STRUCTURE, NAME-BASED CONFIDENTIALITY, AND README
+## 24. AJOUT SOLO409 — STRUCTURE PUBLIQUE FINALE, CONFIDENTIALITÉ NOMINATIVE ET README
 
-For scripting work related to `ai-context-rules`, the final public structure recognizes:
+Pour les travaux de scripting liés au dépôt `regles_contextualisation`, la structure publique finale reconnaît :
 
 ```text
 AGENTS.md
 CLAUDE.md -> AGENTS.md
 README.md
 _CUSTOM_INSTRUCTIONS.md
-_RULES_SOLOxxx_CONTEXTUALIZATION.md
+_RULES_SOLOxxx_CONTEXTUALISATION.md
 _RULES_SOLOxxx_SCRIPTING.md
 _RULES_SOLOxxx_RULESOPERATOR.md
-_RULES_SOLOLAST_CONTEXTUALIZATION.md
+_RULES_SOLOLAST_CONTEXTUALISATION.md
 _RULES_SOLOLAST_SCRIPTING.md
 _RULES_SOLOLAST_RULESOPERATOR.md
 AI_STUDYING_FILES/
 ```
 
-`AI_STUDYING_FILES/` is public when the user confirms that publication is intentional.
+`AI_STUDYING_FILES/` est public lorsque l’utilisateur confirme que sa publication est volontaire.
 
-The following local folders remain outside normal publication:
+Les dossiers locaux suivants restent hors publication normale :
 
 ```text
 .docs/
@@ -1955,67 +1960,67 @@ The following local folders remain outside normal publication:
 .tmp/
 ```
 
-This generic pattern may be publicly documented as an exclusion:
+Le pattern générique suivant est autorisé publiquement pour documenter une exclusion :
 
 ```text
 _RULES_PRIVATE_*
 ```
 
-Exact real private filenames must not appear in public rules, README, public examples, public packages, or the GitHub remote.
+Les noms complets réels des fichiers privés ne doivent pas apparaître dans les règles publiques, README, exemples publics, packages publics ou remote GitHub.
 
-Local private files may remain at root if `_RULES_PRIVATE_*` is present in `.gitignore`.
+Les fichiers privés locaux peuvent rester à la racine si `_RULES_PRIVATE_*` est bien présent dans `.gitignore`.
 
-`.private/` may remain empty.
+`.private/` peut rester vide.
 
-When active versions, public filenames, or public structure change, synchronize `README.md` in the same delivery.
+Quand les versions actives, les noms de fichiers publics ou la structure publique changent, `README.md` doit être synchronisé dans la même livraison.
 
-`chmod 444 .gitignore` may be proposed as local protection after validation, but must not be presented as portable Git protection.
+`chmod 444 .gitignore` peut être proposé comme protection locale après validation, mais ne doit pas être présenté comme une protection Git portable.
 
-Before final delivery, verify:
+Avant livraison finale, l’assistant doit vérifier :
 
-- no exact real private filenames in public files;
-- `_RULES_PRIVATE_*` is present in `.gitignore`;
-- exact alignment of versioned and `SOLOLAST` files;
-- README synchronized with active versions;
-- ZIPs actually created and contents actually listed.
-
-------------------------------------------------------------------------
-
-## 25. SOLO410 ADDITION — AUTOMATIC SCRIPTING REPO MODE ACTIVATION
-
-`scripting repo` mode must be activated automatically as soon as supplied information demonstrates that an existing repository, versioned project, extension, or application is involved, even without an explicit request for the mode.
-
-Sufficient evidence includes:
-- output from `ll`, `ll -R`, `tree`, `find`, or equivalent showing a project tree;
-- presence or mention of `.git/`, `.gitignore`, `AGENTS.md`, or `CLAUDE.md`;
-- logs for creation, initialization, cloning, commit, push, or another Git operation;
-- GitHub, GitLab, or equivalent repository URL;
-- presence of `manifest.json`, `package.json`, README, CHANGELOG, source files, or extension/application structure;
-- ZIP, archive, or full project file list;
-- a request clearly concerning an existing repository.
-
-Repository evidence takes precedence over the absence of the phrase `scripting repo mode`. The assistant must not remain in simple mode when a repository is objectively identified.
+- absence de noms complets réels de fichiers privés dans les fichiers publics ;
+- présence de `_RULES_PRIVATE_*` dans `.gitignore` ;
+- alignement exact des fichiers versionnés et `SOLOLAST` ;
+- README synchronisé avec les versions actives ;
+- ZIP réellement créés et contenu réellement listé.
 
 ------------------------------------------------------------------------
 
-## 26. SOLO410 ADDITION — ABSOLUTE AGENTS.MD AND CLAUDE.MD LOCK
+## 25. AJOUT SOLO410 — ACTIVATION AUTOMATIQUE DU MODE SCRIPTING REPO
 
-In every repository covered by SOLO scripting:
-- never modify `AGENTS.md`;
-- never delete, replace, recreate, copy over, or transform `CLAUDE.md`;
-- strictly preserve the `CLAUDE.md -> AGENTS.md` symbolic link;
-- before and after work, verify that `CLAUDE.md` is still a symlink pointing exactly to `AGENTS.md`;
-- before and after work, verify that `AGENTS.md` content and fingerprint are unchanged.
+Le mode `scripting repo` doit être activé automatiquement dès que les informations fournies démontrent qu’un dépôt, projet versionné, extension ou application existante est concerné, même sans demande explicite de ce mode.
 
-If `CLAUDE.md` is absent, not a symlink, or points elsewhere, only report it. Never repair it automatically.
+Les preuves suffisantes comprennent notamment :
+- sortie de `ll`, `ll -R`, `tree`, `find` ou équivalent montrant une arborescence de projet ;
+- présence ou mention de `.git/`, `.gitignore`, `AGENTS.md` ou `CLAUDE.md` ;
+- logs de création, initialisation, clonage, commit, push ou autre opération Git ;
+- URL de dépôt GitHub, GitLab ou équivalent ;
+- présence de `manifest.json`, `package.json`, README, CHANGELOG, fichiers source ou structure d’extension/application ;
+- ZIP, archive ou liste complète des fichiers d’un projet ;
+- demande portant clairement sur un dépôt existant.
 
-This prohibition applies regardless of scripting mode, delivery type, ZIP contents, or general synchronization request.
+Une preuve de dépôt prime sur l’absence de la formule `mode scripting repo`. L’assistant ne doit pas rester en mode simple lorsqu’un dépôt est objectivement identifié.
 
 ------------------------------------------------------------------------
 
-## 27. SOLO410 ADDITION — PERMANENT ADDITIVE `.gitignore` BASELINE
+## 26. AJOUT SOLO410 — VERROU ABSOLU AGENTS.MD ET CLAUDE.MD
 
-For all repository work, whatever the active mode, the final `.gitignore` must preserve every existing exclusion and contain at minimum:
+Dans tout dépôt concerné par SOLO scripting :
+- ne jamais modifier `AGENTS.md` ;
+- ne jamais supprimer, remplacer, recréer, copier par-dessus ou transformer `CLAUDE.md` ;
+- préserver strictement le lien symbolique `CLAUDE.md -> AGENTS.md` ;
+- vérifier avant et après le travail que `CLAUDE.md` est toujours un lien pointant exactement vers `AGENTS.md` ;
+- vérifier avant et après le travail que le contenu et l’empreinte de `AGENTS.md` sont inchangés.
+
+Si `CLAUDE.md` est absent, n’est pas un lien symbolique ou pointe ailleurs, l’assistant doit seulement le signaler. Il ne doit jamais le réparer automatiquement.
+
+Cette interdiction reste applicable quel que soit le mode de scripting, le type de livraison, le contenu d’un ZIP ou la demande de synchronisation générale.
+
+------------------------------------------------------------------------
+
+## 27. AJOUT SOLO410 — SOCLE PERMANENT ET ADDITIF `.gitignore`
+
+Pour tout travail de dépôt, quel que soit le mode activé, le `.gitignore` final doit conserver toutes les exclusions déjà présentes et contenir au minimum :
 
 ```gitignore
 .old/
@@ -2045,140 +2050,139 @@ secrets/
 *RULES_PRIVATE*
 ```
 
-This baseline is additive. Never replace an existing `.gitignore` with an incomplete template or remove an existing exclusion in the name of normalization.
+Ce socle est additif. L’assistant ne doit jamais remplacer un `.gitignore` existant par un modèle incomplet ni supprimer une exclusion existante sous prétexte de normalisation.
 
-Strictly identical duplicates may be deduplicated without changing pattern scope. Existing variants must be kept when they do not have exactly the same scope.
+Les doublons strictement identiques peuvent être dédupliqués sans modifier la portée des patterns. Les variantes existantes doivent être conservées lorsqu’elles n’ont pas exactement la même portée.
 
-If the existing `.gitignore` is neither supplied nor accessible, ask for it before producing the final version. Never assume the minimal baseline is the entire existing file.
+Si le `.gitignore` existant n’est ni fourni ni accessible, l’assistant doit le demander avant de produire sa version finale. Il ne doit pas supposer que le socle minimal représente tout le fichier existant.
 
-Before delivery, verify every mandatory entry is present, all older exclusions are preserved, and the delivered `.gitignore` is the one actually used in the relevant ZIPs.
-
-------------------------------------------------------------------------
-
-## 28. SOLO411 ADDITION — MANDATORY PRE-FLIGHT COMPLIANCE GATE
-
-Before creating, modifying, replacing, renaming, moving, packaging, or delivering any file in a context governed by SOLO Scripting, the assistant must perform an explicit pre-flight compliance check against all currently loaded and applicable SOLO rules.
-
-This check is mandatory before any write or delivery. It complements the gates and protections already defined in SOLO, including preservation/non-regression, versioning, size, header/changelog, packaging, `.gitignore`, `AGENTS.md` / `CLAUDE.md` protection, and delivery. It does not create parallel rules where these controls already exist; it turns them into a mandatory execution checklist before action.
-
-The assistant must never rely on memory, usual convention, best practice, or what seems cleaner when a loaded SOLO rule already defines expected behavior.
-
-When relevant, the check must confirm:
-
-- complete preservation of existing features, behaviors, comments, validations, logs, help, examples, CLI options, histories, changelogs, and content;
-- no unrequested deletion, condensation, simplification, or reduction;
-- correct version increment and date/time update when versioning rules require it;
-- compliance with size/comparison gates when applicable;
-- compliance with applicable headers, changelogs, and append-only histories;
-- strict repository protections, especially `AGENTS.md`, `CLAUDE.md`, and instruction symlinks;
-- `.gitignore` changes are additive only: preserve all existing exclusions, remove only strictly identical duplicates when permitted, and add missing mandatory exclusions;
-- delivery and packaging mode is respected, including ZIP delivery when applicable rules require it;
-- no functional, documentary, validation, or packaging regression.
-
-If even one applicable rule cannot be verified with certainty, before writing or delivering the assistant must:
-
-1. stop the relevant action;
-2. reread the relevant rule or reference source;
-3. compare old and new file when applicable;
-4. correct the discrepancy;
-5. repeat the check until compliant.
-
-`The rules were loaded but I did not apply them` is never an acceptable justification. A loaded, applicable SOLO rule is an execution constraint, not a recommendation.
-
-Pre-flight must be repeated for every newly delivered version, even when an earlier version of the same file was already checked. A previous check never automatically validates a new version.
-
-Core rule: **no file governed by SOLO Scripting may be written or delivered before explicit validation of the SOLO rules applicable to the current change.**
+Avant livraison, vérifier que chaque entrée obligatoire est présente, que les anciennes exclusions sont conservées et que le `.gitignore` livré est celui réellement utilisé dans les ZIP concernés.
 
 ------------------------------------------------------------------------
 
-## 29. SOLO412 ADDITION — MANDATORY MULTI-FILE ZIP DELIVERY GATE
+## 28. AJOUT SOLO411 — MANDATORY PRE-FLIGHT COMPLIANCE GATE
 
-This rule formalizes the mandatory final delivery check defined by section `6.2`.
+Avant toute création, modification, remplacement, renommage, déplacement, packaging ou livraison d’un fichier dans un contexte soumis à SOLO Scripting, l’assistant doit effectuer un contrôle de conformité pré-flight explicite avec toutes les règles SOLO actuellement chargées et applicables.
 
-Before every final response containing downloadable artifacts, after all modifications, corrections, and validations, the assistant must perform this gate:
+Ce contrôle est obligatoire avant toute écriture ou livraison. Il complète les gates et protections déjà définis dans SOLO, notamment les règles de conservation et non-régression, de versionnement, de taille, de header/changelog, de packaging, de `.gitignore`, de protection `AGENTS.md` / `CLAUDE.md` et de livraison. Il ne crée pas de règle parallèle lorsque ces contrôles existent déjà : il les transforme en checklist d’exécution obligatoire avant action.
 
-1. count the files that actually compose the final delivery;
-2. if total equals `1`, deliver that file directly;
-3. if total is `2` or more, verify that a final ZIP exists;
-4. open or inspect the ZIP to confirm that it contains exactly the expected final versions;
-5. recreate the ZIP if any file was modified after ZIP generation;
-6. provide the ZIP as the primary delivery artifact;
-7. only after all points pass, send the final response.
+L’assistant ne doit jamais se fier à sa mémoire, à une convention habituelle, à une bonne pratique ou à ce qui lui semble plus propre lorsqu’une règle SOLO chargée définit déjà le comportement attendu.
 
-A delivery of two or more files without a ZIP is a blocking non-compliance.
+Le contrôle doit confirmer, lorsque pertinent :
 
-Never consider compliant a response that forces several separate downloads when two or more files belong to the same delivery.
+- conservation intégrale des fonctionnalités, comportements, commentaires, validations, logs, aide, exemples, options CLI, historiques, changelogs et contenus existants ;
+- absence de suppression, condensation, simplification ou réduction non demandée ;
+- incrémentation correcte de version et mise à jour de la date/heure lorsque les règles de versionnement l’exigent ;
+- respect du gate de taille et de comparaison avec la version précédente lorsque ce contrôle est applicable ;
+- respect des headers, changelogs et historiques append-only applicables ;
+- respect strict des protections de dépôt, notamment `AGENTS.md`, `CLAUDE.md` et les symlinks d’instruction ;
+- modification du `.gitignore` uniquement de manière additive : conservation de toutes les exclusions existantes, suppression autorisée des seuls doublons strictement identiques et ajout des exclusions obligatoires manquantes ;
+- respect du mode de livraison et de packaging, notamment la fourniture d’un ZIP lorsque les règles applicables l’imposent ;
+- absence de régression fonctionnelle, documentaire, de validation ou de packaging.
 
-Earlier individual links, files already created in chat, or files already displayed do not change this requirement.
+Si une seule règle applicable ne peut pas être vérifiée avec certitude, l’assistant doit, avant toute écriture ou livraison :
 
-This rule is part of the SOLO411 pre-flight and must be checked for every new delivery. It supersedes any older exception that allowed separate delivery of two small files.
+1. stopper l’action concernée ;
+2. relire la règle ou la source de référence concernée ;
+3. comparer l’ancien et le nouveau fichier lorsque cette comparaison est applicable ;
+4. corriger l’écart ;
+5. répéter le contrôle jusqu’à conformité.
 
-Core rule: **1 file = direct delivery; 2 or more files = mandatory ZIP containing every final version.**
+La formulation « les règles étaient chargées mais je ne les ai pas appliquées » ne constitue jamais une justification acceptable. Une règle SOLO chargée et applicable est une contrainte d’exécution, pas une recommandation.
 
+Le pre-flight doit être répété à chaque nouvelle version livrée, même si une version précédente du même fichier a déjà été contrôlée. Un contrôle antérieur ne vaut jamais validation automatique d’une nouvelle version.
+
+Règle centrale : **aucun fichier soumis à SOLO Scripting ne doit être écrit ou livré avant validation explicite des règles SOLO applicables au changement courant.**
 
 ------------------------------------------------------------------------
 
-## 30. SOLO413 ADDITION — BLOCKING CANONICAL CLI COMPLIANCE GATE
+## 29. AJOUT SOLO412 — MANDATORY MULTI-FILE ZIP DELIVERY GATE
 
-This section fixes ambiguity between preservation of an existing CLI and the canonical SOLO control interface. It does not create a parallel CLI standard: it clarifies precedence and makes the already-defined CLI requirements executable and blocking.
+Cette règle formalise le contrôle final obligatoire de livraison défini par la section `6.2`.
 
-### 30.1 Canonical control actions and reserved aliases
+Avant toute réponse finale contenant des artefacts téléchargeables, l’assistant doit effectuer le gate suivant après toutes les modifications, corrections et validations :
 
-For every durable CLI script governed by SOLO, the following control options are canonical when applicable:
+1. compter les fichiers qui composent réellement la livraison finale ;
+2. si le total est égal à `1`, livrer directement ce fichier ;
+3. si le total est supérieur ou égal à `2`, vérifier qu’un ZIP final existe ;
+4. ouvrir ou inspecter le ZIP pour confirmer qu’il contient exactement les versions finales attendues ;
+5. recréer le ZIP si un fichier a été modifié après sa génération ;
+6. fournir le ZIP comme artefact principal de livraison ;
+7. seulement après validation de ces points, envoyer la réponse finale.
+
+Une livraison de deux fichiers ou plus sans ZIP est une non-conformité bloquante.
+
+L’assistant ne doit jamais considérer comme conforme une réponse qui impose plusieurs téléchargements séparés alors que deux fichiers ou plus appartiennent à la même livraison.
+
+La présence antérieure de liens individuels, de fichiers déjà créés dans le chat ou de fichiers déjà affichés ne change pas cette obligation.
+
+Cette règle fait partie du pre-flight de SOLO411 et doit être vérifiée à chaque nouvelle livraison. Elle prévaut sur toute ancienne exception autorisant la livraison séparée de deux petits fichiers.
+
+Règle centrale : **1 fichier = livraison directe ; 2 fichiers ou plus = ZIP obligatoire contenant toutes les versions finales.**
+
+------------------------------------------------------------------------
+
+## 30. AJOUT SOLO413 — GATE BLOQUANT DE CONFORMITÉ CLI CANONIQUE
+
+Cette section corrige l’ambiguïté entre la conservation d’une CLI existante et l’interface de contrôle canonique SOLO. Elle ne crée pas un standard CLI parallèle : elle clarifie la priorité et rend exécutables et bloquantes les exigences CLI déjà définies.
+
+### 30.1 Actions de contrôle canoniques et alias réservés
+
+Pour tout script CLI durable soumis à SOLO, les options de contrôle suivantes sont canoniques lorsqu’elles sont applicables :
 
 ```text
---help       -h    display complete help
---exec       -exe  authorize real execution of a business action
---simulate   -s    execute the selected business action in dry-run mode
---prerequis  -pr   check prerequisites
---install    -i    install missing prerequisites when automated installation is applicable
---stop       -st   stop runtime activity started by the script when applicable
---changelog  -ch   display the complete changelog
---purge      -pu   purge only runtime artifacts managed by the script when applicable
+--help       -h    afficher l’aide complète
+--exec       -exe  autoriser l’exécution réelle d’une action métier
+--simulate   -s    exécuter l’action métier sélectionnée en dry-run
+--prerequis  -pr   vérifier les prérequis
+--install    -i    installer les prérequis manquants lorsque l’installation automatisée est applicable
+--stop       -st   arrêter l’activité runtime démarrée par le script lorsque applicable
+--changelog  -ch   afficher le changelog complet
+--purge      -pu   purger uniquement les artefacts runtime gérés par le script lorsque applicable
 ```
 
-These short aliases are **reserved SOLO control aliases** whenever the corresponding control option applies.
+Ces alias courts sont des **alias de contrôle SOLO réservés** dès que l’option de contrôle correspondante est applicable.
 
-A business-specific option must never reuse a reserved active control alias.
+Une option métier ne doit jamais réutiliser un alias de contrôle réservé actif.
 
-Examples of forbidden collisions when the control option applies:
+Exemples de collisions interdites lorsque l’option de contrôle correspondante est applicable :
 
 ```text
--i  = --interface     # forbidden if -i is reserved by --install
--s  = --station       # forbidden because -s is reserved by --simulate
--h  = --host          # forbidden because -h is reserved by --help
--pr = business option # forbidden because -pr is reserved by --prerequis
+-i  = --interface     # interdit si -i est réservé par --install
+-s  = --station       # interdit car -s est réservé par --simulate
+-h  = --host          # interdit car -h est réservé par --help
+-pr = option métier   # interdit car -pr est réservé par --prerequis
 ```
 
-Business-specific options keep their long form. If a conflicting legacy short alias exists, the assistant must preserve the business behavior but remove or remap only the conflicting short alias. It must not invent a replacement short alias unless it is unambiguous or explicitly requested.
+Les options métier conservent leur forme longue. Si un alias court historique entre en conflit, l’assistant doit préserver le comportement métier mais supprimer ou remapper uniquement l’alias court en conflit. Il ne doit pas inventer un nouvel alias court sauf s’il est non ambigu ou explicitement demandé.
 
-### 30.2 Explicit precedence over generic preservation rules
+### 30.2 Priorité explicite sur les règles génériques de conservation
 
-When the user requests SOLO-compliant CLI normalization, or when a script is being created/rebuilt under SOLO, this section has priority over the generic "do not rename existing CLI options" preservation rule **only for direct alias conflicts with the canonical SOLO control interface**.
+Lorsque l’utilisateur demande une normalisation CLI conforme SOLO, ou lorsqu’un script est créé/reconstruit sous SOLO, cette section prime sur la règle générique « ne pas renommer les options CLI existantes » **uniquement pour les conflits directs d’alias avec l’interface de contrôle canonique SOLO**.
 
-The required priority is:
+La priorité obligatoire est :
 
 ```text
-canonical SOLO control interface
+interface de contrôle canonique SOLO
     >
-conflicting legacy short alias
+alias court historique en conflit
     >
-generic preservation of that conflicting alias
+conservation générique de cet alias en conflit
 ```
 
-This exception is narrow. It does not authorize removal of business functionality, long option names, behaviors, defaults, output, validation, or non-conflicting CLI options.
+Cette exception est étroite. Elle n’autorise pas la suppression de fonctionnalités métier, de noms d’options longues, de comportements, de valeurs par défaut, de sorties, de validations ou d’options CLI non conflictuelles.
 
-Any alias remap caused by this rule must be documented in the script changelog and help.
+Tout remappage d’alias provoqué par cette règle doit être documenté dans le changelog du script et dans son aide.
 
-### 30.3 Canonical business-action invocation
+### 30.3 Invocation canonique des actions métier
 
-For durable CLI scripts with operational business modes, the canonical real-execution form is:
+Pour les scripts CLI durables comportant des modes métier opérationnels, la forme canonique d’exécution réelle est :
 
 ```text
-./script.sh --exec --<business-action> [OPTIONS]
+./script.sh --exec --<action-metier> [OPTIONS]
 ```
 
-Examples:
+Exemples :
 
 ```text
 ./script.sh --exec --capture
@@ -2188,9 +2192,9 @@ Examples:
 ./script.sh --exec --scan
 ```
 
-The business action is an explicit long option such as `--capture`, `--check`, `--crack`, `--scan`, or `--sync`.
+L’action métier est une option longue explicite telle que `--capture`, `--check`, `--crack`, `--scan` ou `--sync`.
 
-Unless the user explicitly requests a positional CLI, the assistant must not silently replace the canonical form with positional business actions such as:
+Sauf demande explicite de l’utilisateur pour une CLI positionnelle, l’assistant ne doit pas remplacer silencieusement cette forme canonique par des actions métier positionnelles telles que :
 
 ```text
 ./script.sh CAPTURE
@@ -2200,128 +2204,128 @@ Unless the user explicitly requests a positional CLI, the assistant must not sil
 ./script.sh <ACTION> [OPTIONS]
 ```
 
-The official help template `[ACTION] [OPTIONS]` from older sections must therefore be interpreted as a semantic placeholder, not permission to invent positional action tokens. For SOLO413-compliant business actions, render the help using the real option form:
+L’ancien modèle d’aide officiel `[ACTION] [OPTIONS]` présent dans des sections antérieures doit donc être interprété comme un placeholder sémantique, et non comme une autorisation d’inventer des tokens d’action positionnels. Pour les actions métier conformes SOLO413, l’aide doit utiliser la forme réelle :
 
 ```text
 USAGE:
   ./script.sh --help
   ./script.sh --prerequis
   ./script.sh --install
-  ./script.sh --simulate --<business-action> [OPTIONS]
-  ./script.sh --exec --<business-action> [OPTIONS]
+  ./script.sh --simulate --<action-metier> [OPTIONS]
+  ./script.sh --exec --<action-metier> [OPTIONS]
 ```
 
-### 30.4 `--exec` and `--simulate` are execution gates, not business actions
+### 30.4 `--exec` et `--simulate` sont des gates d’exécution, pas des actions métier
 
-`--exec` authorizes real execution but does not by itself identify what business operation to perform.
+`--exec` autorise l’exécution réelle mais n’identifie pas à lui seul l’opération métier à effectuer.
 
-A script with multiple business actions must require exactly one selected primary business action unless validated specifications explicitly allow combining actions.
+Un script comportant plusieurs actions métier doit exiger exactement une action métier principale sélectionnée, sauf si les spécifications validées autorisent explicitement des combinaisons.
 
-Examples:
+Exemples :
 
 ```text
-VALID:
+VALIDE :
   ./script.sh --exec --capture
   ./script.sh --exec --check
   ./script.sh --simulate --capture
 
-INVALID unless explicitly specified:
+INVALIDE sauf spécification explicite :
   ./script.sh --exec
   ./script.sh --exec --capture --crack
   ./script.sh CAPTURE
 ```
 
-`--simulate` must continue to work without `--exec`. It selects dry-run execution and must not require real-execution authorization.
+`--simulate` doit continuer à fonctionner sans `--exec`. Il sélectionne l’exécution en dry-run et ne doit pas exiger l’autorisation d’exécution réelle.
 
-### 30.5 Standalone control modes
+### 30.5 Modes de contrôle autonomes
 
-The following control modes do not require `--exec`:
+Les modes de contrôle suivants ne nécessitent pas `--exec` :
 
 ```text
 --help
 --changelog
 --prerequis
 --install
---print-config      # when applicable
---list-*            # informational listing when applicable
+--print-config      # lorsque applicable
+--list-*            # listing informatif lorsque applicable
 ```
 
-`--stop` and `--purge` follow their own safety rules and must not be hidden behind an unrelated business action.
+`--stop` et `--purge` suivent leurs propres règles de sécurité et ne doivent pas être cachés derrière une action métier sans rapport.
 
-No-argument execution still displays help only and performs no business action.
+L’exécution sans argument continue d’afficher uniquement l’aide et n’exécute aucune action métier.
 
-### 30.6 Blocking pre-delivery parser/help compliance test
+### 30.6 Test bloquant de conformité parser/help avant livraison
 
-Before delivering any durable CLI script, the SOLO411 pre-flight must include a CLI compliance gate.
+Avant de livrer tout script CLI durable, le pre-flight SOLO411 doit inclure un gate de conformité CLI.
 
-The delivery is BLOCKED until every applicable check passes:
+La livraison est BLOQUÉE tant que chaque contrôle applicable n’est pas PASS :
 
-1. no-argument invocation displays structured help and performs no business action;
-2. every applicable canonical control long option exists;
-3. every applicable canonical reserved short alias exists and maps to the correct control option;
-4. no business option reuses an active reserved SOLO short alias;
-5. every business action shown in help is accepted by the parser;
-6. every business action accepted by the parser is documented in help;
-7. real examples use `--exec --<business-action>` rather than positional action tokens;
-8. simulation examples use `--simulate --<business-action>` without `--exec`;
-9. standalone control modes work without a business action;
-10. obsolete positional-action syntax is absent unless explicitly required by validated specifications;
-11. `--prerequis` reports prerequisite presence/missing state and version when relevant;
-12. `--install` is present when automated prerequisite installation is applicable;
-13. `--purge` is present when the script owns disposable runtime artifacts and can safely purge them;
-14. `--stop` is present when the script starts persistent/background runtime activity that can be stopped;
-15. help, parser, examples, README/COMMANDS documentation, and specifications describe the same CLI;
-16. any legacy alias remap caused by SOLO reserved aliases is documented.
+1. l’exécution sans argument affiche l’aide structurée et n’exécute aucune action métier ;
+2. chaque option longue canonique de contrôle applicable existe ;
+3. chaque alias court canonique réservé applicable existe et pointe vers la bonne option de contrôle ;
+4. aucune option métier ne réutilise un alias court SOLO réservé actif ;
+5. chaque action métier affichée dans l’aide est acceptée par le parser ;
+6. chaque action métier acceptée par le parser est documentée dans l’aide ;
+7. les exemples d’exécution réelle utilisent `--exec --<action-metier>` et non des tokens d’action positionnels ;
+8. les exemples de simulation utilisent `--simulate --<action-metier>` sans `--exec` ;
+9. les modes de contrôle autonomes fonctionnent sans action métier ;
+10. la syntaxe positionnelle obsolète est absente sauf exigence explicite des spécifications validées ;
+11. `--prerequis` indique pour chaque prérequis l’état présent/manquant et la version lorsque pertinent ;
+12. `--install` existe lorsque l’installation automatisée des prérequis est applicable ;
+13. `--purge` existe lorsque le script possède des artefacts runtime jetables qu’il peut purger en sécurité ;
+14. `--stop` existe lorsque le script démarre une activité runtime persistante/en arrière-plan pouvant être arrêtée ;
+15. l’aide, le parser, les exemples, la documentation README/COMMANDS et les spécifications décrivent la même CLI ;
+16. tout remappage d’alias historique provoqué par les alias réservés SOLO est documenté.
 
-If any check fails, the assistant must correct the script before delivery. A syntax-only test such as `bash -n` is never sufficient evidence of CLI compliance.
+Si un seul contrôle échoue, l’assistant doit corriger le script avant livraison. Un simple test de syntaxe tel que `bash -n` ne constitue jamais une preuve suffisante de conformité CLI.
 
-### 30.7 Mandatory conflict report when a legacy alias collides
+### 30.7 Rapport de conflit obligatoire lorsqu’un alias historique entre en collision
 
-When an existing script conflicts with a reserved SOLO alias, the assistant must state the conflict factually before changing it.
+Lorsqu’un script existant entre en conflit avec un alias SOLO réservé, l’assistant doit annoncer factuellement le conflit avant de le modifier.
 
-Required format:
+Format obligatoire :
 
 ```text
-CLI conflict found: YES
-Reserved SOLO alias: -i -> --install
-Legacy use: -i -> --interface
-Resolution: preserve --interface, remove/remap only the conflicting short alias
-Business behavior removed: NO
+Conflit CLI détecté : OUI
+Alias SOLO réservé : -i -> --install
+Usage historique : -i -> --interface
+Résolution : conserver --interface, supprimer/remapper uniquement l’alias court en conflit
+Comportement métier supprimé : NON
 ```
 
-This report may be concise, but the conflict must not be silently ignored.
+Ce rapport peut être concis, mais le conflit ne doit jamais être ignoré silencieusement.
 
-### 30.8 Mandatory CLI inventory before code changes
+### 30.8 Inventaire CLI obligatoire avant modification du code
 
-Before modifying an existing durable CLI script, the assistant must inventory the existing interface from the actual source/help/specifications available in the current task.
+Avant de modifier un script CLI durable existant, l’assistant doit inventorier l’interface existante à partir du source, de l’aide et des spécifications réellement disponibles dans la tâche courante.
 
-At minimum, identify:
+Identifier au minimum :
 
-- control options;
-- business-action selectors;
-- business options;
-- short aliases;
-- positional arguments;
-- defaults;
-- mutually exclusive combinations;
-- required combinations;
-- deprecated syntax;
-- no-argument behavior.
+- options de contrôle ;
+- sélecteurs d’actions métier ;
+- options métier ;
+- alias courts ;
+- arguments positionnels ;
+- valeurs par défaut ;
+- combinaisons mutuellement exclusives ;
+- combinaisons obligatoires ;
+- syntaxes dépréciées ;
+- comportement sans argument.
 
-The assistant must compare this inventory against the canonical SOLO control interface before writing code.
+L’assistant doit comparer cet inventaire avec l’interface de contrôle canonique SOLO avant d’écrire du code.
 
-This prevents patch-by-patch drift where a local fix accidentally removes or reassigns existing arguments.
+Cette règle évite la dérive par patchs successifs où une correction locale supprime ou réaffecte accidentellement des arguments existants.
 
-### 30.9 Loaded-rule application is mandatory
+### 30.9 L’application des règles chargées est obligatoire
 
-A successful remote read of SOLO rules is not proof of compliance.
+Une lecture distante réussie des règles SOLO n’est pas une preuve de conformité.
 
-After the rules are loaded, the assistant must apply them to the actual parser, help, examples, and delivered code.
+Après chargement des règles, l’assistant doit les appliquer au parser réel, à l’aide, aux exemples et au code livré.
 
-Repeatedly rereading the rules without correcting an already-identified violation is itself a workflow failure.
+Relire plusieurs fois les règles sans corriger une violation déjà identifiée constitue lui-même un échec de workflow.
 
-When the current loaded version is known and no explicit reload/refresh is requested, do not reread the same SOLO file merely because the user mentions "scripting", asks why a rule was not followed, or continues the same scripting task. Apply the already-loaded rules.
+Lorsque la version chargée actuelle est connue et qu’aucun reload/refresh explicite n’est demandé, ne pas relire le même fichier SOLO simplement parce que l’utilisateur mentionne « scripting », demande pourquoi une règle n’a pas été respectée ou poursuit la même tâche de scripting. Appliquer les règles déjà chargées.
 
-### 30.10 Core SOLO413 rule
+### 30.10 Règle centrale SOLO413
 
-**For durable SOLO CLI scripts: control aliases are reserved, business actions use explicit long options, real execution uses `--exec --<action>`, simulation uses `--simulate --<action>`, positional action syntax is forbidden unless explicitly requested, and delivery is blocked until parser/help/example compliance is verified.**
+**Pour les scripts CLI durables soumis à SOLO : les alias de contrôle sont réservés, les actions métier utilisent des options longues explicites, l’exécution réelle utilise `--exec --<action>`, la simulation utilise `--simulate --<action>`, la syntaxe d’action positionnelle est interdite sauf demande explicite, et la livraison est bloquée tant que la conformité parser/help/exemples n’est pas vérifiée.**
