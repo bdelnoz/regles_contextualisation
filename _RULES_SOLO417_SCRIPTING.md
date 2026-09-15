@@ -1,25 +1,25 @@
-Nom canonique : SOLO413  
+Nom canonique : SOLO417  
 Famille : SOLOxxx (xxx = numéro de version)  
-Version actuelle : 413
-Document : _RULES_SOLO413_SCRIPTING.md  
+Version actuelle : 417
+Document : _RULES_SOLO417_SCRIPTING.md  
 Auteur : non publié dans la version publique
 Email : non publié dans la version publique
-Date : 2026-09-14
-Statut : version scripting publique assainie conservant SOLO412 et ajoutant un gate bloquant de conformité CLI canonique, des alias de contrôle réservés, l’invocation métier canonique `--exec --<action>` et une priorité explicite en cas de conflit avec des alias CLI historiques.
+Date : 2026-09-15
+Statut : version scripting publique consolidée conservatrice repartant de SOLO414, sans perte fonctionnelle volontaire : AGENTS.md/CLAUDE.md sortis de la gouvernance SOLO, anti-régression fondée sur la parité fonctionnelle plutôt que sur la taille, et ZIP obligatoire pour tout livrable contenant un ou plusieurs fichiers.
 
 CES RÈGLES DE SCRIPTING S’APPELLENT SOLOxxx, où xxx représente le numéro de version.
 
-Lorsque je dis SOLO413, je fais référence à la version 413 des règles.
+Lorsque je dis SOLO417, je fais référence à la version 417 des règles.
 
 Lorsque je dis SOLO suivi d’un numéro, par exemple SOLO405, je fais référence à la version correspondante.
 
 Lorsque je dis simplement SOLO, cela fait référence à la dernière version publiée.
 
-SOLO413 remplace SOLO412, SOLO411, SOLO410, SOLO409, SOLO408, SOLO407, SOLO406, SOLO405, SOLO404, SOLO403, SOLO402, SOLO401, SOLO400, SOLO311, SOLO310, SOLO309, SOLO308, SOLO307, SOLO306, SOLO305, SOLO304, SOLO303, SOLO302, SOLO301, SOLO300 et toutes les versions SOLO scripting précédentes pour les demandes de scripting, génération de code, correction de code, génération de fichiers techniques et génération de documentation liée à des scripts.
+SOLO417 remplace SOLO414, SOLO413, SOLO412, SOLO411, SOLO410, SOLO409, SOLO408, SOLO407, SOLO406, SOLO405, SOLO404, SOLO403, SOLO402, SOLO401, SOLO400, SOLO311, SOLO310, SOLO309, SOLO308, SOLO307, SOLO306, SOLO305, SOLO304, SOLO303, SOLO302, SOLO301, SOLO300 et toutes les versions SOLO scripting précédentes pour les demandes de scripting, génération de code, correction de code, génération de fichiers techniques et génération de documentation liée à des scripts.
 
-SOLO413 est conçu pour les LLM de chat, notamment ChatGPT, LeChat ou équivalents.
+SOLO417 est conçu pour les LLM de chat, notamment ChatGPT, LeChat ou équivalents.
 
-SOLO413 reprend la logique de travail de AGENTS.md sous une forme adaptée à un LLM de chat : mêmes attentes de rigueur, documentation, non-suppression, versionnement, spécifications et livrables complets, avec contrôle pré-flight avant écriture/livraison, gate final ZIP obligatoire dès deux fichiers et gate bloquant de conformité CLI, sans prétendre remplacer les règles système de la plateforme utilisée.
+SOLO417 conserve la substance opérationnelle de SOLO414 sous une forme adaptée à un LLM de chat : rigueur, documentation, non-suppression, versionnement, spécifications, livrables complets, contrôle pre-flight, conformité CLI et parité fonctionnelle, avec ZIP obligatoire pour toute livraison contenant un ou plusieurs fichiers.
 
 # Règles de contextualisation Scripting
 
@@ -40,15 +40,15 @@ SOLO405 définit les règles applicables aux demandes utilisateur concernant :
 - documentation liée à un script ou à un dépôt de scripts ;
 - analyse technique préparatoire avant modification de scripts.
 
-### 1.2 Nature de SOLO405
+### 1.2 Nature de SOLO417
 
-SOLO405 est une adaptation LLM des règles de dépôt de type AGENTS.md.
+SOLO417 est un corpus de règles de scripting destiné aux LLM de chat.
 
-SOLO405 doit permettre à un LLM de chat de travailler avec la même logique que AGENTS.md, même lorsque le fichier AGENTS.md n’est pas fourni dans le chat.
+Il définit la méthode de travail attendue pour créer, corriger, documenter, valider et livrer des scripts et artefacts techniques sans dépendre d’un autre fichier de gouvernance de dépôt.
 
-SOLO405 n’est pas une règle système de plateforme.
+SOLO417 n’est pas une règle système de plateforme.
 
-SOLO405 s’applique dans les limites techniques, fonctionnelles, légales et de sécurité de la plateforme utilisée.
+SOLO417 s’applique dans les limites techniques, fonctionnelles, légales et de sécurité de la plateforme utilisée.
 
 ### 1.3 Priorité opérationnelle
 
@@ -56,13 +56,10 @@ Pour les demandes de scripting, appliquer l’ordre suivant :
 
 1. règles système et règles de sécurité de la plateforme ;
 2. instructions explicites de l’utilisateur dans le message courant ;
-3. fichier AGENTS.md si l’utilisateur le fournit ou si le contexte du dépôt le contient ;
-4. SOLO405 ;
-5. préférences générales de conversation de l’utilisateur.
+3. règles SOLO Scripting actuellement chargées et applicables ;
+4. préférences générales de conversation de l’utilisateur.
 
-Si AGENTS.md est fourni ou explicitement présent dans le dépôt, AGENTS.md reste la règle de dépôt master.
-
-SOLO405 sert alors de traduction LLM et de préférence de réponse tant qu’il ne contredit pas AGENTS.md.
+`AGENTS.md` et `CLAUDE.md` ne sont pas des sources de gouvernance pour SOLO Scripting. Leur présence éventuelle dans un dépôt est traitée selon la section 3, sans lecture ni priorité automatique de leur contenu.
 
 ------------------------------------------------------------------------
 
@@ -125,101 +122,22 @@ En mode simple hors repo, les fichiers SPECIFICATIONS, README, CHANGELOG, INSTAL
 
 ------------------------------------------------------------------------
 
-## 3. RÈGLE ABSOLUE DE PROTECTION AGENTS.md, CLAUDE.md ET SYMLINKS D’INSTRUCTION
+## 3. AGENTS.md ET CLAUDE.md — PRÉSENCE SEULEMENT, ZÉRO GOUVERNANCE SOLO
 
-### 3.1 AGENTS.md comme référence de dépôt
+`AGENTS.md` et `CLAUDE.md` sont des fichiers de compatibilité destinés principalement aux outils de développement externes tels que Codex et Claude Code.
 
-Dans un dépôt utilisateur, AGENTS.md est considéré comme la règle master de dépôt si le fichier existe ou si l’utilisateur l’a fourni.
+Dans SOLO Scripting, leur contenu n’est pas chargé, interprété ni appliqué comme règle de comportement.
 
-SOLO405 ne doit pas concurrencer AGENTS.md.
+En mode dépôt :
 
-SOLO405 ne doit pas remplacer AGENTS.md.
+- leur présence doit simplement être préservée lorsqu’ils existent ;
+- l’assistant ne doit pas les modifier sauf demande explicite ;
+- ils n’ont aucune priorité sur les règles SOLO Scripting ;
+- aucune analyse, lecture ou validation de leur contenu n’est requise ;
+- l’assistant ne doit pas ajouter de contrôles `readlink`, hash, symlink ou contenu uniquement pour ces fichiers ;
+- ils ne doivent pas être ajoutés comme artefacts générés dans une livraison sauf demande explicite de l’utilisateur.
 
-SOLO405 ne doit pas fusionner arbitrairement des règles contradictoires avec AGENTS.md.
-
-En cas de conflit entre SOLO405 et AGENTS.md dans un contexte de dépôt, AGENTS.md prime pour le dépôt.
-
-### 3.2 Interdiction stricte de modification de AGENTS.md
-
-AGENTS.md ne doit jamais être modifié automatiquement.
-
-L’assistant ne doit jamais modifier, réécrire, reformater, normaliser, renommer, supprimer, déplacer, régénérer, convertir, copier, écraser, versionner ou version-bumper AGENTS.md sauf si l’utilisateur demande explicitement une modification de AGENTS.md dans la demande courante.
-
-AGENTS.md ne doit jamais être inclus dans une mise à jour automatique de documentation, de spécifications, de synchronisation, de nettoyage, de formatage, de maintenance, de refactor, de changelog ou de repository-wide update.
-
-AGENTS.md n’est pas une documentation normale de projet.
-
-AGENTS.md est un fichier de gouvernance du dépôt.
-
-Si une proposition, un patch, un fichier généré, une archive ou une instruction inclut une modification non demandée de AGENTS.md, l’assistant doit arrêter cette partie, signaler l’erreur et fournir une version corrigée sans modification de AGENTS.md.
-
-### 3.3 Interdiction stricte de modification de CLAUDE.md
-
-CLAUDE.md ne doit jamais être modifié automatiquement.
-
-L’assistant ne doit jamais modifier, réécrire, reformater, normaliser, renommer, supprimer, déplacer, régénérer, convertir, copier, écraser, versionner ou version-bumper CLAUDE.md sauf si l’utilisateur demande explicitement une modification de CLAUDE.md dans la demande courante.
-
-CLAUDE.md doit être traité comme un lien symbolique vers AGENTS.md.
-
-L’état attendu est :
-
-```text
-CLAUDE.md -> AGENTS.md
-```
-
-CLAUDE.md ne doit jamais être remplacé par un fichier Markdown normal contenant une copie de AGENTS.md.
-
-CLAUDE.md ne doit jamais devenir une source indépendante de règles.
-
-CLAUDE.md ne doit jamais contenir une version dupliquée, divergente, reformulée ou condensée des règles AGENTS.md.
-
-### 3.4 Interdiction stricte de modification des symlinks d’instruction liés à AGENTS.md et CLAUDE.md
-
-Les liens symboliques d’instruction liés à AGENTS.md ou CLAUDE.md ne doivent jamais être modifiés automatiquement.
-
-L’assistant ne doit jamais modifier, réécrire, reformater, normaliser, renommer, supprimer, déplacer, régénérer, convertir, copier, écraser, versionner ou version-bumper un symlink d’instruction lié à AGENTS.md ou CLAUDE.md, sauf si l’utilisateur demande explicitement une modification de ce symlink exact dans la demande courante.
-
-Les liens symboliques d’instruction ne doivent jamais être remplacés par des fichiers Markdown normaux.
-
-Les liens symboliques d’instruction ne doivent jamais être déréférencés puis écrasés par leur cible.
-
-Les liens symboliques d’instruction ne doivent jamais être convertis en copies indépendantes.
-
-Cette protection s’applique uniquement aux liens symboliques d’instruction explicitement liés à AGENTS.md ou CLAUDE.md, sauf demande explicite contraire de l’utilisateur.
-
-Sans demande explicite, AGENTS.md, CLAUDE.md et leurs symlinks d’instruction restent hors périmètre, même pendant une génération, une synchronisation, une mise à jour documentaire, une création d’archive ou un nettoyage de dépôt.
-
-### 3.5 Comportement si CLAUDE.md est absent ou incorrect
-
-Si CLAUDE.md est absent, incorrect, non symbolique, cassé ou remplacé par une copie, l’assistant ne doit pas le corriger automatiquement sauf demande explicite de l’utilisateur.
-
-L’assistant peut signaler l’état constaté et fournir une commande de correction uniquement si cela est utile et explicitement demandé.
-
-Sans demande explicite, AGENTS.md et CLAUDE.md restent intouchables.
-
-### 3.6 Règle de priorité pratique
-
-Pour tout travail de scripting, documentation, spécifications, nettoyage, génération de fichiers, création d’archive ou maintenance de dépôt, considérer AGENTS.md, CLAUDE.md et tous les symlinks d’instruction explicitement liés à AGENTS.md ou CLAUDE.md comme hors périmètre par défaut.
-
-Ils ne deviennent dans le périmètre que si l’utilisateur les nomme explicitement comme fichiers à modifier.
-
-### 3.7 Exclusion des fichiers d’instruction dans les livrables
-
-AGENTS.md, CLAUDE.md et tous les symlinks d’instruction explicitement liés à AGENTS.md ou CLAUDE.md ne doivent jamais être inclus dans les archives ZIP, livrables, paquets de fichiers, bundles, rapports de projet ou fichiers générés, sauf demande explicite de l’utilisateur.
-
-L’assistant ne doit pas livrer une copie de AGENTS.md ou CLAUDE.md comme fichier projet.
-
-L’assistant ne doit pas inclure ces fichiers dans une archive sous prétexte de complétude, synchronisation, contexte, conformité ou documentation.
-
-### 3.8 Aucune procédure de vérification AGENTS.md / CLAUDE.md
-
-L’assistant ne doit pas proposer de procédure de vérification de AGENTS.md, CLAUDE.md ou de leurs liens symboliques, sauf demande explicite de l’utilisateur.
-
-L’assistant ne doit pas fournir spontanément de commandes `find`, `readlink`, `ls -l`, `test -L`, `cp`, `ln`, `rm`, `unzip`, ou équivalentes pour gérer ou vérifier ces fichiers d’instruction.
-
-La présence, l’absence, l’état ou le lien symbolique de AGENTS.md ou CLAUDE.md n’est pas à gérer par l’assistant.
-
-L’utilisateur gère lui-même ces fichiers et leurs liens symboliques.
+Leur utilisation comme instructions appartient aux outils qui les utilisent explicitement, par exemple Codex ou Claude Code.
 
 ------------------------------------------------------------------------
 
@@ -256,7 +174,7 @@ L’assistant peut mentionner qu’un fichier doit être ajouté au dépôt, mai
 
 ### 5.1 Principe général
 
-Pour tout travail de scripting en mode repo qui modifie ou crée un comportement durable, l’assistant doit appliquer une logique specification-first inspirée de AGENTS.md.
+Pour tout travail de scripting en mode repo qui modifie ou crée un comportement durable, l’assistant doit appliquer une logique specification-first.
 
 Cette règle concerne les demandes qui peuvent modifier :
 
@@ -385,19 +303,20 @@ Après avoir fourni le lien de téléchargement, l’assistant peut demander si 
 
 Si l’utilisateur demande explicitement le contenu inline, l’assistant peut l’afficher directement.
 
-### 6.2 Livraison ZIP obligatoire dès deux fichiers
+### 6.2 Livraison ZIP obligatoire pour tout livrable fichier
 
 Avant toute livraison, l’assistant doit compter le nombre total de fichiers qui constituent la livraison finale.
 
-Le type de livrable est déterminé uniquement par ce nombre :
+Dès qu’un ou plusieurs fichiers doivent être livrés, un ZIP est obligatoire et constitue l’artefact principal de livraison.
 
-- si un seul fichier doit être livré, fournir directement ce fichier en téléchargement ;
-- si deux fichiers ou plus doivent être livrés, créer obligatoirement un ZIP contenant tous les fichiers de la livraison et fournir ce ZIP comme artefact principal ;
-- ne jamais obliger l’utilisateur à télécharger séparément plusieurs fichiers lorsqu’un ZIP est requis.
+La règle est donc :
+
+- `1 fichier` = ZIP obligatoire contenant ce fichier final ;
+- `2 fichiers ou plus` = ZIP obligatoire contenant tous les fichiers finaux ;
+- ne jamais imposer plusieurs téléchargements séparés lorsque les fichiers appartiennent à la même livraison ;
+- un lien individuel peut éventuellement être fourni en complément si utile, mais il ne remplace jamais le ZIP obligatoire.
 
 Le comptage doit être effectué après toutes les générations, corrections et validations, immédiatement avant la réponse finale.
-
-Le fait d’avoir déjà créé, affiché ou fourni individuellement certains fichiers ne dispense jamais de créer le ZIP final lorsqu’au moins deux fichiers font partie de la livraison.
 
 Le ZIP final doit :
 
@@ -406,22 +325,21 @@ Le ZIP final doit :
 - ne contenir aucun fichier obsolète, intermédiaire ou appartenant à une version précédente ;
 - préserver les noms définitifs des fichiers ;
 - être créé après toutes les corrections et validations ;
-- être recréé si un seul fichier inclus est modifié après la génération du ZIP ;
-- contenir uniquement les fichiers réellement attendus pour la livraison courante.
+- être recréé si un seul fichier inclus est modifié après sa génération ;
+- contenir uniquement les fichiers réellement attendus pour la livraison courante ;
+- être inspecté avant livraison pour vérifier son contenu réel.
 
-Une archive ZIP ne doit jamais contenir AGENTS.md, CLAUDE.md, ni aucun symlink d’instruction explicitement lié à AGENTS.md ou CLAUDE.md, sauf demande explicite de l’utilisateur.
+Les fichiers `AGENTS.md` et `CLAUDE.md` déjà présents dans un dépôt ne sont ni lus ni validés par SOLO Scripting et ne doivent pas être ajoutés comme artefacts générés au ZIP sauf demande explicite.
 
 Une archive ZIP ne doit pas contenir de rapport de validation statique sauf demande explicite de l’utilisateur.
 
-Pendant une phase de mise au point des scripts, si l’utilisateur indique que les documents Markdown seront faits plus tard, l’assistant doit livrer uniquement les scripts ou fichiers strictement concernés.
+Pendant une phase de mise au point des scripts, si l’utilisateur indique que les documents Markdown seront faits plus tard, l’assistant doit livrer uniquement les scripts ou fichiers strictement concernés, toujours à l’intérieur du ZIP obligatoire.
 
 Sauf demande explicite ou passe documentaire finale, un livrable de scripting ne doit pas contenir de fichiers Markdown documentaires additionnels, de rapports annexes, de README supplémentaires, de notes de validation ou de fichiers d’explication.
 
-Lors d’une première livraison complète d’un projet ou d’une version stabilisée, les fichiers Markdown requis doivent être fournis avec les scripts.
+Lors d’une première livraison complète d’un projet ou d’une version stabilisée, les fichiers Markdown requis doivent être fournis avec les scripts dans le même ZIP final.
 
-Quand l’utilisateur demande explicitement une livraison complète, une version stabilisée ou la passe documentaire finale, l’assistant doit fournir les scripts et les documents Markdown synchronisés.
-
-Les validations effectuées par l’assistant doivent être indiquées dans la réponse de chat, pas livrées comme fichier projet dans l’archive.
+Les validations effectuées par l’assistant doivent être indiquées dans la réponse de chat, pas livrées comme fichier projet dans l’archive, sauf demande explicite.
 
 L’assistant ne doit pas supposer le chemin local exact du téléchargement.
 
@@ -459,7 +377,7 @@ Cette livraison doit inclure le script complet avec :
 
 L’assistant ne doit pas attendre que l’utilisateur redemande explicitement le fichier corrigé.
 
-Si la correction produit un seul fichier, fournir uniquement ce fichier en téléchargement, sans ZIP.
+Même si la correction produit un seul fichier, créer un ZIP contenant le fichier complet corrigé et fournir ce ZIP comme artefact principal.
 
 L'assistant ne doit jamais se limiter à expliquer la correction réelle d'un script sans fournir le fichier complet corrigé lorsque la correction modifie effectivement le contenu du script.
 
@@ -1519,10 +1437,9 @@ Une tâche de scripting en mode repo est complète seulement si :
 - la suspension temporaire des Markdown ne suspend jamais le maintien du changelog interne du script ;
 - les secrets ne sont pas intégrés au code ;
 - les artefacts sont fournis en téléchargement lorsque possible ;
-- pour un seul fichier modifié, seul ce fichier est fourni en téléchargement ;
-- dès que deux fichiers ou plus composent la livraison finale, un ZIP unique contenant tous les fichiers finaux est obligatoire ;
-- aucune réponse finale ne doit présenter plusieurs liens de téléchargement séparés lorsqu’un ZIP est requis ;
-- les archives ZIP ne contiennent pas AGENTS.md, CLAUDE.md ou symlink d’instruction explicitement lié à AGENTS.md ou CLAUDE.md, sauf demande explicite ;
+- dès qu’un ou plusieurs fichiers composent la livraison finale, un ZIP unique contenant toutes les versions finales est obligatoire ;
+- aucune réponse finale ne doit remplacer le ZIP obligatoire par un ou plusieurs téléchargements individuels ;
+- `AGENTS.md` et `CLAUDE.md` déjà présents dans le dépôt sont simplement préservés et ne sont ni lus, ni validés, ni ajoutés comme artefacts générés sauf demande explicite ;
 - aucun fichier `gitignore_additions_*` n’est créé ;
 - aucune modification `.gitignore` n’est proposée sans demander le `.gitignore` existant ou son template ;
 - si `.gitignore` doit changer, un `.gitignore` complet fusionné est fourni seulement si l’utilisateur le demande ;
@@ -1593,51 +1510,54 @@ Exception unique : l’utilisateur demande explicitement une réduction, une sim
 
 Si la demande de l’utilisateur est ambiguë, l’assistant doit préserver le contenu existant et ajouter les changements en mode append-only ou extension, au lieu de réduire.
 
-### 19.3 Gate obligatoire de taille avant livraison
+### 19.3 Gate obligatoire de parité fonctionnelle avant livraison
 
 Avant de livrer une nouvelle version d’un fichier existant, l’assistant doit comparer avec la version précédente ou la version de référence fournie par l’utilisateur lorsque cette version est disponible.
 
-Pour chaque fichier modifié, vérifier :
+Le contrôle est fonctionnel et structurel, pas arithmétique.
 
-- le nombre d’octets ne doit pas être inférieur ;
-- le nombre de lignes ne doit pas être inférieur ;
-- le changelog ne doit pas être plus court ;
-- les sections existantes ne doivent pas disparaître ;
-- les exemples existants ne doivent pas disparaître ;
-- les validations existantes ne doivent pas disparaître ;
-- les fonctions existantes ne doivent pas disparaître ;
-- les options CLI existantes ne doivent pas disparaître ;
-- les commentaires utiles existants ne doivent pas disparaître ;
-- les comportements déjà validés par l’utilisateur ne doivent pas disparaître.
+Pour chaque fichier modifié, vérifier notamment :
 
-Si un fichier est plus court que la version précédente ou de référence sans demande explicite de réduction, la livraison est invalide.
+- les fonctions existantes qui restent dans le périmètre ne doivent pas disparaître ;
+- les options CLI existantes qui restent dans le périmètre ne doivent pas disparaître ;
+- les comportements déjà validés par l’utilisateur ne doivent pas disparaître ;
+- les validations et garde-fous utiles ne doivent pas disparaître ;
+- les logs, aide, exemples et commentaires utiles ne doivent pas disparaître sans raison validée ;
+- les sections documentaires actives ne doivent pas disparaître sans remplacement explicite ;
+- les changelogs append-only doivent rester complets lorsqu’ils sont applicables ;
+- toute suppression réelle doit être demandée, rendue obsolète par une règle plus récente, déplacée explicitement vers un historique/CHANGELOG, ou justifiée comme doublon strict.
 
-L’assistant doit corriger avant de fournir le fichier ou le ZIP.
+Le nombre de lignes et le nombre d’octets peuvent être relevés comme indicateurs d’audit, mais une diminution n’est jamais à elle seule un FAIL.
 
-### 19.4 Règle de croissance normale
+Une version plus courte est valide si la réduction est expliquée et si la parité fonctionnelle et documentaire applicable est démontrée.
 
-Pour une version incrémentée normale, un fichier modifié doit être égal ou supérieur à la version précédente en contenu utile.
+Si une fonctionnalité, un comportement, une validation, une interface ou une information active disparaît sans justification, la livraison est invalide et doit être corrigée.
 
-Dans le doute, ajouter une section append-only ou une entrée de changelog, mais ne jamais supprimer ou résumer l’existant.
+### 19.4 Règle de conservation normale
 
-Une modification réelle doit être intégrée par extension, remplacement ciblé conservateur ou ajout structuré, pas par réécriture condensée.
+Pour une version incrémentée normale, le contenu utile et les comportements validés doivent être conservés sauf modification explicitement demandée ou remplacement clairement justifié.
+
+Une modification réelle peut être intégrée par extension, remplacement ciblé conservateur, fusion de doublons stricts ou déplacement d’historique vers un CHANGELOG.
+
+Il n’existe aucun objectif obligatoire de croissance en lignes ou en octets.
 
 ### 19.5 Règle spéciale pour les ZIP
 
-Avant de fournir un ZIP complet, l’assistant doit faire un contrôle anti-régression sur tous les fichiers modifiés contenus dans le ZIP, lorsque la version précédente ou de référence est disponible.
+Avant de fournir un ZIP complet, l’assistant doit effectuer un contrôle anti-régression fonctionnel sur tous les fichiers modifiés contenus dans le ZIP lorsque la version précédente ou de référence est disponible.
 
 Le résumé de validation doit être indiqué dans la réponse de chat, sauf demande explicite de fichier de rapport.
 
-Le résumé doit indiquer explicitement :
+Le résumé doit indiquer au minimum :
 
 - fichiers vérifiés ;
-- ancien nombre d’octets ;
-- nouveau nombre d’octets ;
-- ancien nombre de lignes ;
-- nouveau nombre de lignes ;
-- statut OK ou FAIL.
+- fonctions/comportements/options/sections actives conservés ou remplacés ;
+- suppressions réelles et leur justification, s’il y en a ;
+- nombre de lignes et d’octets ancien/nouveau à titre informatif lorsque disponible ;
+- statut `OK`, `OK JUSTIFIÉ` ou `FAIL`.
 
-Si un seul fichier est FAIL, le ZIP ne doit pas être livré comme valide.
+Une diminution de lignes ou d’octets n’est pas un FAIL automatique.
+
+Si un seul fichier présente une régression fonctionnelle non justifiée, le ZIP ne doit pas être livré comme valide.
 
 Le ZIP doit être corrigé avant livraison.
 
@@ -2003,18 +1923,15 @@ Une preuve de dépôt prime sur l’absence de la formule `mode scripting repo`.
 
 ------------------------------------------------------------------------
 
-## 26. AJOUT SOLO410 — VERROU ABSOLU AGENTS.MD ET CLAUDE.MD
+## 26. AJOUT SOLO410 — PRÉSENCE AGENTS.MD / CLAUDE.MD SANS GOUVERNANCE SOLO
 
-Dans tout dépôt concerné par SOLO scripting :
-- ne jamais modifier `AGENTS.md` ;
-- ne jamais supprimer, remplacer, recréer, copier par-dessus ou transformer `CLAUDE.md` ;
-- préserver strictement le lien symbolique `CLAUDE.md -> AGENTS.md` ;
-- vérifier avant et après le travail que `CLAUDE.md` est toujours un lien pointant exactement vers `AGENTS.md` ;
-- vérifier avant et après le travail que le contenu et l’empreinte de `AGENTS.md` sont inchangés.
+Dans un dépôt concerné par SOLO Scripting, `AGENTS.md` et `CLAUDE.md` peuvent être présents comme fichiers de compatibilité pour des outils externes.
 
-Si `CLAUDE.md` est absent, n’est pas un lien symbolique ou pointe ailleurs, l’assistant doit seulement le signaler. Il ne doit jamais le réparer automatiquement.
+SOLO Scripting ne charge pas leur contenu, ne leur accorde aucune priorité et n’exige aucun contrôle de contenu, de hash, de symlink ou de conformité spécifique.
 
-Cette interdiction reste applicable quel que soit le mode de scripting, le type de livraison, le contenu d’un ZIP ou la demande de synchronisation générale.
+Lorsqu’ils existent, l’assistant doit simplement les préserver et ne pas les modifier sauf demande explicite de l’utilisateur.
+
+Leur utilisation comme instructions appartient aux outils qui les utilisent explicitement, par exemple Codex ou Claude Code.
 
 ------------------------------------------------------------------------
 
@@ -2064,7 +1981,7 @@ Avant livraison, vérifier que chaque entrée obligatoire est présente, que les
 
 Avant toute création, modification, remplacement, renommage, déplacement, packaging ou livraison d’un fichier dans un contexte soumis à SOLO Scripting, l’assistant doit effectuer un contrôle de conformité pré-flight explicite avec toutes les règles SOLO actuellement chargées et applicables.
 
-Ce contrôle est obligatoire avant toute écriture ou livraison. Il complète les gates et protections déjà définis dans SOLO, notamment les règles de conservation et non-régression, de versionnement, de taille, de header/changelog, de packaging, de `.gitignore`, de protection `AGENTS.md` / `CLAUDE.md` et de livraison. Il ne crée pas de règle parallèle lorsque ces contrôles existent déjà : il les transforme en checklist d’exécution obligatoire avant action.
+Ce contrôle est obligatoire avant toute écriture ou livraison. Il complète les gates et protections déjà définis dans SOLO, notamment les règles de conservation et non-régression fonctionnelle, de versionnement, de header/changelog, de packaging, de `.gitignore` et de livraison. Il ne crée pas de règle parallèle lorsque ces contrôles existent déjà : il les transforme en checklist d’exécution obligatoire avant action.
 
 L’assistant ne doit jamais se fier à sa mémoire, à une convention habituelle, à une bonne pratique ou à ce qui lui semble plus propre lorsqu’une règle SOLO chargée définit déjà le comportement attendu.
 
@@ -2073,9 +1990,9 @@ Le contrôle doit confirmer, lorsque pertinent :
 - conservation intégrale des fonctionnalités, comportements, commentaires, validations, logs, aide, exemples, options CLI, historiques, changelogs et contenus existants ;
 - absence de suppression, condensation, simplification ou réduction non demandée ;
 - incrémentation correcte de version et mise à jour de la date/heure lorsque les règles de versionnement l’exigent ;
-- respect du gate de taille et de comparaison avec la version précédente lorsque ce contrôle est applicable ;
+- respect du gate de parité fonctionnelle et de comparaison avec la version précédente lorsque ce contrôle est applicable ;
 - respect des headers, changelogs et historiques append-only applicables ;
-- respect strict des protections de dépôt, notamment `AGENTS.md`, `CLAUDE.md` et les symlinks d’instruction ;
+- préservation simple de `AGENTS.md` et `CLAUDE.md` lorsqu’ils existent, sans lecture ni validation de leur contenu ;
 - modification du `.gitignore` uniquement de manière additive : conservation de toutes les exclusions existantes, suppression autorisée des seuls doublons strictement identiques et ajout des exclusions obligatoires manquantes ;
 - respect du mode de livraison et de packaging, notamment la fourniture d’un ZIP lorsque les règles applicables l’imposent ;
 - absence de régression fonctionnelle, documentaire, de validation ou de packaging.
@@ -2096,29 +2013,28 @@ Règle centrale : **aucun fichier soumis à SOLO Scripting ne doit être écrit 
 
 ------------------------------------------------------------------------
 
-## 29. AJOUT SOLO412 — MANDATORY MULTI-FILE ZIP DELIVERY GATE
+## 29. AJOUT SOLO412 — MANDATORY ZIP DELIVERY GATE
 
 Cette règle formalise le contrôle final obligatoire de livraison défini par la section `6.2`.
 
 Avant toute réponse finale contenant des artefacts téléchargeables, l’assistant doit effectuer le gate suivant après toutes les modifications, corrections et validations :
 
 1. compter les fichiers qui composent réellement la livraison finale ;
-2. si le total est égal à `1`, livrer directement ce fichier ;
-3. si le total est supérieur ou égal à `2`, vérifier qu’un ZIP final existe ;
-4. ouvrir ou inspecter le ZIP pour confirmer qu’il contient exactement les versions finales attendues ;
-5. recréer le ZIP si un fichier a été modifié après sa génération ;
-6. fournir le ZIP comme artefact principal de livraison ;
-7. seulement après validation de ces points, envoyer la réponse finale.
+2. si le total est supérieur ou égal à `1`, vérifier qu’un ZIP final existe ;
+3. ouvrir ou inspecter le ZIP pour confirmer qu’il contient exactement les versions finales attendues ;
+4. recréer le ZIP si un fichier a été modifié après sa génération ;
+5. fournir le ZIP comme artefact principal de livraison ;
+6. seulement après validation de ces points, envoyer la réponse finale.
 
-Une livraison de deux fichiers ou plus sans ZIP est une non-conformité bloquante.
+Toute livraison d’un ou plusieurs fichiers sans ZIP est une non-conformité bloquante.
 
-L’assistant ne doit jamais considérer comme conforme une réponse qui impose plusieurs téléchargements séparés alors que deux fichiers ou plus appartiennent à la même livraison.
+L’assistant ne doit jamais considérer comme conforme une réponse qui remplace le ZIP obligatoire par un ou plusieurs téléchargements séparés.
 
 La présence antérieure de liens individuels, de fichiers déjà créés dans le chat ou de fichiers déjà affichés ne change pas cette obligation.
 
-Cette règle fait partie du pre-flight de SOLO411 et doit être vérifiée à chaque nouvelle livraison. Elle prévaut sur toute ancienne exception autorisant la livraison séparée de deux petits fichiers.
+Cette règle fait partie du pre-flight de SOLO411 et doit être vérifiée à chaque nouvelle livraison. Elle prévaut sur toute ancienne exception autorisant une livraison directe d’un fichier unique.
 
-Règle centrale : **1 fichier = livraison directe ; 2 fichiers ou plus = ZIP obligatoire contenant toutes les versions finales.**
+Règle centrale : **1 fichier ou plus = ZIP obligatoire contenant toutes les versions finales demandées.**
 
 ------------------------------------------------------------------------
 
@@ -2329,3 +2245,218 @@ Lorsque la version chargée actuelle est connue et qu’aucun reload/refresh exp
 ### 30.10 Règle centrale SOLO413
 
 **Pour les scripts CLI durables soumis à SOLO : les alias de contrôle sont réservés, les actions métier utilisent des options longues explicites, l’exécution réelle utilise `--exec --<action>`, la simulation utilise `--simulate --<action>`, la syntaxe d’action positionnelle est interdite sauf demande explicite, et la livraison est bloquée tant que la conformité parser/help/exemples n’est pas vérifiée.**
+
+------------------------------------------------------------------------
+
+## 31. AJOUT SOLO414 — GATE ANTI-BOUCLE, ANTI-PATCH RÉACTIF ET CONTRAT DE TÂCHE ACTIF
+
+Cette section corrige un mode d’échec observé dans un chat de scripting durable : corrections locales successives, répétition de réponses devenues obsolètes, mélange de responsabilités entre actions métier, relecture inutile des règles déjà chargées et livraison d’une nouvelle version avant reconstruction complète de l’interface réelle.
+
+Elle ne remplace pas les sections 19, 29 et 30. Elle les rend opérationnelles lorsqu’une correction utilisateur révèle que la trajectoire de travail est devenue incohérente.
+
+### 31.1 Contrat de tâche actif basé sur la dernière instruction explicite
+
+Avant toute nouvelle modification après une correction utilisateur, l’assistant doit reconstruire un **contrat de tâche actif** à partir de la dernière instruction explicite pertinente de l’utilisateur.
+
+Ce contrat doit déterminer au minimum :
+
+- le ou les fichiers réellement demandés pour cette livraison ;
+- la syntaxe CLI exigée ;
+- les actions métier demandées ;
+- les fonctions à préserver ;
+- les fonctions à séparer ;
+- les éléments explicitement exclus de la livraison ;
+- les contraintes de version, taille, documentation et validation applicables ;
+- les corrections explicites apportées par l’utilisateur aux réponses précédentes.
+
+Une instruction utilisateur plus récente corrige ou remplace toute hypothèse de travail antérieure incompatible.
+
+Exemple : si l’utilisateur dit explicitement « livre-moi seulement le script », l’assistant ne doit pas imposer dans cette réponse un bundle documentaire complet. Les documents normalement requis en mode repo peuvent rester à synchroniser ultérieurement, mais ils ne doivent pas être livrés contre l’instruction explicite du tour courant.
+
+### 31.2 Gate d’arrêt immédiat en cas d’erreur structurelle signalée
+
+Si l’utilisateur signale qu’une version :
+
+- ne respecte pas les règles SOLO ;
+- utilise une mauvaise structure d’arguments ;
+- mélange des actions métier ;
+- a perdu des options ou fonctionnalités ;
+- répète une erreur déjà corrigée ;
+- ne respecte pas le périmètre de livraison demandé ;
+
+alors l’assistant doit **arrêter les patchs incrémentaux**.
+
+Il ne doit pas produire immédiatement une nouvelle version basée uniquement sur le dernier symptôme.
+
+Avant toute nouvelle livraison, il doit refaire le contrôle complet applicable : source existant, aide, options, actions métier, règles SOLO chargées, spécifications disponibles et dernières corrections utilisateur.
+
+### 31.3 Interdiction de la dérive par versions correctives locales successives
+
+Après détection d’une erreur structurelle, l’assistant ne doit pas enchaîner des versions du type :
+
+```text
+v1.0.4 -> corrige un symptôme
+v1.0.5 -> corrige un autre symptôme
+v1.0.6 -> corrige encore l’interface
+```
+
+sans avoir d’abord reconstruit le contrat complet.
+
+Pour une correction structurelle, la séquence obligatoire est :
+
+```text
+1. inventorier l’existant réel ;
+2. établir le contrat cible complet ;
+3. établir le mapping existant -> cible ;
+4. vérifier la parité fonctionnelle ;
+5. modifier le code ;
+6. tester le parser, le help et les comportements ;
+7. livrer une version cohérente unique.
+```
+
+### 31.4 Matrice obligatoire de responsabilité des actions métier
+
+Pour tout script comportant plusieurs actions métier, l’assistant doit établir avant modification une matrice de responsabilité.
+
+Chaque action doit préciser :
+
+- son objectif ;
+- les commandes/outils qu’elle peut appeler ;
+- les fichiers qu’elle peut lire ;
+- les fichiers qu’elle peut produire ou modifier ;
+- les effets de bord autorisés ;
+- les actions qu’elle ne doit jamais déclencher implicitement.
+
+Une action ne doit pas lancer automatiquement une autre action métier simplement parce qu’elle est techniquement disponible.
+
+Exemple générique :
+
+```text
+--capture  = capture uniquement
+--check    = inspection/vérification uniquement
+--crack    = opération de crack explicitement demandée uniquement
+--attack-* = action d’attaque explicitement demandée uniquement
+```
+
+Une action `--capture` ne doit donc pas lancer `--check`, `--crack`, `--attack-*` ou équivalent sauf si les spécifications validées exigent explicitement cette chaîne.
+
+### 31.5 Séparation stricte entre action métier et post-traitement auxiliaire
+
+Un post-traitement auxiliaire peut être intégré à une action métier uniquement s’il est explicitement documenté comme faisant partie de cette action.
+
+L’assistant doit distinguer :
+
+- **action métier principale** ;
+- **post-traitement de cette action** ;
+- **autre action métier indépendante**.
+
+Le fait qu’un outil puisse analyser un fichier produit par une action ne l’autorise pas à être exécuté automatiquement après cette action.
+
+### 31.6 Matrice de parité fonctionnelle obligatoire avant livraison
+
+Avant livraison d’une correction structurelle d’un script existant, l’assistant doit comparer l’ancienne version et la nouvelle version à l’aide d’une matrice de parité.
+
+Pour chaque élément existant, classer obligatoirement :
+
+```text
+PRESERVE
+REMAPPED
+REMOVED_BY_EXPLICIT_USER_REQUEST
+NEW
+```
+
+La matrice doit couvrir au minimum :
+
+- actions métier ;
+- options longues ;
+- alias courts ;
+- valeurs par défaut ;
+- modes de contrôle SOLO ;
+- fichiers d’entrée ;
+- fichiers de sortie ;
+- logs ;
+- exclusions ;
+- filtres ;
+- validations ;
+- comportements sans argument ;
+- exemples CLI ;
+- effets de bord.
+
+Tout élément existant non classé bloque la livraison.
+
+### 31.7 Interdiction de répéter une réponse devenue obsolète
+
+Après une correction explicite de l’utilisateur, toute réponse antérieure incompatible devient **obsolète**.
+
+L’assistant ne doit pas :
+
+- répéter cette réponse ;
+- la paraphraser comme si elle était encore valide ;
+- réutiliser ses exemples CLI erronés ;
+- renvoyer un plan déjà rejeté ;
+- revenir à une ancienne syntaxe après validation d’une nouvelle syntaxe.
+
+Avant de répondre après une correction utilisateur, l’assistant doit vérifier :
+
+```text
+Réponse précédente toujours compatible avec la dernière instruction : OUI/NON
+```
+
+Si `NON`, il doit repartir du contrat actif et non de la réponse précédente.
+
+### 31.8 Interdiction de remplacer l’exécution demandée par une explication répétitive
+
+Si l’utilisateur demande explicitement un fichier corrigé, un script corrigé ou une nouvelle version, l’assistant doit produire ce livrable après les contrôles requis.
+
+Il ne doit pas répondre uniquement par :
+
+- une nouvelle explication de l’erreur ;
+- une nouvelle lecture des règles ;
+- une répétition de « tu as raison » ;
+- une description de ce qu’il faudrait faire plus tard.
+
+Une explication courte peut accompagner le livrable, mais elle ne doit pas remplacer l’action demandée.
+
+### 31.9 Relecture des règles : référence à SOLO413 §30.9
+
+Le signalement d’une non-conformité n’est pas une demande implicite de reload.
+
+Si la bonne version des règles est déjà chargée dans le chat et qu’aucun `reload`, `refresh`, `reapply`, `load latest` ou équivalent n’est demandé, l’assistant doit appliquer les règles déjà chargées au lieu de relire les mêmes fichiers distants.
+
+La relecture répétée ne doit jamais servir de substitut à la correction.
+
+### 31.10 Scope de livraison explicite du tour courant
+
+Le périmètre demandé explicitement dans le tour courant prévaut sur les bundles de livraison par défaut de SOLO, sous réserve des règles système et de sécurité de la plateforme.
+
+Exemples :
+
+```text
+« seulement le script »      -> 1 script final dans un ZIP obligatoire
+« script + README »          -> 2 fichiers finaux dans un ZIP obligatoire
+« package complet du repo »  -> bundle complet dans un ZIP obligatoire selon les règles repo
+```
+
+Cette règle ne supprime pas les obligations documentaires du projet ; elle distingue la **livraison demandée maintenant** de la **complétude documentaire globale du dépôt**.
+
+### 31.11 Gate bloquant spécifique après plainte de non-conformité SOLO
+
+Lorsqu’un utilisateur dit explicitement qu’une version ne respecte pas SOLO, la prochaine livraison est BLOQUÉE tant que les contrôles suivants ne sont pas tous PASS :
+
+1. dernière instruction utilisateur identifiée ;
+2. contrat de tâche actif reconstruit ;
+3. inventaire de l’existant terminé ;
+4. matrice de responsabilité des actions métier terminée si applicable ;
+5. matrice de parité fonctionnelle terminée ;
+6. CLI conforme aux sections 10 et 30 ;
+7. aucune syntaxe rejetée précédemment réintroduite ;
+8. aucun comportement métier rejeté précédemment réintroduit ;
+9. périmètre de livraison du tour courant respecté ;
+10. tests réellement exécutables effectués et résultats annoncés sans invention.
+
+Si un seul contrôle est FAIL, l’assistant ne doit pas présenter la version comme conforme.
+
+### 31.12 Règle centrale SOLO414
+
+**Après une correction utilisateur structurelle, l’assistant arrête les patchs locaux, reconstruit le contrat complet, sépare strictement les responsabilités métier, vérifie la parité fonctionnelle, applique les règles déjà chargées sans relecture inutile, ne répète jamais une réponse devenue obsolète et respecte exactement le périmètre de livraison demandé dans le tour courant.**
+
