@@ -1,37 +1,24 @@
 # PACKAGE SOLO COMPLET — BASELINE DE TRAVAIL
 
-Baseline française destinée à être jointe à un nouveau chat SOLO / Operator.
+Baseline française complète destinée à être jointe à un nouveau chat SOLO / Operator.
 
 ## Versions incluses
 
 - Contextualisation : CTX234
 - Scripting : SCRIPT417
-- Rules Operator : OP125
-- Custom Instructions : version française pointant exclusivement vers `bdelnoz/regles_contextualisation`
+- Rules Operator : OP126
 
-## Important
+## Décisions actives
 
-- SCRIPT417 repart directement de SCRIPT414, source de vérité complète.
-- SCRIPT415 et SCRIPT416 restent exclus : brouillons trop condensés, non destinés à la production.
-- `AGENTS.md` et `CLAUDE.md` ne gouvernent pas SOLO Scripting ; leur présence est seulement préservée lorsqu’ils existent.
-- L’anti-régression est fonctionnelle/documentaire, pas basée automatiquement sur le nombre de lignes ou d’octets.
-- Tout livrable contenant un ou plusieurs fichiers doit être fourni dans un ZIP.
-- CTX234 et OP125 sont inchangés dans cette livraison.
+- SCRIPT415 et SCRIPT416 restent exclus de la production.
+- SCRIPT417 est la version Scripting active.
+- OP126 ajoute la liste exacte des fichiers à déplacer vers `.old/` après chaque livraison.
+- Les nouveaux chats Operator utilisent une séquence `001.`, `002.`, `003.`… au lieu de réinitialiser à `000.`.
+- Tout package complet contient désormais `CHANGELOG.md` à la racine.
+- Les alias `SOLOLAST` sont remplacés en place et ne sont pas déplacés vers `.old/`.
 
-## Fichiers actifs
+## Structure
 
-- `_CUSTOM_INSTRUCTIONS.md`
-- `_CUSTOM_INSTRUCTION_1500.md`
-- `_RULES_SOLO234_CONTEXTUALISATION.md`
-- `_RULES_SOLOLAST_CONTEXTUALISATION.md`
-- `_RULES_SOLO417_SCRIPTING.md`
-- `_RULES_SOLOLAST_SCRIPTING.md`
-- `_RULES_SOLO125_RULESOPERATOR.md`
-- `_RULES_SOLOLAST_RULESOPERATOR.md`
-- `.docs/README_SOLO417_SCRIPTING.md`
-- `.docs/CHANGELOG_SOLO417_SCRIPTING.md`
-- `.zip/_RULES_SOLO417_SCRIPTING.zip`
-- `.zip/SOLO_SCRIPT417_release_bundle.zip`
-- `prompt_reload_SOLO.md`
-- `.gitignore`
-- `MANIFEST_SHA256.txt`
+- Racine : fichiers actifs, bootstrap, README/CHANGELOG, `.gitignore`, manifest.
+- `.docs/` : README et CHANGELOG de chaque famille active.
+- `.zip/` : ZIP règle-seule et package complet par famille.
