@@ -2,6 +2,21 @@
 
 > The supplied baseline did not contain a root `CHANGELOG.md`. This file starts with the currently verified package state and does not invent unavailable earlier global history. Family-specific history remains under `.docs/`.
 
+## 2026-09-21 — CTX235 / SCRIPT417 / OP126
+
+### Contextualisation
+- CTX234 -> CTX235.
+- Consolidated Read Aloud into the single rule 101.
+- Absorbed and removed the former standalone Read Aloud rules 114 and 117 and the 101 bis reminder.
+- Added explicit anti-simplification, anti-shortening, table-preservation, format-conversion and pre-send no-information-loss checks.
+- Renumbered the subsequent top-level rules affected by removal: 115->114, 116->115, 118->116, 119->117 and 120->118.
+
+### Scripting
+- SCRIPT417 unchanged.
+
+### Rules Operator
+- OP126 unchanged.
+
 ## 2026-09-15 — CTX234 / SCRIPT417 / OP126
 
 ### Contextualisation

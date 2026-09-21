@@ -4,7 +4,7 @@ Baseline française complète destinée à être jointe à un nouveau chat SOLO 
 
 ## Versions incluses
 
-- Contextualisation : CTX234
+- Contextualisation : CTX235
 - Scripting : SCRIPT417
 - Rules Operator : OP126
 
@@ -22,3 +22,5 @@ Baseline française complète destinée à être jointe à un nouveau chat SOLO 
 - Racine : fichiers actifs, bootstrap, README/CHANGELOG, `.gitignore`, manifest.
 - `.docs/` : README et CHANGELOG de chaque famille active.
 - `.zip/` : ZIP règle-seule et package complet par famille.
+
+- CTX235 makes rule 101 the single complete Read Aloud rule; former Read Aloud rules 114 and 117 and the 101 bis reminder are absorbed and removed.
