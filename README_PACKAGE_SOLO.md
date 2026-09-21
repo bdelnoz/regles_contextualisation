@@ -6,15 +6,16 @@ Baseline française complète destinée à être jointe à un nouveau chat SOLO 
 
 - Contextualisation : CTX235
 - Scripting : SCRIPT417
-- Rules Operator : OP126
+- Rules Operator : OP127
 
 ## Décisions actives
 
 - SCRIPT415 et SCRIPT416 restent exclus de la production.
 - SCRIPT417 est la version Scripting active.
-- OP126 ajoute la liste exacte des fichiers à déplacer vers `.old/` après chaque livraison.
+- OP127 conserve la liste exacte des fichiers à déplacer vers `.old/` après chaque livraison.
 - Les nouveaux chats Operator utilisent une séquence `001.`, `002.`, `003.`… au lieu de réinitialiser à `000.`.
-- Tout package complet contient désormais `CHANGELOG.md` à la racine.
+- Tout package complet contient `CHANGELOG.md` à la racine.
+- OP127 synchronise Read Aloud avec CTX235/101 et interdit qu’une référence historique soit présentée comme baseline active.
 - Les alias `SOLOLAST` sont remplacés en place et ne sont pas déplacés vers `.old/`.
 
 ## Structure

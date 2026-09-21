@@ -2,6 +2,23 @@
 
 > The supplied baseline did not contain a root `CHANGELOG.md`. This file starts with the currently verified package state and does not invent unavailable earlier global history. Family-specific history remains under `.docs/`.
 
+## 2026-09-21 — CTX235 / SCRIPT417 / OP127
+
+### Contextualisation
+- CTX235 unchanged.
+- Rule 101 remains the canonical complete Read Aloud rule.
+
+### Scripting
+- SCRIPT417 unchanged.
+
+### Rules Operator
+- OP126 -> OP127.
+- Corrected current Operator metadata and active baseline references to CTX235 / SCRIPT417 / OP127.
+- Aligned the Operator Read Aloud compatibility block with CTX235/101.
+- Useful tables must remain present in Read Aloud; a vocal/textual equivalent may be added when needed, without information loss.
+- Added an explicit distinction between historical release references and active baseline references plus a pre-delivery coherence check.
+
+
 ## 2026-09-21 — CTX235 / SCRIPT417 / OP126
 
 ### Contextualisation

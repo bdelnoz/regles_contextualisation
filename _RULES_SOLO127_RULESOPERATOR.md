@@ -1,21 +1,21 @@
 <!--
 DOCUMENT INFORMATION
-Document Name: _RULES_SOLO126_RULESOPERATOR.md
-Version: SOLO126
-Date / Time: 2026-09-15
+Document Name: _RULES_SOLO127_RULESOPERATOR.md
+Version: SOLO127
+Date / Time: 2026-09-21
 Project: SOLO rules operator contextualization
 Public status: GitHub-safe public rules file
-Short description: Règles d’exploitation des chats de maintenance SOLO, synchronisées avec CTX234 et SCRIPT413, avec CORE CHAIN obligatoire piné sur le commit, FULL ACCEPTANCE canonique à 20 checks et chargement idempotent des familles SOLO.
+Short description: Règles d’exploitation des chats de maintenance SOLO, synchronisées avec CTX235 et SCRIPT417, avec règle Read Aloud canonique portée par CTX235/101, CORE CHAIN obligatoire piné sur le commit, FULL ACCEPTANCE canonique à 20 checks et chargement idempotent des familles SOLO.
 -->
 
-# _RULES_SOLO126_RULESOPERATOR.md
+# _RULES_SOLO127_RULESOPERATOR.md
 
-Nom canonique : SOLO126 RULESOPERATOR  
+Nom canonique : SOLO127 RULESOPERATOR  
 Famille : SOLOxxx RULESOPERATOR  
-Version actuelle : 126  
-Document : _RULES_SOLO126_RULESOPERATOR.md  
-Date : 2026-09-15
-Statut : version 125 publique et assainie du fichier opérateur, synchronisant CTX234, SCRIPT413 et les Custom Instructions, avec CORE CHAIN piné sur le SHA exact du commit, FULL ACCEPTANCE canonique à 20 checks obligatoire et chargement idempotent des familles SOLO dans un chat déjà ouvert.
+Version actuelle : 127  
+Document : _RULES_SOLO127_RULESOPERATOR.md  
+Date : 2026-09-21
+Statut : version 127 publique et assainie du fichier opérateur, synchronisant CTX235, SCRIPT417 et les Custom Instructions, avec la règle Read Aloud canonique centralisée dans CTX235/101, CORE CHAIN piné sur le SHA exact du commit, FULL ACCEPTANCE canonique à 20 checks obligatoire et chargement idempotent des familles SOLO dans un chat déjà ouvert.
 
 Ces règles contextualisent un chat chargé de créer, modifier, corriger, versionner, documenter et livrer les fichiers de règles SOLO.
 
@@ -971,11 +971,11 @@ CTX232 / OP117 / SCRIPT410
 
 234. Cette réémission doit conserver le fond, les nuances, les conditions, les décisions, les étapes et la conclusion de la réponse normale. Le mode Read Aloud n’impose aucune réduction automatique de longueur.
 
-235. Les phrases, paragraphes, titres et listes peuvent être adaptés pour l’écoute. Les tableaux denses peuvent être convertis en prose ou en listes, mais aucune information utile ne doit être supprimée.
+235. Les phrases, paragraphes, titres et listes peuvent être adaptés pour l’écoute. Un tableau utile doit rester présent. Si sa lecture vocale est difficile, l’assistant doit conserver le tableau et ajouter, lorsque nécessaire, une restitution textuelle linéaire ou orale équivalente. Aucune information utile ne doit être supprimée, simplifiée ou raccourcie uniquement parce que Read Aloud est actif.
 
 236. Une demande explicite de `version courte`, `résumé`, `plus court` ou équivalent est nécessaire pour réduire le contenu. Une nouvelle activation alors que le mode est déjà actif ne doit pas relancer automatiquement la réémission et créer une boucle.
 
-237. OP118 doit rester compatible avec CTX233, et cette section ne doit pas être interprétée comme une règle distincte ou concurrente du mode Read Aloud global.
+237. La règle 101 de CTX235 est la source de vérité canonique du mode Read Aloud. La présente section Operator est uniquement un rappel de compatibilité et ne doit jamais créer une règle distincte, concurrente ou moins stricte. En cas de divergence, CTX235/101 prévaut pour le comportement Read Aloud.
 
 ------------------------------------------------------------------------
 
@@ -1521,7 +1521,7 @@ Ces valeurs doivent toujours être remplacées dynamiquement dans les releases f
 
 ## 36. AJOUT SOLO126 — ARCHIVAGE `.old/`, NUMÉROTATION SÉQUENTIELLE DES CHATS OPERATOR ET CHANGELOG GLOBAL
 
-365. SOLO126 synchronise la famille Operator avec la baseline active `CTX234` + `SCRIPT417` + `OP126`.
+365. SOLO126 synchronisait la famille Operator avec la baseline de sa release `CTX234` + `SCRIPT417` + `OP126`. Cette référence est historique et ne définit pas la baseline active d’une version Operator ultérieure.
 
 366. Après chaque livraison Operator contenant un nouveau ZIP, un nouveau package ou une nouvelle baseline, la réponse de livraison doit contenir une section explicite nommée `À déplacer vers .old/`.
 
@@ -1580,4 +1580,30 @@ OP126
 ```
 
 386. Règle centrale : **chaque livraison Operator doit dire immédiatement quels anciens fichiers versionnés archiver sous `.old/`, chaque nouveau chat Operator doit incrémenter son préfixe numérique connu, et tout package complet doit contenir son `CHANGELOG.md` global à la racine.**
+
+------------------------------------------------------------------------
+
+## 37. AJOUT SOLO127 — SYNCHRONISATION CTX235, READ ALOUD CANONIQUE ET RÉFÉRENCES DE BASELINE
+
+387. SOLO127 synchronise la famille Operator avec la baseline active `CTX235` + `SCRIPT417` + `OP127`.
+
+388. Pour Read Aloud, la règle canonique unique est la règle 101 de CTX235. Les anciennes règles, rappels ou formulations Operator relatives à Read Aloud ne peuvent ni réduire, ni simplifier, ni raccourcir, ni remplacer les garanties de CTX235/101.
+
+389. En particulier, un tableau utile ne doit jamais être supprimé ou remplacé uniquement parce que Read Aloud est actif. Si sa lecture vocale est difficile, le tableau doit rester présent et une restitution textuelle ou orale équivalente doit être ajoutée lorsque nécessaire, sans perte d’information.
+
+390. Les métadonnées, README, CHANGELOG, manifests et textes décrivant la **baseline active** doivent utiliser les versions actives réelles de la livraison courante. Pour SOLO127, la baseline active est :
+
+```text
+CTX235
+SCRIPT417
+OP127
+```
+
+391. Les références à d’anciennes versions CTX, SCRIPT ou OP peuvent rester dans les sections explicitement historiques décrivant une ancienne release, mais elles ne doivent jamais être présentées comme la baseline active actuelle. Lors d’un contrôle de cohérence, l’Operator doit distinguer une référence historique légitime d’une référence active obsolète.
+
+392. Avant toute livraison d’une nouvelle version Operator, l’Operator doit contrôler au minimum : le header courant, le statut courant, les alias `SOLOLAST`, le README racine, le CHANGELOG racine, le README/CHANGELOG de famille, le package de famille et toute phrase déclarant une baseline active. Une référence active obsolète constitue un échec de validation et doit être corrigée avant livraison.
+
+393. La section Read Aloud historique issue de SOLO118 reste présente pour la traçabilité des règles cumulatives, mais ses règles 232 à 237 sont désormais interprétées sous l’autorité de CTX235/101. La règle 235 est explicitement alignée sur la conservation des tableaux et la règle 237 désigne CTX235/101 comme source canonique.
+
+394. Règle centrale : **SOLO127 utilise CTX235/101 comme autorité unique pour Read Aloud, maintient SCRIPT417 inchangé, identifie correctement la baseline active CTX235 / SCRIPT417 / OP127 et interdit qu’une référence historique soit confondue avec une version active.**
 
