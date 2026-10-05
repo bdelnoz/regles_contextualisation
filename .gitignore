@@ -1,11 +1,14 @@
-.export/
-.exports/
-*.zip
-.tmp/
-.old/
 .private/
 .docs/
+.old/
+.zip/
+.export/
+.exports/
+
+*.zip
+.tmp/
 _RULES_PRIVATE_*
+
 # PROJECT SPECIFIC
 uploads
 *.pid
