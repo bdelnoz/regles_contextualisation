@@ -2,6 +2,25 @@
 
 > The supplied baseline did not contain a root `CHANGELOG.md`. This file starts with the currently verified package state and does not invent unavailable earlier global history. Family-specific history remains under `.docs/`.
 
+## 2026-09-23 — CTX236 / SCRIPT417 / OP128
+
+### Contextualisation
+- CTX235 -> CTX236.
+- Added rule 39.1: answer a direct question directly before optional nuance.
+- Added rule 117.7: focus on requested possibilities/results/actions instead of unsolicited negative inventories.
+- Removed the full Employment/JOBS block from public CTX for external local use.
+
+### Scripting
+- SCRIPT417 unchanged.
+
+### Rules Operator
+- OP127 -> OP128 solely to synchronize the active baseline and preserve public/private packaging coherence.
+- Private specialized modules remain outside the public ZIP.
+
+### Packaging
+- Public package contains only public baseline files.
+- The external Employment mode is delivered separately as a private local file and is intentionally absent from this public ZIP.
+
 ## 2026-09-21 — CTX235 / SCRIPT417 / OP127
 
 ### Contextualisation
