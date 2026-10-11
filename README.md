@@ -1,187 +1,66 @@
-# SOLO Rules — Contextualisation, Scripting & Operator
+# SOLO Rules
 
-Repository containing the public SOLO rule set used with ChatGPT.
+SOLO est un système de règles versionnées destiné à rendre le comportement d’un assistant IA plus stable, reproductible et maintenable entre les chats.
 
-## Current public baseline
+## Baseline active
 
 ```text
-CTX236 / SCRIPT417 / OP128
+CTX239 / SCRIPT420 / OP133 / CI004
 ```
 
-The public working baseline uses these files:
+## Fichiers publics actifs
 
 ```text
-.gitignore
-CHANGELOG.md
+_RULES_SOLO239_CONTEXTUALISATION.md
+_RULES_SOLOLAST_CONTEXTUALISATION.md
+_RULES_SOLO420_SCRIPTING.md
+_RULES_SOLOLAST_SCRIPTING.md
+_RULES_SOLO133_RULESOPERATOR.md
+_RULES_SOLOLAST_RULESOPERATOR.md
+_CUSTINST_SOLO004_CUSTOM_INSTRUCTIONS.md
+_CUSTINST_SOLOLAST_CUSTOM_INSTRUCTIONS.md
 README.md
-_CUSTOM_INSTRUCTIONS.md
-_RULES_SOLO236_CONTEXTUALISATION.md
-_RULES_SOLO417_SCRIPTING.md
-_RULES_SOLO128_RULESOPERATOR.md
-_RULES_SOLOLAST_CONTEXTUALISATION.md
-_RULES_SOLOLAST_SCRIPTING.md
-_RULES_SOLOLAST_RULESOPERATOR.md
+CHANGELOG.md
+.gitignore
 ```
 
-## `_CUSTOM_INSTRUCTIONS.md`
+Les fichiers versionnés identifient précisément la release utilisée. Les fichiers `SOLOLAST` gardent un nom stable pour les accès RAW.
 
-This file contains the text to place in the **ChatGPT account Personalization / Custom Instructions section**.
+## Contextualisation
 
-Its purpose is to tell ChatGPT how to load and use the SOLO rules.
+La famille **CTX** contient les règles conversationnelles générales : comportement, continuité, présentation, modes généraux et conventions applicables aux chats.
 
-In particular, it defines:
+## Scripting
 
-- the public RAW URLs used to read the current SOLO rules;
-- automatic loading of the general Contextualisation rules at the start of a new chat, unless explicitly bypassed;
-- activation of Scripting only when requested or when the chat clearly becomes a scripting/repository task;
-- activation of Operator only when explicitly requested;
-- idempotent loading inside the same chat, so already-loaded rule families are not repeatedly fetched;
-- explicit reload behavior when the user asks to reload or reapply the rules.
+La famille **SCRIPT** contient les règles applicables au code, aux scripts, au debug, aux outils CLI, à la documentation technique et aux workflows de développement. La structure du repository SOLO est gouvernée par Operator.
 
-`_CUSTOM_INSTRUCTIONS.md` is therefore **not a rule family itself**. It is the configuration text used in ChatGPT Personalization to tell ChatGPT when and how to load the SOLO rule families.
+## Operator
 
-## Contextualisation — CTX236
+La famille **OP** maintient les artefacts SOLO : création et modification des règles, versionnement, alias `SOLOLAST`, documentation locale, structure du repository et préparation des livraisons locales.
 
-Active file:
+## Custom Instructions SOLO
+
+Le contenu de `_CUSTINST_SOLOLAST_CUSTOM_INSTRUCTIONS.md` est destiné à être copié dans **Personalization / Custom Instructions** du compte ChatGPT. Les Custom Instructions restent volontairement courtes et servent de bootstrap vers les fichiers SOLO.
+
+## Reproduire le mécanisme
+
+Pour chaque famille publique, conserver un fichier versionné et un alias `SOLOLAST`. Lors d’une nouvelle version, créer le nouveau fichier versionné et remplacer le contenu du `SOLOLAST` par une copie exacte de la version active.
+
+La même mécanique s’applique aux Custom Instructions :
 
 ```text
-_RULES_SOLO236_CONTEXTUALISATION.md
+_CUSTINST_SOLOxxx_CUSTOM_INSTRUCTIONS.md
+_CUSTINST_SOLOLAST_CUSTOM_INSTRUCTIONS.md
 ```
 
-Stable alias:
+La documentation locale est conservée sous `.docs/`, les modules locaux privés sous `.private/`, les ZIP sous `.zip/`, les archives sous `.old/` et les exports sous `.export/` ou `.exports/`. Ces emplacements sont protégés par `.gitignore`. Les modules privés utilisent une convention générique telle que :
 
 ```text
-_RULES_SOLOLAST_CONTEXTUALISATION.md
+_RULES_PRIVATE_SOLOxxx_<MODULE>.md
 ```
 
-The Contextualisation file is the **general SOLO rule set**.
+Les noms réels des modules privés ne doivent pas apparaître dans la documentation publique.
 
-It defines the default behavior of ChatGPT for normal conversations and contains the global rules that apply across chats.
+## GitHub
 
-It covers, among other things:
-
-- response style and directness;
-- preservation of context already established in the chat;
-- anti-repetition and anti-loop behavior;
-- Read Aloud behavior;
-- voice/text interaction rules;
-- reporting and technical investigation behavior;
-- handling of long chats and continuity;
-- general public modes and interaction rules;
-- public/private separation principles.
-
-CTX is the general foundation. Specialized behavior that does not need to be part of the global public rules can be externalized into separate private modules.
-
-## Scripting — SCRIPT417
-
-Active file:
-
-```text
-_RULES_SOLO417_SCRIPTING.md
-```
-
-Stable alias:
-
-```text
-_RULES_SOLOLAST_SCRIPTING.md
-```
-
-The Scripting file contains the rules used when working on:
-
-- scripts;
-- source code;
-- repositories;
-- browser extensions;
-- applications;
-- debugging;
-- command-line tools;
-- technical documentation related to code;
-- versioning and delivery of code artifacts.
-
-Its purpose is to make scripting work reproducible and safe.
-
-It defines rules for areas such as:
-
-- repository handling;
-- preserving existing functionality;
-- anti-regression checks;
-- versioning;
-- changelogs;
-- testing;
-- CLI behavior;
-- stdout/stderr handling;
-- documentation;
-- ZIP delivery;
-- file naming;
-- Git hygiene;
-- secrets and sensitive files;
-- validation before delivery.
-
-Scripting is **not loaded for every normal chat**. It is added when the conversation actually concerns scripting/code/repository work or when the user explicitly activates it.
-
-## Operator — OP128
-
-Active file:
-
-```text
-_RULES_SOLO128_RULESOPERATOR.md
-```
-
-Stable alias:
-
-```text
-_RULES_SOLOLAST_RULESOPERATOR.md
-```
-
-The Operator file contains the rules used to **maintain the SOLO rules themselves**.
-
-Operator is used when creating, correcting, restructuring, versioning or packaging Contextualisation, Scripting, Operator or related SOLO rule files.
-
-Its purpose is to prevent careless rule changes and uncontrolled duplication.
-
-It defines rules for:
-
-- checking whether an existing rule already covers a reported problem;
-- deciding whether the real issue is a missing rule, a vague rule, a rule not applied, or a misinterpretation;
-- proposing the smallest useful correction;
-- waiting for GO when required;
-- incrementing versions correctly;
-- preserving unchanged rule families;
-- updating the matching `SOLOLAST` aliases;
-- validating packages before delivery;
-- maintaining changelogs and manifests;
-- identifying files that must be moved to `.old/`;
-- preventing private-rule leakage into public packages;
-- maintaining consistency between the active CTX / SCRIPT / OP versions.
-
-Operator is **not loaded for normal use**. It is activated when the user explicitly works on the SOLO rules themselves.
-
-## `SOLOLAST` files
-
-The three stable aliases are:
-
-```text
-_RULES_SOLOLAST_CONTEXTUALISATION.md
-_RULES_SOLOLAST_SCRIPTING.md
-_RULES_SOLOLAST_RULESOPERATOR.md
-```
-
-They always represent the currently active public versions.
-
-For the present baseline:
-
-```text
-_RULES_SOLOLAST_CONTEXTUALISATION.md = CTX236
-_RULES_SOLOLAST_SCRIPTING.md        = SCRIPT417
-_RULES_SOLOLAST_RULESOPERATOR.md    = OP128
-```
-
-The versioned files provide traceability. The `SOLOLAST` files provide stable filenames and stable RAW URLs for the Custom Instructions.
-
----
-
-Current public baseline:
-
-```text
-CTX236 / SCRIPT417 / OP128
-```
+Dans SOLO, l’assistant utilise GitHub en **READ ONLY STRICT**. Il peut lire et comparer le remote, préparer localement les modifications et les fournir à l’utilisateur. **AUCUNE EXCEPTION. JAMAIS.** L’utilisateur reste le seul maître de toute écriture distante.

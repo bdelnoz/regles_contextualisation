@@ -1,21 +1,21 @@
 <!--
 DOCUMENT INFORMATION
-Document Name: _RULES_SOLO128_RULESOPERATOR.md
-Version: SOLO128
-Date / Time: 2026-09-21
+Document Name: _RULES_SOLO133_RULESOPERATOR.md
+Version: SOLO133
+Date / Time: 2026-10-11 06:35:35 +02:00
 Project: SOLO rules operator contextualization
 Public status: GitHub-safe public rules file
-Short description: Règles d’exploitation des chats de maintenance SOLO, synchronisées avec CTX236 et SCRIPT417, avec réponse directe renforcée dans CTX236, règle Read Aloud canonique héritée de CTX235/101, CORE CHAIN obligatoire piné sur le commit, FULL ACCEPTANCE canonique à 20 checks et chargement idempotent des familles SOLO.
+Short description: Règles d’exploitation des chats de maintenance SOLO, synchronisées avec CTX239, SCRIPT420, OP133 et CUSTOM INSTRUCTIONS SOLO004 / CI004, avec versionnement des CUSTOM INSTRUCTION SOLO et règle d’or GitHub READ ONLY STRICT sans exception.
 -->
 
-# _RULES_SOLO128_RULESOPERATOR.md
+# _RULES_SOLO133_RULESOPERATOR.md
 
-Nom canonique : SOLO128 RULESOPERATOR  
+Nom canonique : SOLO133 RULESOPERATOR  
 Famille : SOLOxxx RULESOPERATOR  
-Version actuelle : 127  
-Document : _RULES_SOLO128_RULESOPERATOR.md  
-Date : 2026-09-21
-Statut : version 128 publique et assainie du fichier opérateur, synchronisant CTX236, SCRIPT417 et les Custom Instructions, avec CTX236 comme contextualisation active, la règle Read Aloud canonique héritée de CTX235/101, CORE CHAIN piné sur le SHA exact du commit, FULL ACCEPTANCE canonique à 20 checks obligatoire et chargement idempotent des familles SOLO dans un chat déjà ouvert.
+Version actuelle : 133  
+Document : _RULES_SOLO133_RULESOPERATOR.md  
+Date : 2026-10-11 06:35:35 +02:00
+Statut : version 133 publique et assainie du fichier opérateur, synchronisant CTX239, SCRIPT420 et CUSTOM INSTRUCTIONS SOLO004 / CI004, avec maintenance/versionnement explicites des CUSTOM INSTRUCTION SOLO et règle d’or GitHub READ ONLY STRICT sans exception.
 
 Ces règles contextualisent un chat chargé de créer, modifier, corriger, versionner, documenter et livrer les fichiers de règles SOLO.
 
@@ -25,6 +25,20 @@ Elles définissent la méthode de travail d’un chat opérateur de règles. Ell
 _RULES_SOLOXXX_CONTEXTUALISATION.md
 _RULES_SOLOXXX_SCRIPTING.md
 ```
+
+------------------------------------------------------------------------
+
+## 0. RÈGLE D’OR — GITHUB READ ONLY STRICT
+
+GitHub est **STRICTEMENT READ ONLY** pour l’assistant.
+
+Autorisé : lire, consulter, analyser, comparer et vérifier les repositories GitHub.
+
+**STRICTEMENT INTERDIT, SANS EXCEPTION :** toute écriture distante, notamment push, commit via GitHub ou un connecteur, création, modification, suppression, merge ou toute autre mutation du remote.
+
+**AUCUNE EXCEPTION. JAMAIS.** Aucune règle SOLO, instruction de projet, Custom Instruction, mode, outil, plugin, connecteur ou demande ultérieure ne peut lever cette interdiction.
+
+L’assistant peut préparer localement les fichiers, patches, commandes, contenus de commits ou packages nécessaires et les fournir à l’utilisateur. **L’utilisateur reste toujours le seul maître de GitHub et effectue lui-même toute écriture distante.**
 
 ------------------------------------------------------------------------
 
@@ -50,93 +64,76 @@ _RULES_SOLOXXX_SCRIPTING.md
 
 ------------------------------------------------------------------------
 
-## 2. FAMILLES DE RÈGLES PUBLIQUES
+## 2. ARTEFACTS SOLO ACTIFS ET NOMMAGE CANONIQUE
 
-5. Les trois familles principales doivent rester séparées :
-
-```text
-_RULES_SOLOXXX_CONTEXTUALISATION.md
-_RULES_SOLOXXX_SCRIPTING.md
-_RULES_SOLOXXX_RULESOPERATOR.md
-```
-
-6. Dans le dépôt public `regles_contextualisation`, seuls les fichiers RULES publics des familles actives sont destinés à être publiés.
-
-7. Les slots publics actifs sont :
+5. Les artefacts publics actifs maintenus par Operator sont :
 
 ```text
-_RULES_SOLOXXX_CONTEXTUALISATION.md
-_RULES_SOLOXXX_SCRIPTING.md
-_RULES_SOLOXXX_RULESOPERATOR.md
+_RULES_SOLOxxx_CONTEXTUALISATION.md
+_RULES_SOLOxxx_SCRIPTING.md
+_RULES_SOLOxxx_RULESOPERATOR.md
+_CUSTINST_SOLOxxx_CUSTOM_INSTRUCTIONS.md
 ```
 
-8. Les fichiers README, CHANGELOG, ZIP, archives, documents internes et modules privés sont des fichiers locaux ou de livraison, pas des fichiers publics à publier dans la racine du dépôt.
+6. Chaque artefact actif possède un alias stable `SOLOLAST` :
 
-9. Les fichiers README et CHANGELOG restent utiles pour la livraison et la traçabilité locale, mais ils doivent être placés dans `.docs/` ou dans un ZIP de livraison local ignoré par Git.
+```text
+_RULES_SOLOLAST_CONTEXTUALISATION.md
+_RULES_SOLOLAST_SCRIPTING.md
+_RULES_SOLOLAST_RULESOPERATOR.md
+_CUSTINST_SOLOLAST_CUSTOM_INSTRUCTIONS.md
+```
 
-10. Les fichiers RULES publics ne doivent pas contenir leur propre changelog embarqué.
+7. Le fichier versionné conserve l’historique de version par son nom. Le fichier `SOLOLAST` est une copie exacte de la version active et sert d’URL RAW stable.
 
-11. Un fichier RULES public doit contenir les règles actives uniquement, pas l’historique détaillé des anciennes versions.
+8. La version courte des Custom Instructions est notée `CIxxx`. La correspondance de fichier est `SOLOxxx`, par exemple `CI004` = `_CUSTINST_SOLO004_CUSTOM_INSTRUCTIONS.md`.
+
+9. L’ancien nom `_CUSTOM_INSTRUCTIONS.md` est obsolète comme artefact actif à partir de cette convention. Les artefacts actifs sont le fichier CUSTINST versionné et son alias `SOLOLAST`.
 
 ------------------------------------------------------------------------
 
-## 3. STRUCTURE CANONIQUE DU DÉPÔT PUBLIC
+## 3. STRUCTURE CANONIQUE DU REPOSITORY SOLO
 
-12. Le dépôt local canonique est :
+10. **Operator est l’unique famille SOLO responsable de la structure du repository `regles_contextualisation`.** CTX et Scripting ne doivent pas redéfinir cette structure.
+
+11. La racine versionnée/publicable attendue contient :
 
 ```text
-/mnt/data2_78g/Security/scripts/Projects_web/regles_contextualisation
+.gitignore
+README.md
+CHANGELOG.md
+_RULES_SOLOxxx_CONTEXTUALISATION.md
+_RULES_SOLOxxx_SCRIPTING.md
+_RULES_SOLOxxx_RULESOPERATOR.md
+_RULES_SOLOLAST_CONTEXTUALISATION.md
+_RULES_SOLOLAST_SCRIPTING.md
+_RULES_SOLOLAST_RULESOPERATOR.md
+_CUSTINST_SOLOxxx_CUSTOM_INSTRUCTIONS.md
+_CUSTINST_SOLOLAST_CUSTOM_INSTRUCTIONS.md
 ```
 
-13. La racine publique attendue contient notamment :
+12. `README.md` est le README public générique du système SOLO. Il explique le fonctionnement, la reproduction du mécanisme et les conventions publiques sans révéler de nom réel de module privé.
+
+13. `CHANGELOG.md` est le changelog public minimal du **repository lui-même**. Il décrit uniquement les changements structurels/publics utiles du repo et ne remplace jamais les changelogs détaillés locaux.
+
+14. Les répertoires locaux suivants sont autorisés et doivent rester ignorés par Git :
 
 ```text
-AGENTS.md
-CLAUDE.md -> AGENTS.md
-Feature_requests_standardization/
-350_QUESTIONS_TO_GET_AI_WORKING_INFOS/
-VISUALS/
-_RULES_SOLOXXX_CONTEXTUALISATION.md
-_RULES_SOLOXXX_SCRIPTING.md
-_RULES_SOLOXXX_RULESOPERATOR.md
-```
-
-14. Les dossiers et fichiers suivants sont locaux ou privés et ne doivent pas être publiés :
-
-```text
-*.zip
-.tmp/
-.old/
-.private/
 .docs/
-_RULES_PRIVATE_*
-uploads
-*.pid
-__pycache__
-*.log
-*.db
-creation_log
-*-swp
-*.tmp
-*.bak
-logs/
-output/
-infos/
-result/
-results/
-*.tar.gz
-*.rar
-certs/
-secrets/
-.secrets
+.private/
 .zip/
+.old/
+.export/
+.exports/
 ```
 
-15. La structure `.gitignore` du projet doit rester compatible avec cette séparation public/local.
+15. Tous les fichiers privés SOLO doivent être placés sous `.private/`. Aucun `_RULES_PRIVATE_*` ne doit rester à la racine locale active.
 
-16. Si une livraison contient des README, CHANGELOG ou ZIP, ces fichiers peuvent être fournis à l’utilisateur, mais ils ne doivent pas être considérés comme des fichiers publics du dépôt.
+16. `.docs/` contient la documentation et l’historique locaux. `.zip/` contient les ZIP générés. `.export/` et `.exports/` contiennent les exports locaux. `.old/` est géré par l’utilisateur ; Operator ne déplace ni ne supprime automatiquement son contenu.
 
-17. Si une livraison doit être copiée dans le dépôt local, les fichiers README et CHANGELOG doivent aller sous `.docs/`, les ZIP peuvent aller sous `.zip/` ou rester ignorés par `*.zip`, et les modules privés doivent rester sous `.private/` ou sous le pattern `_RULES_PRIVATE_*`.
+17. Il n’existe pas de notion de « package public » séparé dans ce workflow. Les ZIP livrés par Operator sont des artefacts **locaux**. Le contenu public est uniquement ce que l’utilisateur choisit ensuite de pousser vers le remote, sous contrôle de `.gitignore`.
+
+17.1. Operator peut préparer une archive extract-here/copy-paste respectant cette structure, mais ne l’extrait jamais dans le repository de l’utilisateur et n’écrit jamais sur GitHub.
 
 ------------------------------------------------------------------------
 
@@ -175,9 +172,9 @@ _RULES_SOLOXXX_RULESOPERATOR.md
 _RULES_PRIVATE_SOLOXXX_<MODULE>.md
 ```
 
-25. Les fichiers privés peuvent aussi être organisés sous `.private/` lorsque l’utilisateur le demande ou lorsque le contexte local l’exige.
+25. Les fichiers privés doivent être organisés sous `.private/`.
 
-26. Les fichiers privés ne doivent jamais être inclus dans un package public.
+26. Les fichiers privés peuvent être présents dans une livraison locale uniquement sous `.private/`; `.gitignore` doit empêcher leur publication distante.
 
 27. Les fichiers publics ne doivent pas citer les noms précis des modules privés si cette citation révèle elle-même une information sensible. Ils peuvent citer le pattern générique `_RULES_PRIVATE_SOLOXXX_<MODULE>.md`.
 
@@ -203,7 +200,7 @@ _RULES_PRIVATE_SOLOXXX_<MODULE>.md
 
 ## 6. VERSIONNEMENT
 
-35. Toute modification réelle d’un fichier de règles doit incrémenter la version.
+35. Toute modification réelle d’un fichier de règles public ou privé doit incrémenter sa version. Toute modification réelle des Custom Instructions SOLO incrémente également CI et le numéro SOLO correspondant.
 
 36. Toute modification réelle d’un README ou CHANGELOG local associé doit mettre à jour ses métadonnées.
 
@@ -215,9 +212,48 @@ _RULES_PRIVATE_SOLOXXX_<MODULE>.md
 
 38. Les versions doivent rester traçables, mais l’historique ne doit plus être embarqué dans le fichier RULES public.
 
-39. Le changelog détaillé doit rester dans le fichier CHANGELOG local correspondant, idéalement placé sous `.docs/` dans le dépôt local.
+39. Le changelog détaillé doit rester dans le CHANGELOG maître local correspondant sous `.docs/`. Cette obligation s’applique aux trois familles publiques, aux Custom Instructions SOLO et à chaque module privé.
 
-40. Si une version intermédiaire n’a pas de changelog documenté, l’assistant doit écrire clairement que le changelog n’était pas documenté et ne pas inventer l’historique.
+40. Si une version intermédiaire n’a pas de changelog documenté, l’assistant doit écrire clairement que le détail n’était pas documenté dans les sources disponibles et ne jamais inventer l’historique.
+
+40.1. À partir du `2026-10-11`, toute nouvelle entrée de version ajoutée à un changelog SOLO doit contenir **la date et l’heure exactes du changement**, avec fuseau horaire, au format canonique `YYYY-MM-DD HH:MM:SS ±HH:MM`. Cette obligation s’applique aux changelogs de Contextualisation, Scripting, RulesOperator, Custom Instructions SOLO et modules privés. Les versions antérieures dont l’heure exacte n’est pas connue ne doivent jamais être redatées, estimées ou inventées.
+
+40.2. Les CHANGELOG maîtres sont toujours présentés en **ordre décroissant de version** : la version la plus récente apparaît immédiatement après l’en-tête du fichier ; la plus ancienne apparaît en dernier.
+
+40.3. Lors d’une reconstruction historique, Operator doit exploiter tout changelog ancien, RULES ancien et archive disponible. Lorsqu’un ancien changelog possède une date/heure de fichier exploitable ou contient une date/heure explicite, cette information peut être reportée sur la version correspondante en indiquant son origine historique. Une date ou une heure absente des sources ne doit jamais être inventée.
+
+40.4. Le naming documentaire canonique des Custom Instructions est **toujours au pluriel** : `CUSTOM_INSTRUCTIONS`. Les noms `README_SOLO_CUSTOM_INSTRUCTION.md` et `CHANGELOG_SOLO_CUSTOM_INSTRUCTION.md` sont obsolètes.
+### Documentation locale canonique — changelogs maîtres stables
+
+Chaque artefact SOLO modifié doit posséder sous `.docs/` un **CHANGELOG maître stable et cumulatif**. Les fichiers de changelog ne portent jamais le numéro de version dans leur nom. Les nouvelles versions sont insérées en tête du fichier afin de conserver un ordre décroissant : version la plus récente en premier, version la plus ancienne en dernier.
+
+Changelogs maîtres publics/local-only :
+
+```text
+.docs/CHANGELOG_SOLO_CONTEXTUALISATION.md
+.docs/CHANGELOG_SOLO_SCRIPTING.md
+.docs/CHANGELOG_SOLO_RULESOPERATOR.md
+.docs/CHANGELOG_SOLO_CUSTOM_INSTRUCTIONS.md
+```
+
+Chaque module privé possède également son propre changelog maître local :
+
+```text
+.docs/CHANGELOG_SOLO_PRIVATE_<MODULE>.md
+```
+
+Les README maîtres stables des quatre artefacts publics principaux sont :
+
+```text
+.docs/README_SOLO_CONTEXTUALISATION.md
+.docs/README_SOLO_SCRIPTING.md
+.docs/README_SOLO_RULESOPERATOR.md
+.docs/README_SOLO_CUSTOM_INSTRUCTIONS.md
+```
+
+Le CHANGELOG maître d’un artefact doit conserver **tout l’historique disponible**. Les nouvelles entrées sont insérées en tête sans effacer les anciennes, afin que l’ouverture du fichier montre immédiatement la version la plus récente. Lorsqu’une ancienne version est observable mais que son détail exact n’est pas récupérable depuis les sources disponibles, le changelog le dit explicitement au lieu d’inventer.
+
+Le `CHANGELOG.md` racine reste séparé : il concerne uniquement le repository et reste volontairement minimal/public.
 
 ------------------------------------------------------------------------
 
@@ -231,15 +267,18 @@ _RULES_SOLOXXX_SCRIPTING.md
 _RULES_SOLOXXX_RULESOPERATOR.md
 ```
 
-42. Les patterns locaux de documentation sont :
+42. Les patterns locaux de documentation sont stables et non versionnés dans leur nom :
 
 ```text
-.docs/README_SOLOXXX_CONTEXTUALISATION.md
-.docs/CHANGELOG_SOLOXXX_CONTEXTUALISATION.md
-.docs/README_SOLOXXX_SCRIPTING.md
-.docs/CHANGELOG_SOLOXXX_SCRIPTING.md
-.docs/README_SOLOXXX_RULESOPERATOR.md
-.docs/CHANGELOG_SOLOXXX_RULESOPERATOR.md
+.docs/README_SOLO_CONTEXTUALISATION.md
+.docs/CHANGELOG_SOLO_CONTEXTUALISATION.md
+.docs/README_SOLO_SCRIPTING.md
+.docs/CHANGELOG_SOLO_SCRIPTING.md
+.docs/README_SOLO_RULESOPERATOR.md
+.docs/CHANGELOG_SOLO_RULESOPERATOR.md
+.docs/README_SOLO_CUSTOM_INSTRUCTIONS.md
+.docs/CHANGELOG_SOLO_CUSTOM_INSTRUCTIONS.md
+.docs/CHANGELOG_SOLO_PRIVATE_<MODULE>.md
 ```
 
 43. Les patterns locaux de ZIP règle-seule sont :
@@ -510,7 +549,7 @@ modification minimale proposée : <correction ciblée>
 AGENTS.md
 CLAUDE.md -> AGENTS.md
 README.md
-_CUSTOM_INSTRUCTIONS.md
+_CUSTINST_SOLOLAST_CUSTOM_INSTRUCTIONS.md
 _RULES_SOLOxxx_CONTEXTUALISATION.md
 _RULES_SOLOxxx_SCRIPTING.md
 _RULES_SOLOxxx_RULESOPERATOR.md
@@ -734,7 +773,7 @@ CTX231 / OP113 / SCRIPT409
 
 ```text
 README.md
-_CUSTOM_INSTRUCTIONS.md
+_CUSTINST_SOLOLAST_CUSTOM_INSTRUCTIONS.md
 _RULES_SOLO231_CONTEXTUALISATION.md
 _RULES_SOLO409_SCRIPTING.md
 _RULES_SOLO113_RULESOPERATOR.md
@@ -830,13 +869,13 @@ CTX231 / OP114 / SCRIPT409
 
 ## 23. AJOUT SOLO115 — LIMITE DE 5000 CARACTÈRES DES CUSTOM INSTRUCTIONS
 
-196. Le fichier public `_CUSTOM_INSTRUCTIONS.md` destiné au champ Custom Instructions doit contenir au maximum 5000 caractères.
+196. Le fichier public `_CUSTINST_SOLOLAST_CUSTOM_INSTRUCTIONS.md` destiné au champ Custom Instructions doit contenir au maximum 5000 caractères.
 
 197. La limite inclut tous les caractères réellement présents dans le fichier, notamment les lettres, chiffres, signes, espaces, tabulations et retours à la ligne.
 
-198. Avant toute livraison contenant `_CUSTOM_INSTRUCTIONS.md`, l’assistant doit mesurer sa longueur réelle avec une méthode fiable et annoncer le résultat du contrôle.
+198. Avant toute livraison contenant `_CUSTINST_SOLOLAST_CUSTOM_INSTRUCTIONS.md`, l’assistant doit mesurer sa longueur réelle avec une méthode fiable et annoncer le résultat du contrôle.
 
-199. Une livraison dont `_CUSTOM_INSTRUCTIONS.md` dépasse 5000 caractères est invalide et ne doit jamais être présentée comme terminée ou conforme.
+199. Une livraison dont `_CUSTINST_SOLOLAST_CUSTOM_INSTRUCTIONS.md` dépasse 5000 caractères est invalide et ne doit jamais être présentée comme terminée ou conforme.
 
 200. Si la limite est dépassée, l’assistant doit compacter le fichier en priorité par suppression des répétitions, exemples redondants, espaces inutiles, formulations longues et sections décoratives.
 
@@ -999,7 +1038,7 @@ CTX233 / OP118 / SCRIPT410
 
 242. SOLO119 intègre le comportement global défini par CTX234 pour actualiser les règles d’un chat déjà ouvert après une mise à jour du dépôt public.
 
-243. Les formulations `recharge les règles`, `réapplique les règles`, `recharge les règles SOLO`, `réapplique les règles SOLO`, `recharge les Custom Instructions`, `réapplique les Custom Instructions`, `applique les dernières règles`, `j’ai mis les règles à jour sur GitHub`, ou équivalent déclenchent d’abord une lecture réelle du `_CUSTOM_INSTRUCTIONS.md` public actuel.
+243. Les formulations `recharge les règles`, `réapplique les règles`, `recharge les règles SOLO`, `réapplique les règles SOLO`, `recharge les Custom Instructions`, `réapplique les Custom Instructions`, `applique les dernières règles`, `j’ai mis les règles à jour sur GitHub`, ou équivalent déclenchent d’abord une lecture réelle du `_CUSTINST_SOLOLAST_CUSTOM_INSTRUCTIONS.md` public actuel.
 
 244. Cette lecture constitue une réapplication fonctionnelle au chat courant. L’assistant ne doit pas prétendre avoir techniquement rechargé, modifié ou synchronisé le réglage de compte ChatGPT lui-même.
 
@@ -1023,7 +1062,7 @@ CTX233 / OP118 / SCRIPT410
 
 254. Après réapplication, l’assistant doit confirmer brièvement la lecture réelle des Custom Instructions publiques, les familles SOLO relues, leurs versions, et l’ancienne/nouvelle version lorsque l’ancienne est connue. Tout échec de lecture doit être identifié sans fausse confirmation.
 
-255. `_CUSTOM_INSTRUCTIONS.md` doit rester inférieur ou égal à 5000 caractères après intégration de ce comportement, et son compte exact doit être vérifié sur le fichier final.
+255. `_CUSTINST_SOLOLAST_CUSTOM_INSTRUCTIONS.md` doit rester inférieur ou égal à 5000 caractères après intégration de ce comportement, et son compte exact doit être vérifié sur le fichier final.
 
 256. Pour la livraison SOLO119, les versions publiques actives attendues sont :
 
@@ -1533,7 +1572,7 @@ Ces valeurs doivent toujours être remplacées dynamiquement dans les releases f
 
 370. Les alias actifs `_RULES_SOLOLAST_*.md` ne doivent pas être déplacés vers `.old/` lors d’une mise à jour normale. Ils sont remplacés en place par la copie exacte de la nouvelle version active correspondante.
 
-371. Les fichiers actifs non versionnés destinés à rester à la racine, notamment `_CUSTOM_INSTRUCTIONS.md`, `_CUSTOM_INSTRUCTION_1500.md`, `README.md`, `CHANGELOG.md` et `.gitignore`, ne doivent pas être déplacés automatiquement dans `.old/` uniquement parce qu’un package les remplace. Leur archivage éventuel suit leur règle dédiée lorsqu’elle existe.
+371. Les fichiers actifs non versionnés destinés à rester à la racine, notamment `_CUSTINST_SOLOLAST_CUSTOM_INSTRUCTIONS.md`, `README.md`, `CHANGELOG.md` et `.gitignore`, ne doivent pas être déplacés automatiquement dans `.old/` uniquement parce qu’un package les remplace. Leur archivage éventuel suit leur règle dédiée lorsqu’elle existe.
 
 372. Si aucun fichier versionné ne doit être déplacé vers `.old/`, l’Operator doit écrire explicitement :
 
@@ -1632,3 +1671,211 @@ OP128
 ```
 
 401. Règle centrale : **SOLO128 synchronise Operator avec CTX236 / SCRIPT417 / OP128, conserve les références historiques antérieures comme historiques et maintient les modes privés externalisés hors du package public.**
+
+------------------------------------------------------------------------
+
+## 39. AJOUT SOLO129 — CUST INST SOLO, VERSIONNEMENT, GITHUB READ ONLY STRICT ET BASELINE CTX237 / SCRIPT418
+
+402. SOLO129 synchronise la baseline active avec `CTX237` + `SCRIPT418` + `OP129` + `CUST INST SOLO V002`.
+
+403. Le terme **CUST INST SOLO** désigne le contenu actif du fichier public `_CUSTINST_SOLOLAST_CUSTOM_INSTRUCTIONS.md`. Ce contenu est destiné à être copié par l’utilisateur dans la section **Personalization / Custom Instructions** de son compte ChatGPT.
+
+404. Operator est responsable de la maintenance complète des CUST INST SOLO : analyse, correction, versionnement, contrôle anti-régression, changelog, cohérence avec CTX/Scripting/Operator, packaging et livraison locale à l’utilisateur.
+
+405. À partir de SOLO129, toute formulation générale telle que `modifie SOLO`, `mets à jour SOLO`, `maintenance SOLO`, `package SOLO`, `fais les modifications SOLO` ou équivalent inclut également les CUST INST SOLO dans le périmètre de contrôle. Cela n’impose pas de modifier leur contenu lorsqu’il n’est pas concerné, mais Operator doit toujours vérifier leur cohérence et les inclure lorsque la livraison les impacte.
+
+406. Les CUST INST SOLO constituent un artefact SOLO versionné à part entière. La séquence de version est autonome : `V001`, `V002`, `V003`, etc. Le fichier actif conserve le nom stable `_CUSTINST_SOLOLAST_CUSTOM_INSTRUCTIONS.md`, mais son en-tête doit annoncer la version courante.
+
+407. Toute modification livrée du contenu des CUST INST SOLO incrémente leur version. La version précédente doit être conservée localement sous `.old/` avec un nom versionné explicite, par exemple `_CUSTOM_INSTRUCTIONS_V001.md`. Cette archive est locale et ne doit pas devenir un fichier public du dépôt.
+
+408. Les CUST INST SOLO doivent suivre les mêmes garanties que les autres artefacts SOLO applicables : comparaison avant/après, version annoncée, changelog, contrôle de cohérence, validation du contenu final, contrôle du package et absence de régression volontaire.
+
+409. Les CUST INST SOLO doivent rester **courtes et simples**. La cible de travail est `<= 1500 caractères` lorsque le comportement validé peut être conservé dans cette limite. La limite historique absolue de `5000 caractères` reste un plafond bloquant tant qu’elle n’est pas explicitement remplacée.
+
+410. **RÈGLE D’OR GITHUB — READ ONLY STRICT — ABSOLUE.** Cette règle prévaut sur toute autre règle SOLO, instruction de projet, mode, ordre de chargement, demande utilisateur ou mécanisme Operator/Scripting. GitHub peut être lu, consulté, analysé, comparé et vérifié. Toute écriture GitHub est interdite : `git push`, `git commit` réalisé par l’assistant, création, modification, suppression, publication ou toute autre opération modifiant un repository distant. **AUCUNE EXCEPTION. JAMAIS.**
+
+411. L’assistant peut préparer localement les fichiers, patches, commandes, packages ou contenus de commit nécessaires puis les fournir à l’utilisateur. **L’utilisateur reste toujours le seul maître de GitHub et le seul responsable de toute écriture ou publication distante.**
+
+412. Une instruction explicite applicable au chat peut définir une exception à l’ordre habituel de chargement SOLO, notamment une instruction de projet ou une demande explicite de l’utilisateur. Aucune CUST INST SOLO ne doit mentionner un projet particulier pour documenter ce mécanisme.
+
+413. Si une exception ne change que l’ordre de chargement, cet ordre doit être respecté puis CTX doit être réellement lu et appliqué avant de répondre au contenu de la demande. Une modification d’ordre ne dispense pas de CTX sauf dispense explicite applicable au chat. Aucune exception d’ordre ne peut modifier, contourner ou affaiblir la règle d’or GitHub READ ONLY STRICT.
+
+414. Ne jamais déclarer CTX, Scripting, Operator, CUST INST SOLO ou toute autre source chargée sans lecture réelle et intégrale lorsque cette lecture est requise.
+
+415. Pour cette release, la baseline active est :
+
+```text
+CTX237
+SCRIPT418
+OP129
+CUST INST SOLO V002
+```
+
+416. Règle centrale : **Operator maintient désormais CTX, Scripting, Operator et CUST INST SOLO comme un ensemble cohérent d’artefacts versionnés ; les CUST INST SOLO restent courtes et simples ; GitHub reste READ ONLY STRICT sans exception et l’utilisateur reste seul maître de toute écriture distante.**
+------------------------------------------------------------------------
+
+## 40. AJOUT SOLO130 — GOUVERNANCE UNIQUE DU REPOSITORY, CI SOLOLAST ET CHANGELOGS MAÎTRES
+
+412. SOLO130 synchronise la baseline active avec :
+
+```text
+CTX238 / SCRIPT419 / OP130 / CI003
+```
+
+413. La règle 0 GitHub READ ONLY STRICT est une **règle d’or absolue**. Elle doit apparaître avant les autres règles actives dans chaque fichier SOLO RULES applicable, public ou privé, ainsi que dans les Custom Instructions SOLO. Aucune autorisation ultérieure ne permet à l’assistant d’écrire sur GitHub.
+
+414. Operator est l’unique autorité SOLO pour la structure du repository `regles_contextualisation`. Toute ancienne règle CTX ou Scripting décrivant cette structure est retirée ou devient historique/non opérative.
+
+415. Les Custom Instructions adoptent la mécanique versionnée + alias stable :
+
+```text
+_CUSTINST_SOLO003_CUSTOM_INSTRUCTIONS.md
+_CUSTINST_SOLOLAST_CUSTOM_INSTRUCTIONS.md
+```
+
+416. La version courte correspondante est `CI003`. Toute modification réelle ultérieure incrémente à la fois le numéro SOLO du fichier et la version CI.
+
+417. `_CUSTINST_SOLOLAST_CUSTOM_INSTRUCTIONS.md` est la copie exacte de la version Custom Instruction active. Son contenu est celui que l’utilisateur copie dans **Personalization / Custom Instructions** de son compte ChatGPT.
+
+418. Les Custom Instructions doivent rester courtes, simples et orientées bootstrap. Les détails de maintenance appartiennent à Operator, pas au texte copié dans le compte.
+
+419. La racine publique ne contient plus `AGENTS.md`, `CLAUDE.md`, `AI_STUDYING_FILES/` ni d’autres artefacts historiques uniquement parce qu’une ancienne règle les mentionnait. Leur éventuelle présence future ne peut être imposée que par une nouvelle décision explicite de l’utilisateur.
+
+420. `.docs/` contient les quatre changelogs maîtres, les quatre README maîtres et les documents de release courants. Les anciens documents historiques peuvent être retirés ou archivés localement par l’utilisateur ; Operator ne les supprime pas automatiquement.
+
+421. `.private/` est l’emplacement obligatoire des modules privés. Leur nom réel ne doit jamais être exposé dans les fichiers publics. Les exemples publics utilisent uniquement un pattern générique.
+
+422. `.gitignore` doit être fourni à chaque livraison SOLO et conserver au minimum : `.docs/`, `.private/`, `.zip/`, `.old/`, `.export/`, `.exports/`, `*.zip`, `_RULES_PRIVATE_*` et `*RULES_PRIVATE*`, sans retirer les exclusions existantes.
+
+423. `README.md` racine est public et générique. Il explique le système SOLO, son utilisation et sa reproduction dans un autre repository, sans exposer les données ou noms privés de l’utilisateur.
+
+424. `CHANGELOG.md` racine est le changelog public minimal du repository. Il ne doit pas contenir le détail privé ou exhaustif des règles. Les historiques complets sont locaux sous `.docs/`.
+
+425. Les ZIP de travail sont locaux. Operator peut livrer une archive contenant `.docs/`, `.private/`, `.zip/` ou `.export(s)/` lorsqu’ils sont utiles à l’utilisateur, car leur non-publication est assurée par `.gitignore`. Il ne doit plus classifier les ZIP en « package public » / « package privé » comme mécanisme principal.
+
+426. Les manifests et batteries de tests de packaging ne sont pas obligatoires par défaut. Operator doit néanmoins éviter de livrer un fichier inexistant ou manifestement incohérent. Un contrôle technique détaillé n’est produit que s’il est demandé ou nécessaire pour corriger une anomalie.
+
+427. `.old/` est sous contrôle de l’utilisateur. Operator peut indiquer quels fichiers sont remplacés mais ne doit pas imposer, déplacer, supprimer ou emballer automatiquement `.old/`.
+
+428. Toute ancienne règle Operator contradictoire avec SOLO130 concernant la structure du repo, le nom des Custom Instructions, la notion de package public, `AGENTS.md`, `CLAUDE.md`, `AI_STUDYING_FILES/`, les manifests, les tests de packaging ou la gestion de `.old/` devient **historique et non opérative**. SOLO130 prévaut.
+
+429. Règle centrale : **GitHub reste READ ONLY STRICT sans exception ; Operator gouverne seul la structure du repo SOLO ; chaque artefact principal a version + SOLOLAST + changelog maître local ; les Custom Instructions utilisent la même mécanique de versionnement que les autres artefacts.**
+------------------------------------------------------------------------
+
+## 41. AJOUT SOLO131 — VERSIONNEMENT PRIVÉ, CHANGELOGS PRIVÉS ET BASELINE CTX239 / SCRIPT420 / CI004
+
+430. SOLO131 synchronise la baseline active avec :
+
+```text
+CTX239 / SCRIPT420 / OP131 / CI004
+```
+
+431. La règle `0 — GITHUB READ ONLY STRICT` doit être présente **avant toutes les autres règles actives dans chaque fichier SOLO**, public ou privé, ainsi que dans les Custom Instructions SOLO. **AUCUNE EXCEPTION. JAMAIS.**
+
+432. Toute modification d’un module privé sous `.private/` incrémente obligatoirement sa version et son nom de fichier. Les versions privées suivent leur propre séquence `SOLO001`, `SOLO002`, `SOLO003`, etc.
+
+433. Chaque module privé possède obligatoirement son changelog maître sous :
+
+```text
+.docs/CHANGELOG_SOLO_PRIVATE_<MODULE>.md
+```
+
+434. Le changelog privé est cumulatif. Il conserve tout l’historique disponible du module. Les éléments non documentés ne sont jamais inventés.
+
+435. Les noms réels des modules privés peuvent apparaître dans `.docs/` et `.private/`, qui sont locaux et ignorés par Git, mais ne doivent jamais être copiés dans les artefacts publics du repository.
+
+436. Les fichiers Custom Instructions SOLO utilisent le naming canonique :
+
+```text
+_CUSTINST_SOLOxxx_CUSTOM_INSTRUCTIONS.md
+_CUSTINST_SOLOLAST_CUSTOM_INSTRUCTIONS.md
+```
+
+La version courte est `CIxxx` et progresse avec le numéro `SOLOxxx` du fichier Custom Instructions.
+
+437. La livraison locale canonique conserve la structure observée et validée : racine active publique + `.docs/` + `.private/` + `.zip/` + `.old/` + `.exports/`, avec `.gitignore` protégeant tous les emplacements locaux.
+
+438. Les ZIP de livraison sont des artefacts locaux. Operator ne raisonne plus en « package public » / « package privé » comme mécanisme principal : seule la sélection effectivement poussée par l’utilisateur vers GitHub devient publique.
+
+439. Règle centrale : **Operator maintient la structure canonique, versionne tous les artefacts modifiés y compris privés et Custom Instructions, maintient un changelog maître par artefact, et applique la règle d’or GitHub partout sans exception.**
+
+440. **SOLO131 prévaut sur toute règle antérieure de ce fichier qui lui serait contradictoire concernant le naming CUSTINST, la structure du repository, les changelogs, les modules privés, les ZIP de livraison ou la gestion GitHub.**
+------------------------------------------------------------------------
+
+## 42. AJOUT SOLO132 — HORODATAGE OBLIGATOIRE DES CHANGELOGS
+
+441. SOLO132 synchronise la baseline active avec :
+
+```text
+CTX239 / SCRIPT420 / OP132 / CI004
+```
+
+442. À partir du `2026-10-11`, chaque nouvelle version inscrite dans un changelog SOLO doit être accompagnée de la date et de l’heure exactes du changement.
+
+443. Le format canonique d’horodatage est :
+
+```text
+YYYY-MM-DD HH:MM:SS ±HH:MM
+```
+
+444. Cette règle s’applique aux changelogs maîtres de Contextualisation, Scripting, RulesOperator, Custom Instructions SOLO et de tous les modules privés.
+
+445. Les versions historiques antérieures dont l’heure exacte n’est pas connue restent inchangées. Operator ne doit jamais inventer, approximer ou rétrodater une heure absente.
+
+446. Lorsqu’une version vient d’être produite dans le chat courant et que son heure réelle est connue, son entrée de changelog doit être horodatée avec cette valeur réelle.
+
+447. `_RULES_SOLOLAST_RULESOPERATOR.md` doit être une copie exacte de `_RULES_SOLO132_RULESOPERATOR.md`.
+
+448. Règle centrale : **une version SOLO nouvellement changée n’est pas correctement tracée tant que son entrée de changelog ne contient pas version + date + heure ; aucune heure historique inconnue ne doit être inventée.**
+
+
+------------------------------------------------------------------------
+
+## 43. AJOUT SOLO133 — CHANGELOGS MAÎTRES RECONSTRUITS, ORDRE DÉCROISSANT ET `CUSTOM_INSTRUCTIONS`
+
+449. SOLO133 synchronise la baseline active avec :
+
+```text
+CTX239 / SCRIPT420 / OP133 / CI004
+```
+
+450. Les CHANGELOG maîtres utilisent des noms **stables sans numéro de version**. Les numéros de version appartiennent au contenu des changelogs, jamais à leur nom.
+
+451. Les quatre noms maîtres canoniques sont :
+
+```text
+.docs/CHANGELOG_SOLO_CONTEXTUALISATION.md
+.docs/CHANGELOG_SOLO_SCRIPTING.md
+.docs/CHANGELOG_SOLO_RULESOPERATOR.md
+.docs/CHANGELOG_SOLO_CUSTOM_INSTRUCTIONS.md
+```
+
+Chaque module privé conserve `.docs/CHANGELOG_SOLO_PRIVATE_<MODULE>.md`.
+
+452. Le naming documentaire des Custom Instructions utilise toujours le pluriel `CUSTOM_INSTRUCTIONS` :
+
+```text
+.docs/README_SOLO_CUSTOM_INSTRUCTIONS.md
+.docs/CHANGELOG_SOLO_CUSTOM_INSTRUCTIONS.md
+```
+
+453. Tous les CHANGELOG maîtres sont organisés en **ordre décroissant** : version la plus récente en premier, version la plus ancienne en dernier.
+
+454. Lorsqu’Operator reconstruit un CHANGELOG maître, il doit exploiter tout l’historique récupérable dans les anciens changelogs, anciens fichiers RULES et archives disponibles. Il doit conserver les informations récupérées et ne jamais fabriquer un détail manquant.
+
+455. Si une date/heure est explicitement présente dans un ancien changelog ou récupérable depuis l’horodatage d’un fichier historique disponible, Operator doit l’associer à la version correspondante. Les dates/heures non supportées par une source restent absentes.
+
+456. Pour toute version créée ou modifiée à partir du `2026-10-11`, l’entrée correspondante doit obligatoirement inclure l’horodatage exact `YYYY-MM-DD HH:MM:SS ±HH:MM`.
+
+457. Les README maîtres sont stables et non versionnés dans leur nom :
+
+```text
+.docs/README_SOLO_CONTEXTUALISATION.md
+.docs/README_SOLO_SCRIPTING.md
+.docs/README_SOLO_RULESOPERATOR.md
+.docs/README_SOLO_CUSTOM_INSTRUCTIONS.md
+```
+
+458. `_RULES_SOLOLAST_RULESOPERATOR.md` doit être une copie exacte de `_RULES_SOLO133_RULESOPERATOR.md`.
+
+459. Règle centrale : **un changelog maître SOLO porte un nom stable sans version, contient tout l’historique récupérable, affiche la version la plus récente en premier, associe chaque version à la date/heure réellement connue et n’invente jamais un horodatage historique absent ; `CUSTOM_INSTRUCTIONS` est toujours écrit au pluriel dans les noms de documentation.**

@@ -1,77 +1,35 @@
-# CHANGELOG — SOLO complete baseline
+# CHANGELOG — repository SOLO
 
-> The supplied baseline did not contain a root `CHANGELOG.md`. This file starts with the currently verified package state and does not invent unavailable earlier global history. Family-specific history remains under `.docs/`.
+Ce fichier décrit uniquement les changements publics et structurels du repository. Les historiques détaillés des artefacts SOLO restent locaux sous `.docs/`.
 
-## 2026-09-23 — CTX236 / SCRIPT417 / OP128
+## 2026-10-11 06:35:35 +02:00 — baseline CTX239 / SCRIPT420 / OP133 / CI004
 
-### Contextualisation
-- CTX235 -> CTX236.
-- Added rule 39.1: answer a direct question directly before optional nuance.
-- Added rule 117.7: focus on requested possibilities/results/actions instead of unsolicited negative inventories.
-- Removed the full Employment/JOBS block from public CTX for external local use.
+- Operator incrémenté de OP132 vers OP133.
+- Reconstruction des changelogs maîtres locaux à partir de l’historique récupérable.
+- Changelogs maîtres ordonnés de la version la plus récente vers la plus ancienne.
+- Naming documentaire des Custom Instructions normalisé au pluriel : `CUSTOM_INSTRUCTIONS`.
+- Aucun changement de version CTX, SCRIPT, CI ou module privé dans cette livraison documentaire/Operator.
 
-### Scripting
-- SCRIPT417 unchanged.
+## 2026-10-11 06:24:02 +02:00 — baseline CTX239 / SCRIPT420 / OP132 / CI004
 
-### Rules Operator
-- OP127 -> OP128 solely to synchronize the active baseline and preserve public/private packaging coherence.
-- Private specialized modules remain outside the public ZIP.
+- Operator incrémenté de OP131 vers OP132.
+- Horodatage date + heure rendu obligatoire pour toute nouvelle entrée de version dans les changelogs SOLO.
+- Aucun changement de version CTX, SCRIPT, CI ou module privé dans cette livraison corrective.
 
-### Packaging
-- Public package contains only public baseline files.
-- The external Employment mode is delivered separately as a private local file and is intentionally absent from this public ZIP.
+## 2026-10-11 06:23:29 +02:00 — baseline CTX239 / SCRIPT420 / OP131 / CI004
+- Naming Custom Instructions corrigé et stabilisé : `_CUSTINST_SOLOxxx_CUSTOM_INSTRUCTIONS.md` + alias `SOLOLAST`.
+- Règle d’or GitHub READ ONLY STRICT appliquée à tous les artefacts SOLO, y compris les modules locaux privés.
+- Versionnement obligatoire des modules privés lorsqu’ils sont modifiés.
+- Ajout d’un changelog maître local par module privé sous `.docs/`.
+- Operator synchronisé avec la structure locale canonique et la baseline CTX239 / SCRIPT420 / OP131 / CI004.
 
-## 2026-09-21 — CTX235 / SCRIPT417 / OP127
+## 2026-10-11 — baseline CTX238 / SCRIPT419 / OP130 / CI003
 
-### Contextualisation
-- CTX235 unchanged.
-- Rule 101 remains the canonical complete Read Aloud rule.
-
-### Scripting
-- SCRIPT417 unchanged.
-
-### Rules Operator
-- OP126 -> OP127.
-- Corrected current Operator metadata and active baseline references to CTX235 / SCRIPT417 / OP127.
-- Aligned the Operator Read Aloud compatibility block with CTX235/101.
-- Useful tables must remain present in Read Aloud; a vocal/textual equivalent may be added when needed, without information loss.
-- Added an explicit distinction between historical release references and active baseline references plus a pre-delivery coherence check.
-
-
-## 2026-09-21 — CTX235 / SCRIPT417 / OP126
-
-### Contextualisation
-- CTX234 -> CTX235.
-- Consolidated Read Aloud into the single rule 101.
-- Absorbed and removed the former standalone Read Aloud rules 114 and 117 and the 101 bis reminder.
-- Added explicit anti-simplification, anti-shortening, table-preservation, format-conversion and pre-send no-information-loss checks.
-- Renumbered the subsequent top-level rules affected by removal: 115->114, 116->115, 118->116, 119->117 and 120->118.
-
-### Scripting
-- SCRIPT417 unchanged.
-
-### Rules Operator
-- OP126 unchanged.
-
-## 2026-09-15 — CTX234 / SCRIPT417 / OP126
-
-### Contextualisation
-- CTX234 kept unchanged from the supplied baseline.
-
-### Scripting
-- SCRIPT417 kept as the active production version.
-- SCRIPT415 and SCRIPT416 remain rejected/non-production drafts.
-- SCRIPT417 preserves the active technical substance from SCRIPT414 while applying the previously validated consolidation decisions.
-
-### Rules Operator
-- OP125 -> OP126.
-- Added mandatory `À déplacer vers .old/` exact-file list after every Operator ZIP/package delivery.
-- Added sequential Operator chat prefixes: `001.`, then `002.`, `003.`, etc., without automatic reset to `000.`.
-- Added mandatory root `CHANGELOG.md` to every complete SOLO package.
-- Updated active Operator baseline references to CTX234 / SCRIPT417 / OP126.
-
-### Packaging
-- Added root `README.md` and root `CHANGELOG.md`.
-- Added family README/CHANGELOG documentation for CTX234, SCRIPT417 and OP126 under `.docs/`.
-- Added rule-only ZIPs and complete family packages for all three active families under `.zip/`.
-- Refreshed SHA256 manifest after final package generation.
+- Adoption d’un versionnement + alias `SOLOLAST` pour les Custom Instructions.
+- Centralisation de la gouvernance de structure du repository dans Operator.
+- `README.md` devient le README public générique du système SOLO.
+- `CHANGELOG.md` devient le changelog public minimal du repository.
+- Documentation détaillée locale sous `.docs/`.
+- Modules privés locaux sous `.private/`.
+- ZIP locaux sous `.zip/`; exports locaux sous `.export/` / `.exports/`.
+- Renforcement de la règle GitHub READ ONLY STRICT : aucune écriture distante par l’assistant.

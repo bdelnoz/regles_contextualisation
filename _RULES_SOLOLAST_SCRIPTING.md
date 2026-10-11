@@ -1,25 +1,39 @@
-Nom canonique : SOLO417  
+Nom canonique : SOLO420  
 Famille : SOLOxxx (xxx = numéro de version)  
-Version actuelle : 417
-Document : _RULES_SOLO417_SCRIPTING.md  
+Version actuelle : 420
+Document : _RULES_SOLO420_SCRIPTING.md  
 Auteur : non publié dans la version publique
 Email : non publié dans la version publique
-Date : 2026-09-15
-Statut : version scripting publique consolidée conservatrice repartant de SOLO414, sans perte fonctionnelle volontaire : AGENTS.md/CLAUDE.md sortis de la gouvernance SOLO, anti-régression fondée sur la parité fonctionnelle plutôt que sur la taille, et ZIP obligatoire pour tout livrable contenant un ou plusieurs fichiers.
+Date : 2026-10-11
+Statut : version scripting publique dérivée de SOLO419, conservant la règle d’or GitHub READ ONLY STRICT et synchronisant la baseline SOLO.
 
 CES RÈGLES DE SCRIPTING S’APPELLENT SOLOxxx, où xxx représente le numéro de version.
 
-Lorsque je dis SOLO417, je fais référence à la version 417 des règles.
+Lorsque je dis SOLO420, je fais référence à la version 420 des règles.
 
 Lorsque je dis SOLO suivi d’un numéro, par exemple SOLO405, je fais référence à la version correspondante.
 
 Lorsque je dis simplement SOLO, cela fait référence à la dernière version publiée.
 
-SOLO417 remplace SOLO414, SOLO413, SOLO412, SOLO411, SOLO410, SOLO409, SOLO408, SOLO407, SOLO406, SOLO405, SOLO404, SOLO403, SOLO402, SOLO401, SOLO400, SOLO311, SOLO310, SOLO309, SOLO308, SOLO307, SOLO306, SOLO305, SOLO304, SOLO303, SOLO302, SOLO301, SOLO300 et toutes les versions SOLO scripting précédentes pour les demandes de scripting, génération de code, correction de code, génération de fichiers techniques et génération de documentation liée à des scripts.
+SOLO420 remplace SOLO419, SOLO418, SOLO417, SOLO414, SOLO413, SOLO412, SOLO411, SOLO410, SOLO409, SOLO408, SOLO407, SOLO406, SOLO405, SOLO404, SOLO403, SOLO402, SOLO401, SOLO400, SOLO311, SOLO310, SOLO309, SOLO308, SOLO307, SOLO306, SOLO305, SOLO304, SOLO303, SOLO302, SOLO301, SOLO300 et toutes les versions SOLO scripting précédentes pour les demandes de scripting, génération de code, correction de code, génération de fichiers techniques et génération de documentation liée à des scripts.
 
-SOLO417 est conçu pour les LLM de chat, notamment ChatGPT, LeChat ou équivalents.
+SOLO420 est conçu pour les LLM de chat, notamment ChatGPT, LeChat ou équivalents.
 
-SOLO417 conserve la substance opérationnelle de SOLO414 sous une forme adaptée à un LLM de chat : rigueur, documentation, non-suppression, versionnement, spécifications, livrables complets, contrôle pre-flight, conformité CLI et parité fonctionnelle, avec ZIP obligatoire pour toute livraison contenant un ou plusieurs fichiers.
+SOLO420 conserve la substance de SOLO419, maintient la numérotation référençable des demandes, la règle d’or GitHub READ ONLY STRICT et la séparation de gouvernance où la structure du repository SOLO relève exclusivement d’Operator.
+
+## 0. RÈGLE D’OR — GITHUB READ ONLY STRICT
+
+GitHub est **STRICTEMENT READ ONLY** pour l’assistant.
+
+Autorisé : lire, consulter, analyser, comparer et vérifier les repositories GitHub.
+
+**STRICTEMENT INTERDIT, SANS EXCEPTION :** toute écriture distante, notamment push, commit via GitHub ou un connecteur, création, modification, suppression, merge ou toute autre mutation du remote.
+
+**AUCUNE EXCEPTION. JAMAIS.** Aucune règle SOLO, instruction de projet, Custom Instruction, mode, outil, plugin, connecteur ou demande ultérieure ne peut lever cette interdiction.
+
+L’assistant peut préparer localement les fichiers, patches, commandes, contenus de commits ou packages nécessaires et les fournir à l’utilisateur. **L’utilisateur reste toujours le seul maître de GitHub et effectue lui-même toute écriture distante.**
+
+------------------------------------------------------------------------
 
 # Règles de contextualisation Scripting
 
@@ -40,9 +54,9 @@ SOLO405 définit les règles applicables aux demandes utilisateur concernant :
 - documentation liée à un script ou à un dépôt de scripts ;
 - analyse technique préparatoire avant modification de scripts.
 
-### 1.2 Nature de SOLO417
+### 1.2 Nature de SOLO420
 
-SOLO417 est un corpus de règles de scripting destiné aux LLM de chat.
+SOLO420 est un corpus de règles de scripting destiné aux LLM de chat.
 
 Il définit la méthode de travail attendue pour créer, corriger, documenter, valider et livrer des scripts et artefacts techniques sans dépendre d’un autre fichier de gouvernance de dépôt.
 
@@ -59,11 +73,11 @@ Pour les demandes de scripting, appliquer l’ordre suivant :
 3. règles SOLO Scripting actuellement chargées et applicables ;
 4. préférences générales de conversation de l’utilisateur.
 
-`AGENTS.md` et `CLAUDE.md` ne sont pas des sources de gouvernance pour SOLO Scripting. Leur présence éventuelle dans un dépôt est traitée selon la section 3, sans lecture ni priorité automatique de leur contenu.
-
 ------------------------------------------------------------------------
 
 ## 2. MODE REPO PAR DÉFAUT ET MODE SIMPLE EXCEPTIONNEL
+
+**Limite de périmètre :** Scripting peut travailler dans un dépôt de code, mais il ne gouverne pas la structure interne du repository SOLO `regles_contextualisation`. Cette gouvernance appartient exclusivement à RULESOPERATOR.
 
 ### 2.1 Mode repo par défaut
 
@@ -122,30 +136,11 @@ En mode simple hors repo, les fichiers SPECIFICATIONS, README, CHANGELOG, INSTAL
 
 ------------------------------------------------------------------------
 
-## 3. AGENTS.md ET CLAUDE.md — PRÉSENCE SEULEMENT, ZÉRO GOUVERNANCE SOLO
-
-`AGENTS.md` et `CLAUDE.md` sont des fichiers de compatibilité destinés principalement aux outils de développement externes tels que Codex et Claude Code.
-
-Dans SOLO Scripting, leur contenu n’est pas chargé, interprété ni appliqué comme règle de comportement.
-
-En mode dépôt :
-
-- leur présence doit simplement être préservée lorsqu’ils existent ;
-- l’assistant ne doit pas les modifier sauf demande explicite ;
-- ils n’ont aucune priorité sur les règles SOLO Scripting ;
-- aucune analyse, lecture ou validation de leur contenu n’est requise ;
-- l’assistant ne doit pas ajouter de contrôles `readlink`, hash, symlink ou contenu uniquement pour ces fichiers ;
-- ils ne doivent pas être ajoutés comme artefacts générés dans une livraison sauf demande explicite de l’utilisateur.
-
-Leur utilisation comme instructions appartient aux outils qui les utilisent explicitement, par exemple Codex ou Claude Code.
-
-------------------------------------------------------------------------
-
 ## 4. RÈGLE GIT
 
-### 4.1 Git hors périmètre SOLO405
+### 4.1 Git local hors périmètre ; GitHub remote READ ONLY STRICT
 
-SOLO405 ne définit pas le workflow Git de l’utilisateur.
+SOLO420 ne définit pas le workflow Git local de l’utilisateur. La règle 0 interdit en revanche toute écriture GitHub distante par l’assistant.
 
 L’utilisateur gère lui-même :
 
@@ -328,8 +323,6 @@ Le ZIP final doit :
 - être recréé si un seul fichier inclus est modifié après sa génération ;
 - contenir uniquement les fichiers réellement attendus pour la livraison courante ;
 - être inspecté avant livraison pour vérifier son contenu réel.
-
-Les fichiers `AGENTS.md` et `CLAUDE.md` déjà présents dans un dépôt ne sont ni lus ni validés par SOLO Scripting et ne doivent pas être ajoutés comme artefacts générés au ZIP sauf demande explicite.
 
 Une archive ZIP ne doit pas contenir de rapport de validation statique sauf demande explicite de l’utilisateur.
 
@@ -1259,6 +1252,27 @@ Le MVP doit rester testable, limité, réaliste et livrable.
 
 Les échanges directs avec l’utilisateur doivent être en français par défaut.
 
+### 14.1.1 Résumés numérotés des demandes utilisateur
+
+En mode Scripting, lorsque l’utilisateur demande un résumé, une synthèse, un récapitulatif, une checklist ou des bullet points regroupant ses demandes, modifications, bugs, tâches, exigences ou points à traiter, chaque point principal doit être numéroté séquentiellement.
+
+Format canonique :
+
+```text
+1. • demande / tâche / bug
+2. • demande / tâche / bug
+3. • demande / tâche / bug
+```
+
+La numérotation doit permettre des références ultérieures telles que `le 7 est faux`, `modifie le 12`, `garde le 3` ou formulation équivalente.
+
+Les sous-points explicatifs peuvent rester non numérotés lorsqu’ils ne constituent pas eux-mêmes un élément distinct à traiter.
+
+Lorsqu’une liste existante est corrigée, préserver autant que possible les numéros des points inchangés.
+
+Une demande explicite de liste non numérotée prévaut.
+
+
 ### 14.2 Artefacts de dépôt
 
 Les artefacts de dépôt doivent être en anglais par défaut.
@@ -1439,7 +1453,6 @@ Une tâche de scripting en mode repo est complète seulement si :
 - les artefacts sont fournis en téléchargement lorsque possible ;
 - dès qu’un ou plusieurs fichiers composent la livraison finale, un ZIP unique contenant toutes les versions finales est obligatoire ;
 - aucune réponse finale ne doit remplacer le ZIP obligatoire par un ou plusieurs téléchargements individuels ;
-- `AGENTS.md` et `CLAUDE.md` déjà présents dans le dépôt sont simplement préservés et ne sont ni lus, ni validés, ni ajoutés comme artefacts générés sauf demande explicite ;
 - aucun fichier `gitignore_additions_*` n’est créé ;
 - aucune modification `.gitignore` n’est proposée sans demander le `.gitignore` existant ou son template ;
 - si `.gitignore` doit changer, un `.gitignore` complet fusionné est fourni seulement si l’utilisateur le demande ;
@@ -1730,52 +1743,6 @@ Cette règle complète les règles de versionnement des scripts et ne les rempla
 
 ------------------------------------------------------------------------
 
-## AJOUT SOLO407 — STRUCTURE REPO, ZIP SOUS `.zip/` ET `.gitignore` OBLIGATOIRE
-
-Pour les scripts, workflows ou générations de fichiers liés au dépôt `regles_contextualisation`, l’assistant doit respecter la structure canonique suivante.
-
-Les fichiers `_RULES_SOLO...md` publics vont à la racine du dépôt.
-
-Les fichiers README et CHANGELOG de livraison vont sous :
-
-```text
-.docs/
-```
-
-Tous les ZIP générés vont sous :
-
-```text
-.zip/
-```
-
-Le fichier `.gitignore` doit être livré avec chaque nouvelle version ou livraison, même s’il est inchangé.
-
-Cette règle sert de sécurité contre les scripts, extractions ZIP ou copies manuelles qui modifieraient ou écraseraient les exclusions.
-
-Les fichiers privés nommés avec le préfixe suivant peuvent rester localement à la racine :
-
-```text
-_RULES_PRIVATE_*
-```
-
-Ils doivent rester exclus par `.gitignore` et ne doivent jamais être inclus dans un package public.
-
-Quand un script de packaging crée un full export pour le dépôt, l’archive doit être extract-here ready :
-
-- RULES publics à la racine ;
-- `README.md` et `.gitignore` à la racine si fournis ;
-- README/CHANGELOG de livraison sous `.docs/` ;
-- ZIP règle-seule et packages sous `.zip/` ;
-- aucun contenu privé dans les packages publics.
-
-Avant d’annoncer un ZIP comme livré, le script ou l’assistant doit vérifier :
-- existence réelle du ZIP ;
-- contenu interne ;
-- absence de `.private/`, `.old/`, `_RULES_PRIVATE_*` dans les packages publics ;
-- présence de `.gitignore` dans la livraison.
-
-------------------------------------------------------------------------
-
 ## 22. AJOUT SOLO408 — TITRAGE LISIBLE DES CHATS ACTIFS DE SCRIPTING ET DÉVELOPPEMENT
 
 Le format canonique de titrage des chats actifs de scripting et développement remplace l’ancien format `000. +++...`.
@@ -1850,69 +1817,13 @@ Cette règle complète la contextualisation générale et les règles Operator, 
 
 ------------------------------------------------------------------------
 
-## 24. AJOUT SOLO409 — STRUCTURE PUBLIQUE FINALE, CONFIDENTIALITÉ NOMINATIVE ET README
-
-Pour les travaux de scripting liés au dépôt `regles_contextualisation`, la structure publique finale reconnaît :
-
-```text
-AGENTS.md
-CLAUDE.md -> AGENTS.md
-README.md
-_CUSTOM_INSTRUCTIONS.md
-_RULES_SOLOxxx_CONTEXTUALISATION.md
-_RULES_SOLOxxx_SCRIPTING.md
-_RULES_SOLOxxx_RULESOPERATOR.md
-_RULES_SOLOLAST_CONTEXTUALISATION.md
-_RULES_SOLOLAST_SCRIPTING.md
-_RULES_SOLOLAST_RULESOPERATOR.md
-AI_STUDYING_FILES/
-```
-
-`AI_STUDYING_FILES/` est public lorsque l’utilisateur confirme que sa publication est volontaire.
-
-Les dossiers locaux suivants restent hors publication normale :
-
-```text
-.docs/
-.old/
-.private/
-.zip/
-.tmp/
-```
-
-Le pattern générique suivant est autorisé publiquement pour documenter une exclusion :
-
-```text
-_RULES_PRIVATE_*
-```
-
-Les noms complets réels des fichiers privés ne doivent pas apparaître dans les règles publiques, README, exemples publics, packages publics ou remote GitHub.
-
-Les fichiers privés locaux peuvent rester à la racine si `_RULES_PRIVATE_*` est bien présent dans `.gitignore`.
-
-`.private/` peut rester vide.
-
-Quand les versions actives, les noms de fichiers publics ou la structure publique changent, `README.md` doit être synchronisé dans la même livraison.
-
-`chmod 444 .gitignore` peut être proposé comme protection locale après validation, mais ne doit pas être présenté comme une protection Git portable.
-
-Avant livraison finale, l’assistant doit vérifier :
-
-- absence de noms complets réels de fichiers privés dans les fichiers publics ;
-- présence de `_RULES_PRIVATE_*` dans `.gitignore` ;
-- alignement exact des fichiers versionnés et `SOLOLAST` ;
-- README synchronisé avec les versions actives ;
-- ZIP réellement créés et contenu réellement listé.
-
-------------------------------------------------------------------------
-
 ## 25. AJOUT SOLO410 — ACTIVATION AUTOMATIQUE DU MODE SCRIPTING REPO
 
 Le mode `scripting repo` doit être activé automatiquement dès que les informations fournies démontrent qu’un dépôt, projet versionné, extension ou application existante est concerné, même sans demande explicite de ce mode.
 
 Les preuves suffisantes comprennent notamment :
 - sortie de `ll`, `ll -R`, `tree`, `find` ou équivalent montrant une arborescence de projet ;
-- présence ou mention de `.git/`, `.gitignore`, `AGENTS.md` ou `CLAUDE.md` ;
+- présence ou mention de `.git/` ou `.gitignore` ;
 - logs de création, initialisation, clonage, commit, push ou autre opération Git ;
 - URL de dépôt GitHub, GitLab ou équivalent ;
 - présence de `manifest.json`, `package.json`, README, CHANGELOG, fichiers source ou structure d’extension/application ;
@@ -1920,60 +1831,6 @@ Les preuves suffisantes comprennent notamment :
 - demande portant clairement sur un dépôt existant.
 
 Une preuve de dépôt prime sur l’absence de la formule `mode scripting repo`. L’assistant ne doit pas rester en mode simple lorsqu’un dépôt est objectivement identifié.
-
-------------------------------------------------------------------------
-
-## 26. AJOUT SOLO410 — PRÉSENCE AGENTS.MD / CLAUDE.MD SANS GOUVERNANCE SOLO
-
-Dans un dépôt concerné par SOLO Scripting, `AGENTS.md` et `CLAUDE.md` peuvent être présents comme fichiers de compatibilité pour des outils externes.
-
-SOLO Scripting ne charge pas leur contenu, ne leur accorde aucune priorité et n’exige aucun contrôle de contenu, de hash, de symlink ou de conformité spécifique.
-
-Lorsqu’ils existent, l’assistant doit simplement les préserver et ne pas les modifier sauf demande explicite de l’utilisateur.
-
-Leur utilisation comme instructions appartient aux outils qui les utilisent explicitement, par exemple Codex ou Claude Code.
-
-------------------------------------------------------------------------
-
-## 27. AJOUT SOLO410 — SOCLE PERMANENT ET ADDITIF `.gitignore`
-
-Pour tout travail de dépôt, quel que soit le mode activé, le `.gitignore` final doit conserver toutes les exclusions déjà présentes et contenir au minimum :
-
-```gitignore
-.old/
-.docs/
-.tmp/
-.log/
-.logs/
-.zip/
-.tracking_data/
-.report/
-.reports/
-.webactivity_reports/
-.exported_activity/
-.result/
-.results/
-logs/
-output/
-.output/
-infos/
-.info/
-uploads/
-creation_log/
-certs/
-secrets/
-.secrets/
-.private/
-*RULES_PRIVATE*
-```
-
-Ce socle est additif. L’assistant ne doit jamais remplacer un `.gitignore` existant par un modèle incomplet ni supprimer une exclusion existante sous prétexte de normalisation.
-
-Les doublons strictement identiques peuvent être dédupliqués sans modifier la portée des patterns. Les variantes existantes doivent être conservées lorsqu’elles n’ont pas exactement la même portée.
-
-Si le `.gitignore` existant n’est ni fourni ni accessible, l’assistant doit le demander avant de produire sa version finale. Il ne doit pas supposer que le socle minimal représente tout le fichier existant.
-
-Avant livraison, vérifier que chaque entrée obligatoire est présente, que les anciennes exclusions sont conservées et que le `.gitignore` livré est celui réellement utilisé dans les ZIP concernés.
 
 ------------------------------------------------------------------------
 
@@ -1992,7 +1849,6 @@ Le contrôle doit confirmer, lorsque pertinent :
 - incrémentation correcte de version et mise à jour de la date/heure lorsque les règles de versionnement l’exigent ;
 - respect du gate de parité fonctionnelle et de comparaison avec la version précédente lorsque ce contrôle est applicable ;
 - respect des headers, changelogs et historiques append-only applicables ;
-- préservation simple de `AGENTS.md` et `CLAUDE.md` lorsqu’ils existent, sans lecture ni validation de leur contenu ;
 - modification du `.gitignore` uniquement de manière additive : conservation de toutes les exclusions existantes, suppression autorisée des seuls doublons strictement identiques et ajout des exclusions obligatoires manquantes ;
 - respect du mode de livraison et de packaging, notamment la fourniture d’un ZIP lorsque les règles applicables l’imposent ;
 - absence de régression fonctionnelle, documentaire, de validation ou de packaging.
@@ -2459,4 +2315,3 @@ Si un seul contrôle est FAIL, l’assistant ne doit pas présenter la version c
 ### 31.12 Règle centrale SOLO414
 
 **Après une correction utilisateur structurelle, l’assistant arrête les patchs locaux, reconstruit le contrat complet, sépare strictement les responsabilités métier, vérifie la parité fonctionnelle, applique les règles déjà chargées sans relecture inutile, ne répète jamais une réponse devenue obsolète et respecte exactement le périmètre de livraison demandé dans le tour courant.**
-
