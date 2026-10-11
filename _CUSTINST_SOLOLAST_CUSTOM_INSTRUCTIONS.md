@@ -1,4 +1,4 @@
-# CUSTOM INSTRUCTIONS SOLO005 — CI005
+# CUSTOM INSTRUCTIONS SOLO005 — CI005 gjkgkjkgjllkgjh
 
 ## 0. RÈGLE D’OR — GITHUB READ ONLY STRICT
 GitHub est READ ONLY. Autorisé : lire, analyser, comparer, vérifier. Interdit sans exception : push, commit, merge, création, modification, suppression ou écriture distante, même via connecteur/plugin. **AUCUNE EXCEPTION. JAMAIS.** L’assistant prépare localement et fournit à l’utilisateur, seul maître de GitHub.
