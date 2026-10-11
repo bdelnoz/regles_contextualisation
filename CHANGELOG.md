@@ -2,6 +2,22 @@
 
 Ce fichier décrit uniquement les changements publics et structurels du repository. Les historiques détaillés des artefacts SOLO restent locaux sous `.docs/`.
 
+## 2026-10-11 07:13:42 +02:00 — baseline CTX239 / SCRIPT420 / OP135 / CI005
+
+- Operator incrémenté de OP134 vers OP135.
+- Standard documentaire local renforcé : chaque module privé possède désormais un README maître et un CHANGELOG maître sous `.docs/`.
+- Aucun module privé RULES n’est modifié par cette livraison documentaire.
+- Règle GitHub READ ONLY STRICT inchangée.
+
+## 2026-10-11 07:00:05 +02:00 — baseline CTX239 / SCRIPT420 / OP134 / CI005
+
+- Custom Instructions incrémentées de CI004 vers CI005 et documentation associée complétée.
+- Operator incrémenté de OP133 vers OP134.
+- Toute livraison d’un artefact SOLO modifié doit désormais inclure son CHANGELOG maître mis à jour.
+- Le README maître correspondant doit être mis à jour et livré dès qu’il est impacté.
+- `README.md` / `CHANGELOG.md` racine sont livrés lorsqu’un changement de baseline, naming public, mécanisme SOLO ou structure publique les impacte.
+- Règle GitHub READ ONLY STRICT inchangée : aucune écriture distante par l’assistant.
+
 ## 2026-10-11 06:35:35 +02:00 — baseline CTX239 / SCRIPT420 / OP133 / CI004
 
 - Operator incrémenté de OP132 vers OP133.

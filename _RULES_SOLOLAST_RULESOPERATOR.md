@@ -1,21 +1,21 @@
 <!--
 DOCUMENT INFORMATION
-Document Name: _RULES_SOLO133_RULESOPERATOR.md
-Version: SOLO133
-Date / Time: 2026-10-11 06:35:35 +02:00
+Document Name: _RULES_SOLO135_RULESOPERATOR.md
+Version: SOLO135
+Date / Time: 2026-10-11 07:13:42 +02:00
 Project: SOLO rules operator contextualization
 Public status: GitHub-safe public rules file
-Short description: Règles d’exploitation des chats de maintenance SOLO, synchronisées avec CTX239, SCRIPT420, OP133 et CUSTOM INSTRUCTIONS SOLO004 / CI004, avec versionnement des CUSTOM INSTRUCTION SOLO et règle d’or GitHub READ ONLY STRICT sans exception.
+Short description: Règles d’exploitation des chats de maintenance SOLO, synchronisées avec CTX239, SCRIPT420, OP135 et CUSTOM INSTRUCTIONS SOLO005 / CI005, avec README + CHANGELOG maîtres obligatoires pour chaque module privé et règle d’or GitHub READ ONLY STRICT sans exception.
 -->
 
-# _RULES_SOLO133_RULESOPERATOR.md
+# _RULES_SOLO135_RULESOPERATOR.md
 
-Nom canonique : SOLO133 RULESOPERATOR  
+Nom canonique : SOLO135 RULESOPERATOR  
 Famille : SOLOxxx RULESOPERATOR  
-Version actuelle : 133  
-Document : _RULES_SOLO133_RULESOPERATOR.md  
-Date : 2026-10-11 06:35:35 +02:00
-Statut : version 133 publique et assainie du fichier opérateur, synchronisant CTX239, SCRIPT420 et CUSTOM INSTRUCTIONS SOLO004 / CI004, avec maintenance/versionnement explicites des CUSTOM INSTRUCTION SOLO et règle d’or GitHub READ ONLY STRICT sans exception.
+Version actuelle : 135  
+Document : _RULES_SOLO135_RULESOPERATOR.md  
+Date : 2026-10-11 07:13:42 +02:00
+Statut : version 135 publique et assainie du fichier opérateur, synchronisant CTX239, SCRIPT420 et CUSTOM INSTRUCTIONS SOLO005 / CI005, avec README + CHANGELOG maîtres obligatoires pour chaque module privé, maintenance/versionnement explicites des Custom Instructions SOLO et règle d’or GitHub READ ONLY STRICT sans exception.
 
 Ces règles contextualisent un chat chargé de créer, modifier, corriger, versionner, documenter et livrer les fichiers de règles SOLO.
 
@@ -354,25 +354,35 @@ _RULES_PRIVATE_SOLOXXX_<MODULE>.md
 
 ## 9. LIVRAISON DES FICHIERS
 
-59. Pour une modification de famille SOLO, le ZIP de livraison reste obligatoire.
+59. Toute modification livrée d’un artefact SOLO versionné doit être fournie dans un ZIP de livraison, sauf demande explicite de l’utilisateur pour un fichier brut isolé.
 
-60. Dans la réponse de livraison, le package complet doit être présenté d’abord, puis les fichiers individuels utiles.
+60. **Le CHANGELOG maître correspondant est obligatoire à chaque modification livrée.** Il doit être mis à jour avec la nouvelle version, la date et l’heure exactes, puis inclus dans la livraison sous `.docs/`. Une livraison d’un artefact SOLO modifié sans son CHANGELOG maître correspondant est incomplète.
 
-61. Pour une famille publique du dépôt `regles_contextualisation`, la livraison normale contient :
+61. **Le README maître correspondant doit être mis à jour et livré dès qu’il est impacté**, notamment si la modification change la version active, le naming, la baseline, le rôle, l’usage, la structure ou le comportement documenté de l’artefact. Pour les artefacts publics principaux dont le README indique la version active, tout incrément de version implique donc la mise à jour et la livraison du README maître.
+
+62. Si la modification change la baseline publique, le naming public, le mécanisme de fonctionnement de SOLO ou la structure documentée du repository, `README.md` et/ou `CHANGELOG.md` racine doivent également être mis à jour et inclus lorsqu’ils sont impactés.
+
+63. Une modification des Custom Instructions SOLO doit livrer au minimum :
 
 ```text
-_RULES_SOLOXXX_<FAMILLE>.md
-.docs/README_SOLOXXX_<FAMILLE>.md
-.docs/CHANGELOG_SOLOXXX_<FAMILLE>.md
-_RULES_SOLOXXX_<FAMILLE>.zip
-SOLOXXX_<FAMILLE>_PACKAGE.zip
+_CUSTINST_SOLOxxx_CUSTOM_INSTRUCTIONS.md
+_CUSTINST_SOLOLAST_CUSTOM_INSTRUCTIONS.md
+.docs/CHANGELOG_SOLO_CUSTOM_INSTRUCTIONS.md
+.docs/README_SOLO_CUSTOM_INSTRUCTIONS.md
 ```
 
-62. Le package public ne doit jamais inclure `.private/`, `.old/`, `.docs/` sensibles, `_RULES_PRIVATE_*` ou d’autres fichiers privés, sauf demande explicite de package complet public+privé.
+et, si la baseline publique change, les `README.md` / `CHANGELOG.md` racine impactés.
 
-63. Un package de livraison local peut contenir `.docs/` pour garder README et CHANGELOG hors publication GitHub.
+64. Une modification de RulesOperator doit livrer au minimum :
 
-64. Si l’utilisateur demande un ZIP contenant tout, l’assistant doit préciser clairement si le ZIP contient aussi des fichiers privés.
+```text
+_RULES_SOLOxxx_RULESOPERATOR.md
+_RULES_SOLOLAST_RULESOPERATOR.md
+.docs/CHANGELOG_SOLO_RULESOPERATOR.md
+.docs/README_SOLO_RULESOPERATOR.md
+```
+
+et, si la baseline publique change, les `README.md` / `CHANGELOG.md` racine impactés.
 
 ------------------------------------------------------------------------
 
@@ -1879,3 +1889,85 @@ Chaque module privé conserve `.docs/CHANGELOG_SOLO_PRIVATE_<MODULE>.md`.
 458. `_RULES_SOLOLAST_RULESOPERATOR.md` doit être une copie exacte de `_RULES_SOLO133_RULESOPERATOR.md`.
 
 459. Règle centrale : **un changelog maître SOLO porte un nom stable sans version, contient tout l’historique récupérable, affiche la version la plus récente en premier, associe chaque version à la date/heure réellement connue et n’invente jamais un horodatage historique absent ; `CUSTOM_INSTRUCTIONS` est toujours écrit au pluriel dans les noms de documentation.**
+
+------------------------------------------------------------------------
+
+## 44. AJOUT SOLO134 — CHANGELOG OBLIGATOIRE À CHAQUE LIVRAISON ET README ASSOCIÉ
+
+460. SOLO134 synchronise la baseline active avec :
+
+```text
+CTX239 / SCRIPT420 / OP134 / CI005
+```
+
+461. À chaque modification livrée d’un artefact SOLO, **le CHANGELOG maître correspondant doit toujours être mis à jour et livré avec l’artefact modifié**. Cette obligation s’applique aux familles publiques, aux Custom Instructions SOLO et aux modules privés.
+
+462. Le README maître correspondant doit être mis à jour et livré **chaque fois qu’il est impacté**. Il est notamment impacté lorsqu’un changement modifie la version active, le naming, la baseline, le rôle, l’usage, la structure ou le comportement documenté de l’artefact.
+
+463. Pour les quatre artefacts publics principaux, le README maître contient la version active. Par conséquent, toute nouvelle version de CTX, SCRIPT, OP ou CI implique la mise à jour et la livraison du README maître correspondant.
+
+464. Une livraison minimale ou partielle peut omettre les artefacts non modifiés, mais elle ne peut jamais omettre le CHANGELOG maître obligatoire ni le README maître requis pour un artefact effectivement modifié.
+
+465. Si la baseline publique, le naming public, le mécanisme SOLO ou la structure publique documentée changent, le `README.md` racine et le `CHANGELOG.md` racine sont également considérés comme impactés et doivent être livrés.
+
+466. Une livraison annoncée comme complète alors qu’un CHANGELOG maître obligatoire ou un README requis manque est un **échec de livraison**. Operator doit corriger le package avant de le déclarer complet.
+
+467. Cette règle prévaut sur toute ancienne règle Operator qui rendrait le CHANGELOG ou le README associé optionnel, qui utiliserait un naming de documentation versionné obsolète ou qui autoriserait une livraison d’un artefact modifié sans sa documentation obligatoire.
+
+468. `_RULES_SOLOLAST_RULESOPERATOR.md` doit être une copie exacte de `_RULES_SOLO134_RULESOPERATOR.md`.
+
+469. Règle centrale : **artefact SOLO modifié = CHANGELOG maître toujours livré ; README maître livré dès qu’il est impacté ; aucune livraison ne doit oublier la documentation associée.**
+
+------------------------------------------------------------------------
+
+## 45. AJOUT SOLO135 — README MAÎTRE OBLIGATOIRE POUR CHAQUE MODULE PRIVÉ
+
+470. SOLO135 synchronise la baseline active avec :
+
+```text
+CTX239 / SCRIPT420 / OP135 / CI005
+```
+
+471. **Chaque module privé SOLO existant ou futur doit posséder son propre README maître local stable**, placé sous :
+
+```text
+.docs/README_SOLO_PRIVATE_<MODULE>.md
+```
+
+472. Ce README maître privé est obligatoire en complément du changelog maître correspondant :
+
+```text
+.docs/CHANGELOG_SOLO_PRIVATE_<MODULE>.md
+```
+
+473. Le README maître d’un module privé doit au minimum indiquer :
+- le nom du module ;
+- sa version active ;
+- le nom du fichier RULES privé actif sous `.private/` ;
+- le chemin de son CHANGELOG maître ;
+- son statut **PRIVÉ / LOCAL ONLY / NE PAS PUBLIER** ;
+- son rôle ou objet ;
+- ses dépendances ou conditions d’activation lorsqu’elles existent.
+
+474. Les README maîtres privés utilisent un **nom stable sans numéro de version**. La version active appartient au contenu du README, jamais au nom du README.
+
+475. Toute nouvelle version d’un module privé impose simultanément :
+- l’incrément de version du fichier RULES privé ;
+- la mise à jour du `CHANGELOG_SOLO_PRIVATE_<MODULE>.md` ;
+- la mise à jour du `README_SOLO_PRIVATE_<MODULE>.md` ;
+- la livraison des trois éléments concernés.
+
+476. Lors de l’introduction de cette règle documentaire, les README maîtres manquants doivent être créés pour **tous les modules privés déjà existants**, sans incrémenter leur version lorsque leur fichier RULES n’est pas modifié.
+
+477. Lors de la création future d’un nouveau module privé, Operator doit créer dès la même livraison :
+- `.private/_RULES_PRIVATE_SOLOxxx_<MODULE>.md` ;
+- `.docs/README_SOLO_PRIVATE_<MODULE>.md` ;
+- `.docs/CHANGELOG_SOLO_PRIVATE_<MODULE>.md`.
+
+478. Les vrais noms de modules privés peuvent apparaître dans `.docs/` et `.private/`, qui restent locaux et ignorés par Git. Ils ne doivent pas être exposés dans les fichiers publics ou sur le remote GitHub.
+
+479. `_RULES_SOLOLAST_RULESOPERATOR.md` doit être une copie exacte de `_RULES_SOLO135_RULESOPERATOR.md`.
+
+480. SOLO135 prévaut sur toute ancienne règle Operator qui prévoirait un CHANGELOG privé sans README maître privé associé.
+
+481. Règle centrale : **chaque module privé SOLO possède toujours une paire documentaire maître `README + CHANGELOG` sous `.docs/`; toute nouvelle version privée met à jour et livre les deux.**
