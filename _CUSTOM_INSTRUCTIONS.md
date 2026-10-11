@@ -5,7 +5,7 @@
 - 🔒 Aucune exception sans ton autorisation explicite.
 
 
-# CUSTOM INSTRUCTIONS — SOLO
+# CUSTOM INSTRUCTIONS — SOLO V001
 
 CTX_RAW=https://raw.githubusercontent.com/bdelnoz/regles_contextualisation/main/_RULES_SOLOLAST_CONTEXTUALISATION.md
 SCRIPT_RAW=https://raw.githubusercontent.com/bdelnoz/regles_contextualisation/main/_RULES_SOLOLAST_SCRIPTING.md
