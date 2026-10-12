@@ -1,6 +1,6 @@
 # 📘 RÈGLES OFFICIELLES – CONTEXTUALISATION GÉNÉRALE DES CHATS
 
-**Version : V241 (Master publique assainie : V239 + chargement intégral universel de la règle d’or GitHub et naming CUSTINST corrigé)**
+**Version : V242 (Master publique assainie : V239 + chargement intégral universel de la règle d’or GitHub et naming CUSTINST corrigé)**
 **Auteur : non publié dans la version publique**  
 **Contact : non publié dans la version publique**  
 **Date : 2026-10-13**
@@ -8,7 +8,7 @@
 **Version dérivée : V123 sans section scripting/code**  
 **Modification : V240 — synchronisation de la baseline, correction du naming CUSTINST SOLO et maintien de la règle d’or GitHub READ ONLY STRICT en règle 0.**
 
-**Résumé V241 : conserve la substance de CTX239, maintient la règle d’or GitHub absolue et utilise le naming canonique `_CUSTINST_SOLOLAST_CUSTOM_INSTRUCTIONS.md`.**
+**Résumé V242 : conserve la substance de CTX239, maintient la règle d’or GitHub absolue et utilise le naming canonique `_CUSTINST_SOLOLAST_CUSTOM_INSTRUCTIONS.md`.**
 ---
 
 ## 0.0. RÈGLE D’OR — CHARGEMENT INTÉGRAL OBLIGATOIRE + ANTI-RELOAD ABSOLU
@@ -19,7 +19,7 @@ Une lecture partielle, tronquée, limitée à un extrait, à une recherche cibl�
 
 Si une première lecture ne retourne pas l’intégralité du fichier, l’assistant doit **poursuivre immédiatement la lecture du MÊME fichier, par segments successifs si nécessaire, jusqu’à atteindre sa fin réelle**. Tant que cette lecture intégrale n’est pas terminée, il est interdit de déclarer la RULE chargée, active ou appliquée, et il est interdit de poursuivre le travail métier qui dépend de cette RULE.
 
-Une fois la RULE intégralement chargée dans le chat courant, elle doit rester active et être appliquée en continu. **Aucun reload, reread, refresh, reapply, nouvelle ouverture, nouvelle recherche ou nouvelle vérification de cette même source RAW ne peut être déclenché automatiquement.**
+Une fois la RULE intégralement chargée dans le chat courant, elle doit rester active et être appliquée en continu. **Aucun reload, reread, refresh, reapply, nouvelle ouverture, nouvelle recherche ou nouvelle vérification de cette même RULE déjà chargée ne peut être déclenché automatiquement.**
 
 Une plainte de non-conformité, une demande de « respecter les règles », un changement de sujet, une erreur du modèle, une mention de SOLO, un doute sur la version, ou l’annonce qu’un dépôt a été mis à jour **ne constitue jamais une autorisation de relecture**.
 
@@ -48,7 +48,7 @@ L’assistant peut préparer localement les fichiers, patches, commandes, conten
 ## 📑 FICHIERS ANNEXES
 
 - **CHANGELOG_SOLO_CONTEXTUALISATION.md** : historique local cumulatif au nom stable
-- **README_SOLO241_CONTEXTUALISATION.md** : documentation locale versionnée de la contextualisation active
+- **README_SOLO242_CONTEXTUALISATION.md** : documentation locale versionnée de la contextualisation active
 - Les contenus privés externalisés restent hors du présent fichier public et sont gouvernés par Operator.
 ------------------------------------------------------------------------
 
@@ -172,13 +172,13 @@ Lors d’un reload global explicitement demandé, relire intégralement CTX ains
 
 Après toute vraie relecture, confirmer brièvement les fichiers et versions réellement lus. Ne jamais prétendre avoir rechargé une source qui n’a pas été relue intégralement.
 
-**Règle centrale : sans ordre explicite de l’utilisateur demandant une relecture, une famille CHARGÉE reste appliquée depuis le contexte courant et aucun nouvel accès RAW n’est autorisé.**
+**Règle centrale : sans ordre explicite de l’utilisateur demandant une relecture, une famille CHARGÉE reste appliquée depuis le contexte courant et aucun nouvel accès à la source distante n’est autorisé.**
 
 ------------------------------------------------------------------------
 
 ## RÈGLE GLOBALE — DIAGNOSTIC D’UNE VIOLATION SOLO SANS REREAD
 
-Lorsqu’un utilisateur signale qu’une règle SOLO n’a pas été respectée, le chat fautif doit diagnostiquer l’erreur **à partir des règles déjà chargées**, sans retourner spontanément sur GitHub ni relire les RAW.
+Lorsqu’un utilisateur signale qu’une règle SOLO n’a pas été respectée, le chat fautif doit diagnostiquer l’erreur **à partir des règles déjà chargées**, sans retourner spontanément sur GitHub ni relire les sources distantes.
 
 Il doit fournir :
 
@@ -2921,3 +2921,23 @@ Exemple de comportement attendu : si l’utilisateur demande si un package donn�
 Règle réflexe : répondre à `qu’est-ce que j’ai / qu’est-ce que je peux demander / est-ce correct ?` par ce qui est disponible, pertinent et actionnable — pas par un catalogue de ce qui manque.
 
 Règle réflexe : ne pas repartir de zéro ; partir de ce qui est acquis et répondre uniquement au prochain point utile.
+
+------------------------------------------------------------------------
+
+## RÈGLE GLOBALE V242 — GITHUB SOLO SANS RAW : MAIN → SHA → CONTENU IMMUTABLE
+
+118. Pour toute RULE SOLO publique chargée depuis GitHub, l’utilisation d’une URL `raw.githubusercontent.com` comme mécanisme de chargement ou de RELOAD est interdite.
+
+118.1. Chaque chargement autorisé doit d’abord résoudre la branche `main` du repository public de référence vers son SHA de commit courant au moyen d’une opération GitHub READ ONLY.
+
+118.2. Le SHA obtenu est figé pour toute l’opération de chargement. Le fichier `SOLOLAST` demandé doit ensuite être lu à cette révision immuable, via l’API GitHub Contents ou un mécanisme GitHub équivalent explicitement adressé par ce SHA.
+
+118.3. Le contenu doit être lu intégralement jusqu’à EOF réel avant validation. Une page de branche mouvante, un cache, une mémoire, un résumé ou un historique de chat ne peut pas remplacer cette lecture.
+
+118.4. Lors d’un RELOAD explicitement demandé par l’utilisateur, le SHA de `main` doit être résolu à nouveau, puis le fichier relu intégralement à ce nouveau SHA. Sans ordre explicite de RELOAD, aucune nouvelle résolution de SHA ni relecture distante n’est autorisée pour une famille déjà CHARGÉE.
+
+118.5. L’historique des chats et la mémoire servent uniquement à la continuité. En cas de conflit avec une source courante explicitement fournie ou avec une RULE chargée à un SHA vérifié, ils ne constituent pas la source de vérité.
+
+118.6. Après chargement réussi, la traçabilité minimale doit identifier le fichier, la version et le SHA utilisés.
+
+118.7. Cette règle V242 prévaut sur toute formulation historique antérieure de CTX décrivant un chargement GitHub par URL RAW ou par référence mouvante seule.

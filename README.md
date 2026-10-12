@@ -5,7 +5,7 @@ SOLO est un système de règles versionnées destiné à rendre le comportement 
 ## Baseline active
 
 ```text
-CTX241 / SCRIPT422 / OP139 / CI006
+CTX242 / SCRIPT423 / OP140 / CI007
 ```
 
 ## Règles d’or de chargement
@@ -18,7 +18,7 @@ CTX241 / SCRIPT422 / OP139 / CI006
 
 ## Principe de fonctionnement
 
-Le mécanisme SOLO repose sur les **Custom Instructions du compte ChatGPT** et sur des fichiers de règles versionnés accessibles en RAW depuis GitHub.
+Le mécanisme SOLO repose sur les **Custom Instructions du compte ChatGPT** et sur des fichiers de règles versionnés exposés sur GitHub. Le chargement distant n’utilise plus GitHub RAW : il résout `main` vers son SHA courant puis lit le fichier à cette révision immuable.
 
 Le contenu de :
 
@@ -28,7 +28,7 @@ _CUSTINST_SOLOLAST_CUSTOM_INSTRUCTIONS.md
 
 est copié dans **ChatGPT → Personalization → Custom Instructions**.
 
-À chaque nouveau chat, ChatGPT reçoit automatiquement ces Custom Instructions. Elles constituent le point d’entrée du système SOLO : elles indiquent à l’assistant quelles règles charger et fournissent les URL RAW stables permettant d’accéder aux fichiers `SOLOLAST` présents sur GitHub.
+À chaque nouveau chat, ChatGPT reçoit automatiquement ces Custom Instructions. Elles constituent le point d’entrée du système SOLO : elles indiquent à l’assistant quelles règles charger, le repository, la branche et les chemins `SOLOLAST`. Le chat résout ensuite `main` vers son SHA courant avant toute lecture.
 
 Le fonctionnement est donc :
 
@@ -39,7 +39,7 @@ Custom Instructions du compte
         ↓
 _CUSTINST_SOLOLAST_CUSTOM_INSTRUCTIONS.md
         ↓
-URL RAW GitHub stables
+Résolution GitHub READ ONLY : main → SHA courant
         ↓
 _RULES_SOLOLAST_CONTEXTUALISATION.md
 _RULES_SOLOLAST_SCRIPTING.md
@@ -52,25 +52,25 @@ L’intérêt principal est que les Custom Instructions restent **courtes et sim
 
 Cela permet de dépasser la limite pratique de quantité de règles qu’il serait possible de placer directement dans le champ Custom Instructions : au lieu d’y copier toutes les règles, les Custom Instructions indiquent à l’assistant où charger les règles SOLO externes.
 
-Les fichiers `SOLOLAST` possèdent des noms stables. Une nouvelle version peut donc remplacer le contenu du `SOLOLAST` sans modifier l’URL RAW utilisée par les Custom Instructions. Tant que les Custom Instructions elles-mêmes ne changent pas, il n’est pas nécessaire de les modifier dans le compte à chaque nouvelle version de CTX, SCRIPT ou OP.
+Les fichiers `SOLOLAST` possèdent des chemins stables. Une nouvelle version remplace leur contenu sans modifier ces chemins. À chaque nouveau chargement autorisé, le chat résout `main` vers le SHA courant puis lit le `SOLOLAST` à ce SHA. Tant que les Custom Instructions elles-mêmes ne changent pas, il n’est pas nécessaire de les remplacer dans le compte à chaque nouvelle version de CTX, SCRIPT ou OP.
 
 ## Fichiers publics actifs
 
 ```text
-_RULES_SOLO241_CONTEXTUALISATION.md
+_RULES_SOLO242_CONTEXTUALISATION.md
 _RULES_SOLOLAST_CONTEXTUALISATION.md
-_RULES_SOLO422_SCRIPTING.md
+_RULES_SOLO423_SCRIPTING.md
 _RULES_SOLOLAST_SCRIPTING.md
-_RULES_SOLO139_RULESOPERATOR.md
+_RULES_SOLO140_RULESOPERATOR.md
 _RULES_SOLOLAST_RULESOPERATOR.md
-_CUSTINST_SOLO006_CUSTOM_INSTRUCTIONS.md
+_CUSTINST_SOLO007_CUSTOM_INSTRUCTIONS.md
 _CUSTINST_SOLOLAST_CUSTOM_INSTRUCTIONS.md
 README.md
 CHANGELOG.md
 .gitignore
 ```
 
-Les fichiers versionnés identifient précisément la release utilisée. Les fichiers `SOLOLAST` gardent un nom stable pour les accès RAW.
+Les fichiers versionnés identifient précisément la release utilisée. Les fichiers `SOLOLAST` gardent un chemin stable ; la lecture distante est toujours effectuée à un SHA immuable.
 
 ## Contextualisation
 
@@ -117,13 +117,13 @@ un fichier SOLOLAST
 Exemple :
 
 ```text
-_RULES_SOLO241_CONTEXTUALISATION.md
+_RULES_SOLO242_CONTEXTUALISATION.md
 _RULES_SOLOLAST_CONTEXTUALISATION.md
 ```
 
 Lors d’une nouvelle version, un nouveau fichier versionné est créé et le `SOLOLAST` correspondant devient une copie exacte de cette nouvelle version.
 
-Comme l’URL RAW du `SOLOLAST` reste identique, les nouveaux chats peuvent charger la nouvelle version automatiquement sans qu’il soit nécessaire de modifier les Custom Instructions du compte.
+Comme le chemin du `SOLOLAST` reste identique, les nouveaux chats peuvent charger la version courante après résolution de `main` vers son SHA, sans qu’il soit nécessaire de modifier les Custom Instructions du compte.
 
 Les Custom Instructions ne doivent être remplacées dans le compte que lorsqu’une nouvelle version **CI** modifie leur propre contenu.
 
@@ -145,15 +145,27 @@ Les noms réels des modules privés ne doivent pas apparaître dans la documenta
 
 Pour reproduire le principe dans un autre repository :
 
-1. créer un fichier de Custom Instructions court contenant les règles minimales de démarrage et les URL RAW stables ;
+1. créer un fichier de Custom Instructions court contenant les règles minimales de démarrage, le repository, la branche et les chemins stables ;
 2. copier son contenu dans les Custom Instructions du compte ChatGPT ;
 3. conserver les règles détaillées dans des fichiers versionnés du repository ;
 4. créer pour chaque famille un alias `SOLOLAST` dont le nom reste stable ;
-5. faire pointer les Custom Instructions vers les URL RAW des fichiers `SOLOLAST` ;
+5. imposer dans les Custom Instructions la résolution `main → SHA courant → fichier SOLOLAST lu à ce SHA` ;
 6. à chaque nouvelle version, créer le nouveau fichier versionné puis synchroniser son `SOLOLAST` ;
 7. garder la documentation, les archives et les éléments privés hors publication grâce à `.gitignore`.
 
 Cette séparation permet de conserver des Custom Instructions simples tout en pilotant un ensemble de règles beaucoup plus important, versionné et maintenable depuis le repository.
+
+## Chargement GitHub sans RAW
+
+Pour toute RULE SOLO publique, le mécanisme actif est strictement :
+
+```text
+main → SHA courant → fichier SOLOLAST à ce SHA → lecture intégrale → validation version + SHA
+```
+
+`raw.githubusercontent.com` n’est plus utilisé pour le chargement ou le RELOAD SOLO. Lors d’un RELOAD explicitement demandé, `main` est résolu à nouveau afin d’obtenir le nouveau SHA courant. Sans ordre explicite, aucune relecture distante n’est effectuée pour une famille déjà chargée.
+
+L’historique des chats et la mémoire servent à la continuité mais ne remplacent pas une source courante vérifiée.
 
 ## GitHub
 

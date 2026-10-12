@@ -1,7 +1,7 @@
-Nom canonique : SOLO422  
+Nom canonique : SOLO423  
 Famille : SOLOxxx (xxx = numéro de version)  
 Version actuelle : 422
-Document : _RULES_SOLO422_SCRIPTING.md  
+Document : _RULES_SOLO423_SCRIPTING.md  
 Auteur : non publié dans la version publique
 Email : non publié dans la version publique
 Date : 2026-10-13
@@ -9,17 +9,17 @@ Statut : version scripting publique dérivée de SOLO420, conservant la règle d
 
 CES RÈGLES DE SCRIPTING S’APPELLENT SOLOxxx, où xxx représente le numéro de version.
 
-Lorsque je dis SOLO422, je fais référence à la version 422 des règles.
+Lorsque je dis SOLO423, je fais référence à la version 422 des règles.
 
 Lorsque je dis SOLO suivi d’un numéro, par exemple SOLO405, je fais référence à la version correspondante.
 
 Lorsque je dis simplement SOLO, cela fait référence à la dernière version publiée.
 
-SOLO422 remplace SOLO421, SOLO420, SOLO419, SOLO418, SOLO417, SOLO414, SOLO413, SOLO412, SOLO411, SOLO410, SOLO409, SOLO408, SOLO407, SOLO406, SOLO405, SOLO404, SOLO403, SOLO402, SOLO401, SOLO400, SOLO311, SOLO310, SOLO309, SOLO308, SOLO307, SOLO306, SOLO305, SOLO304, SOLO303, SOLO302, SOLO301, SOLO300 et toutes les versions SOLO scripting précédentes pour les demandes de scripting, génération de code, correction de code, génération de fichiers techniques et génération de documentation liée à des scripts.
+SOLO423 remplace SOLO421, SOLO420, SOLO419, SOLO418, SOLO417, SOLO414, SOLO413, SOLO412, SOLO411, SOLO410, SOLO409, SOLO408, SOLO407, SOLO406, SOLO405, SOLO404, SOLO403, SOLO402, SOLO401, SOLO400, SOLO311, SOLO310, SOLO309, SOLO308, SOLO307, SOLO306, SOLO305, SOLO304, SOLO303, SOLO302, SOLO301, SOLO300 et toutes les versions SOLO scripting précédentes pour les demandes de scripting, génération de code, correction de code, génération de fichiers techniques et génération de documentation liée à des scripts.
 
-SOLO422 est conçu pour les LLM de chat, notamment ChatGPT, LeChat ou équivalents.
+SOLO423 est conçu pour les LLM de chat, notamment ChatGPT, LeChat ou équivalents.
 
-SOLO422 conserve la substance de SOLO421, maintient la numérotation référençable des demandes, la règle d’or GitHub READ ONLY STRICT et la séparation de gouvernance où la structure du repository SOLO relève exclusivement d’Operator.
+SOLO423 conserve la substance de SOLO421, maintient la numérotation référençable des demandes, la règle d’or GitHub READ ONLY STRICT et la séparation de gouvernance où la structure du repository SOLO relève exclusivement d’Operator.
 
 ## 0.0. RÈGLE D’OR — CHARGEMENT INTÉGRAL OBLIGATOIRE + ANTI-RELOAD ABSOLU
 
@@ -29,7 +29,7 @@ Une lecture partielle, tronquée, limitée à un extrait, à une recherche cibl�
 
 Si une première lecture ne retourne pas l’intégralité du fichier, l’assistant doit **poursuivre immédiatement la lecture du MÊME fichier, par segments successifs si nécessaire, jusqu’à atteindre sa fin réelle**. Tant que cette lecture intégrale n’est pas terminée, il est interdit de déclarer la RULE chargée, active ou appliquée, et il est interdit de poursuivre le travail métier qui dépend de cette RULE.
 
-Une fois la RULE intégralement chargée dans le chat courant, elle doit rester active et être appliquée en continu. **Aucun reload, reread, refresh, reapply, nouvelle ouverture, nouvelle recherche ou nouvelle vérification de cette même source RAW ne peut être déclenché automatiquement.**
+Une fois la RULE intégralement chargée dans le chat courant, elle doit rester active et être appliquée en continu. **Aucun reload, reread, refresh, reapply, nouvelle ouverture, nouvelle recherche ou nouvelle vérification de cette même RULE déjà chargée ne peut être déclenché automatiquement.**
 
 Une plainte de non-conformité, une demande de « respecter les règles », un changement de sujet, une erreur du modèle, une mention de SOLO, un doute sur la version, ou l’annonce qu’un dépôt a été mis à jour **ne constitue jamais une autorisation de relecture**.
 
@@ -1821,7 +1821,7 @@ _RULES_SOLOLAST_SCRIPTING.md
 
 Le fichier versionné sert à l’historique.
 
-Le fichier `SOLOLAST` sert au chargement stable par URL GitHub, notamment depuis les Custom Instructions.
+Le fichier `SOLOLAST` conserve un chemin stable, mais son chargement GitHub doit obligatoirement être effectué à une révision SHA immuable résolue depuis `main`, jamais par URL RAW mouvante.
 
 Si le premier message d’un nouveau chat contient un bypass clair, par exemple `ne va pas chercher les rules`, `pas de SOLO au démarrage`, `pas de rules GitHub`, `chat normal`, ou équivalent, l’assistant ne doit pas charger automatiquement SOLO scripting depuis GitHub.
 
@@ -2345,3 +2345,16 @@ Si un seul contrôle est FAIL, l’assistant ne doit pas présenter la version c
 ### 31.12 Règle centrale SOLO414
 
 **Après une correction utilisateur structurelle, l’assistant arrête les patchs locaux, reconstruit le contrat complet, sépare strictement les responsabilités métier, vérifie la parité fonctionnelle, applique les règles déjà chargées sans relecture inutile, ne répète jamais une réponse devenue obsolète et respecte exactement le périmètre de livraison demandé dans le tour courant.**
+
+
+------------------------------------------------------------------------
+
+## 24. AJOUT SOLO423 — CHARGEMENT GITHUB PAR SHA, RAW INTERDIT
+
+Pour toute activation ou RELOAD de SOLO Scripting depuis GitHub, le mécanisme obligatoire est : `main` → SHA courant → `_RULES_SOLOLAST_SCRIPTING.md` lu à ce SHA → lecture intégrale jusqu’à EOF → validation version + SHA.
+
+Une URL GitHub RAW ne doit pas être utilisée comme source de chargement ou de RELOAD. Une référence mouvante, un cache, l’historique d’un chat ou la mémoire ne suffit pas à valider la version courante.
+
+Si Scripting est déjà CHARGÉ, aucune nouvelle résolution de SHA ni relecture GitHub ne doit être déclenchée automatiquement. Seul un ordre explicite de RELOAD autorise une nouvelle résolution de `main` et une nouvelle lecture intégrale.
+
+Cette section SOLO423 prévaut sur toute formulation historique antérieure de Scripting décrivant un chargement par URL RAW ou par référence mouvante seule.

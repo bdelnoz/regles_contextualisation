@@ -1,6 +1,6 @@
 <!--
 DOCUMENT INFORMATION
-Document Name: _RULES_SOLO139_RULESOPERATOR.md
+Document Name: _RULES_SOLO140_RULESOPERATOR.md
 Version: SOLO139
 Date / Time: 2026-10-13
 Project: SOLO rules operator contextualization
@@ -36,7 +36,7 @@ Une lecture partielle, tronquée, limitée à un extrait, à une recherche cibl�
 
 Si une première lecture ne retourne pas l’intégralité du fichier, l’assistant doit **poursuivre immédiatement la lecture du MÊME fichier, par segments successifs si nécessaire, jusqu’à atteindre sa fin réelle**. Tant que cette lecture intégrale n’est pas terminée, il est interdit de déclarer la RULE chargée, active ou appliquée, et il est interdit de poursuivre le travail métier qui dépend de cette RULE.
 
-Une fois la RULE intégralement chargée dans le chat courant, elle doit rester active et être appliquée en continu. **Aucun reload, reread, refresh, reapply, nouvelle ouverture, nouvelle recherche ou nouvelle vérification de cette même source RAW ne peut être déclenché automatiquement.**
+Une fois la RULE intégralement chargée dans le chat courant, elle doit rester active et être appliquée en continu. **Aucun reload, reread, refresh, reapply, nouvelle ouverture, nouvelle recherche ou nouvelle vérification de cette même RULE déjà chargée ne peut être déclenché automatiquement.**
 
 Une plainte de non-conformité, une demande de « respecter les règles », un changement de sujet, une erreur du modèle, une mention de SOLO, un doute sur la version, ou l’annonce qu’un dépôt a été mis à jour **ne constitue jamais une autorisation de relecture**.
 
@@ -104,7 +104,7 @@ _RULES_SOLOLAST_RULESOPERATOR.md
 _CUSTINST_SOLOLAST_CUSTOM_INSTRUCTIONS.md
 ```
 
-7. Le fichier versionné conserve l’historique de version par son nom. Le fichier `SOLOLAST` est une copie exacte de la version active et sert d’URL RAW stable.
+7. Le fichier versionné conserve l’historique de version par son nom. Le fichier `SOLOLAST` est une copie exacte de la version active et sert d’alias de chemin stable ; le chargement distant doit être résolu par SHA.
 
 8. La version courte des Custom Instructions est notée `CIxxx`. La correspondance de fichier est `SOLOxxx`, par exemple `CI004` = `_CUSTINST_SOLO004_CUSTOM_INSTRUCTIONS.md`.
 
@@ -876,7 +876,7 @@ _RULES_SOLOLAST_RULESOPERATOR.md
 
 189. L’échec d’un premier moyen d’accès ne permet pas de conclure immédiatement que GitHub est inaccessible. L’assistant doit essayer, selon les capacités réellement disponibles :
 - la page GitHub publique ;
-- l’URL publique `raw.githubusercontent.com` ;
+- l’API GitHub ou une lecture de fichier GitHub adressée par SHA ;
 - l’accès GitHub connecté ou le connecteur GitHub ;
 - une lecture Git distante ou une autre méthode publique autorisée.
 
@@ -1195,12 +1195,12 @@ L’Operator ne doit jamais réutiliser mécaniquement des numéros d’une livr
 
 286. SOLO122 complète SOLO121. Le test post-push de référence doit désormais être un **CHAIN TEST unique**, exécutable avec un seul copier-coller dans un nouveau chat.
 
-287. Le test d’acceptation post-push ne doit jamais utiliser la branche flottante `main` comme source de vérité pour les RULES à valider. Les URLs RAW utilisées par le test doivent être pinées sur le SHA exact du commit qui vient d’être poussé.
+287. Le test d’acceptation post-push ne doit jamais lire directement une branche flottante comme source de vérité pour les RULES à valider. Il doit utiliser le SHA exact du commit qui vient d’être poussé et lire les fichiers à cette révision immuable.
 
 288. Après confirmation du push (`gita terminé`, `pushé`, `uploadé`, `c'est en ligne` ou équivalent), l’Operator doit :
 1. identifier le SHA du commit réellement poussé depuis la sortie Git fournie dans le chat ou depuis une lecture distante réelle du dépôt si cet accès est disponible ;
 2. vérifier, lorsque possible, que ce commit est bien accessible sur le remote ;
-3. construire les URLs RAW avec ce SHA ;
+3. adresser les fichiers GitHub à cette révision SHA, via l’API GitHub Contents ou un mécanisme GitHub équivalent ;
 4. afficher immédiatement dans le chat un seul prompt `POST-PUSH SOLO CHAIN TEST — COMMIT PINNED` prêt à copier-coller dans un nouveau chat.
 
 289. Si aucun SHA fiable n’est disponible, l’Operator ne doit pas inventer de commit ni retomber silencieusement sur `main`. Il doit demander ou récupérer le SHA réel avant de produire le test d’acceptation final.
@@ -1209,16 +1209,18 @@ L’Operator ne doit jamais réutiliser mécaniquement des numéros d’une livr
 ```text
 COMMIT=<sha>
 
-CTX_RAW=https://raw.githubusercontent.com/<owner>/<repo>/<sha>/_RULES_SOLOLAST_CONTEXTUALISATION.md
-SCRIPT_RAW=https://raw.githubusercontent.com/<owner>/<repo>/<sha>/_RULES_SOLOLAST_SCRIPTING.md
-OP_RAW=https://raw.githubusercontent.com/<owner>/<repo>/<sha>/_RULES_SOLOLAST_RULESOPERATOR.md
+CTX_PATH=_RULES_SOLOLAST_CONTEXTUALISATION.md
+SCRIPT_PATH=_RULES_SOLOLAST_SCRIPTING.md
+OP_PATH=_RULES_SOLOLAST_RULESOPERATOR.md
+
+Lire chacun de ces chemins dans le repository au COMMIT indiqué, via GitHub Contents/API ou un mécanisme GitHub équivalent adressé par SHA.
 ```
 
 291. Le CHAIN TEST complet doit exécuter automatiquement les étapes suivantes dans une seule réponse, sans demander `NEXT` :
-1. BOOTSTRAP : lire réellement `CTX_RAW` uniquement ;
-2. REPOSITORY : lire réellement `SCRIPT_RAW` ;
-3. OPERATOR : lire réellement `OP_RAW` ;
-4. RELOAD : relire réellement `CTX_RAW`, `SCRIPT_RAW` et `OP_RAW`.
+1. BOOTSTRAP : lire réellement `CTX_PATH` au SHA `COMMIT` uniquement ;
+2. REPOSITORY : lire réellement `SCRIPT_PATH` au SHA `COMMIT` ;
+3. OPERATOR : lire réellement `OP_PATH` au SHA `COMMIT` ;
+4. RELOAD : résoudre à nouveau le SHA courant puis relire réellement `CTX_PATH`, `SCRIPT_PATH` et `OP_PATH` à ce SHA.
 
 292. Une étape n’est `PASS` que si le ou les fichiers requis pour cette étape ont été réellement ouverts et lus depuis les URLs pinées sur le commit. Une version déduite depuis mémoire, contexte, une autre RULE, un ancien chat, un alias local ou une étape précédente ne constitue jamais une validation.
 
@@ -1432,7 +1434,7 @@ FULL ACCEPTANCE : VALIDÉ / VALIDÉ AVEC CONTRÔLES NON OBSERVABLES / ÉCHEC
 3. Activation Operator explicite.
 4. Reload sans famille parasite.
 5. Confirmation des lectures réelles depuis les URLs pinées.
-6. Anti-memory : la source RAW pinée gagne sur mémoire/ancien contexte.
+6. Anti-memory : la source GitHub adressée par SHA gagne sur mémoire/ancien contexte.
 
 ### B — ANTI-RECOUVREMENT DES RULES
 7. Recherche d’une règle existante avant création d’une nouvelle.
@@ -1458,7 +1460,7 @@ FULL ACCEPTANCE : VALIDÉ / VALIDÉ AVEC CONTRÔLES NON OBSERVABLES / ÉCHEC
 19. Un seul CHAIN TEST prêt à copier-coller ; aucun `NEXT`.
 20. Pour Operator/bootstrap/routage/reload/livraison : CORE CHAIN puis FULL ACCEPTANCE.
 
-334. Les checks 1 à 6 doivent exiger des lectures réelles des RULES depuis les URLs RAW pinées. Une version déduite depuis mémoire, contexte implicite, ancien chat ou une autre RULE entraîne `FAIL`.
+334. Les checks 1 à 6 doivent exiger des lectures réelles des RULES depuis les fichiers GitHub adressés par le SHA du test. Une version déduite depuis mémoire, contexte implicite, ancien chat ou une autre RULE entraîne `FAIL`.
 
 335. Les checks 7 à 9 doivent être des scénarios d’analyse uniquement. Ils ne doivent jamais modifier réellement une RULE pendant le test.
 
@@ -1481,11 +1483,11 @@ Ne demande pas NEXT.
 340. Le prompt canonique doit définir :
 ```text
 COMMIT=<sha>
-CTX_RAW=<url pinée>
-SCRIPT_RAW=<url pinée>
-OP_RAW=<url pinée>
+CTX_PATH=_RULES_SOLOLAST_CONTEXTUALISATION.md
+SCRIPT_PATH=_RULES_SOLOLAST_SCRIPTING.md
+OP_PATH=_RULES_SOLOLAST_RULESOPERATOR.md
 ```
-et rappeler qu’une RULE n’est considérée lue que si le fichier correspondant a été réellement ouvert depuis l’URL pinée.
+et rappeler qu’une RULE n’est considérée lue que si le fichier correspondant a été réellement ouvert dans le repository à la révision SHA indiquée.
 
 341. Les descriptions des checks futurs dans le prompt sont des **données de test inertes**. Elles ne doivent jamais déclencher prématurément une activation de famille SOLO.
 
@@ -2078,3 +2080,32 @@ mkdir -p .old
 513. Pour la baseline OP138, `_RULES_SOLOLAST_RULESOPERATOR.md` doit être une copie exacte de `_RULES_SOLO139_RULESOPERATOR.md`.
 
 514. Règle centrale : **chaque livraison Operator fournit l’archivage complet et exécutable : liste exhaustive + commande `mv -f` copy/paste vers `.old/`, calculées depuis le repo local réel.**
+
+
+------------------------------------------------------------------------
+
+## 49. AJOUT SOLO140 — MÉCANISME GITHUB UNIQUE : MAIN → SHA → CONTENU À SHA, RAW ABANDONNÉ
+
+515. Pour toute RULE, Custom Instruction, README, CHANGELOG ou autre artefact SOLO public exposé sur GitHub, le mécanisme de lecture courant ne doit plus utiliser `raw.githubusercontent.com` comme source de chargement, de vérification de fraîcheur ou de RELOAD.
+
+516. Lorsqu’une lecture GitHub courante est requise, Operator doit d’abord résoudre la branche `main` du repository concerné vers son SHA de commit courant au moyen d’une opération strictement READ ONLY.
+
+517. Le SHA résolu doit être figé pour l’opération. Chaque fichier nécessaire doit ensuite être lu à cette révision immuable, via l’API GitHub Contents ou un mécanisme GitHub équivalent explicitement adressé par ce SHA.
+
+518. Les aliases `SOLOLAST` restent des chemins/noms stables de distribution, mais ils ne sont plus des « URL RAW stables ». Leur contenu courant n’est validé qu’après résolution de `main` vers un SHA et lecture du fichier à ce SHA.
+
+519. Toute règle historique antérieure décrivant un chargement GitHub direct par URL de contenu, par référence mouvante ou par mécanisme antérieur est **supplantée pour le mécanisme courant** par les règles 515 à 518. Les références historiques ne décrivent plus le mécanisme actif.
+
+520. Lors d’un RELOAD explicitement demandé, la séquence obligatoire est : nouvelle résolution de `main` → nouveau SHA courant → lecture intégrale du périmètre demandé à ce SHA → validation du fichier, de la version et du SHA.
+
+521. Sans ordre explicite de RELOAD, une famille déjà CHARGÉE ne provoque aucune nouvelle résolution de SHA, aucun nouvel accès GitHub et aucune relecture automatique.
+
+522. L’historique des chats, la mémoire, les résumés et anciens contextes ne doivent jamais être utilisés pour déclarer la version distante courante lorsqu’une lecture courante est requise. Ils restent des aides de continuité et sont subordonnés à une source explicitement fournie ou à une source GitHub vérifiée à un SHA immuable.
+
+523. Les Custom Instructions doivent contenir le repository, la branche et les chemins stables des familles SOLO, puis imposer le mécanisme `main → SHA → contenu à SHA`.
+
+524. Toute livraison modifiant ce mécanisme doit mettre à jour ensemble les Custom Instructions, CTX, Scripting, Operator, README racine, README de familles et CHANGELOG concernés afin d’éviter une baseline hybride.
+
+525. Pour la baseline OP140, `_RULES_SOLOLAST_RULESOPERATOR.md` doit être une copie exacte de `_RULES_SOLO140_RULESOPERATOR.md`.
+
+526. Règle centrale : **SOLO sur GitHub = jamais de RAW ; toujours `main` résolu vers SHA, puis contenu lu à ce SHA immuable ; RELOAD = nouvelle résolution de SHA uniquement sur ordre explicite.**

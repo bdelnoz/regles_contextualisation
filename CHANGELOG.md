@@ -1,3 +1,12 @@
+# CHANGELOG — baseline CTX242 / SCRIPT423 / OP140 / CI007 — 2026-10-13
+
+- Abandon définitif du mécanisme GitHub RAW pour les chargements et RELOAD SOLO publics.
+- Nouveau mécanisme obligatoire : `main → SHA courant → contenu à SHA immuable → lecture intégrale jusqu’à EOF`.
+- Custom Instructions : suppression de `CTX_RAW`, `SCRIPT_RAW`, `OP_RAW`.
+- RELOAD : nouvelle résolution de SHA uniquement sur ordre explicite de l’utilisateur.
+- Historique/mémoire : continuité uniquement, jamais validation de fraîcheur distante.
+- Baseline active : CTX242 / SCRIPT423 / OP140 / CI007.
+
 # CHANGELOG — repository SOLO
 
 - 2026-10-13 00:42:43 +02:00 — baseline CTX241 / SCRIPT422 / OP139 / CI006 : correction de cohérence d’une livraison précédente (métadonnées SCRIPT, README SCRIPT, en-tête CTX, références actives Operator/README racine).
