@@ -1,6 +1,27 @@
 # CHANGELOG — repository SOLO
 
+- 2026-10-13 00:42:43 +02:00 — baseline CTX241 / SCRIPT422 / OP139 / CI006 : correction de cohérence d’une livraison précédente (métadonnées SCRIPT, README SCRIPT, en-tête CTX, références actives Operator/README racine).
+
+- 2026-10-13 — Operator OP138 : archivage `.old/` exhaustif + commande `mv -f` copy/paste obligatoire à chaque livraison.
+
 Ce fichier décrit uniquement les changements publics et structurels du repository. Les historiques détaillés des artefacts SOLO restent locaux sous `.docs/`.
+
+## 2026-10-13 — baseline CTX240 / SCRIPT421 / OP137 / CI006
+
+- Operator incrémenté de OP136 vers OP137.
+- Une ancienne version encore présente dans le ZIP local est désormais traitée comme un historique non encore déplacé vers `.old/`, et non comme une version active concurrente.
+- Chaque livraison Operator doit fournir la liste exacte `À déplacer vers .old/`, calculée depuis le ZIP local courant et la livraison produite.
+- Les anciennes RULES et README versionnés remplacés sont signalés ; les alias `SOLOLAST` et CHANGELOG stables restent remplacés en place.
+
+## 2026-10-13 — baseline CTX240 / SCRIPT421 / OP136 / CI006
+
+- Ajout universel de la règle 0.0 de chargement intégral obligatoire et anti-reload automatique dans toutes les familles SOLO actives publiques et privées.
+- GitHub READ ONLY STRICT devient la règle 0.1 sans changement de portée.
+- CTX et Scripting renforcés pour diagnostiquer une non-conformité depuis les règles déjà chargées, sans reread spontané.
+- Operator exige désormais le ZIP complet du repository local après son chargement réel avant toute modification/livraison.
+- README publics et privés renommés avec la version SOLO active ; CHANGELOG inchangés dans leur naming stable.
+- Custom Instructions CI006 alignées sur le même verrou strict.
+
 
 ## 2026-10-11 07:13:42 +02:00 — baseline CTX239 / SCRIPT420 / OP135 / CI005
 

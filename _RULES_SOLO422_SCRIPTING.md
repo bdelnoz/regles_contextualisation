@@ -1,27 +1,47 @@
-Nom canonique : SOLO420  
+Nom canonique : SOLO422  
 Famille : SOLOxxx (xxx = numéro de version)  
-Version actuelle : 420
-Document : _RULES_SOLO420_SCRIPTING.md  
+Version actuelle : 422
+Document : _RULES_SOLO422_SCRIPTING.md  
 Auteur : non publié dans la version publique
 Email : non publié dans la version publique
-Date : 2026-10-11
-Statut : version scripting publique dérivée de SOLO419, conservant la règle d’or GitHub READ ONLY STRICT et synchronisant la baseline SOLO.
+Date : 2026-10-13
+Statut : version scripting publique dérivée de SOLO420, conservant la règle d’or GitHub READ ONLY STRICT et synchronisant la baseline SOLO.
 
 CES RÈGLES DE SCRIPTING S’APPELLENT SOLOxxx, où xxx représente le numéro de version.
 
-Lorsque je dis SOLO420, je fais référence à la version 420 des règles.
+Lorsque je dis SOLO422, je fais référence à la version 422 des règles.
 
 Lorsque je dis SOLO suivi d’un numéro, par exemple SOLO405, je fais référence à la version correspondante.
 
 Lorsque je dis simplement SOLO, cela fait référence à la dernière version publiée.
 
-SOLO420 remplace SOLO419, SOLO418, SOLO417, SOLO414, SOLO413, SOLO412, SOLO411, SOLO410, SOLO409, SOLO408, SOLO407, SOLO406, SOLO405, SOLO404, SOLO403, SOLO402, SOLO401, SOLO400, SOLO311, SOLO310, SOLO309, SOLO308, SOLO307, SOLO306, SOLO305, SOLO304, SOLO303, SOLO302, SOLO301, SOLO300 et toutes les versions SOLO scripting précédentes pour les demandes de scripting, génération de code, correction de code, génération de fichiers techniques et génération de documentation liée à des scripts.
+SOLO422 remplace SOLO421, SOLO420, SOLO419, SOLO418, SOLO417, SOLO414, SOLO413, SOLO412, SOLO411, SOLO410, SOLO409, SOLO408, SOLO407, SOLO406, SOLO405, SOLO404, SOLO403, SOLO402, SOLO401, SOLO400, SOLO311, SOLO310, SOLO309, SOLO308, SOLO307, SOLO306, SOLO305, SOLO304, SOLO303, SOLO302, SOLO301, SOLO300 et toutes les versions SOLO scripting précédentes pour les demandes de scripting, génération de code, correction de code, génération de fichiers techniques et génération de documentation liée à des scripts.
 
-SOLO420 est conçu pour les LLM de chat, notamment ChatGPT, LeChat ou équivalents.
+SOLO422 est conçu pour les LLM de chat, notamment ChatGPT, LeChat ou équivalents.
 
-SOLO420 conserve la substance de SOLO419, maintient la numérotation référençable des demandes, la règle d’or GitHub READ ONLY STRICT et la séparation de gouvernance où la structure du repository SOLO relève exclusivement d’Operator.
+SOLO422 conserve la substance de SOLO421, maintient la numérotation référençable des demandes, la règle d’or GitHub READ ONLY STRICT et la séparation de gouvernance où la structure du repository SOLO relève exclusivement d’Operator.
 
-## 0. RÈGLE D’OR — GITHUB READ ONLY STRICT
+## 0.0. RÈGLE D’OR — CHARGEMENT INTÉGRAL OBLIGATOIRE + ANTI-RELOAD ABSOLU
+
+Toute RULE SOLO activée ou demandée doit être **lue INTÉGRALEMENT, du début réel jusqu’à la fin réelle du fichier, AVANT d’être considérée comme CHARGÉE ou appliquée**.
+
+Une lecture partielle, tronquée, limitée à un extrait, à une recherche ciblée, à quelques sections, à un résumé, à un cache ou à la mémoire du modèle **ne constitue JAMAIS un chargement valide**.
+
+Si une première lecture ne retourne pas l’intégralité du fichier, l’assistant doit **poursuivre immédiatement la lecture du MÊME fichier, par segments successifs si nécessaire, jusqu’à atteindre sa fin réelle**. Tant que cette lecture intégrale n’est pas terminée, il est interdit de déclarer la RULE chargée, active ou appliquée, et il est interdit de poursuivre le travail métier qui dépend de cette RULE.
+
+Une fois la RULE intégralement chargée dans le chat courant, elle doit rester active et être appliquée en continu. **Aucun reload, reread, refresh, reapply, nouvelle ouverture, nouvelle recherche ou nouvelle vérification de cette même source RAW ne peut être déclenché automatiquement.**
+
+Une plainte de non-conformité, une demande de « respecter les règles », un changement de sujet, une erreur du modèle, une mention de SOLO, un doute sur la version, ou l’annonce qu’un dépôt a été mis à jour **ne constitue jamais une autorisation de relecture**.
+
+Seul un **ordre explicite de l’utilisateur demandant une nouvelle lecture / un RELOAD** autorise la relecture d’une RULE déjà CHARGÉE.
+
+Si la source est réellement inaccessible après de vraies tentatives de lecture complète, le chat doit **s’arrêter sur ce blocage** et l’annoncer clairement. Il ne doit jamais continuer le travail concerné à partir d’une lecture partielle, de mémoire, d’un résumé ou d’une ancienne version.
+
+**RÈGLE ABSOLUE : CHARGEMENT PARTIEL = INTERDIT. FAUSSE CONFIRMATION = INTERDITE. TRAVAIL AVANT LECTURE COMPLÈTE = INTERDIT. RELOAD AUTOMATIQUE = INTERDIT.**
+
+------------------------------------------------------------------------
+
+## 0.1. RÈGLE D’OR — GITHUB READ ONLY STRICT
 
 GitHub est **STRICTEMENT READ ONLY** pour l’assistant.
 
@@ -2096,7 +2116,7 @@ Après chargement des règles, l’assistant doit les appliquer au parser réel,
 
 Relire plusieurs fois les règles sans corriger une violation déjà identifiée constitue lui-même un échec de workflow.
 
-Lorsque la version chargée actuelle est connue et qu’aucun reload/refresh explicite n’est demandé, ne pas relire le même fichier SOLO simplement parce que l’utilisateur mentionne « scripting », demande pourquoi une règle n’a pas été respectée ou poursuit la même tâche de scripting. Appliquer les règles déjà chargées.
+Lorsque la version chargée actuelle est connue et qu’aucun ordre explicite de relecture n’est demandé par l’utilisateur, ne jamais relire le même fichier SOLO simplement parce que l’utilisateur mentionne « scripting », demande pourquoi une règle n’a pas été respectée, demande de « respecter SOLO », signale une erreur ou poursuit la même tâche de scripting. Appliquer les règles déjà chargées.
 
 ### 30.10 Règle centrale SOLO413
 
@@ -2277,9 +2297,19 @@ Une explication courte peut accompagner le livrable, mais elle ne doit pas rempl
 
 Le signalement d’une non-conformité n’est pas une demande implicite de reload.
 
-Si la bonne version des règles est déjà chargée dans le chat et qu’aucun `reload`, `refresh`, `reapply`, `load latest` ou équivalent n’est demandé, l’assistant doit appliquer les règles déjà chargées au lieu de relire les mêmes fichiers distants.
+Si la bonne version des règles est déjà chargée dans le chat et qu’aucun ordre explicite de relecture n’est donné par l’utilisateur, l’assistant doit appliquer les règles déjà chargées au lieu de relire les mêmes fichiers distants. Le signalement d’une violation, la demande « respecte les règles Scripting » ou la mention d’une mise à jour ne constitue jamais un ordre de relecture.
 
 La relecture répétée ne doit jamais servir de substitut à la correction.
+
+### 31.9A Diagnostic obligatoire d’une violation Scripting sans reread
+
+Lorsqu’un utilisateur signale qu’une règle SOLO Scripting n’a pas été respectée, le chat fautif ne doit jamais retourner spontanément lire CTX ou Scripting sur GitHub. Ces règles sont censées avoir été chargées intégralement au moment de leur activation.
+
+Le chat doit identifier la règle exacte concernée à partir du contexte chargé, expliquer pourquoi elle n’a pas été respectée, préciser si elle couvrait déjà le cas, puis proposer une correction ou un renforcement anti-régression que l’utilisateur peut transmettre à SOLO Operator.
+
+Si la règle couvrait déjà clairement le cas, la réponse doit expliquer la cause réelle de non-application au lieu de créer automatiquement une nouvelle règle parallèle.
+
+Le diagnostic ne constitue jamais un reload.
 
 ### 31.10 Scope de livraison explicite du tour courant
 

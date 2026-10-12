@@ -1,17 +1,37 @@
 # 📘 RÈGLES OFFICIELLES – CONTEXTUALISATION GÉNÉRALE DES CHATS
 
-**Version : V239 (Master publique assainie : V238 + synchronisation universelle de la règle d’or GitHub et naming CUSTINST corrigé)**
+**Version : V241 (Master publique assainie : V239 + chargement intégral universel de la règle d’or GitHub et naming CUSTINST corrigé)**
 **Auteur : non publié dans la version publique**  
 **Contact : non publié dans la version publique**  
-**Date : 2026-10-11**  
+**Date : 2026-10-13**
 **Nombre de règles uniques : version publique assainie ; modules privés externalisés**  
 **Version dérivée : V123 sans section scripting/code**  
-**Modification : V239 — synchronisation de la baseline, correction du naming CUSTINST SOLO et maintien de la règle d’or GitHub READ ONLY STRICT en règle 0.**
+**Modification : V240 — synchronisation de la baseline, correction du naming CUSTINST SOLO et maintien de la règle d’or GitHub READ ONLY STRICT en règle 0.**
 
-**Résumé V239 : conserve la substance de CTX238, maintient la règle d’or GitHub absolue et utilise le naming canonique `_CUSTINST_SOLOLAST_CUSTOM_INSTRUCTIONS.md`.**
+**Résumé V241 : conserve la substance de CTX239, maintient la règle d’or GitHub absolue et utilise le naming canonique `_CUSTINST_SOLOLAST_CUSTOM_INSTRUCTIONS.md`.**
 ---
 
-## 0. RÈGLE D’OR — GITHUB READ ONLY STRICT
+## 0.0. RÈGLE D’OR — CHARGEMENT INTÉGRAL OBLIGATOIRE + ANTI-RELOAD ABSOLU
+
+Toute RULE SOLO activée ou demandée doit être **lue INTÉGRALEMENT, du début réel jusqu’à la fin réelle du fichier, AVANT d’être considérée comme CHARGÉE ou appliquée**.
+
+Une lecture partielle, tronquée, limitée à un extrait, à une recherche ciblée, à quelques sections, à un résumé, à un cache ou à la mémoire du modèle **ne constitue JAMAIS un chargement valide**.
+
+Si une première lecture ne retourne pas l’intégralité du fichier, l’assistant doit **poursuivre immédiatement la lecture du MÊME fichier, par segments successifs si nécessaire, jusqu’à atteindre sa fin réelle**. Tant que cette lecture intégrale n’est pas terminée, il est interdit de déclarer la RULE chargée, active ou appliquée, et il est interdit de poursuivre le travail métier qui dépend de cette RULE.
+
+Une fois la RULE intégralement chargée dans le chat courant, elle doit rester active et être appliquée en continu. **Aucun reload, reread, refresh, reapply, nouvelle ouverture, nouvelle recherche ou nouvelle vérification de cette même source RAW ne peut être déclenché automatiquement.**
+
+Une plainte de non-conformité, une demande de « respecter les règles », un changement de sujet, une erreur du modèle, une mention de SOLO, un doute sur la version, ou l’annonce qu’un dépôt a été mis à jour **ne constitue jamais une autorisation de relecture**.
+
+Seul un **ordre explicite de l’utilisateur demandant une nouvelle lecture / un RELOAD** autorise la relecture d’une RULE déjà CHARGÉE.
+
+Si la source est réellement inaccessible après de vraies tentatives de lecture complète, le chat doit **s’arrêter sur ce blocage** et l’annoncer clairement. Il ne doit jamais continuer le travail concerné à partir d’une lecture partielle, de mémoire, d’un résumé ou d’une ancienne version.
+
+**RÈGLE ABSOLUE : CHARGEMENT PARTIEL = INTERDIT. FAUSSE CONFIRMATION = INTERDITE. TRAVAIL AVANT LECTURE COMPLÈTE = INTERDIT. RELOAD AUTOMATIQUE = INTERDIT.**
+
+------------------------------------------------------------------------
+
+## 0.1. RÈGLE D’OR — GITHUB READ ONLY STRICT
 
 GitHub est **STRICTEMENT READ ONLY** pour l’assistant.
 
@@ -27,8 +47,8 @@ L’assistant peut préparer localement les fichiers, patches, commandes, conten
 
 ## 📑 FICHIERS ANNEXES
 
-- **CHANGELOG_SOLO238_CONTEXTUALISATION.md** : historique local séparé de la version assainie
-- **README_SOLO238_CONTEXTUALISATION.md** : documentation locale de la règle contextualisation
+- **CHANGELOG_SOLO_CONTEXTUALISATION.md** : historique local cumulatif au nom stable
+- **README_SOLO241_CONTEXTUALISATION.md** : documentation locale versionnée de la contextualisation active
 - Les contenus privés externalisés restent hors du présent fichier public et sont gouvernés par Operator.
 ------------------------------------------------------------------------
 
@@ -142,41 +162,36 @@ Cette règle complète les Custom Instructions, mais ne remplace jamais les règ
 
 ------------------------------------------------------------------------
 
-## RÈGLE GLOBALE V234 — RÉAPPLICATION CONTEXTUELLE DES CUSTOM INSTRUCTIONS ET RÈGLES SOLO
+## RÈGLE GLOBALE — RELOAD EXPLICITE UNIQUEMENT
 
-Cette règle s’applique lorsqu’un chat déjà ouvert doit prendre en compte des Custom Instructions ou règles SOLO mises à jour sur le dépôt public.
+Une famille SOLO déjà CHARGÉE ne doit jamais être relue automatiquement. La relecture n’est autorisée que lorsque l’utilisateur donne **un ordre explicite de reload / relecture / refresh / reapply ou formulation impérative équivalente**.
 
-Les formulations `recharge les règles`, `réapplique les règles`, `recharge les règles SOLO`, `réapplique les règles SOLO`, `recharge les Custom Instructions`, `réapplique les Custom Instructions`, `applique les dernières règles`, `j’ai mis les règles à jour sur GitHub`, ou toute formulation clairement équivalente, déclenchent une actualisation du contexte SOLO du chat courant.
+Le simple fait que l’utilisateur indique qu’un dépôt ou une RULE a été mis à jour ou pushé ne déclenche aucune relecture. Une plainte de non-conformité, une demande de respecter SOLO, une mention de CTX/Scripting/Operator ou une erreur du modèle ne déclenche aucune relecture.
 
-L’actualisation doit commencer par une lecture réelle de la version publique actuelle de `_CUSTINST_SOLOLAST_CUSTOM_INSTRUCTIONS.md` sur le dépôt de référence. L’assistant doit ensuite appliquer fonctionnellement ce contenu au chat courant. Il ne doit pas prétendre avoir techniquement rechargé ou modifié le réglage de compte ChatGPT lui-même.
+Lors d’un reload global explicitement demandé, relire intégralement CTX ainsi que les seules familles Scripting/Operator déjà actives dans le chat. Lors d’un reload explicitement limité à une famille, relire uniquement le périmètre explicitement demandé. Un reload ne doit jamais activer une famille étrangère au contexte sans demande explicite.
 
-Après cette relecture :
+Après toute vraie relecture, confirmer brièvement les fichiers et versions réellement lus. Ne jamais prétendre avoir rechargé une source qui n’a pas été relue intégralement.
 
-- `_RULES_SOLOLAST_CONTEXTUALISATION.md` doit toujours être relu intégralement ;
-- `_RULES_SOLOLAST_SCRIPTING.md` doit être relu uniquement si le chat courant relève déjà du scripting, du code, d’un script durable, d’un dépôt Git, d’une extension, d’une application, du développement, du debug ou de documentation technique liée au code ;
-- `_RULES_SOLOLAST_RULESOPERATOR.md` doit être relu uniquement si le chat courant relève déjà du mode Operator ou de la maintenance, correction, création, versionnement, merge, packaging ou livraison des règles SOLO ;
-- si les périmètres Scripting et Operator sont tous deux déjà actifs, les trois familles doivent être relues.
+**Règle centrale : sans ordre explicite de l’utilisateur demandant une relecture, une famille CHARGÉE reste appliquée depuis le contexte courant et aucun nouvel accès RAW n’est autorisé.**
 
-Une demande de réapplication ne doit jamais ajouter une famille étrangère au chat courant uniquement parce que l’utilisateur emploie les mots `règles SOLO`, `les règles` ou `toutes`.
+------------------------------------------------------------------------
 
-La commande explicite `lis toutes les règles SOLO`, ou une demande explicitement formulée comme lecture/chargement des trois familles, conserve son sens distinct : elle force la lecture intégrale de CTX, Scripting puis Operator.
+## RÈGLE GLOBALE — DIAGNOSTIC D’UNE VIOLATION SOLO SANS REREAD
 
-Une demande explicitement limitée à une famille recharge CTX puis cette famille spécialisée seulement.
+Lorsqu’un utilisateur signale qu’une règle SOLO n’a pas été respectée, le chat fautif doit diagnostiquer l’erreur **à partir des règles déjà chargées**, sans retourner spontanément sur GitHub ni relire les RAW.
 
-Si la nouvelle demande utilisateur change réellement le périmètre du chat — par exemple activation explicite du mode Operator, démarrage d’un travail de code ou fourniture de preuves de dépôt — les règles normales d’activation de famille continuent de s’appliquer. La présente règle empêche seulement l’élargissement artificiel provoqué par une simple demande de rafraîchissement.
+Il doit fournir :
 
-Le bypass de démarrage n’empêche pas cette réapplication ultérieure : une demande explicite de rechargement dans un chat déjà ouvert autorise les lectures nécessaires au périmètre courant.
+1. la règle exacte qu’il n’a pas respectée, ou la règle chargée la plus directement concernée ;
+2. la cause opérationnelle de la violation : chargement initial incomplet, règle non appliquée, mauvaise interprétation, conflit d’instructions ou autre cause identifiée ;
+3. si la règle existante couvrait déjà clairement le cas ;
+4. une proposition de correction ou de renforcement anti-régression exploitable par un chat SOLO Operator.
 
-Après la réapplication, l’assistant doit confirmer brièvement :
+Si la règle existante couvrait déjà le cas, le chat ne doit pas inventer automatiquement une nouvelle règle parallèle : il doit expliquer pourquoi la règle présente n’a pas été appliquée et proposer le renforcement approprié si nécessaire.
 
-- que les Custom Instructions publiques ont réellement été relues ;
-- les familles SOLO réellement relues ;
-- leurs versions ;
-- lorsque l’ancienne version est connue, l’ancienne et la nouvelle version ;
-- tout fichier qui n’a pas pu être lu réellement.
+Le signalement d’une violation n’est jamais une demande implicite de reload.
 
-Règle centrale : **réappliquer les règles signifie actualiser le contexte déjà pertinent du chat, pas charger automatiquement toutes les familles SOLO.**
-
+------------------------------------------------------------------------
 
 ## RÈGLE GLOBALE — CLÔTURE DE CHAT LONG ET CONTINUITÉ OPERATOR
 

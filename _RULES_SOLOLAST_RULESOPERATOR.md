@@ -1,21 +1,21 @@
 <!--
 DOCUMENT INFORMATION
-Document Name: _RULES_SOLO135_RULESOPERATOR.md
-Version: SOLO135
-Date / Time: 2026-10-11 07:13:42 +02:00
+Document Name: _RULES_SOLO139_RULESOPERATOR.md
+Version: SOLO139
+Date / Time: 2026-10-13
 Project: SOLO rules operator contextualization
 Public status: GitHub-safe public rules file
-Short description: Règles d’exploitation des chats de maintenance SOLO, synchronisées avec CTX239, SCRIPT420, OP135 et CUSTOM INSTRUCTIONS SOLO005 / CI005, avec README + CHANGELOG maîtres obligatoires pour chaque module privé et règle d’or GitHub READ ONLY STRICT sans exception.
+Short description: Règles d’exploitation des chats de maintenance SOLO, synchronisées avec CTX241, SCRIPT422, OP139 et CUSTOM INSTRUCTIONS SOLO006 / CI006, avec README + CHANGELOG maîtres obligatoires pour chaque module privé et règle d’or GitHub READ ONLY STRICT sans exception.
 -->
 
-# _RULES_SOLO135_RULESOPERATOR.md
+# _RULES_SOLO139_RULESOPERATOR.md
 
-Nom canonique : SOLO135 RULESOPERATOR  
+Nom canonique : SOLO139 RULESOPERATOR  
 Famille : SOLOxxx RULESOPERATOR  
-Version actuelle : 135  
-Document : _RULES_SOLO135_RULESOPERATOR.md  
-Date : 2026-10-11 07:13:42 +02:00
-Statut : version 135 publique et assainie du fichier opérateur, synchronisant CTX239, SCRIPT420 et CUSTOM INSTRUCTIONS SOLO005 / CI005, avec README + CHANGELOG maîtres obligatoires pour chaque module privé, maintenance/versionnement explicites des Custom Instructions SOLO et règle d’or GitHub READ ONLY STRICT sans exception.
+Version actuelle : 139  
+Document : _RULES_SOLO139_RULESOPERATOR.md  
+Date : 2026-10-13
+Statut : version 139 publique et assainie du fichier opérateur, synchronisant CTX241, SCRIPT422 et CUSTOM INSTRUCTIONS SOLO006 / CI006, avec README + CHANGELOG maîtres obligatoires pour chaque module privé, maintenance/versionnement explicites des Custom Instructions SOLO et règle d’or GitHub READ ONLY STRICT sans exception.
 
 Ces règles contextualisent un chat chargé de créer, modifier, corriger, versionner, documenter et livrer les fichiers de règles SOLO.
 
@@ -28,7 +28,27 @@ _RULES_SOLOXXX_SCRIPTING.md
 
 ------------------------------------------------------------------------
 
-## 0. RÈGLE D’OR — GITHUB READ ONLY STRICT
+## 0.0. RÈGLE D’OR — CHARGEMENT INTÉGRAL OBLIGATOIRE + ANTI-RELOAD ABSOLU
+
+Toute RULE SOLO activée ou demandée doit être **lue INTÉGRALEMENT, du début réel jusqu’à la fin réelle du fichier, AVANT d’être considérée comme CHARGÉE ou appliquée**.
+
+Une lecture partielle, tronquée, limitée à un extrait, à une recherche ciblée, à quelques sections, à un résumé, à un cache ou à la mémoire du modèle **ne constitue JAMAIS un chargement valide**.
+
+Si une première lecture ne retourne pas l’intégralité du fichier, l’assistant doit **poursuivre immédiatement la lecture du MÊME fichier, par segments successifs si nécessaire, jusqu’à atteindre sa fin réelle**. Tant que cette lecture intégrale n’est pas terminée, il est interdit de déclarer la RULE chargée, active ou appliquée, et il est interdit de poursuivre le travail métier qui dépend de cette RULE.
+
+Une fois la RULE intégralement chargée dans le chat courant, elle doit rester active et être appliquée en continu. **Aucun reload, reread, refresh, reapply, nouvelle ouverture, nouvelle recherche ou nouvelle vérification de cette même source RAW ne peut être déclenché automatiquement.**
+
+Une plainte de non-conformité, une demande de « respecter les règles », un changement de sujet, une erreur du modèle, une mention de SOLO, un doute sur la version, ou l’annonce qu’un dépôt a été mis à jour **ne constitue jamais une autorisation de relecture**.
+
+Seul un **ordre explicite de l’utilisateur demandant une nouvelle lecture / un RELOAD** autorise la relecture d’une RULE déjà CHARGÉE.
+
+Si la source est réellement inaccessible après de vraies tentatives de lecture complète, le chat doit **s’arrêter sur ce blocage** et l’annoncer clairement. Il ne doit jamais continuer le travail concerné à partir d’une lecture partielle, de mémoire, d’un résumé ou d’une ancienne version.
+
+**RÈGLE ABSOLUE : CHARGEMENT PARTIEL = INTERDIT. FAUSSE CONFIRMATION = INTERDITE. TRAVAIL AVANT LECTURE COMPLÈTE = INTERDIT. RELOAD AUTOMATIQUE = INTERDIT.**
+
+------------------------------------------------------------------------
+
+## 0.1. RÈGLE D’OR — GITHUB READ ONLY STRICT
 
 GitHub est **STRICTEMENT READ ONLY** pour l’assistant.
 
@@ -242,13 +262,13 @@ Chaque module privé possède également son propre changelog maître local :
 .docs/CHANGELOG_SOLO_PRIVATE_<MODULE>.md
 ```
 
-Les README maîtres stables des quatre artefacts publics principaux sont :
+Les README des quatre artefacts publics principaux sont versionnés avec la version active :
 
 ```text
-.docs/README_SOLO_CONTEXTUALISATION.md
-.docs/README_SOLO_SCRIPTING.md
-.docs/README_SOLO_RULESOPERATOR.md
-.docs/README_SOLO_CUSTOM_INSTRUCTIONS.md
+.docs/README_SOLO<CTX>_CONTEXTUALISATION.md
+.docs/README_SOLO<SCRIPT>_SCRIPTING.md
+.docs/README_SOLO<OP>_RULESOPERATOR.md
+.docs/README_SOLO<CI>_CUSTOM_INSTRUCTIONS.md
 ```
 
 Le CHANGELOG maître d’un artefact doit conserver **tout l’historique disponible**. Les nouvelles entrées sont insérées en tête sans effacer les anciennes, afin que l’ouverture du fichier montre immédiatement la version la plus récente. Lorsqu’une ancienne version est observable mais que son détail exact n’est pas récupérable depuis les sources disponibles, le changelog le dit explicitement au lieu d’inventer.
@@ -267,17 +287,18 @@ _RULES_SOLOXXX_SCRIPTING.md
 _RULES_SOLOXXX_RULESOPERATOR.md
 ```
 
-42. Les patterns locaux de documentation sont stables et non versionnés dans leur nom :
+42. Les README locaux sont versionnés dans leur nom avec la version SOLO active ; les CHANGELOG locaux conservent un nom stable non versionné :
 
 ```text
-.docs/README_SOLO_CONTEXTUALISATION.md
+.docs/README_SOLO<CTX_VERSION>_CONTEXTUALISATION.md
 .docs/CHANGELOG_SOLO_CONTEXTUALISATION.md
-.docs/README_SOLO_SCRIPTING.md
+.docs/README_SOLO<SCRIPT_VERSION>_SCRIPTING.md
 .docs/CHANGELOG_SOLO_SCRIPTING.md
-.docs/README_SOLO_RULESOPERATOR.md
+.docs/README_SOLO<OP_VERSION>_RULESOPERATOR.md
 .docs/CHANGELOG_SOLO_RULESOPERATOR.md
-.docs/README_SOLO_CUSTOM_INSTRUCTIONS.md
+.docs/README_SOLO<CI_VERSION>_CUSTOM_INSTRUCTIONS.md
 .docs/CHANGELOG_SOLO_CUSTOM_INSTRUCTIONS.md
+.docs/README_SOLO<PRIVATE_VERSION>_PRIVATE_<MODULE>.md
 .docs/CHANGELOG_SOLO_PRIVATE_<MODULE>.md
 ```
 
@@ -368,7 +389,7 @@ _RULES_PRIVATE_SOLOXXX_<MODULE>.md
 _CUSTINST_SOLOxxx_CUSTOM_INSTRUCTIONS.md
 _CUSTINST_SOLOLAST_CUSTOM_INSTRUCTIONS.md
 .docs/CHANGELOG_SOLO_CUSTOM_INSTRUCTIONS.md
-.docs/README_SOLO_CUSTOM_INSTRUCTIONS.md
+.docs/README_SOLO<CI>_CUSTOM_INSTRUCTIONS.md
 ```
 
 et, si la baseline publique change, les `README.md` / `CHANGELOG.md` racine impactés.
@@ -379,7 +400,7 @@ et, si la baseline publique change, les `README.md` / `CHANGELOG.md` racine impa
 _RULES_SOLOxxx_RULESOPERATOR.md
 _RULES_SOLOLAST_RULESOPERATOR.md
 .docs/CHANGELOG_SOLO_RULESOPERATOR.md
-.docs/README_SOLO_RULESOPERATOR.md
+.docs/README_SOLO<OP>_RULESOPERATOR.md
 ```
 
 et, si la baseline publique change, les `README.md` / `CHANGELOG.md` racine impactés.
@@ -1564,7 +1585,7 @@ OP125
 
 Ces valeurs doivent toujours être remplacées dynamiquement dans les releases futures.
 
-364. Règle centrale : **charger chaque famille SOLO requise une seule fois par état d’activation du chat, l’appliquer en continu, ne la relire que sur déclencheur explicite de refresh/update/validation, et ne jamais substituer des lectures distantes répétées à la conformité réelle.**
+364. Règle centrale : **charger intégralement chaque famille SOLO requise une seule fois par état d’activation du chat, l’appliquer en continu et ne jamais la relire sans ordre explicite de l’utilisateur demandant cette relecture.**
 
 ------------------------------------------------------------------------
 
@@ -1865,7 +1886,7 @@ Chaque module privé conserve `.docs/CHANGELOG_SOLO_PRIVATE_<MODULE>.md`.
 452. Le naming documentaire des Custom Instructions utilise toujours le pluriel `CUSTOM_INSTRUCTIONS` :
 
 ```text
-.docs/README_SOLO_CUSTOM_INSTRUCTIONS.md
+.docs/README_SOLO<CI>_CUSTOM_INSTRUCTIONS.md
 .docs/CHANGELOG_SOLO_CUSTOM_INSTRUCTIONS.md
 ```
 
@@ -1877,13 +1898,13 @@ Chaque module privé conserve `.docs/CHANGELOG_SOLO_PRIVATE_<MODULE>.md`.
 
 456. Pour toute version créée ou modifiée à partir du `2026-10-11`, l’entrée correspondante doit obligatoirement inclure l’horodatage exact `YYYY-MM-DD HH:MM:SS ±HH:MM`.
 
-457. Les README maîtres sont stables et non versionnés dans leur nom :
+457. Les README sont versionnés dans leur nom avec la version SOLO active de leur artefact :
 
 ```text
-.docs/README_SOLO_CONTEXTUALISATION.md
-.docs/README_SOLO_SCRIPTING.md
-.docs/README_SOLO_RULESOPERATOR.md
-.docs/README_SOLO_CUSTOM_INSTRUCTIONS.md
+.docs/README_SOLO<CTX>_CONTEXTUALISATION.md
+.docs/README_SOLO<SCRIPT>_SCRIPTING.md
+.docs/README_SOLO<OP>_RULESOPERATOR.md
+.docs/README_SOLO<CI>_CUSTOM_INSTRUCTIONS.md
 ```
 
 458. `_RULES_SOLOLAST_RULESOPERATOR.md` doit être une copie exacte de `_RULES_SOLO133_RULESOPERATOR.md`.
@@ -1928,10 +1949,10 @@ CTX239 / SCRIPT420 / OP134 / CI005
 CTX239 / SCRIPT420 / OP135 / CI005
 ```
 
-471. **Chaque module privé SOLO existant ou futur doit posséder son propre README maître local stable**, placé sous :
+471. **Chaque module privé SOLO existant ou futur doit posséder son propre README local versionné**, placé sous :
 
 ```text
-.docs/README_SOLO_PRIVATE_<MODULE>.md
+.docs/README_SOLO<PRIVATE_VERSION>_PRIVATE_<MODULE>.md
 ```
 
 472. Ce README maître privé est obligatoire en complément du changelog maître correspondant :
@@ -1949,19 +1970,19 @@ CTX239 / SCRIPT420 / OP135 / CI005
 - son rôle ou objet ;
 - ses dépendances ou conditions d’activation lorsqu’elles existent.
 
-474. Les README maîtres privés utilisent un **nom stable sans numéro de version**. La version active appartient au contenu du README, jamais au nom du README.
+474. Les README privés utilisent un **nom versionné**. Le numéro SOLO actif du module doit apparaître dans le nom du README et dans son contenu. Le CHANGELOG correspondant conserve toujours son nom stable non versionné.
 
 475. Toute nouvelle version d’un module privé impose simultanément :
 - l’incrément de version du fichier RULES privé ;
 - la mise à jour du `CHANGELOG_SOLO_PRIVATE_<MODULE>.md` ;
-- la mise à jour du `README_SOLO_PRIVATE_<MODULE>.md` ;
+- la création/mise à jour du `README_SOLO<PRIVATE_VERSION>_PRIVATE_<MODULE>.md` ;
 - la livraison des trois éléments concernés.
 
 476. Lors de l’introduction de cette règle documentaire, les README maîtres manquants doivent être créés pour **tous les modules privés déjà existants**, sans incrémenter leur version lorsque leur fichier RULES n’est pas modifié.
 
 477. Lors de la création future d’un nouveau module privé, Operator doit créer dès la même livraison :
 - `.private/_RULES_PRIVATE_SOLOxxx_<MODULE>.md` ;
-- `.docs/README_SOLO_PRIVATE_<MODULE>.md` ;
+- `.docs/README_SOLO<PRIVATE_VERSION>_PRIVATE_<MODULE>.md` ;
 - `.docs/CHANGELOG_SOLO_PRIVATE_<MODULE>.md`.
 
 478. Les vrais noms de modules privés peuvent apparaître dans `.docs/` et `.private/`, qui restent locaux et ignorés par Git. Ils ne doivent pas être exposés dans les fichiers publics ou sur le remote GitHub.
@@ -1971,3 +1992,89 @@ CTX239 / SCRIPT420 / OP135 / CI005
 480. SOLO135 prévaut sur toute ancienne règle Operator qui prévoirait un CHANGELOG privé sans README maître privé associé.
 
 481. Règle centrale : **chaque module privé SOLO possède toujours une paire documentaire maître `README + CHANGELOG` sous `.docs/`; toute nouvelle version privée met à jour et livre les deux.**
+
+------------------------------------------------------------------------
+
+## 46. AJOUT SOLO136 — ZIP LOCAL COMPLET OBLIGATOIRE APRÈS CHARGEMENT OPERATOR
+
+482. Après chaque **chargement réel** de SOLO Operator dans un chat, Operator doit demander immédiatement à l’utilisateur de fournir le **ZIP complet de la dernière version du repository local SOLO** avant d’effectuer une modification ou une livraison de règles.
+
+483. Le ZIP local fourni par l’utilisateur est la **source de vérité de travail** pour l’état réel du repository : RULES publiques, RULES privées, Custom Instructions, README, CHANGELOG, `.gitignore`, aliases `SOLOLAST` et autres fichiers locaux présents.
+
+484. Operator ne doit pas reconstruire l’état complet du repository depuis sa mémoire, depuis des fichiers isolés ou depuis le seul dépôt GitHub public lorsque le ZIP local complet est requis pour la tâche.
+
+485. Si le ZIP local complet a déjà été fourni **après le dernier chargement réel d’Operator** dans le chat courant et qu’aucune nouvelle version locale n’est annoncée, Operator ne doit pas le redemander.
+
+486. Si l’utilisateur refuse explicitement de fournir le ZIP local complet, Operator doit annoncer que son périmètre de travail est limité aux fichiers publics réellement accessibles sur GitHub ou aux fichiers explicitement fournis dans le chat. Dans ce mode limité, Operator ne doit jamais prétendre connaître, préserver ou modifier les RULES privées ou les fichiers locaux absents.
+
+487. Cette demande de ZIP local est une acquisition de la **base de travail du repository**. Elle ne constitue pas un reload des RULES déjà chargées au sens de la règle 0.0.
+
+488. Les CHANGELOG conservent leur naming stable non versionné. Les README, publics comme privés, portent obligatoirement dans leur nom la version SOLO active de l’artefact documenté.
+
+489. Règle centrale : **Operator chargé → demander le ZIP local complet courant → utiliser ce ZIP comme source de vérité → seulement ensuite modifier/livrer.**
+
+490. Pour la baseline OP136, `_RULES_SOLOLAST_RULESOPERATOR.md` doit être une copie exacte de `_RULES_SOLO136_RULESOPERATOR.md`. Cette règle courante prévaut sur les anciennes références de copie exacte attachées aux sections historiques antérieures.
+
+------------------------------------------------------------------------
+
+## 47. AJOUT SOLO137 — ANCIENNES VERSIONS PRÉSENTES DANS LE ZIP LOCAL ET LISTE `.old/` OBLIGATOIRE
+
+491. Lorsqu’un ZIP local complet fourni par l’utilisateur contient plusieurs versions d’une même famille ou d’un même module, Operator ne doit **jamais** conclure que toutes ces versions sont actives. La version active est déterminée par la baseline courante, les alias actifs, la documentation courante et les règles de versionnement applicables.
+
+492. Une ancienne version encore présente dans le ZIP local doit être interprétée, par défaut, comme un fichier historique que l’utilisateur **n’a pas encore déplacé vers `.old/`**, sauf indication explicite contraire de l’utilisateur. Sa présence dans le ZIP n’en fait pas une source active concurrente.
+
+493. Operator doit conserver cette ancienne version comme **source historique** utile pour comparaison, changelog et anti-régression, mais il ne doit pas la modifier, la promouvoir, la prendre comme baseline active ni la réécrire rétroactivement.
+
+494. À chaque livraison qui crée ou remplace une version SOLO, Operator doit calculer à partir du ZIP local courant et de la livraison produite la liste exacte des fichiers devenus obsolètes dans leur emplacement actif et que l’utilisateur doit déplacer vers `.old/`.
+
+495. La réponse finale doit toujours contenir une section explicite `À déplacer vers .old/`, avec **un chemin exact par ligne**. Cette liste doit inclure les anciennes RULES versionnées remplacées et, lorsque le naming versionné l’impose, les anciens README versionnés remplacés.
+
+496. Les alias `SOLOLAST`, les CHANGELOG maîtres stables, `.gitignore`, `README.md` racine et `CHANGELOG.md` racine ne doivent pas être placés dans cette liste simplement parce qu’ils sont remplacés en place.
+
+497. Si une ancienne version déjà présente dans le ZIP local aurait dû être archivée lors d’une livraison précédente, Operator doit la signaler dans la liste `.old/` de la livraison courante avec son chemin exact. Exemple : une ancienne `_RULES_PRIVATE_SOLO001_BRANDING.md` encore présente alors qu’une version privée BRANDING plus récente est active doit être signalée comme fichier à déplacer vers `.old/`.
+
+498. Operator ne déplace ni ne supprime lui-même ces fichiers dans le repository de l’utilisateur. Il fournit la liste ; l’utilisateur effectue le déplacement local.
+
+499. Cette règle complète les règles 366 à 373 : la présence d’une ancienne version dans le ZIP local est une **information d’archivage**, pas une ambiguïté de version active.
+
+500. Pour la baseline OP139, `_RULES_SOLOLAST_RULESOPERATOR.md` doit être une copie exacte de `_RULES_SOLO139_RULESOPERATOR.md`.
+
+501. Règle centrale : **ancienne version encore présente dans le ZIP local = historique non encore archivé ; Operator utilise la version active réelle et livre toujours la liste exacte des fichiers à déplacer vers `.old/`.**
+
+
+
+------------------------------------------------------------------------
+
+## 48. AJOUT SOLO138 — COMMANDE `.old/` COPY/PASTE OBLIGATOIRE À CHAQUE LIVRAISON
+
+502. À chaque livraison Operator, la section `À déplacer vers .old/` doit être **exhaustive** et calculée à partir de l’état réel du repository local fourni par l’utilisateur et de la nouvelle livraison. Elle doit couvrir tous les fichiers devenus obsolètes dans leurs emplacements actifs, y compris les oublis d’archivage de livraisons antérieures encore visibles dans le repository local.
+
+503. En plus de la liste lisible des chemins, Operator doit fournir **à chaque livraison** un bloc shell directement copiable/collable permettant d’effectuer tous les déplacements vers `.old/`. Ce bloc est obligatoire même si la liste ne contient qu’un seul fichier.
+
+504. Lorsque le chemin local du repository est connu, le bloc shell doit utiliser ce chemin réel et être exécutable depuis n’importe quel répertoire. Il doit commencer par se positionner explicitement dans la racine du repository ou utiliser des chemins absolus cohérents.
+
+505. Le déplacement doit utiliser `mv -f` afin d’autoriser l’écrasement d’une copie portant déjà le même nom dans `.old/`. Operator doit créer `.old/` avec `mkdir -p .old` avant les déplacements.
+
+506. Chaque source doit être vérifiée avant déplacement afin qu’un fichier déjà archivé ou absent ne fasse pas échouer toute la séquence. Le modèle recommandé est :
+
+```bash
+cd "<REPO_LOCAL>" || exit 1
+mkdir -p .old
+[ ! -e "<SOURCE>" ] || mv -f -- "<SOURCE>" .old/
+```
+
+507. Les chemins provenant de sous-dossiers tels que `.docs/` ou `.private/` sont déplacés vers la racine de `.old/` conformément à la structure locale existante, sauf instruction contraire explicite de l’utilisateur.
+
+508. La liste `.old/` et le bloc `mv -f` doivent être dérivés du **repository local courant réellement fourni**. Operator ne doit pas limiter la liste aux seuls fichiers modifiés pendant le tour courant : toute ancienne version ou ancien README obsolète encore présent dans un emplacement actif doit être inclus.
+
+509. Lorsqu’une nouvelle version Operator est livrée, toutes les anciennes versions Operator encore présentes à la racine et tous les anciens README Operator versionnés encore présents sous `.docs/` doivent être inclus dans la commande d’archivage, à l’exception de la version nouvellement livrée et de l’alias `SOLOLAST`.
+
+510. Les anciens README au naming stable/non versionné devenus obsolètes après adoption du naming README versionné doivent également être inclus dans la commande `.old/` tant qu’ils sont encore présents sous `.docs/`.
+
+511. Les alias `SOLOLAST`, les CHANGELOG maîtres stables, `.gitignore`, `README.md`, `CHANGELOG.md` et les ZIP de livraison ne sont jamais ajoutés automatiquement à `.old/` uniquement parce qu’une nouvelle livraison existe.
+
+512. La réponse finale d’une livraison doit donc contenir, dans cet ordre logique : (a) le lien du package livré ; (b) la liste exhaustive `À déplacer vers .old/` ; (c) le bloc shell copy/paste `mv -f` correspondant exactement à cette liste.
+
+513. Pour la baseline OP138, `_RULES_SOLOLAST_RULESOPERATOR.md` doit être une copie exacte de `_RULES_SOLO139_RULESOPERATOR.md`.
+
+514. Règle centrale : **chaque livraison Operator fournit l’archivage complet et exécutable : liste exhaustive + commande `mv -f` copy/paste vers `.old/`, calculées depuis le repo local réel.**

@@ -5,8 +5,16 @@ SOLO est un système de règles versionnées destiné à rendre le comportement 
 ## Baseline active
 
 ```text
-CTX239 / SCRIPT420 / OP135 / CI005
+CTX241 / SCRIPT422 / OP139 / CI006
 ```
+
+## Règles d’or de chargement
+
+- Toute RULE SOLO activée doit être lue intégralement avant d’être déclarée chargée.
+- Une lecture tronquée doit être poursuivie jusqu’à la fin réelle du fichier avant tout travail dépendant.
+- Une famille déjà chargée n’est jamais relue automatiquement ; une relecture exige un ordre explicite de l’utilisateur.
+- GitHub reste strictement READ ONLY pour l’assistant.
+- Les README portent désormais la version SOLO active dans leur nom ; les CHANGELOG conservent leur nom stable non versionné.
 
 ## Principe de fonctionnement
 
@@ -49,13 +57,13 @@ Les fichiers `SOLOLAST` possèdent des noms stables. Une nouvelle version peut d
 ## Fichiers publics actifs
 
 ```text
-_RULES_SOLO239_CONTEXTUALISATION.md
+_RULES_SOLO241_CONTEXTUALISATION.md
 _RULES_SOLOLAST_CONTEXTUALISATION.md
-_RULES_SOLO420_SCRIPTING.md
+_RULES_SOLO422_SCRIPTING.md
 _RULES_SOLOLAST_SCRIPTING.md
-_RULES_SOLO135_RULESOPERATOR.md
+_RULES_SOLO139_RULESOPERATOR.md
 _RULES_SOLOLAST_RULESOPERATOR.md
-_CUSTINST_SOLO005_CUSTOM_INSTRUCTIONS.md
+_CUSTINST_SOLO006_CUSTOM_INSTRUCTIONS.md
 _CUSTINST_SOLOLAST_CUSTOM_INSTRUCTIONS.md
 README.md
 CHANGELOG.md
@@ -109,7 +117,7 @@ un fichier SOLOLAST
 Exemple :
 
 ```text
-_RULES_SOLO239_CONTEXTUALISATION.md
+_RULES_SOLO241_CONTEXTUALISATION.md
 _RULES_SOLOLAST_CONTEXTUALISATION.md
 ```
 
