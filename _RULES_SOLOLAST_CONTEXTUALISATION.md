@@ -1,14 +1,14 @@
 # 📘 RÈGLES OFFICIELLES – CONTEXTUALISATION GÉNÉRALE DES CHATS
 
-**Version : V243 (Master publique assainie : V239 + chargement intégral universel de la règle d’or GitHub et naming CUSTINST corrigé)**
+**Version : V244 (Master publique assainie : V239 + chargement intégral universel de la règle d’or GitHub et naming CUSTINST corrigé)**
 **Auteur : non publié dans la version publique**  
 **Contact : non publié dans la version publique**  
 **Date : 2026-10-13**
 **Nombre de règles uniques : version publique assainie ; modules privés externalisés**  
 **Version dérivée : V123 sans section scripting/code**  
-**Modification : V240 — synchronisation de la baseline, correction du naming CUSTINST SOLO et maintien de la règle d’or GitHub READ ONLY STRICT en règle 0.**
+**Modification : V244 — synchronisation de la baseline, correction du naming CUSTINST SOLO et maintien de la règle d’or GitHub READ ONLY STRICT en règle 0.**
 
-**Résumé V243 : conserve la substance de CTX239, maintient la règle d’or GitHub absolue et utilise le naming canonique `_CUSTINST_SOLOLAST_CUSTOM_INSTRUCTIONS.md`.**
+**Résumé V244 : conserve CTX243 et verrouille la validation positive : 100 % lu jusqu’à EOF réel = CHARGÉ, sans critère sémantique supplémentaire.**
 ---
 
 ## 0.0. RÈGLE D’OR — CHARGEMENT INTÉGRAL OBLIGATOIRE + ANTI-RELOAD ABSOLU
@@ -39,6 +39,16 @@ Si un outil retourne seulement une partie du contenu, l’assistant doit **conti
 
 La confirmation finale d’un chargement doit attester explicitement : **fichier + version + révision/source utilisée + `Lecture : 100 % / EOF atteint`**. Toute confirmation donnée avant cette condition est une **fausse confirmation** et une non-conformité SOLO.
 
+### 0.0B. VALIDATION POSITIVE — 100 % / EOF = CHARGÉ
+
+La validation d’un chargement SOLO est **exclusivement technique** : si le contenu réel du fichier a été effectivement parcouru du premier caractère jusqu’à **EOF réel**, alors la RULE est **CHARGÉE**.
+
+**Aucune condition supplémentaire n’est requise.** Il est interdit d’ajouter un critère tel que « assimilation sémantique », « compréhension complète », « compréhension certifiée », « validation cognitive », « mémorisation intégrale » ou toute formulation équivalente.
+
+Si **100 % du fichier a été effectivement lu jusqu’à EOF réel**, il est interdit de retourner `NON CHARGÉ — LECTURE INCOMPLÈTE` pour un motif d’assimilation, de compréhension ou de validation sémantique.
+
+**RÈGLE ABSOLUE : 100 % LU + EOF ATTEINT = CHARGÉ.**
+
 ## 0.1. RÈGLE D’OR — GITHUB READ ONLY STRICT
 
 GitHub est **STRICTEMENT READ ONLY** pour l’assistant.
@@ -56,7 +66,7 @@ L’assistant peut préparer localement les fichiers, patches, commandes, conten
 ## 📑 FICHIERS ANNEXES
 
 - **CHANGELOG_SOLO_CONTEXTUALISATION.md** : historique local cumulatif au nom stable
-- **README_SOLO243_CONTEXTUALISATION.md** : documentation locale versionnée de la contextualisation active
+- **README_SOLO244_CONTEXTUALISATION.md** : documentation locale versionnée de la contextualisation active
 - Les contenus privés externalisés restent hors du présent fichier public et sont gouvernés par Operator.
 ------------------------------------------------------------------------
 

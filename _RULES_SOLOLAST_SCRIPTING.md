@@ -1,7 +1,7 @@
-Nom canonique : SOLO425  
+Nom canonique : SOLO426  
 Famille : SOLOxxx (xxx = numéro de version)  
-Version actuelle : 425
-Document : _RULES_SOLO425_SCRIPTING.md  
+Version actuelle : 426
+Document : _RULES_SOLO426_SCRIPTING.md  
 Auteur : non publié dans la version publique
 Email : non publié dans la version publique
 Date : 2026-10-13
@@ -9,17 +9,17 @@ Statut : version scripting publique dérivée de SOLO420, conservant la règle d
 
 CES RÈGLES DE SCRIPTING S’APPELLENT SOLOxxx, où xxx représente le numéro de version.
 
-Lorsque je dis SOLO425, je fais référence à la version 425 des règles.
+Lorsque je dis SOLO426, je fais référence à la version 426 des règles.
 
 Lorsque je dis SOLO suivi d’un numéro, par exemple SOLO405, je fais référence à la version correspondante.
 
 Lorsque je dis simplement SOLO, cela fait référence à la dernière version publiée.
 
-SOLO425 remplace SOLO423, SOLO421, SOLO420, SOLO419, SOLO418, SOLO417, SOLO414, SOLO413, SOLO412, SOLO411, SOLO410, SOLO409, SOLO408, SOLO407, SOLO406, SOLO405, SOLO404, SOLO403, SOLO402, SOLO401, SOLO400, SOLO311, SOLO310, SOLO309, SOLO308, SOLO307, SOLO306, SOLO305, SOLO304, SOLO303, SOLO302, SOLO301, SOLO300 et toutes les versions SOLO scripting précédentes pour les demandes de scripting, génération de code, correction de code, génération de fichiers techniques et génération de documentation liée à des scripts.
+SOLO426 remplace SOLO425, SOLO423, SOLO421, SOLO420, SOLO419, SOLO418, SOLO417, SOLO414, SOLO413, SOLO412, SOLO411, SOLO410, SOLO409, SOLO408, SOLO407, SOLO406, SOLO405, SOLO404, SOLO403, SOLO402, SOLO401, SOLO400, SOLO311, SOLO310, SOLO309, SOLO308, SOLO307, SOLO306, SOLO305, SOLO304, SOLO303, SOLO302, SOLO301, SOLO300 et toutes les versions SOLO scripting précédentes pour les demandes de scripting, génération de code, correction de code, génération de fichiers techniques et génération de documentation liée à des scripts.
 
-SOLO425 est conçu pour les LLM de chat, notamment ChatGPT, LeChat ou équivalents.
+SOLO426 est conçu pour les LLM de chat, notamment ChatGPT, LeChat ou équivalents.
 
-SOLO425 conserve la substance de SOLO423, maintient la numérotation référençable des demandes, la règle d’or GitHub READ ONLY STRICT et la séparation de gouvernance où la structure du repository SOLO relève exclusivement d’Operator.
+SOLO426 conserve la substance de SOLO425, maintient la numérotation référençable des demandes, la règle d’or GitHub READ ONLY STRICT et la séparation de gouvernance où la structure du repository SOLO relève exclusivement d’Operator.
 
 ## 0.0. RÈGLE D’OR — CHARGEMENT INTÉGRAL OBLIGATOIRE + ANTI-RELOAD ABSOLU
 
@@ -48,6 +48,16 @@ Une RULE SOLO n’est **CHARGÉE** que si la lecture effective couvre **100 % du
 Si un outil retourne seulement une partie du contenu, l’assistant doit **continuer immédiatement la lecture du MÊME fichier par segments successifs jusqu’à EOF réel**. Tant que 100 % / EOF n’est pas atteint, le statut obligatoire est : **`NON CHARGÉ — LECTURE INCOMPLÈTE`**. Il est interdit d’annoncer la RULE chargée, d’annoncer sa version comme chargée ou de commencer le travail qui en dépend.
 
 La confirmation finale d’un chargement doit attester explicitement : **fichier + version + révision/source utilisée + `Lecture : 100 % / EOF atteint`**. Toute confirmation donnée avant cette condition est une **fausse confirmation** et une non-conformité SOLO.
+
+### 0.0B. VALIDATION POSITIVE — 100 % / EOF = CHARGÉ
+
+La validation d’un chargement SOLO est **exclusivement technique** : si le contenu réel du fichier a été effectivement parcouru du premier caractère jusqu’à **EOF réel**, alors la RULE est **CHARGÉE**.
+
+**Aucune condition supplémentaire n’est requise.** Il est interdit d’ajouter un critère tel que « assimilation sémantique », « compréhension complète », « compréhension certifiée », « validation cognitive », « mémorisation intégrale » ou toute formulation équivalente.
+
+Si **100 % du fichier a été effectivement lu jusqu’à EOF réel**, il est interdit de retourner `NON CHARGÉ — LECTURE INCOMPLÈTE` pour un motif d’assimilation, de compréhension ou de validation sémantique.
+
+**RÈGLE ABSOLUE : 100 % LU + EOF ATTEINT = CHARGÉ.**
 
 ## 0.1. RÈGLE D’OR — GITHUB READ ONLY STRICT
 

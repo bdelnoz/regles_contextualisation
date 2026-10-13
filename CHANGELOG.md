@@ -1,3 +1,8 @@
+## 2026-10-13 02:38:47 +02:00 — Validation positive 100 % / EOF
+- Baseline : CTX244 / SCRIPT426 / OP143 / CI010.
+- Tous les artefacts SOLO actifs, publics et privés, interdisent désormais les faux négatifs de chargement : 100 % lu jusqu’à EOF réel = `CHARGÉ`.
+- Aucun critère supplémentaire d’assimilation sémantique, compréhension certifiée, validation cognitive ou mémorisation intégrale n’est autorisé.
+
 ## 2026-10-13 — Validation universelle 100 % / EOF
 - Baseline : CTX243 / SCRIPT425 / OP142 / CI009.
 - Toutes les RULES SOLO actives, publiques et privées, exigent désormais une lecture réelle 100 % jusqu’à EOF avant statut CHARGÉ.

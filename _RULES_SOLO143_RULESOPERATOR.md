@@ -1,21 +1,21 @@
 <!--
 DOCUMENT INFORMATION
-Document Name: _RULES_SOLO142_RULESOPERATOR.md
-Version: SOLO142
+Document Name: _RULES_SOLO143_RULESOPERATOR.md
+Version: SOLO143
 Date / Time: 2026-10-13
 Project: SOLO rules operator contextualization
 Public status: GitHub-safe public rules file
-Short description: Règles d’exploitation des chats de maintenance SOLO, synchronisées avec CTX243, SCRIPT425, OP142 et CUSTOM INSTRUCTIONS SOLO009 / CI009, avec README + CHANGELOG maîtres obligatoires pour chaque module privé et règle d’or GitHub READ ONLY STRICT sans exception.
+Short description: Règles d’exploitation des chats de maintenance SOLO, synchronisées avec CTX244, SCRIPT426, OP143 et CUSTOM INSTRUCTIONS SOLO010 / CI010, avec README + CHANGELOG maîtres obligatoires pour chaque module privé et règle d’or GitHub READ ONLY STRICT sans exception.
 -->
 
-# _RULES_SOLO142_RULESOPERATOR.md
+# _RULES_SOLO143_RULESOPERATOR.md
 
-Nom canonique : SOLO142 RULESOPERATOR  
+Nom canonique : SOLO143 RULESOPERATOR  
 Famille : SOLOxxx RULESOPERATOR  
-Version actuelle : 142  
-Document : _RULES_SOLO142_RULESOPERATOR.md  
+Version actuelle : 143  
+Document : _RULES_SOLO143_RULESOPERATOR.md  
 Date : 2026-10-13
-Statut : version 142 publique et assainie du fichier opérateur, synchronisant CTX243, SCRIPT425 et CUSTOM INSTRUCTIONS SOLO009 / CI009, avec README + CHANGELOG maîtres obligatoires pour chaque module privé, maintenance/versionnement explicites des Custom Instructions SOLO et règle d’or GitHub READ ONLY STRICT sans exception.
+Statut : version 143 publique et assainie du fichier opérateur, synchronisant CTX243, SCRIPT425 et CUSTOM INSTRUCTIONS SOLO009 / CI009, avec README + CHANGELOG maîtres obligatoires pour chaque module privé, maintenance/versionnement explicites des Custom Instructions SOLO et règle d’or GitHub READ ONLY STRICT sans exception.
 
 Ces règles contextualisent un chat chargé de créer, modifier, corriger, versionner, documenter et livrer les fichiers de règles SOLO.
 
@@ -55,6 +55,16 @@ Une RULE SOLO n’est **CHARGÉE** que si la lecture effective couvre **100 % du
 Si un outil retourne seulement une partie du contenu, l’assistant doit **continuer immédiatement la lecture du MÊME fichier par segments successifs jusqu’à EOF réel**. Tant que 100 % / EOF n’est pas atteint, le statut obligatoire est : **`NON CHARGÉ — LECTURE INCOMPLÈTE`**. Il est interdit d’annoncer la RULE chargée, d’annoncer sa version comme chargée ou de commencer le travail qui en dépend.
 
 La confirmation finale d’un chargement doit attester explicitement : **fichier + version + révision/source utilisée + `Lecture : 100 % / EOF atteint`**. Toute confirmation donnée avant cette condition est une **fausse confirmation** et une non-conformité SOLO.
+
+### 0.0B. VALIDATION POSITIVE — 100 % / EOF = CHARGÉ
+
+La validation d’un chargement SOLO est **exclusivement technique** : si le contenu réel du fichier a été effectivement parcouru du premier caractère jusqu’à **EOF réel**, alors la RULE est **CHARGÉE**.
+
+**Aucune condition supplémentaire n’est requise.** Il est interdit d’ajouter un critère tel que « assimilation sémantique », « compréhension complète », « compréhension certifiée », « validation cognitive », « mémorisation intégrale » ou toute formulation équivalente.
+
+Si **100 % du fichier a été effectivement lu jusqu’à EOF réel**, il est interdit de retourner `NON CHARGÉ — LECTURE INCOMPLÈTE` pour un motif d’assimilation, de compréhension ou de validation sémantique.
+
+**RÈGLE ABSOLUE : 100 % LU + EOF ATTEINT = CHARGÉ.**
 
 ## 0.1. RÈGLE D’OR — GITHUB READ ONLY STRICT
 
@@ -2132,3 +2142,26 @@ mkdir -p .old
 529. Le ZIP de livraison ne doit contenir que les versions actives courantes, leurs alias SOLOLAST, les README actifs, les CHANGELOG stables et les fichiers nécessaires. Aucune version active précédente ne doit rester dans le ZIP.
 
 530. Pour la baseline OP142, `_RULES_SOLOLAST_RULESOPERATOR.md` doit être une copie exacte de `_RULES_SOLO142_RULESOPERATOR.md`.
+
+
+---
+
+## 51. AJOUT SOLO143 — VALIDATION POSITIVE 100 % / EOF
+
+531. SOLO143 synchronise la baseline active avec :
+
+```text
+CTX244 / SCRIPT426 / OP143 / CI010
+```
+
+532. Lorsqu’une RULE SOLO a été effectivement parcourue du premier caractère jusqu’à EOF réel, son chargement est techniquement complet et son statut doit être `CHARGÉ`.
+
+533. Il est interdit d’ajouter après cette lecture complète une condition cognitive ou sémantique supplémentaire telle que « assimilation sémantique », « compréhension complète », « compréhension certifiée », « validation cognitive », « mémorisation intégrale » ou équivalent.
+
+534. `NON CHARGÉ — LECTURE INCOMPLÈTE` ne peut être utilisé que lorsque la lecture effective n’a pas atteint 100 % / EOF réel, jamais lorsque le fichier a déjà été intégralement parcouru.
+
+535. Cette clarification s’applique à CTX, Scripting, Operator, Custom Instructions et à tous les modules privés SOLO actifs.
+
+536. Pour la baseline OP143, `_RULES_SOLOLAST_RULESOPERATOR.md` doit être une copie exacte de `_RULES_SOLO143_RULESOPERATOR.md`.
+
+537. Règle centrale : **100 % LU + EOF ATTEINT = CHARGÉ ; aucun critère sémantique supplémentaire n’est autorisé.**
