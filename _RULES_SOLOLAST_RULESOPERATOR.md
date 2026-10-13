@@ -1,21 +1,21 @@
 <!--
 DOCUMENT INFORMATION
-Document Name: _RULES_SOLO140_RULESOPERATOR.md
-Version: SOLO139
+Document Name: _RULES_SOLO142_RULESOPERATOR.md
+Version: SOLO142
 Date / Time: 2026-10-13
 Project: SOLO rules operator contextualization
 Public status: GitHub-safe public rules file
-Short description: Règles d’exploitation des chats de maintenance SOLO, synchronisées avec CTX241, SCRIPT422, OP139 et CUSTOM INSTRUCTIONS SOLO006 / CI006, avec README + CHANGELOG maîtres obligatoires pour chaque module privé et règle d’or GitHub READ ONLY STRICT sans exception.
+Short description: Règles d’exploitation des chats de maintenance SOLO, synchronisées avec CTX243, SCRIPT425, OP142 et CUSTOM INSTRUCTIONS SOLO009 / CI009, avec README + CHANGELOG maîtres obligatoires pour chaque module privé et règle d’or GitHub READ ONLY STRICT sans exception.
 -->
 
-# _RULES_SOLO139_RULESOPERATOR.md
+# _RULES_SOLO142_RULESOPERATOR.md
 
-Nom canonique : SOLO139 RULESOPERATOR  
+Nom canonique : SOLO142 RULESOPERATOR  
 Famille : SOLOxxx RULESOPERATOR  
-Version actuelle : 139  
-Document : _RULES_SOLO139_RULESOPERATOR.md  
+Version actuelle : 142  
+Document : _RULES_SOLO142_RULESOPERATOR.md  
 Date : 2026-10-13
-Statut : version 139 publique et assainie du fichier opérateur, synchronisant CTX241, SCRIPT422 et CUSTOM INSTRUCTIONS SOLO006 / CI006, avec README + CHANGELOG maîtres obligatoires pour chaque module privé, maintenance/versionnement explicites des Custom Instructions SOLO et règle d’or GitHub READ ONLY STRICT sans exception.
+Statut : version 142 publique et assainie du fichier opérateur, synchronisant CTX243, SCRIPT425 et CUSTOM INSTRUCTIONS SOLO009 / CI009, avec README + CHANGELOG maîtres obligatoires pour chaque module privé, maintenance/versionnement explicites des Custom Instructions SOLO et règle d’or GitHub READ ONLY STRICT sans exception.
 
 Ces règles contextualisent un chat chargé de créer, modifier, corriger, versionner, documenter et livrer les fichiers de règles SOLO.
 
@@ -47,6 +47,14 @@ Si la source est réellement inaccessible après de vraies tentatives de lecture
 **RÈGLE ABSOLUE : CHARGEMENT PARTIEL = INTERDIT. FAUSSE CONFIRMATION = INTERDITE. TRAVAIL AVANT LECTURE COMPLÈTE = INTERDIT. RELOAD AUTOMATIQUE = INTERDIT.**
 
 ------------------------------------------------------------------------
+
+### 0.0A. VALIDATION 100 % / EOF — CONDITION BLOQUANTE
+
+Une RULE SOLO n’est **CHARGÉE** que si la lecture effective couvre **100 % du fichier réel, du premier caractère jusqu’à EOF réel**. Le simple fait d’avoir récupéré le fichier, sa taille, son nom, son SHA, un extrait, une prévisualisation ou une restitution tronquée ne prouve jamais une lecture complète.
+
+Si un outil retourne seulement une partie du contenu, l’assistant doit **continuer immédiatement la lecture du MÊME fichier par segments successifs jusqu’à EOF réel**. Tant que 100 % / EOF n’est pas atteint, le statut obligatoire est : **`NON CHARGÉ — LECTURE INCOMPLÈTE`**. Il est interdit d’annoncer la RULE chargée, d’annoncer sa version comme chargée ou de commencer le travail qui en dépend.
+
+La confirmation finale d’un chargement doit attester explicitement : **fichier + version + révision/source utilisée + `Lecture : 100 % / EOF atteint`**. Toute confirmation donnée avant cette condition est une **fausse confirmation** et une non-conformité SOLO.
 
 ## 0.1. RÈGLE D’OR — GITHUB READ ONLY STRICT
 
@@ -2109,3 +2117,18 @@ mkdir -p .old
 525. Pour la baseline OP140, `_RULES_SOLOLAST_RULESOPERATOR.md` doit être une copie exacte de `_RULES_SOLO140_RULESOPERATOR.md`.
 
 526. Règle centrale : **SOLO sur GitHub = jamais de RAW ; toujours `main` résolu vers SHA, puis contenu lu à ce SHA immuable ; RELOAD = nouvelle résolution de SHA uniquement sur ordre explicite.**
+
+
+---
+
+## 50. AJOUT SOLO142 — LIMITE CI 5000 CARACTÈRES + COHÉRENCE DE LIVRAISON
+
+526. Toute Custom Instruction SOLO livrée doit contenir au maximum 5000 caractères, fichier complet compris.
+
+527. Avant toute livraison contenant une Custom Instruction, Operator doit mesurer sa longueur réelle et refuser la livraison si elle dépasse 5000 caractères.
+
+528. Une correction de Custom Instructions qui change son contenu impose un incrément de version CI, la mise à jour de son README versionné et de son CHANGELOG stable.
+
+529. Le ZIP de livraison ne doit contenir que les versions actives courantes, leurs alias SOLOLAST, les README actifs, les CHANGELOG stables et les fichiers nécessaires. Aucune version active précédente ne doit rester dans le ZIP.
+
+530. Pour la baseline OP142, `_RULES_SOLOLAST_RULESOPERATOR.md` doit être une copie exacte de `_RULES_SOLO142_RULESOPERATOR.md`.

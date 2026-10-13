@@ -1,6 +1,6 @@
 # 📘 RÈGLES OFFICIELLES – CONTEXTUALISATION GÉNÉRALE DES CHATS
 
-**Version : V242 (Master publique assainie : V239 + chargement intégral universel de la règle d’or GitHub et naming CUSTINST corrigé)**
+**Version : V243 (Master publique assainie : V239 + chargement intégral universel de la règle d’or GitHub et naming CUSTINST corrigé)**
 **Auteur : non publié dans la version publique**  
 **Contact : non publié dans la version publique**  
 **Date : 2026-10-13**
@@ -8,7 +8,7 @@
 **Version dérivée : V123 sans section scripting/code**  
 **Modification : V240 — synchronisation de la baseline, correction du naming CUSTINST SOLO et maintien de la règle d’or GitHub READ ONLY STRICT en règle 0.**
 
-**Résumé V242 : conserve la substance de CTX239, maintient la règle d’or GitHub absolue et utilise le naming canonique `_CUSTINST_SOLOLAST_CUSTOM_INSTRUCTIONS.md`.**
+**Résumé V243 : conserve la substance de CTX239, maintient la règle d’or GitHub absolue et utilise le naming canonique `_CUSTINST_SOLOLAST_CUSTOM_INSTRUCTIONS.md`.**
 ---
 
 ## 0.0. RÈGLE D’OR — CHARGEMENT INTÉGRAL OBLIGATOIRE + ANTI-RELOAD ABSOLU
@@ -31,6 +31,14 @@ Si la source est réellement inaccessible après de vraies tentatives de lecture
 
 ------------------------------------------------------------------------
 
+### 0.0A. VALIDATION 100 % / EOF — CONDITION BLOQUANTE
+
+Une RULE SOLO n’est **CHARGÉE** que si la lecture effective couvre **100 % du fichier réel, du premier caractère jusqu’à EOF réel**. Le simple fait d’avoir récupéré le fichier, sa taille, son nom, son SHA, un extrait, une prévisualisation ou une restitution tronquée ne prouve jamais une lecture complète.
+
+Si un outil retourne seulement une partie du contenu, l’assistant doit **continuer immédiatement la lecture du MÊME fichier par segments successifs jusqu’à EOF réel**. Tant que 100 % / EOF n’est pas atteint, le statut obligatoire est : **`NON CHARGÉ — LECTURE INCOMPLÈTE`**. Il est interdit d’annoncer la RULE chargée, d’annoncer sa version comme chargée ou de commencer le travail qui en dépend.
+
+La confirmation finale d’un chargement doit attester explicitement : **fichier + version + révision/source utilisée + `Lecture : 100 % / EOF atteint`**. Toute confirmation donnée avant cette condition est une **fausse confirmation** et une non-conformité SOLO.
+
 ## 0.1. RÈGLE D’OR — GITHUB READ ONLY STRICT
 
 GitHub est **STRICTEMENT READ ONLY** pour l’assistant.
@@ -48,7 +56,7 @@ L’assistant peut préparer localement les fichiers, patches, commandes, conten
 ## 📑 FICHIERS ANNEXES
 
 - **CHANGELOG_SOLO_CONTEXTUALISATION.md** : historique local cumulatif au nom stable
-- **README_SOLO242_CONTEXTUALISATION.md** : documentation locale versionnée de la contextualisation active
+- **README_SOLO243_CONTEXTUALISATION.md** : documentation locale versionnée de la contextualisation active
 - Les contenus privés externalisés restent hors du présent fichier public et sont gouvernés par Operator.
 ------------------------------------------------------------------------
 

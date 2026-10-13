@@ -1,3 +1,16 @@
+## 2026-10-13 — Validation universelle 100 % / EOF
+- Baseline : CTX243 / SCRIPT425 / OP142 / CI009.
+- Toutes les RULES SOLO actives, publiques et privées, exigent désormais une lecture réelle 100 % jusqu’à EOF avant statut CHARGÉ.
+- Confirmation obligatoire : fichier + version + révision/source + `Lecture : 100 % / EOF atteint`.
+- CI009 reste sous la limite de 5000 caractères.
+
+# Baseline CTX242 / SCRIPT424 / OP141 / CI008 — 2026-10-13
+
+- SCRIPT424 : correction des métadonnées de version.
+- OP141 : correction des métadonnées et baseline ; limite CI <= 5000 caractères rendue obligatoire.
+- CI008 : compression fonctionnellement équivalente du mécanisme SHA/anti-reload, 3893 caractères.
+- Aucun ancien fichier actif n’est inclus dans le package de livraison.
+
 # CHANGELOG — baseline CTX242 / SCRIPT423 / OP140 / CI007 — 2026-10-13
 
 - Abandon définitif du mécanisme GitHub RAW pour les chargements et RELOAD SOLO publics.

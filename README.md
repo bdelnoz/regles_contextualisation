@@ -5,7 +5,7 @@ SOLO est un système de règles versionnées destiné à rendre le comportement 
 ## Baseline active
 
 ```text
-CTX242 / SCRIPT423 / OP140 / CI007
+CTX243 / SCRIPT425 / OP142 / CI009
 ```
 
 ## Règles d’or de chargement
@@ -57,13 +57,13 @@ Les fichiers `SOLOLAST` possèdent des chemins stables. Une nouvelle version rem
 ## Fichiers publics actifs
 
 ```text
-_RULES_SOLO242_CONTEXTUALISATION.md
+_RULES_SOLO243_CONTEXTUALISATION.md
 _RULES_SOLOLAST_CONTEXTUALISATION.md
-_RULES_SOLO423_SCRIPTING.md
+_RULES_SOLO425_SCRIPTING.md
 _RULES_SOLOLAST_SCRIPTING.md
-_RULES_SOLO140_RULESOPERATOR.md
+_RULES_SOLO142_RULESOPERATOR.md
 _RULES_SOLOLAST_RULESOPERATOR.md
-_CUSTINST_SOLO007_CUSTOM_INSTRUCTIONS.md
+_CUSTINST_SOLO009_CUSTOM_INSTRUCTIONS.md
 _CUSTINST_SOLOLAST_CUSTOM_INSTRUCTIONS.md
 README.md
 CHANGELOG.md
@@ -117,7 +117,7 @@ un fichier SOLOLAST
 Exemple :
 
 ```text
-_RULES_SOLO242_CONTEXTUALISATION.md
+_RULES_SOLO243_CONTEXTUALISATION.md
 _RULES_SOLOLAST_CONTEXTUALISATION.md
 ```
 
@@ -181,3 +181,7 @@ L’utilisateur reste le seul maître de toute écriture, modification, suppress
 ## Documentation locale
 
 La documentation détaillée reste locale sous `.docs/`. Chaque module privé possède localement une paire documentaire maître `README + CHANGELOG`, tandis que les RULES privés restent sous `.private/`; ces emplacements sont exclus de la publication par `.gitignore`.
+
+
+## Validation de chargement 100 % / EOF
+Toute RULE SOLO, publique ou privée, n’est considérée chargée qu’après lecture réelle complète jusqu’à EOF et confirmation explicite `Lecture : 100 % / EOF atteint`.
