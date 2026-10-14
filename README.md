@@ -5,7 +5,7 @@ SOLO est un système de règles versionnées destiné à rendre le comportement 
 ## Baseline active
 
 ```text
-CTX244 / SCRIPT426 / OP143 / CI010
+CTX244 / SCRIPT426 / OP144 / CI010
 ```
 
 ## Règles d’or de chargement
@@ -19,7 +19,7 @@ CTX244 / SCRIPT426 / OP143 / CI010
 
 ## Principe de fonctionnement
 
-Le mécanisme SOLO repose sur les **Custom Instructions du compte ChatGPT** et sur des fichiers de règles versionnés exposés sur GitHub. Le chargement distant n’utilise plus GitHub RAW : il résout `main` vers son SHA courant puis lit le fichier à cette révision immuable.
+Le mécanisme SOLO repose sur les **Custom Instructions du compte ChatGPT** et sur des fichiers de règles versionnés exposés sur GitHub. La baseline de production CI010 utilise `main → SHA courant → fichier à SHA`. Une variante **CI010 RAW de test A/B** est également fournie afin de comparer le comportement avec un chargement direct via `raw.githubusercontent.com`.
 
 Le contenu de :
 
@@ -62,9 +62,10 @@ _RULES_SOLO244_CONTEXTUALISATION.md
 _RULES_SOLOLAST_CONTEXTUALISATION.md
 _RULES_SOLO426_SCRIPTING.md
 _RULES_SOLOLAST_SCRIPTING.md
-_RULES_SOLO143_RULESOPERATOR.md
+_RULES_SOLO144_RULESOPERATOR.md
 _RULES_SOLOLAST_RULESOPERATOR.md
 _CUSTINST_SOLO010_CUSTOM_INSTRUCTIONS.md
+_CUSTINST_SOLO010_CUSTOM_INSTRUCTIONS_RAW.md
 _CUSTINST_SOLOLAST_CUSTOM_INSTRUCTIONS.md
 README.md
 CHANGELOG.md
@@ -156,15 +157,17 @@ Pour reproduire le principe dans un autre repository :
 
 Cette séparation permet de conserver des Custom Instructions simples tout en pilotant un ensemble de règles beaucoup plus important, versionné et maintenable depuis le repository.
 
-## Chargement GitHub sans RAW
+## Chargement GitHub — baseline SHA et variante RAW A/B
 
-Pour toute RULE SOLO publique, le mécanisme actif est strictement :
+Pour toute RULE SOLO publique, le mécanisme de production actif reste :
 
 ```text
 main → SHA courant → fichier SOLOLAST à ce SHA → lecture intégrale → validation version + SHA
 ```
 
-`raw.githubusercontent.com` n’est plus utilisé pour le chargement ou le RELOAD SOLO. Lors d’un RELOAD explicitement demandé, `main` est résolu à nouveau afin d’obtenir le nouveau SHA courant. Sans ordre explicite, aucune relecture distante n’est effectuée pour une famille déjà chargée.
+La variante `_CUSTINST_SOLO010_CUSTOM_INSTRUCTIONS_RAW.md` permet un test A/B séparé : elle lit directement les `SOLOLAST` via `raw.githubusercontent.com/.../main/...` sans résolution SHA. Elle ne remplace pas automatiquement la baseline SHA.
+
+Lors d’un RELOAD explicitement demandé, le mécanisme sélectionné est réutilisé. Sans ordre explicite, aucune relecture distante n’est effectuée pour une famille déjà chargée.
 
 L’historique des chats et la mémoire servent à la continuité mais ne remplacent pas une source courante vérifiée.
 

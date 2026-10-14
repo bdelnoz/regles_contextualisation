@@ -1,3 +1,10 @@
+## 2026-10-14 14:09:52 +02:00 — OP144 + variante CI010 RAW A/B
+- Baseline : CTX244 / SCRIPT426 / OP144 / CI010.
+- Operator : preflight ZIP local restructuré en une règle master `0.0` avec sous-règles ; ancien bloc 482 à 489 incluses supprimé et numérotation suivante recalée.
+- Operator : mécanique 100 % / EOF retirée du fichier Operator ; elle reste dans les Custom Instructions.
+- Operator : ajout de la règle de référence non ambiguë aux numéros/plages de règles.
+- Custom Instructions : ajout d’une variante `_CUSTINST_SOLO010_CUSTOM_INSTRUCTIONS_RAW.md` pour test A/B, sans modifier la baseline active SHA CI010.
+
 ## 2026-10-13 02:38:47 +02:00 — Validation positive 100 % / EOF
 - Baseline : CTX244 / SCRIPT426 / OP143 / CI010.
 - Tous les artefacts SOLO actifs, publics et privés, interdisent désormais les faux négatifs de chargement : 100 % lu jusqu’à EOF réel = `CHARGÉ`.

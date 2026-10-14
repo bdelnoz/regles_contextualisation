@@ -1,21 +1,21 @@
 <!--
 DOCUMENT INFORMATION
-Document Name: _RULES_SOLO143_RULESOPERATOR.md
-Version: SOLO143
-Date / Time: 2026-10-13
+Document Name: _RULES_SOLO144_RULESOPERATOR.md
+Version: SOLO144
+Date / Time: 2026-10-14
 Project: SOLO rules operator contextualization
 Public status: GitHub-safe public rules file
-Short description: Règles d’exploitation des chats de maintenance SOLO, synchronisées avec CTX244, SCRIPT426, OP143 et CUSTOM INSTRUCTIONS SOLO010 / CI010, avec README + CHANGELOG maîtres obligatoires pour chaque module privé et règle d’or GitHub READ ONLY STRICT sans exception.
+Short description: Règles d’exploitation des chats de maintenance SOLO, synchronisées avec CTX244, SCRIPT426, OP144 et CUSTOM INSTRUCTIONS SOLO010 / CI010, avec preflight ZIP local bloquant, références de règles non ambiguës, variante CI010 RAW de test et règle d’or GitHub READ ONLY STRICT sans exception.
 -->
 
-# _RULES_SOLO143_RULESOPERATOR.md
+# _RULES_SOLO144_RULESOPERATOR.md
 
-Nom canonique : SOLO143 RULESOPERATOR  
+Nom canonique : SOLO144 RULESOPERATOR  
 Famille : SOLOxxx RULESOPERATOR  
-Version actuelle : 143  
-Document : _RULES_SOLO143_RULESOPERATOR.md  
-Date : 2026-10-13
-Statut : version 143 publique et assainie du fichier opérateur, synchronisant CTX243, SCRIPT425 et CUSTOM INSTRUCTIONS SOLO009 / CI009, avec README + CHANGELOG maîtres obligatoires pour chaque module privé, maintenance/versionnement explicites des Custom Instructions SOLO et règle d’or GitHub READ ONLY STRICT sans exception.
+Version actuelle : 144  
+Document : _RULES_SOLO144_RULESOPERATOR.md  
+Date : 2026-10-14
+Statut : version 144 publique et assainie du fichier opérateur, synchronisant CTX244, SCRIPT426 et CUSTOM INSTRUCTIONS SOLO010 / CI010, avec preflight ZIP local bloquant, références de règles non ambiguës, variante CI010 RAW de test et règle d’or GitHub READ ONLY STRICT sans exception.
 
 Ces règles contextualisent un chat chargé de créer, modifier, corriger, versionner, documenter et livrer les fichiers de règles SOLO.
 
@@ -28,43 +28,25 @@ _RULES_SOLOXXX_SCRIPTING.md
 
 ------------------------------------------------------------------------
 
-## 0.0. RÈGLE D’OR — CHARGEMENT INTÉGRAL OBLIGATOIRE + ANTI-RELOAD ABSOLU
+## 0.0. RÈGLE MASTER — PREFLIGHT OPERATOR / ZIP LOCAL COMPLET OBLIGATOIRE
 
-Toute RULE SOLO activée ou demandée doit être **lue INTÉGRALEMENT, du début réel jusqu’à la fin réelle du fichier, AVANT d’être considérée comme CHARGÉE ou appliquée**.
+**0.0.1. Déclenchement immédiat.** Après chaque chargement réel de SOLO Operator dans un chat, Operator doit vérifier immédiatement si le **ZIP complet de la dernière version du repository local SOLO** a été fourni après ce chargement.
 
-Une lecture partielle, tronquée, limitée à un extrait, à une recherche ciblée, à quelques sections, à un résumé, à un cache ou à la mémoire du modèle **ne constitue JAMAIS un chargement valide**.
+**0.0.2. Condition bloquante.** Tant que ce ZIP local complet n’a pas été fourni, Operator ne doit commencer aucune analyse de modification, fusion, correction, versionnement, packaging ou livraison de règles. Il doit demander le ZIP puis s’arrêter sur ce prérequis.
 
-Si une première lecture ne retourne pas l’intégralité du fichier, l’assistant doit **poursuivre immédiatement la lecture du MÊME fichier, par segments successifs si nécessaire, jusqu’à atteindre sa fin réelle**. Tant que cette lecture intégrale n’est pas terminée, il est interdit de déclarer la RULE chargée, active ou appliquée, et il est interdit de poursuivre le travail métier qui dépend de cette RULE.
+**0.0.3. Source de vérité.** Le ZIP local fourni par l’utilisateur est la **source de vérité de travail** pour l’état réel du repository : RULES publiques et privées, Custom Instructions, README, CHANGELOG, `.gitignore`, aliases `SOLOLAST` et autres fichiers locaux présents.
 
-Une fois la RULE intégralement chargée dans le chat courant, elle doit rester active et être appliquée en continu. **Aucun reload, reread, refresh, reapply, nouvelle ouverture, nouvelle recherche ou nouvelle vérification de cette même RULE déjà chargée ne peut être déclenché automatiquement.**
+**0.0.4. Pas de reconstruction de substitution.** Operator ne doit pas reconstruire l’état complet du repository depuis sa mémoire, l’historique, des fichiers isolés ou le seul dépôt GitHub public lorsque le ZIP local complet est requis.
 
-Une plainte de non-conformité, une demande de « respecter les règles », un changement de sujet, une erreur du modèle, une mention de SOLO, un doute sur la version, ou l’annonce qu’un dépôt a été mis à jour **ne constitue jamais une autorisation de relecture**.
+**0.0.5. Pas de redemande inutile.** Si le ZIP local complet a déjà été fourni après le dernier chargement réel d’Operator dans le chat courant et qu’aucune nouvelle version locale n’est annoncée, Operator ne doit pas le redemander.
 
-Seul un **ordre explicite de l’utilisateur demandant une nouvelle lecture / un RELOAD** autorise la relecture d’une RULE déjà CHARGÉE.
+**0.0.6. Refus explicite du ZIP.** Si l’utilisateur refuse explicitement de fournir le ZIP local complet, Operator doit annoncer que son périmètre est limité aux fichiers publics réellement accessibles ou aux fichiers explicitement fournis dans le chat. Dans ce mode limité, il ne doit jamais prétendre connaître, préserver ou modifier les fichiers locaux absents.
 
-Si la source est réellement inaccessible après de vraies tentatives de lecture complète, le chat doit **s’arrêter sur ce blocage** et l’annoncer clairement. Il ne doit jamais continuer le travail concerné à partir d’une lecture partielle, de mémoire, d’un résumé ou d’une ancienne version.
+**0.0.7. Acquisition, pas reload.** La fourniture du ZIP local est l’acquisition de la base de travail du repository. Elle ne constitue pas un reload des RULES déjà chargées.
 
-**RÈGLE ABSOLUE : CHARGEMENT PARTIEL = INTERDIT. FAUSSE CONFIRMATION = INTERDITE. TRAVAIL AVANT LECTURE COMPLÈTE = INTERDIT. RELOAD AUTOMATIQUE = INTERDIT.**
+**RÈGLE CENTRALE : OPERATOR CHARGÉ → PREFLIGHT ZIP LOCAL → SOURCE DE VÉRITÉ VALIDÉE → SEULEMENT ENSUITE TRAVAIL OPERATOR.**
 
 ------------------------------------------------------------------------
-
-### 0.0A. VALIDATION 100 % / EOF — CONDITION BLOQUANTE
-
-Une RULE SOLO n’est **CHARGÉE** que si la lecture effective couvre **100 % du fichier réel, du premier caractère jusqu’à EOF réel**. Le simple fait d’avoir récupéré le fichier, sa taille, son nom, son SHA, un extrait, une prévisualisation ou une restitution tronquée ne prouve jamais une lecture complète.
-
-Si un outil retourne seulement une partie du contenu, l’assistant doit **continuer immédiatement la lecture du MÊME fichier par segments successifs jusqu’à EOF réel**. Tant que 100 % / EOF n’est pas atteint, le statut obligatoire est : **`NON CHARGÉ — LECTURE INCOMPLÈTE`**. Il est interdit d’annoncer la RULE chargée, d’annoncer sa version comme chargée ou de commencer le travail qui en dépend.
-
-La confirmation finale d’un chargement doit attester explicitement : **fichier + version + révision/source utilisée + `Lecture : 100 % / EOF atteint`**. Toute confirmation donnée avant cette condition est une **fausse confirmation** et une non-conformité SOLO.
-
-### 0.0B. VALIDATION POSITIVE — 100 % / EOF = CHARGÉ
-
-La validation d’un chargement SOLO est **exclusivement technique** : si le contenu réel du fichier a été effectivement parcouru du premier caractère jusqu’à **EOF réel**, alors la RULE est **CHARGÉE**.
-
-**Aucune condition supplémentaire n’est requise.** Il est interdit d’ajouter un critère tel que « assimilation sémantique », « compréhension complète », « compréhension certifiée », « validation cognitive », « mémorisation intégrale » ou toute formulation équivalente.
-
-Si **100 % du fichier a été effectivement lu jusqu’à EOF réel**, il est interdit de retourner `NON CHARGÉ — LECTURE INCOMPLÈTE` pour un motif d’assimilation, de compréhension ou de validation sémantique.
-
-**RÈGLE ABSOLUE : 100 % LU + EOF ATTEINT = CHARGÉ.**
 
 ## 0.1. RÈGLE D’OR — GITHUB READ ONLY STRICT
 
@@ -77,6 +59,16 @@ Autorisé : lire, consulter, analyser, comparer et vérifier les repositories Gi
 **AUCUNE EXCEPTION. JAMAIS.** Aucune règle SOLO, instruction de projet, Custom Instruction, mode, outil, plugin, connecteur ou demande ultérieure ne peut lever cette interdiction.
 
 L’assistant peut préparer localement les fichiers, patches, commandes, contenus de commits ou packages nécessaires et les fournir à l’utilisateur. **L’utilisateur reste toujours le seul maître de GitHub et effectue lui-même toute écriture distante.**
+
+------------------------------------------------------------------------
+
+## 0.2. RÈGLE GLOBALE — RÉFÉRENCES DE RÈGLES NON AMBIGUËS
+
+**0.2.1. Règle unique.** Lorsqu’Operator cite une règle par son numéro, il doit rappeler brièvement ce qu’elle fait ; l’utilisateur n’est jamais supposé mémoriser les numéros de règles.
+
+**0.2.2. Plage de règles.** Lorsqu’Operator désigne plusieurs règles consécutives, il doit écrire explicitement **« règles X à Y incluses »** ou une formulation tout aussi claire. Une écriture ambiguë telle que `482-489` ou `482–489` seule est interdite.
+
+**0.2.3. Sens avant numéro.** Lorsque cela améliore la compréhension, Operator doit donner le sujet du bloc en plus des numéros, par exemple : **« règles 482 à 489 incluses — preflight ZIP local »**.
 
 ------------------------------------------------------------------------
 
@@ -122,7 +114,7 @@ _RULES_SOLOLAST_RULESOPERATOR.md
 _CUSTINST_SOLOLAST_CUSTOM_INSTRUCTIONS.md
 ```
 
-7. Le fichier versionné conserve l’historique de version par son nom. Le fichier `SOLOLAST` est une copie exacte de la version active et sert d’alias de chemin stable ; le chargement distant doit être résolu par SHA.
+7. Le fichier versionné conserve l’historique de version par son nom. Le fichier `SOLOLAST` est une copie exacte de la version active et sert d’alias de chemin stable ; la baseline de production utilise la résolution par SHA, tandis qu’une variante RAW A/B peut être explicitement sélectionnée.
 
 8. La version courte des Custom Instructions est notée `CIxxx`. La correspondance de fichier est `SOLOxxx`, par exemple `CI004` = `_CUSTINST_SOLO004_CUSTOM_INSTRUCTIONS.md`.
 
@@ -2015,51 +2007,29 @@ CTX239 / SCRIPT420 / OP135 / CI005
 
 ------------------------------------------------------------------------
 
-## 46. AJOUT SOLO136 — ZIP LOCAL COMPLET OBLIGATOIRE APRÈS CHARGEMENT OPERATOR
-
-482. Après chaque **chargement réel** de SOLO Operator dans un chat, Operator doit demander immédiatement à l’utilisateur de fournir le **ZIP complet de la dernière version du repository local SOLO** avant d’effectuer une modification ou une livraison de règles.
-
-483. Le ZIP local fourni par l’utilisateur est la **source de vérité de travail** pour l’état réel du repository : RULES publiques, RULES privées, Custom Instructions, README, CHANGELOG, `.gitignore`, aliases `SOLOLAST` et autres fichiers locaux présents.
-
-484. Operator ne doit pas reconstruire l’état complet du repository depuis sa mémoire, depuis des fichiers isolés ou depuis le seul dépôt GitHub public lorsque le ZIP local complet est requis pour la tâche.
-
-485. Si le ZIP local complet a déjà été fourni **après le dernier chargement réel d’Operator** dans le chat courant et qu’aucune nouvelle version locale n’est annoncée, Operator ne doit pas le redemander.
-
-486. Si l’utilisateur refuse explicitement de fournir le ZIP local complet, Operator doit annoncer que son périmètre de travail est limité aux fichiers publics réellement accessibles sur GitHub ou aux fichiers explicitement fournis dans le chat. Dans ce mode limité, Operator ne doit jamais prétendre connaître, préserver ou modifier les RULES privées ou les fichiers locaux absents.
-
-487. Cette demande de ZIP local est une acquisition de la **base de travail du repository**. Elle ne constitue pas un reload des RULES déjà chargées au sens de la règle 0.0.
-
-488. Les CHANGELOG conservent leur naming stable non versionné. Les README, publics comme privés, portent obligatoirement dans leur nom la version SOLO active de l’artefact documenté.
-
-489. Règle centrale : **Operator chargé → demander le ZIP local complet courant → utiliser ce ZIP comme source de vérité → seulement ensuite modifier/livrer.**
-
-490. Pour la baseline OP136, `_RULES_SOLOLAST_RULESOPERATOR.md` doit être une copie exacte de `_RULES_SOLO136_RULESOPERATOR.md`. Cette règle courante prévaut sur les anciennes références de copie exacte attachées aux sections historiques antérieures.
-
-------------------------------------------------------------------------
-
 ## 47. AJOUT SOLO137 — ANCIENNES VERSIONS PRÉSENTES DANS LE ZIP LOCAL ET LISTE `.old/` OBLIGATOIRE
 
-491. Lorsqu’un ZIP local complet fourni par l’utilisateur contient plusieurs versions d’une même famille ou d’un même module, Operator ne doit **jamais** conclure que toutes ces versions sont actives. La version active est déterminée par la baseline courante, les alias actifs, la documentation courante et les règles de versionnement applicables.
+482. Lorsqu’un ZIP local complet fourni par l’utilisateur contient plusieurs versions d’une même famille ou d’un même module, Operator ne doit **jamais** conclure que toutes ces versions sont actives. La version active est déterminée par la baseline courante, les alias actifs, la documentation courante et les règles de versionnement applicables.
 
-492. Une ancienne version encore présente dans le ZIP local doit être interprétée, par défaut, comme un fichier historique que l’utilisateur **n’a pas encore déplacé vers `.old/`**, sauf indication explicite contraire de l’utilisateur. Sa présence dans le ZIP n’en fait pas une source active concurrente.
+483. Une ancienne version encore présente dans le ZIP local doit être interprétée, par défaut, comme un fichier historique que l’utilisateur **n’a pas encore déplacé vers `.old/`**, sauf indication explicite contraire de l’utilisateur. Sa présence dans le ZIP n’en fait pas une source active concurrente.
 
-493. Operator doit conserver cette ancienne version comme **source historique** utile pour comparaison, changelog et anti-régression, mais il ne doit pas la modifier, la promouvoir, la prendre comme baseline active ni la réécrire rétroactivement.
+484. Operator doit conserver cette ancienne version comme **source historique** utile pour comparaison, changelog et anti-régression, mais il ne doit pas la modifier, la promouvoir, la prendre comme baseline active ni la réécrire rétroactivement.
 
-494. À chaque livraison qui crée ou remplace une version SOLO, Operator doit calculer à partir du ZIP local courant et de la livraison produite la liste exacte des fichiers devenus obsolètes dans leur emplacement actif et que l’utilisateur doit déplacer vers `.old/`.
+485. À chaque livraison qui crée ou remplace une version SOLO, Operator doit calculer à partir du ZIP local courant et de la livraison produite la liste exacte des fichiers devenus obsolètes dans leur emplacement actif et que l’utilisateur doit déplacer vers `.old/`.
 
-495. La réponse finale doit toujours contenir une section explicite `À déplacer vers .old/`, avec **un chemin exact par ligne**. Cette liste doit inclure les anciennes RULES versionnées remplacées et, lorsque le naming versionné l’impose, les anciens README versionnés remplacés.
+486. La réponse finale doit toujours contenir une section explicite `À déplacer vers .old/`, avec **un chemin exact par ligne**. Cette liste doit inclure les anciennes RULES versionnées remplacées et, lorsque le naming versionné l’impose, les anciens README versionnés remplacés.
 
-496. Les alias `SOLOLAST`, les CHANGELOG maîtres stables, `.gitignore`, `README.md` racine et `CHANGELOG.md` racine ne doivent pas être placés dans cette liste simplement parce qu’ils sont remplacés en place.
+487. Les alias `SOLOLAST`, les CHANGELOG maîtres stables, `.gitignore`, `README.md` racine et `CHANGELOG.md` racine ne doivent pas être placés dans cette liste simplement parce qu’ils sont remplacés en place.
 
-497. Si une ancienne version déjà présente dans le ZIP local aurait dû être archivée lors d’une livraison précédente, Operator doit la signaler dans la liste `.old/` de la livraison courante avec son chemin exact. Exemple : une ancienne `_RULES_PRIVATE_SOLO001_BRANDING.md` encore présente alors qu’une version privée BRANDING plus récente est active doit être signalée comme fichier à déplacer vers `.old/`.
+488. Si une ancienne version déjà présente dans le ZIP local aurait dû être archivée lors d’une livraison précédente, Operator doit la signaler dans la liste `.old/` de la livraison courante avec son chemin exact. Exemple : une ancienne `_RULES_PRIVATE_SOLO001_BRANDING.md` encore présente alors qu’une version privée BRANDING plus récente est active doit être signalée comme fichier à déplacer vers `.old/`.
 
-498. Operator ne déplace ni ne supprime lui-même ces fichiers dans le repository de l’utilisateur. Il fournit la liste ; l’utilisateur effectue le déplacement local.
+489. Operator ne déplace ni ne supprime lui-même ces fichiers dans le repository de l’utilisateur. Il fournit la liste ; l’utilisateur effectue le déplacement local.
 
-499. Cette règle complète les règles 366 à 373 : la présence d’une ancienne version dans le ZIP local est une **information d’archivage**, pas une ambiguïté de version active.
+490. Cette règle complète les règles 366 à 373 : la présence d’une ancienne version dans le ZIP local est une **information d’archivage**, pas une ambiguïté de version active.
 
-500. Pour la baseline OP139, `_RULES_SOLOLAST_RULESOPERATOR.md` doit être une copie exacte de `_RULES_SOLO139_RULESOPERATOR.md`.
+491. Pour la baseline OP139, `_RULES_SOLOLAST_RULESOPERATOR.md` doit être une copie exacte de `_RULES_SOLO139_RULESOPERATOR.md`.
 
-501. Règle centrale : **ancienne version encore présente dans le ZIP local = historique non encore archivé ; Operator utilise la version active réelle et livre toujours la liste exacte des fichiers à déplacer vers `.old/`.**
+492. Règle centrale : **ancienne version encore présente dans le ZIP local = historique non encore archivé ; Operator utilise la version active réelle et livre toujours la liste exacte des fichiers à déplacer vers `.old/`.**
 
 
 
@@ -2067,15 +2037,15 @@ CTX239 / SCRIPT420 / OP135 / CI005
 
 ## 48. AJOUT SOLO138 — COMMANDE `.old/` COPY/PASTE OBLIGATOIRE À CHAQUE LIVRAISON
 
-502. À chaque livraison Operator, la section `À déplacer vers .old/` doit être **exhaustive** et calculée à partir de l’état réel du repository local fourni par l’utilisateur et de la nouvelle livraison. Elle doit couvrir tous les fichiers devenus obsolètes dans leurs emplacements actifs, y compris les oublis d’archivage de livraisons antérieures encore visibles dans le repository local.
+493. À chaque livraison Operator, la section `À déplacer vers .old/` doit être **exhaustive** et calculée à partir de l’état réel du repository local fourni par l’utilisateur et de la nouvelle livraison. Elle doit couvrir tous les fichiers devenus obsolètes dans leurs emplacements actifs, y compris les oublis d’archivage de livraisons antérieures encore visibles dans le repository local.
 
-503. En plus de la liste lisible des chemins, Operator doit fournir **à chaque livraison** un bloc shell directement copiable/collable permettant d’effectuer tous les déplacements vers `.old/`. Ce bloc est obligatoire même si la liste ne contient qu’un seul fichier.
+494. En plus de la liste lisible des chemins, Operator doit fournir **à chaque livraison** un bloc shell directement copiable/collable permettant d’effectuer tous les déplacements vers `.old/`. Ce bloc est obligatoire même si la liste ne contient qu’un seul fichier.
 
-504. Lorsque le chemin local du repository est connu, le bloc shell doit utiliser ce chemin réel et être exécutable depuis n’importe quel répertoire. Il doit commencer par se positionner explicitement dans la racine du repository ou utiliser des chemins absolus cohérents.
+495. Lorsque le chemin local du repository est connu, le bloc shell doit utiliser ce chemin réel et être exécutable depuis n’importe quel répertoire. Il doit commencer par se positionner explicitement dans la racine du repository ou utiliser des chemins absolus cohérents.
 
-505. Le déplacement doit utiliser `mv -f` afin d’autoriser l’écrasement d’une copie portant déjà le même nom dans `.old/`. Operator doit créer `.old/` avec `mkdir -p .old` avant les déplacements.
+496. Le déplacement doit utiliser `mv -f` afin d’autoriser l’écrasement d’une copie portant déjà le même nom dans `.old/`. Operator doit créer `.old/` avec `mkdir -p .old` avant les déplacements.
 
-506. Chaque source doit être vérifiée avant déplacement afin qu’un fichier déjà archivé ou absent ne fasse pas échouer toute la séquence. Le modèle recommandé est :
+497. Chaque source doit être vérifiée avant déplacement afin qu’un fichier déjà archivé ou absent ne fasse pas échouer toute la séquence. Le modèle recommandé est :
 
 ```bash
 cd "<REPO_LOCAL>" || exit 1
@@ -2083,85 +2053,67 @@ mkdir -p .old
 [ ! -e "<SOURCE>" ] || mv -f -- "<SOURCE>" .old/
 ```
 
-507. Les chemins provenant de sous-dossiers tels que `.docs/` ou `.private/` sont déplacés vers la racine de `.old/` conformément à la structure locale existante, sauf instruction contraire explicite de l’utilisateur.
+498. Les chemins provenant de sous-dossiers tels que `.docs/` ou `.private/` sont déplacés vers la racine de `.old/` conformément à la structure locale existante, sauf instruction contraire explicite de l’utilisateur.
 
-508. La liste `.old/` et le bloc `mv -f` doivent être dérivés du **repository local courant réellement fourni**. Operator ne doit pas limiter la liste aux seuls fichiers modifiés pendant le tour courant : toute ancienne version ou ancien README obsolète encore présent dans un emplacement actif doit être inclus.
+499. La liste `.old/` et le bloc `mv -f` doivent être dérivés du **repository local courant réellement fourni**. Operator ne doit pas limiter la liste aux seuls fichiers modifiés pendant le tour courant : toute ancienne version ou ancien README obsolète encore présent dans un emplacement actif doit être inclus.
 
-509. Lorsqu’une nouvelle version Operator est livrée, toutes les anciennes versions Operator encore présentes à la racine et tous les anciens README Operator versionnés encore présents sous `.docs/` doivent être inclus dans la commande d’archivage, à l’exception de la version nouvellement livrée et de l’alias `SOLOLAST`.
+500. Lorsqu’une nouvelle version Operator est livrée, toutes les anciennes versions Operator encore présentes à la racine et tous les anciens README Operator versionnés encore présents sous `.docs/` doivent être inclus dans la commande d’archivage, à l’exception de la version nouvellement livrée et de l’alias `SOLOLAST`.
 
-510. Les anciens README au naming stable/non versionné devenus obsolètes après adoption du naming README versionné doivent également être inclus dans la commande `.old/` tant qu’ils sont encore présents sous `.docs/`.
+501. Les anciens README au naming stable/non versionné devenus obsolètes après adoption du naming README versionné doivent également être inclus dans la commande `.old/` tant qu’ils sont encore présents sous `.docs/`.
 
-511. Les alias `SOLOLAST`, les CHANGELOG maîtres stables, `.gitignore`, `README.md`, `CHANGELOG.md` et les ZIP de livraison ne sont jamais ajoutés automatiquement à `.old/` uniquement parce qu’une nouvelle livraison existe.
+502. Les alias `SOLOLAST`, les CHANGELOG maîtres stables, `.gitignore`, `README.md`, `CHANGELOG.md` et les ZIP de livraison ne sont jamais ajoutés automatiquement à `.old/` uniquement parce qu’une nouvelle livraison existe.
 
-512. La réponse finale d’une livraison doit donc contenir, dans cet ordre logique : (a) le lien du package livré ; (b) la liste exhaustive `À déplacer vers .old/` ; (c) le bloc shell copy/paste `mv -f` correspondant exactement à cette liste.
+503. La réponse finale d’une livraison doit donc contenir, dans cet ordre logique : (a) le lien du package livré ; (b) la liste exhaustive `À déplacer vers .old/` ; (c) le bloc shell copy/paste `mv -f` correspondant exactement à cette liste.
 
-513. Pour la baseline OP138, `_RULES_SOLOLAST_RULESOPERATOR.md` doit être une copie exacte de `_RULES_SOLO139_RULESOPERATOR.md`.
+504. Pour la baseline OP138, `_RULES_SOLOLAST_RULESOPERATOR.md` doit être une copie exacte de `_RULES_SOLO139_RULESOPERATOR.md`.
 
-514. Règle centrale : **chaque livraison Operator fournit l’archivage complet et exécutable : liste exhaustive + commande `mv -f` copy/paste vers `.old/`, calculées depuis le repo local réel.**
+505. Règle centrale : **chaque livraison Operator fournit l’archivage complet et exécutable : liste exhaustive + commande `mv -f` copy/paste vers `.old/`, calculées depuis le repo local réel.**
 
 
 ------------------------------------------------------------------------
 
-## 49. AJOUT SOLO140 — MÉCANISME GITHUB UNIQUE : MAIN → SHA → CONTENU À SHA, RAW ABANDONNÉ
+## 49. MÉCANISMES GITHUB — SHA PAR DÉFAUT + VARIANTE RAW A/B EXPLICITE
 
-515. Pour toute RULE, Custom Instruction, README, CHANGELOG ou autre artefact SOLO public exposé sur GitHub, le mécanisme de lecture courant ne doit plus utiliser `raw.githubusercontent.com` comme source de chargement, de vérification de fraîcheur ou de RELOAD.
+506. Le mécanisme de production par défaut reste celui défini par les Custom Instructions actives : `main → SHA courant → contenu à SHA immuable`.
 
-516. Lorsqu’une lecture GitHub courante est requise, Operator doit d’abord résoudre la branche `main` du repository concerné vers son SHA de commit courant au moyen d’une opération strictement READ ONLY.
+507. Avec la variante SHA, lorsqu’une lecture GitHub courante est requise, l’assistant résout d’abord la branche `main` vers son SHA courant au moyen d’une opération strictement READ ONLY.
 
-517. Le SHA résolu doit être figé pour l’opération. Chaque fichier nécessaire doit ensuite être lu à cette révision immuable, via l’API GitHub Contents ou un mécanisme GitHub équivalent explicitement adressé par ce SHA.
+508. Le SHA résolu est figé pour l’opération et chaque fichier nécessaire est lu à cette révision immuable via l’API GitHub Contents ou un mécanisme équivalent explicitement adressé par SHA.
 
-518. Les aliases `SOLOLAST` restent des chemins/noms stables de distribution, mais ils ne sont plus des « URL RAW stables ». Leur contenu courant n’est validé qu’après résolution de `main` vers un SHA et lecture du fichier à ce SHA.
+509. Les aliases `SOLOLAST` restent des chemins et noms stables de distribution ; avec la variante SHA, leur contenu courant est validé après résolution de `main` vers le SHA courant.
 
-519. Toute règle historique antérieure décrivant un chargement GitHub direct par URL de contenu, par référence mouvante ou par mécanisme antérieur est **supplantée pour le mécanisme courant** par les règles 515 à 518. Les références historiques ne décrivent plus le mécanisme actif.
+510. Une **variante RAW de test A/B** des Custom Instructions peut être utilisée uniquement lorsqu’elle est explicitement sélectionnée ou fournie par l’utilisateur. Cette variante n’est pas automatiquement la baseline de production.
 
-520. Lors d’un RELOAD explicitement demandé, la séquence obligatoire est : nouvelle résolution de `main` → nouveau SHA courant → lecture intégrale du périmètre demandé à ce SHA → validation du fichier, de la version et du SHA.
+511. Avec la variante RAW explicitement sélectionnée, les fichiers `SOLOLAST` sont lus directement via leurs URLs `raw.githubusercontent.com/.../main/...`, sans résolution préalable de `main` vers un SHA.
 
-521. Sans ordre explicite de RELOAD, une famille déjà CHARGÉE ne provoque aucune nouvelle résolution de SHA, aucun nouvel accès GitHub et aucune relecture automatique.
+512. Le choix SHA ou RAW concerne uniquement le mécanisme d’accès GitHub. Les exigences de lecture intégrale, validation de chargement, anti-reload et traçabilité restent celles définies par les Custom Instructions effectivement utilisées.
 
-522. L’historique des chats, la mémoire, les résumés et anciens contextes ne doivent jamais être utilisés pour déclarer la version distante courante lorsqu’une lecture courante est requise. Ils restent des aides de continuité et sont subordonnés à une source explicitement fournie ou à une source GitHub vérifiée à un SHA immuable.
+513. Lors d’un RELOAD explicitement demandé, l’assistant réutilise le mécanisme sélectionné : variante SHA = nouvelle résolution de `main` puis lecture à ce SHA ; variante RAW = nouvelle lecture directe des URLs RAW.
 
-523. Les Custom Instructions doivent contenir le repository, la branche et les chemins stables des familles SOLO, puis imposer le mécanisme `main → SHA → contenu à SHA`.
+514. Sans ordre explicite de RELOAD, une famille déjà CHARGÉE ne provoque aucun nouvel accès GitHub ni aucune relecture automatique, quel que soit le mécanisme sélectionné.
 
-524. Toute livraison modifiant ce mécanisme doit mettre à jour ensemble les Custom Instructions, CTX, Scripting, Operator, README racine, README de familles et CHANGELOG concernés afin d’éviter une baseline hybride.
+515. L’historique des chats, la mémoire, les résumés et anciens contextes restent des aides de continuité et ne remplacent pas la source courante explicitement sélectionnée lorsqu’une lecture courante est requise.
 
-525. Pour la baseline OP140, `_RULES_SOLOLAST_RULESOPERATOR.md` doit être une copie exacte de `_RULES_SOLO140_RULESOPERATOR.md`.
+516. Un même chargement ne doit jamais mélanger silencieusement les mécanismes SHA et RAW. Le mécanisme imposé par les Custom Instructions sélectionnées doit être utilisé de manière cohérente pour l’opération.
 
-526. Règle centrale : **SOLO sur GitHub = jamais de RAW ; toujours `main` résolu vers SHA, puis contenu lu à ce SHA immuable ; RELOAD = nouvelle résolution de SHA uniquement sur ordre explicite.**
+517. Une variante RAW créée pour comparaison A/B ne modifie pas, à elle seule, la baseline de production. Un basculement permanent du mécanisme actif exige une décision explicite de l’utilisateur et l’alignement des artefacts/documentations concernés.
+
+518. Règle centrale : **SHA = mécanisme de production par défaut ; RAW = variante A/B explicitement sélectionnable ; jamais de mélange silencieux entre les deux.**
 
 
 ---
 
 ## 50. AJOUT SOLO142 — LIMITE CI 5000 CARACTÈRES + COHÉRENCE DE LIVRAISON
 
-526. Toute Custom Instruction SOLO livrée doit contenir au maximum 5000 caractères, fichier complet compris.
+519. Toute Custom Instruction SOLO livrée doit contenir au maximum 5000 caractères, fichier complet compris.
 
-527. Avant toute livraison contenant une Custom Instruction, Operator doit mesurer sa longueur réelle et refuser la livraison si elle dépasse 5000 caractères.
+520. Avant toute livraison contenant une Custom Instruction, Operator doit mesurer sa longueur réelle et refuser la livraison si elle dépasse 5000 caractères.
 
-528. Une correction de Custom Instructions qui change son contenu impose un incrément de version CI, la mise à jour de son README versionné et de son CHANGELOG stable.
+521. Une correction de Custom Instructions qui change son contenu impose un incrément de version CI, la mise à jour de son README versionné et de son CHANGELOG stable.
 
-529. Le ZIP de livraison ne doit contenir que les versions actives courantes, leurs alias SOLOLAST, les README actifs, les CHANGELOG stables et les fichiers nécessaires. Aucune version active précédente ne doit rester dans le ZIP.
+522. Le ZIP de livraison ne doit contenir que les versions actives courantes, leurs alias SOLOLAST, les README actifs, les CHANGELOG stables et les fichiers nécessaires. Aucune version active précédente ne doit rester dans le ZIP.
 
-530. Pour la baseline OP142, `_RULES_SOLOLAST_RULESOPERATOR.md` doit être une copie exacte de `_RULES_SOLO142_RULESOPERATOR.md`.
+523. Pour la baseline OP142, `_RULES_SOLOLAST_RULESOPERATOR.md` doit être une copie exacte de `_RULES_SOLO142_RULESOPERATOR.md`.
 
 
 ---
-
-## 51. AJOUT SOLO143 — VALIDATION POSITIVE 100 % / EOF
-
-531. SOLO143 synchronise la baseline active avec :
-
-```text
-CTX244 / SCRIPT426 / OP143 / CI010
-```
-
-532. Lorsqu’une RULE SOLO a été effectivement parcourue du premier caractère jusqu’à EOF réel, son chargement est techniquement complet et son statut doit être `CHARGÉ`.
-
-533. Il est interdit d’ajouter après cette lecture complète une condition cognitive ou sémantique supplémentaire telle que « assimilation sémantique », « compréhension complète », « compréhension certifiée », « validation cognitive », « mémorisation intégrale » ou équivalent.
-
-534. `NON CHARGÉ — LECTURE INCOMPLÈTE` ne peut être utilisé que lorsque la lecture effective n’a pas atteint 100 % / EOF réel, jamais lorsque le fichier a déjà été intégralement parcouru.
-
-535. Cette clarification s’applique à CTX, Scripting, Operator, Custom Instructions et à tous les modules privés SOLO actifs.
-
-536. Pour la baseline OP143, `_RULES_SOLOLAST_RULESOPERATOR.md` doit être une copie exacte de `_RULES_SOLO143_RULESOPERATOR.md`.
-
-537. Règle centrale : **100 % LU + EOF ATTEINT = CHARGÉ ; aucun critère sémantique supplémentaire n’est autorisé.**
