@@ -1,21 +1,21 @@
 <!--
 DOCUMENT INFORMATION
-Document Name: _RULES_SOLO144_RULESOPERATOR.md
-Version: SOLO144
-Date / Time: 2026-10-14
+Document Name: _RULES_SOLO145_RULESOPERATOR.md
+Version: SOLO145
+Date / Time: 2026-10-24 22:53:04 +02:00
 Project: SOLO rules operator contextualization
 Public status: GitHub-safe public rules file
 Short description: Règles d’exploitation des chats de maintenance SOLO, synchronisées avec CTX244, SCRIPT426, OP144 et CUSTOM INSTRUCTIONS SOLO010 / CI010, avec preflight ZIP local bloquant, références de règles non ambiguës, variante CI010 RAW de test et règle d’or GitHub READ ONLY STRICT sans exception.
 -->
 
-# _RULES_SOLO144_RULESOPERATOR.md
+# _RULES_SOLO145_RULESOPERATOR.md
 
-Nom canonique : SOLO144 RULESOPERATOR  
+Nom canonique : SOLO145 RULESOPERATOR  
 Famille : SOLOxxx RULESOPERATOR  
-Version actuelle : 144  
-Document : _RULES_SOLO144_RULESOPERATOR.md  
-Date : 2026-10-14
-Statut : version 144 publique et assainie du fichier opérateur, synchronisant CTX244, SCRIPT426 et CUSTOM INSTRUCTIONS SOLO010 / CI010, avec preflight ZIP local bloquant, références de règles non ambiguës, variante CI010 RAW de test et règle d’or GitHub READ ONLY STRICT sans exception.
+Version actuelle : 145  
+Document : _RULES_SOLO145_RULESOPERATOR.md  
+Date : 2026-10-24 22:53:04 +02:00
+Statut : version 145 publique et assainie du fichier opérateur, synchronisant CTX244, SCRIPT426 et CUSTOM INSTRUCTIONS SOLO010 / CI010, avec preflight ZIP local bloquant, références de règles non ambiguës, variante CI010 RAW de test et règle d’or GitHub READ ONLY STRICT sans exception.
 
 Ces règles contextualisent un chat chargé de créer, modifier, corriger, versionner, documenter et livrer les fichiers de règles SOLO.
 
@@ -45,6 +45,18 @@ _RULES_SOLOXXX_SCRIPTING.md
 **0.0.7. Acquisition, pas reload.** La fourniture du ZIP local est l’acquisition de la base de travail du repository. Elle ne constitue pas un reload des RULES déjà chargées.
 
 **RÈGLE CENTRALE : OPERATOR CHARGÉ → PREFLIGHT ZIP LOCAL → SOURCE DE VÉRITÉ VALIDÉE → SEULEMENT ENSUITE TRAVAIL OPERATOR.**
+
+------------------------------------------------------------------------
+
+## 0.0A. CONTRÔLE DE LECTURE OPERATOR — DÉBUT, FIN ET MILIEU
+
+Après lecture intégrale d’Operator jusqu’à EOF réel, et **sans aucune relecture ni recherche**, l’assistant restitue :
+
+1. la première règle du fichier, avec son numéro et son contenu exact ;
+2. la dernière règle numérotée, avec son numéro et son contenu exact ;
+3. la règle de numéro `⌊N/2⌋`, avec son contenu exact, où `N` est le dernier numéro de règle principale relevé à la fin du fichier.
+
+Si la règle calculée n’existe pas ou si une restitution est impossible, le contrôle échoue : ne rien inventer, ne pas annoncer de réussite. Après le contrôle, demander le ZIP local conformément à la règle 0.0, puis seulement poursuivre le travail Operator après réception. Le contrôle ne constitue pas à lui seul une preuve de lecture intégrale.
 
 ------------------------------------------------------------------------
 
