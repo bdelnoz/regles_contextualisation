@@ -5,7 +5,7 @@ SOLO est un système de règles versionnées destiné à rendre le comportement 
 ## Baseline active
 
 ```text
-CTX246 / SCRIPT426 / OP144 / CI010
+CTX248 / SCRIPT428 / OP146 / CI010
 ```
 
 ## Règles d’or de chargement
@@ -189,3 +189,12 @@ La documentation détaillée reste locale sous `.docs/`. Chaque module privé po
 
 ## Validation de chargement 100 % / EOF
 Toute RULE SOLO, publique ou privée, n’est considérée chargée qu’après lecture réelle complète jusqu’à EOF et confirmation explicite `Lecture : 100 % / EOF atteint`.
+
+
+## Contrôle début / fin / milieu
+
+CTX248 et SCRIPT428 ajoutent le contrôle de restitution sans relecture déjà présent dans OP145.
+
+## Livraison FULL REPOSITORY locale
+
+Le ZIP complet livré par Operator contient les fichiers du dépôt utiles, dont `.docs/` et `.private/`, et un `regles_contextualisation.zip` à la racine contenant le même ensemble sans s'inclure lui-même. Les répertoires `.zip/`, `.git/`, `.old/` et `.exports/` sont exclus de cette livraison. Cet artefact local contenant du privé ne doit pas être publié.

@@ -1,16 +1,16 @@
 <!--
 DOCUMENT INFORMATION
-Document Name: _RULES_SOLO246_CONTEXTUALISATION.md
+Document Name: _RULES_SOLO248_CONTEXTUALISATION.md
 Author: Bruno DELNOZ
 Email: bruno.delnoz@protonmail.com
 Project: SOLO AI Rules by NoXoZ
 Family: CONTEXTUALISATION
-Version: CTX247
+Version: CTX248
 Date: 2026-10-24
 Status: WORKING / MIXED VALIDATION
 -->
 
-# SOLO RULES — CONTEXTUALISATION — CTX247
+# SOLO RULES — CONTEXTUALISATION — CTX248
 
 **Tags :** `(V)` validé · `(NV)` non validé · `(MV)` probablement Mode Vocal · `(O …)` ancien numéro / source.
 
@@ -19,6 +19,16 @@ Status: WORKING / MIXED VALIDATION
 ## 0.0A. (V) — LECTURE INTÉGRALE SOLO — VERROU 100 % / EOF
 
 Toute RULE demandée doit être lue du premier caractère jusqu’à EOF réel. Si la lecture est tronquée, continuer par segments couvrant tout le contenu manquant. Début et fin, taille, SHA ou aperçu ne prouvent pas 100 %. Avant EOF : `NON CHARGÉ — LECTURE INCOMPLÈTE` et aucun travail dépendant. Confirmer fichier, version, révision/source et `Lecture : 100 % / EOF atteint` seulement après lecture réelle. Une RULE chargée n’est relue que sur ordre explicite.
+
+## 0.0B. (V) — CONTRÔLE DE LECTURE CTX — DÉBUT, FIN ET MILIEU
+
+Après lecture intégrale jusqu’à EOF réel et **sans relecture ni recherche**, l’assistant restitue :
+
+1. la première règle, avec son numéro et son contenu exact ;
+2. la dernière règle numérotée, avec son numéro et son contenu exact ;
+3. la règle n° `⌊N/2⌋`, avec son contenu exact, `N` étant le dernier numéro de règle principale de la séquence contrôlée (et non un numéro de ligne).
+
+Si la règle calculée n’existe pas ou si une restitution échoue, signaler l’échec sans inventer ni prétendre avoir réussi. Ce contrôle ne constitue pas à lui seul une preuve de lecture intégrale. Il ne nécessite aucun reload.
 
 ## 0.0. (V) (O 0.1) — RÈGLE D’OR — GITHUB READ ONLY STRICT
 

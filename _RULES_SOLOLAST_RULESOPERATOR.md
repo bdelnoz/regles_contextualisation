@@ -1,21 +1,21 @@
 <!--
 DOCUMENT INFORMATION
-Document Name: _RULES_SOLO145_RULESOPERATOR.md
-Version: SOLO145
-Date / Time: 2026-10-24 22:53:04 +02:00
+Document Name: _RULES_SOLO146_RULESOPERATOR.md
+Version: SOLO146
+Date / Time: 2026-10-24 23:32:38 +02:00
 Project: SOLO rules operator contextualization
 Public status: GitHub-safe public rules file
 Short description: Règles d’exploitation des chats de maintenance SOLO, synchronisées avec CTX244, SCRIPT426, OP144 et CUSTOM INSTRUCTIONS SOLO010 / CI010, avec preflight ZIP local bloquant, références de règles non ambiguës, variante CI010 RAW de test et règle d’or GitHub READ ONLY STRICT sans exception.
 -->
 
-# _RULES_SOLO145_RULESOPERATOR.md
+# _RULES_SOLO146_RULESOPERATOR.md
 
-Nom canonique : SOLO145 RULESOPERATOR  
+Nom canonique : SOLO146 RULESOPERATOR  
 Famille : SOLOxxx RULESOPERATOR  
-Version actuelle : 145  
-Document : _RULES_SOLO145_RULESOPERATOR.md  
-Date : 2026-10-24 22:53:04 +02:00
-Statut : version 145 publique et assainie du fichier opérateur, synchronisant CTX244, SCRIPT426 et CUSTOM INSTRUCTIONS SOLO010 / CI010, avec preflight ZIP local bloquant, références de règles non ambiguës, variante CI010 RAW de test et règle d’or GitHub READ ONLY STRICT sans exception.
+Version actuelle : 146  
+Document : _RULES_SOLO146_RULESOPERATOR.md  
+Date : 2026-10-24 23:32:38 +02:00
+Statut : version 146 publique et assainie du fichier opérateur, synchronisant CTX244, SCRIPT426 et CUSTOM INSTRUCTIONS SOLO010 / CI010, avec preflight ZIP local bloquant, références de règles non ambiguës, variante CI010 RAW de test et règle d’or GitHub READ ONLY STRICT sans exception.
 
 Ces règles contextualisent un chat chargé de créer, modifier, corriger, versionner, documenter et livrer les fichiers de règles SOLO.
 
@@ -652,25 +652,23 @@ _RULES_PRIVATE_*
 .docs/
 ```
 
-127. Tous les fichiers ZIP générés pour une livraison SOLO doivent être placés sous :
+127. Les ZIP de livraison ordinaires restent sous `.zip/` dans le dépôt local. **Exception : le FULL REPOSITORY livré par Operator exclut entièrement `.zip/`.**
 
-```text
-.zip/
-```
-
-128. Cette règle s’applique aux ZIP règle-seule, aux packages par famille et aux bundles complets internes.
+128. Cette exception ne modifie pas le stockage local des archives hors livraison FULL REPOSITORY.
 
 129. Le ZIP full export peut être téléchargé à la racine du repo puis extrait avec “extract here”. Son contenu doit être organisé pour déposer directement les fichiers au bon endroit.
 
-130. Le ZIP full export doit contenir au minimum, selon les familles livrées :
-- les fichiers `_RULES_SOLO...md` publics à la racine ;
-- les fichiers `_RULES_SOLOLAST_...md` publics à la racine ;
-- `README.md` si mis à jour ;
-- `.gitignore` ;
-- les README et CHANGELOG de livraison dans `.docs/` ;
-- tous les ZIP dans `.zip/`.
+130. **Format obligatoire FULL REPOSITORY Operator :** un ZIP extérieur, extractible directement à la racine du dépôt, avec les RULES versionnées, les `SOLOLAST`, les Custom Instructions, `.gitignore`, `README.md`, `CHANGELOG.md`, `.docs/` complet et `.private/` complet de la base locale fournie. Conserver aussi les autres fichiers de cette base, sauf exclusions ci-dessous.
 
-131. Le ZIP full export ne doit pas publier de contenu privé non demandé. Les fichiers privés locaux ne peuvent être inclus que dans un export explicitement privé ou full public/private demandé par l’utilisateur.
+130.1. À la racine du ZIP extérieur, ajouter `regles_contextualisation.zip` contenant les mêmes fichiers octet pour octet, sauf ce ZIP intérieur lui-même.
+
+130.2. Exclure des deux ZIP `.zip/`, `.git/`, `.old/` et `.exports/`. Ne créer aucun dossier intermédiaire. Ne jamais placer le ZIP intérieur sous `.zip/`.
+
+130.3. Vérifier l'intégrité des deux archives et l'égalité des fichiers qu'elles partagent avant livraison. Ce format concerne le package FULL REPOSITORY, pas les ZIP règle-seule.
+
+130.4. Ce FULL REPOSITORY contient des éléments privés : livraison locale uniquement, jamais à publier sur GitHub. La règle GitHub READ ONLY reste applicable.
+
+131. Le FULL REPOSITORY demandé contient explicitement public et privé : il reste strictement local, jamais destiné à la publication. Les exports publics séparés continuent à exclure les fichiers privés.
 
 132. À chaque nouvelle version ou livraison SOLO, l’assistant doit fournir le fichier `.gitignore`, même si son contenu est inchangé.
 

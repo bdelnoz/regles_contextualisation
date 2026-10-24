@@ -1,3 +1,12 @@
+## 2026-10-24 23:32:38 +02:00 — OP146 / FULL REPOSITORY
+- Nouveau format complet avec archive `regles_contextualisation.zip` à la racine et preservation de `.docs/` et `.private/`.
+- Baseline CTX248 / SCRIPT428 / OP146 / CI010.
+
+## 2026-10-24 — CTX248 / SCRIPT428 / OP145
+
+- Contrôle de restitution début, fin et milieu harmonisé entre les trois familles publiques.
+- README et changelogs locaux synchronisés.
+
 ## 2026-10-24 20:47:24 +02:00 — CTX246
 - Baseline : CTX246 / SCRIPT426 / OP144 / CI010.
 - Lecture intégrale EOF, exécution immédiate, Mode Rapport copy/paste, réémission Read Aloud.
