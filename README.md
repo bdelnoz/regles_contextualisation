@@ -5,7 +5,7 @@ SOLO est un système de règles versionnées destiné à rendre le comportement 
 ## Baseline active
 
 ```text
-CTX244 / SCRIPT426 / OP144 / CI010
+CTX246 / SCRIPT426 / OP144 / CI010
 ```
 
 ## Règles d’or de chargement

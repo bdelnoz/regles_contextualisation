@@ -1,3 +1,7 @@
+## 2026-10-24 20:47:24 +02:00 — CTX246
+- Baseline : CTX246 / SCRIPT426 / OP144 / CI010.
+- Lecture intégrale EOF, exécution immédiate, Mode Rapport copy/paste, réémission Read Aloud.
+
 ## 2026-10-14 14:09:52 +02:00 — OP144 + variante CI010 RAW A/B
 - Baseline : CTX244 / SCRIPT426 / OP144 / CI010.
 - Operator : preflight ZIP local restructuré en une règle master `0.0` avec sous-règles ; ancien bloc 482 à 489 incluses supprimé et numérotation suivante recalée.

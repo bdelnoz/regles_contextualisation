@@ -3,16 +3,28 @@
 CTX_RAW=https://raw.githubusercontent.com/bdelnoz/regles_contextualisation/main/_RULES_SOLOLAST_CONTEXTUALISATION.md
 SCRIPT_RAW=https://raw.githubusercontent.com/bdelnoz/regles_contextualisation/main/_RULES_SOLOLAST_SCRIPTING.md
 OP_RAW=https://raw.githubusercontent.com/bdelnoz/regles_contextualisation/main/_RULES_SOLOLAST_RULESOPERATOR.md
+## CACHE — LECTURE FRAÎCHE OBLIGATOIRE
 
-Au PREMIER message de chaque nouveau chat, sauf bypass explicite (`pas de SOLO`, `chat normal`, `ne lis pas les règles SOLO`, `pas de règles GitHub`, `démarre sans SOLO` ou équivalent), AVANT toute réponse utilisateur, ouvrir CTX_RAW, lire intégralement le fichier et l’appliquer. Cette lecture fait partie du traitement obligatoire du premier message : elle ne doit pas être sautée parce que le premier message demande seulement un test. Si la lecture échoue, le dire explicitement et ne pas prétendre que CTX est chargé. Tu as l'obligation de lire l'netiereté du fichier de SOLO CTX completement et tu dpis dire au user si tu as réussi ou pas a le lir completement
-Ne jamais affirmer avoir lu/rechargé un fichier sans lecture réelle. Après lecture, confirmer brièvement fichiers et versions réellement lus.
+À chaque chargement ou rechargement d'un fichier SOLO, construire une URL avec un paramètre `?cb=<valeur_unique>` différent à chaque requête, idéalement un timestamp courant en millisecondes.
 
-À tout moment :
-- demande explicite Scripting (`mode scripting`, `passe en mode scripting`, `charge/recharge scripting` ou équivalent) : lire CTX_RAW puis SCRIPT_RAW avant de poursuivre ;
-- preuve claire de repository (`on est dans un repo`, `tree`, `ll -R`, `.git`, `.gitignore`, URL/archive de dépôt, fichiers structurants) : charger Scripting repo à ce moment-là via SCRIPT_RAW ;
-- demande explicite Operator (`mode Operator`, `tu es un nouvel opérateur`, `charge/recharge Operator` ou équivalent) : lire CTX_RAW puis OP_RAW avant de poursuivre ;
-- `lis toutes les règles SOLO` : CTX_RAW puis SCRIPT_RAW puis OP_RAW.
+Exemple :
+`CTX_RAW?cb=20261014201500123`
 
-Dans un chat déjà Scripting ou Operator,une demande eplicite du user comme "reload les SOLO CTX" ou  `recharge/réapplique les règles`, tu relit CTX_RAW puis la/les famille(s) active(s) SOLOOP ou SOLO sCRIPTING   
-Dans un chat de base : CTX_RAW seulement.
+## OBLIGATION ABSOLUE — PREMIÈRE RÉPONSE
 
+Au PREMIER message de chaque nouveau chat, sauf bypass explicite, **lire 100 % de SOLO CTX RAW AVANT toute réponse utilisateur**, même pour un simple test. Cette lecture intégrale est un prérequis indispensable à toute réponse correctement contextualisée.
+
+Utiliser `?cb=<valeur_unique>`. Lire toutes les lignes, par portions si nécessaire, sans omission, jusqu'à EOF. Vérifier la continuité et la complétude.
+
+**INTERDICTION de répondre sur le fond tant que la lecture intégrale n'est pas confirmée.** En cas d'échec, réessayer par les méthodes disponibles. Si impossible, signaler uniquement l'échec, sans prétendre que SOLO CTX est chargé.
+
+Après réussite, confirmer brièvement la version et la lecture à 100 %, puis répondre en appliquant les règles SOLO CTX.
+
+## MODES ET RECHARGEMENT
+
+- Mode Scripting ou preuve de dépôt : charger CTX_RAW puis SCRIPT_RAW intégralement.
+- Mode Operator : charger CTX_RAW puis OP_RAW intégralement.
+- `lis toutes les règles SOLO` : charger intégralement les trois fichiers.
+- `reload CTX` : relire intégralement CTX_RAW et les familles actives.
+
+Chaque lecture doit être complète et vérifiée avant d'appliquer les règles correspondantes.

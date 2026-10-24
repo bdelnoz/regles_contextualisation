@@ -1,7 +1,7 @@
-Nom canonique : SOLO426  
+Nom canonique : SOLO427  
 Famille : SOLOxxx (xxx = numéro de version)  
-Version actuelle : 426
-Document : _RULES_SOLO426_SCRIPTING.md  
+Version actuelle : 427
+Document : _RULES_SOLO427_SCRIPTING.md  
 Auteur : non publié dans la version publique
 Email : non publié dans la version publique
 Date : 2026-10-13
@@ -9,17 +9,17 @@ Statut : version scripting publique dérivée de SOLO420, conservant la règle d
 
 CES RÈGLES DE SCRIPTING S’APPELLENT SOLOxxx, où xxx représente le numéro de version.
 
-Lorsque je dis SOLO426, je fais référence à la version 426 des règles.
+Lorsque je dis SOLO427, je fais référence à la version 426 des règles.
 
 Lorsque je dis SOLO suivi d’un numéro, par exemple SOLO405, je fais référence à la version correspondante.
 
 Lorsque je dis simplement SOLO, cela fait référence à la dernière version publiée.
 
-SOLO426 remplace SOLO425, SOLO423, SOLO421, SOLO420, SOLO419, SOLO418, SOLO417, SOLO414, SOLO413, SOLO412, SOLO411, SOLO410, SOLO409, SOLO408, SOLO407, SOLO406, SOLO405, SOLO404, SOLO403, SOLO402, SOLO401, SOLO400, SOLO311, SOLO310, SOLO309, SOLO308, SOLO307, SOLO306, SOLO305, SOLO304, SOLO303, SOLO302, SOLO301, SOLO300 et toutes les versions SOLO scripting précédentes pour les demandes de scripting, génération de code, correction de code, génération de fichiers techniques et génération de documentation liée à des scripts.
+SOLO427 remplace SOLO426, SOLO425, SOLO423, SOLO421, SOLO420, SOLO419, SOLO418, SOLO417, SOLO414, SOLO413, SOLO412, SOLO411, SOLO410, SOLO409, SOLO408, SOLO407, SOLO406, SOLO405, SOLO404, SOLO403, SOLO402, SOLO401, SOLO400, SOLO311, SOLO310, SOLO309, SOLO308, SOLO307, SOLO306, SOLO305, SOLO304, SOLO303, SOLO302, SOLO301, SOLO300 et toutes les versions SOLO scripting précédentes pour les demandes de scripting, génération de code, correction de code, génération de fichiers techniques et génération de documentation liée à des scripts.
 
-SOLO426 est conçu pour les LLM de chat, notamment ChatGPT, LeChat ou équivalents.
+SOLO427 est conçu pour les LLM de chat, notamment ChatGPT, LeChat ou équivalents.
 
-SOLO426 conserve la substance de SOLO425, maintient la numérotation référençable des demandes, la règle d’or GitHub READ ONLY STRICT et la séparation de gouvernance où la structure du repository SOLO relève exclusivement d’Operator.
+SOLO427 conserve la substance de SOLO425, maintient la numérotation référençable des demandes, la règle d’or GitHub READ ONLY STRICT et la séparation de gouvernance où la structure du repository SOLO relève exclusivement d’Operator.
 
 ## 0.0. RÈGLE D’OR — CHARGEMENT INTÉGRAL OBLIGATOIRE + ANTI-RELOAD ABSOLU
 
@@ -412,7 +412,7 @@ Même si la correction produit un seul fichier, créer un ZIP contenant le fichi
 
 L'assistant ne doit jamais se limiter à expliquer la correction réelle d'un script sans fournir le fichier complet corrigé lorsque la correction modifie effectivement le contenu du script.
 
-Même pendant une phase d'itération rapide, toute livraison d'un script modifié doit contenir la version complète du script, pas seulement les lignes modifiées.
+Même pendant une phase d'itération rapide, toute livraison d'un script modifié doit contenir la version complète du script, pas seulement les lignes modifiées. Après validation de la correction (GO), livrer immédiatement le script intégral dans le ZIP, sans confirmation supplémentaire.
 
 ### 6.4 Pas de placeholders
 
@@ -530,7 +530,7 @@ Pour toute création, correction ou amélioration de script, fournir le script c
 
 Ne jamais répondre seulement avec les modifications à faire.
 
-Ne jamais fournir uniquement des fragments isolés si l’utilisateur attend un script utilisable.
+Ne jamais fournir uniquement des fragments isolés si l’utilisateur attend un script utilisable. Après GO, livrer tout le script corrigé, sans tronquage ni diff seul ; préserver les fonctions existantes sauf retrait validé.
 
 ### 8.2 Pas de simplification non demandée
 

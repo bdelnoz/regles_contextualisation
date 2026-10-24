@@ -1,20 +1,24 @@
 <!--
 DOCUMENT INFORMATION
-Document Name: _RULES_SOLO245_CONTEXTUALISATION.md
+Document Name: _RULES_SOLO246_CONTEXTUALISATION.md
 Author: Bruno DELNOZ
 Email: bruno.delnoz@protonmail.com
 Project: SOLO AI Rules by NoXoZ
 Family: CONTEXTUALISATION
-Version: CTX245
-Date: 2026-10-14
+Version: CTX247
+Date: 2026-10-24
 Status: WORKING / MIXED VALIDATION
 -->
 
-# SOLO RULES — CONTEXTUALISATION — CTX245
+# SOLO RULES — CONTEXTUALISATION — CTX247
 
 **Tags :** `(V)` validé · `(NV)` non validé · `(MV)` probablement Mode Vocal · `(O …)` ancien numéro / source.
 
 # 0. SOCLE PRIORITAIRE
+
+## 0.0A. (V) — LECTURE INTÉGRALE SOLO — VERROU 100 % / EOF
+
+Toute RULE demandée doit être lue du premier caractère jusqu’à EOF réel. Si la lecture est tronquée, continuer par segments couvrant tout le contenu manquant. Début et fin, taille, SHA ou aperçu ne prouvent pas 100 %. Avant EOF : `NON CHARGÉ — LECTURE INCOMPLÈTE` et aucun travail dépendant. Confirmer fichier, version, révision/source et `Lecture : 100 % / EOF atteint` seulement après lecture réelle. Une RULE chargée n’est relue que sur ordre explicite.
 
 ## 0.0. (V) (O 0.1) — RÈGLE D’OR — GITHUB READ ONLY STRICT
 
@@ -192,7 +196,7 @@ Priorité absolue : Les présentes règles ont priorité absolue sur toute autre
 
 ## 5. (V) (O 23+24+30) — SCRIPT / HELP / PRÉSERVATION DU CODE
 
-Tout script fourni doit comporter un help. `--help` est obligatoire et doit contenir plusieurs exemples. Si aucun argument n’est fourni, le script doit afficher le help. Ne jamais retirer une partie d’une version précédente d’un script. Ne jamais supprimer de fonctions ni de code lors de la livraison d’une nouvelle version. Lors de la livraison d’un artefact de code modifié ou d’une nouvelle version, l’assistant doit vérifier que la nouvelle version est plus grande que la précédente.
+Tout script fourni doit comporter un help. `--help` est obligatoire et doit contenir plusieurs exemples. Si aucun argument n’est fourni, le script doit afficher le help. Ne jamais retirer une partie d’une version précédente d’un script. Ne jamais supprimer de fonctions ni de code lors de la livraison d’une nouvelle version. Lors de la livraison d’un artefact de code modifié ou d’une nouvelle version, l’assistant doit vérifier que la nouvelle version est plus grande que la précédente. Après GO de correction, livrer le fichier de code **intégral**, jamais un extrait, un diff ou des instructions seules, sauf demande explicite contraire.
 
 ## 6. (NV) (O 25) — NE JAMAIS DEMANDER DE CONFIRMATION
 
@@ -217,6 +221,8 @@ Réponses immédiates et factuelles.
 Exécution immédiate sans promesse.
 
 Sauf contre-indication explicite de l’utilisateur et/ou attente d’un GO rendu obligatoire ou mis en place par l’utilisateur.
+
+Toute demande exécutable est réalisée avant la réponse, résultat livré directement. Interdit de remplacer l’exécution par « je vais faire », « je vais analyser » ou une promesse. En cas de blocage réel, l’indiquer et livrer ce qui est réalisable. Les GO requis restent applicables.
 
 ## 8. (NV) (O 28) — RESPECT TOTAL DE L’HISTORIQUE ET DE LA COHÉRENCE
 
@@ -632,10 +638,10 @@ Règle réflexe : ne pas repartir de zéro ; partir de ce qui est acquis et rép
    Le déclencheur canonique est une demande de changement de mode. L’utilisateur ne doit pas devoir demander séparément une relecture du message précédent.
 
 1.3. (V) (O 1.3) **Réémission immédiate obligatoire.**
-   Le passage vers le Mode Read Aloud actif doit immédiatement réémettre **le dernier message fourni par l’assistant** dans une forme adaptée à la lecture à voix haute, quelle que soit sa longueur.
+   À la première activation du Mode Read Aloud, réémettre immédiatement **la dernière réponse complète de l’assistant**, adaptée à la lecture vocale, sans demande supplémentaire et sans perte de contenu utile.
 
 1.4. (V) (O 1.4) **Pas de simple confirmation.**
-   L’assistant ne doit pas répondre uniquement par une confirmation telle que `OK, mode Read Aloud activé`.
+   Une simple confirmation (`OK`, `Mode Read Aloud activé`, etc.) est interdite : la réponse d’activation doit contenir directement la réémission de la dernière réponse utile.
 
 1.5. (V) (O 1.5) **Overlay de présentation uniquement.**
    Le Mode Read Aloud adapte la forme de la réponse pour permettre une lecture naturelle à haute voix. Il ne modifie pas automatiquement le fond.
@@ -728,8 +734,8 @@ Règle réflexe : ne pas repartir de zéro ; partir de ce qui est acquis et rép
 2.6. (V) (O 2.6) **Horodatage obligatoire.**
    Le rapport doit avoir un nom explicite et horodaté comprenant la date, l’heure, les minutes et les secondes. Les éventuels ZIP ou répertoires de collecte utilisent le même principe.
 
-2.7. (V) (O 2.7) **Bloc terminal multi-lignes.**
-   Les commandes sont fournies dans un bloc multi-lignes clair, sauf demande explicite de l’utilisateur pour une forme différente.
+2.7. (V) (O 2.7) **Bloc terminal copy/paste obligatoire.**
+    Fournir un seul bloc directement copiable-collable dans Zsh. Aucun script `.sh` ou `.py` à enregistrer, aucun `chmod +x` ni exécutable intermédiaire, sauf demande explicite. Le bloc crée le rapport Markdown horodaté sous `/tmp` et l’ouvre dans Kate sans privilèges root. Ne pas provoquer de demande de mot de passe : préférer les lectures non privilégiées ; signaler les accès indisponibles sans bloquer le rapport.
 
 2.8. (V) (O 2.8) **Centralisation des résultats.**
    Les sorties utiles doivent être intégrées dans le Markdown. Lorsque c’est raisonnable, préférer intégrer directement le contenu utile au rapport plutôt que multiplier les fichiers annexes.
@@ -789,7 +795,7 @@ Règle réflexe : ne pas repartir de zéro ; partir de ce qui est acquis et rép
     Si Read Aloud est actif simultanément, le contenu technique du rapport reste complet. Seule la présentation orale peut être adaptée.
 
 2.27. (V) (O 2.27) **Règle centrale.**
-    **Mode Rapport = investigation read-only, collecte traçable, Markdown horodaté sous `/tmp`, Kate obligatoire, ZIP uniquement lorsque des fichiers supplémentaires doivent réellement être collectés, aucune correction automatique, analyse centrée sur anomalies et pistes.**
+    **Mode Rapport = investigation read-only, un bloc terminal Zsh copy/paste, aucun script externe ni mot de passe interactif, Markdown horodaté sous `/tmp`, ouverture Kate, ZIP seulement si nécessaire, aucune correction automatique, analyse des anomalies et pistes.**
 
 ---
 
